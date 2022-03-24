@@ -5,6 +5,6 @@ Se realizará un juego online multi-player de preguntas al azar, clasificadas en
 
 # INTEGRANTES
 Ornella Irigo	| Eduardo Abelardo |
-Marcos Davila	| Matias Montini :D |
+Marcos Davila	| Matias Montini |
 Ignacio Martinez	| Leandro Verón |
-Valkiria Salerno	|  Matias Beier |
+Valkiria Salerno	|  Matias Beier
