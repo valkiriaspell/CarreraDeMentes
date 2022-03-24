@@ -7,4 +7,4 @@ Se realizará un juego online multi-player de preguntas al azar, clasificadas en
 Ornella Irigo	| Eduardo Abelardo |
 Marcos Davila	| Matias Montini :D |
 Ignacio Martinez	| Leandro Verón |
-Valkiria Salerno	|  Matias Beier
+Valkiria Salerno	|  Matias Beier |
