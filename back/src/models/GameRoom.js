@@ -1,26 +1,27 @@
 const {DataTypes} = require('sequelize');
 
 module.exports = (sequelize) => {
-	sequelize.define('game', {
+	sequelize.define('gameRoom', {
+		id: {
+			type: DataTypes.UUID,
+			defaultValue: DataTypes.UUIDV4,
+			allowNull: false,
+			primaryKey: true,
+		},
 		name: {
 			type: DataTypes.STRING,
 			allowNull: false,
-			unique: true,
 		},
-		Players: {
+		usersAmount: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
-		dificulty: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
-		rounds: {
+		questionAmout: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
-		chat: {
-			type: DataTypes.ARRAY(DataTypes.JSON), //chat
+		public: {
+			type: DataTypes.BOOLEAN,
 		},
 	});
 };
