@@ -2,10 +2,12 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
 
+import LandingPage from './components/LANDINGPAGE/landingPage';
+
 function App() {
   return (
     <div className="App">
-        {/* <Route path="/" component={lading} /> */}
+        <Route path="/" component={LandingPage} />
         {/* <Route path="/" component={login} /> */}
         {/* <Route path="/" component={registro} /> */}
         {/* <Route path="/" component={home} /> */}
