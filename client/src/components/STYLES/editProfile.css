@@ -1,0 +1,72 @@
+.danger {
+    color: red;        
+  }
+  
+  input.danger {
+    border: 2px solid red;
+  }
+  .formProfile {
+    font-size: 18px;
+    align-self: center;
+    align-content: center;  
+    display: flex;
+    padding-top: 50px;
+    text-align: left;
+    flex-direction: column;    
+    background: rgba(226, 166, 250, 0.76);
+    width: 500px;
+    margin: auto;
+    justify-content: space-between;        
+    color: rgb(0, 0, 0);            
+    padding-left: 30px;    
+    margin-top: 115px; 
+  }
+
+  .formName{
+    border-bottom: solid;
+    border-width: 1px;
+    margin-bottom: 10px;
+    border-color: rgb(0, 0, 0);  
+  }
+  .formMail{
+    border-bottom: solid;
+    border-width: 1px;
+    margin-bottom: 10px;
+    border-color: rgb(0, 0, 0);  
+  }
+  .formAvatar{
+    border-bottom: solid;
+    border-width: 1px;
+    margin-bottom: 10px;
+    border-color: rgb(0, 0, 0);  
+  }
+  .formPass{
+    border-bottom: solid;
+    border-width: 1px;
+    margin-bottom: 10px;
+    border-color: rgb(0, 0, 0);    
+  }
+  .formNewPass{
+    border-bottom: solid;
+    border-width: 1px;
+    margin-bottom: 10px;
+    border-color: rgb(0, 0, 0);    
+  }
+  .formConfirmPass{
+    border-bottom: solid;
+    border-width: 1px;
+    margin-bottom: 10px;
+    border-color: rgb(0, 0, 0);   
+  }
+
+  input {
+    padding: 5px;    
+    height: 30px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size:20px;      
+  }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
+import EditProfile from './components/HOME/editProfile';
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
         {/* <Route path="/" component={login} /> */}
         {/* <Route path="/" component={registro} /> */}
         {/* <Route path="/" component={home} /> */}
-        {/* <Route path="/" component={editPerfil} /> */}
+        <Route path="/editProfile" component={EditProfile} />
     </div>
   );
 }
