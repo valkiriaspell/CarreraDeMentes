@@ -13,10 +13,13 @@ import signUpFirebase from './components/INICIO/SIGNUP/signUpFirebase';
 
 initializeApp(config)
 
+import LandingPage from './components/LANDINGPAGE/landingPage';
+
 function App() {
   return (
     <div className="App">
-        {/* <Route path="/" component={lading} /> */}
+
+        <Route path="/" component={LandingPage} />
         <Route path="/home" component={Home} />
         <Route path="/login" component={initialPage} />
         <Route path="/signup" component={signUpFirebase} />
