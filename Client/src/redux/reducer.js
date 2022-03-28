@@ -12,10 +12,9 @@ const reducer = (state = initialState, action) => {
             ...state,
             user: action.payload
         }
-
         default:
-            return state
+            return state;
     }
 }
 
-export default reducer
+export default reducer;
