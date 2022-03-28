@@ -1,0 +1,53 @@
+/* ====== CONTAINER ====== */
+.container {
+  border: solid 2px black;
+  max-width: 800px;
+  max-height: 700px;
+  min-height: 380px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3rem;
+  border-radius: 0.4rem;
+}
+
+/* ====== NAV ====== */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
+.infoUser {
+  display: flex;
+}
+.nameUser {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ====== CONTENT ====== */
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contentButtons {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+  margin-top: 6rem;
+}
+.button button{
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+}
+.contentInstructions{
+  display: flex;
+  flex-direction: column;
+  border: solid 1px black; 
+  margin-right: 1rem;
+  border-radius: 0.4rem;
+}
+.contentInstructions span {
+    margin: 1rem;
+}
