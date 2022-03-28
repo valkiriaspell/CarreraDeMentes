@@ -10,6 +10,3 @@ Ornella Irigo	| Eduardo Abelardo |
 Marcos Davila	| Matias Montini |
 Ignacio Martinez	| Leandro Verón |
 Valkiria Salerno	|  Matias Beier
-
-Hola :D
-Hola2
