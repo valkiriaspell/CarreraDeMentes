@@ -14,7 +14,7 @@ module.exports = (sequelize) => {
 			type: DataTypes.DATE,
 		},
 		gameRoomId: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.UUID,
 		},
 	});
 };

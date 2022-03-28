@@ -38,22 +38,29 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 
-const {GameRoom, Question, Users, Chat, Avatars} = sequelize.models;
+const {GameRoom, Question, Users, Chat, Avatar} = sequelize.models;
+// console.log(sequelize.models)
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
 Users.belongsToMany(Users, {
-	as: 'friend',
-	foreignKey: 'friendId',
+	as: 'friend1',
+	foreignKey: 'friendIdOne',
+	through: 'Friends',
+});
+
+Users.belongsToMany(Users, {
+	as: 'friend2',
+	foreignKey: 'friendIdTwo',
 	through: 'Friends',
 });
 
 GameRoom.belongsToMany(Question, {through: 'Game_Questions'});
 Question.belongsToMany(GameRoom, {through: 'Game_Questions'});
 
-Users.belongsToMany(Avatars, {through: 'Users_Avatars'});
-Avatars.belongsToMany(Users, {through: 'Users_Avatars'});
+Users.belongsToMany(Avatar, {through: 'Users_Avatars'});
+Avatar.belongsToMany(Users, {through: 'Users_Avatars'});
 
 GameRoom.hasMany(Users);
 Users.belongsTo(GameRoom);
