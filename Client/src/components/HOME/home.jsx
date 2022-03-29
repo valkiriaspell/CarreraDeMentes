@@ -1,10 +1,20 @@
 import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
+import { firebaseCerrarSesion } from "../../utils/Firebase";
 import "../STYLES/home.modules.css";
+import { FaPowerOff } from "react-icons/fa";
+import UserCard from "./userCard";
 
 function Home() {
   const history = useHistory();
   const autenticado = localStorage.getItem("token");
+
+  async function handleSignOut(e) {
+    e.preventDefault();
+    await firebaseCerrarSesion();
+    localStorage.clear();
+    history.push("/");
+  }
 
   if (autenticado) {
     return (
@@ -20,13 +30,14 @@ function Home() {
           </div>
           <h1>Inicio</h1>
           <div className="infoUser">
+            {/* COMPONENTE USERCARD */}
+            <UserCard />
             <div>
-              <h4>Avatar</h4>
-            </div>
-            <div className="nameUser">
-              <span>User97</span>
-              <span>Nivel: 7</span>
-              <span>Monedas: 400</span>
+              <NavLink className="buttonsNav" to={"/"}>
+                <button onClick={e => handleSignOut(e)}>
+                  <FaPowerOff />
+                </button>
+              </NavLink>
             </div>
           </div>
         </div>
@@ -38,7 +49,7 @@ function Home() {
             <NavLink className="button" to={"/partidasDisponibles"}>
               <button>Partidas disponibles</button>
             </NavLink>
-            <NavLink className="button" to={"/partidasDisponibles"}>
+            <NavLink className="button" to={"/añadirPregunta"}>
               <button>Crear Preguntas</button>
             </NavLink>
           </div>
