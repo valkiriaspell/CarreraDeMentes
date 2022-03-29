@@ -22,7 +22,7 @@ export async function firebaseRegistrarUsuario(email, password){
         const registrar = await createUserWithEmailAndPassword(auth, email, password)
         return registrar.user;
     } catch (error) {
-        return error
+        return 'Intente nuevamente'
     }        
 }
 
@@ -58,4 +58,14 @@ export async function firebaseLoginFacebook(){
     } catch (error) {
         return 'No se pudo iniciar sesión'
     }   
+}
+
+export async function firebaseCerrarSesion(){
+    try {
+        const auth = getAuth();
+        const sesion = await auth.signOut()    
+        return sesion
+    } catch (error) {
+        console.log(error)
+    }
 }
