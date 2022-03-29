@@ -1,16 +1,18 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { LoginAsGuest } from "../../redux/actions";
+import { loginAsGuest } from "../../redux/actions";
 
 
 function LandingPage() {
+    const dispatch = useDispatch()
 
     function handleLoginAsGuest(e){
         e.preventDefault();
-        LoginAsGuest({
+        dispatch(loginAsGuest({
             user: "Anonimo",
             avatar: "urlAvatarAnonimo"
-        });
+        }));
     }
 
     return (
