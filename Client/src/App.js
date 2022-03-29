@@ -19,7 +19,7 @@ initializeApp(config)
 function App() {
   return (
     <div className="App">
-        <Route path="/" component={LandingPage} />
+        <Route exact path="/" component={LandingPage} />
         <Route path="/home" component={Home} />
         <Route path="/login" component={initialPage} />
         <Route path="/signup" component={signUpFirebase} />
