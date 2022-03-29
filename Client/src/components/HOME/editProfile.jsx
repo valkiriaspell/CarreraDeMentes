@@ -101,7 +101,7 @@ export default function EditProfile() {
             </div>
         );
     } else {
-        history.push('/login')
+        history.push('/')
         return <div></div>
     }
 }
