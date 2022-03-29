@@ -13,60 +13,82 @@
     padding-top: 50px;
     text-align: left;
     flex-direction: column;    
-    background: rgba(226, 166, 250, 0.76);
-    width: 500px;
+    background: rgb(2,0,36);
+background: linear-gradient(357deg, rgba(2,0,36,1) 0%, rgba(101,9,121,1) 35%, rgba(175,113,218,1) 100%);
+    width: 400px;
     margin: auto;
     justify-content: space-between;        
-    color: rgb(0, 0, 0);            
-    padding-left: 30px;    
-    margin-top: 115px; 
+    color: rgb(255, 255, 255);            
+    padding-left: 20px;        
+    padding-right: 20px;        
+    margin-top: 55px; 
   }
-
+  
   .formName{
-    border-bottom: solid;
-    border-width: 1px;
-    margin-bottom: 10px;
-    border-color: rgb(0, 0, 0);  
-  }
-  .formMail{
-    border-bottom: solid;
-    border-width: 1px;
-    margin-bottom: 10px;
-    border-color: rgb(0, 0, 0);  
-  }
-  .formAvatar{
-    border-bottom: solid;
-    border-width: 1px;
-    margin-bottom: 10px;
-    border-color: rgb(0, 0, 0);  
-  }
-  .formPass{
-    border-bottom: solid;
-    border-width: 1px;
-    margin-bottom: 10px;
-    border-color: rgb(0, 0, 0);    
-  }
-  .formNewPass{
-    border-bottom: solid;
-    border-width: 1px;
-    margin-bottom: 10px;
-    border-color: rgb(0, 0, 0);    
-  }
-  .formConfirmPass{
-    border-bottom: solid;
-    border-width: 1px;
-    margin-bottom: 10px;
-    border-color: rgb(0, 0, 0);   
-  }
-
-  input {
-    padding: 5px;    
-    height: 30px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size:20px;      
-  }
+      border-bottom: solid;
+      border-width: 1px;
+      margin-bottom: 10px;
+      border-color: rgb(255, 255, 255);  
+    }
+    .formMail{
+        border-bottom: solid;
+        border-width: 1px;
+        margin-bottom: 10px;
+        border-color: rgb(255, 255, 255);  
+    }
+    .formAvatar{
+        border-bottom: solid;
+        border-width: 1px;
+        margin-bottom: 10px;
+        border-color: rgb(255, 255, 255);
+        margin-bottom: 30px;  
+    }
+    .formPass{
+        border-bottom: solid;
+        border-width: 1px;
+        margin-bottom: 10px;
+        border-color: rgb(255, 255, 255);    
+    }
+    
+    
+    
+    .formProfile input {
+        width: 80%;
+        padding: 5px;    
+        height: 30px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size:16px;      
+    }
+    .disabled{
+      color: rgb(0, 0, 0);
+      background-color: rgb(129, 129, 129);
+      cursor: not-allowed;
+  
+    }
+    
+    .enabled{
+      color: rgb(0, 0, 0);
+      background-color: rgb(255, 255, 255);    
+      cursor: pointer; 
+      border: none;
+      font-size: 8px;
+      
+    }
+  
+    .Profilesubmit{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      width: 70%;
+      font-size: 8px;
+      padding: 1em;   
+    }
+    .error {
+        color: rgb(253, 24, 24);
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.924);    
+      }
