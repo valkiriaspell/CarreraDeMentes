@@ -11,10 +11,11 @@ import { config } from './utils/Firebase';
 import { initializeApp } from 'firebase/app';
 import initialPage from './components/INICIO/initialPage';
 import signUpFirebase from './components/INICIO/SIGNUP/signUpFirebase';
+import LandingPage from './components/LANDINGPAGE/landingPage';
+import GameRoom from './components/GAMEROOM/gameRoom';
 
 initializeApp(config)
 
-import LandingPage from './components/LANDINGPAGE/landingPage';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/partidasDisponibles" component={GameListRoom} />
         <Route path="/tienda" component={PlayStore} />
         <Route path="/añadirPregunta" component={FormAddQuestions} />
+        <Route path="/gameRoom/:idGameRoom" component={GameRoom} />
     </div>
   );
 }
