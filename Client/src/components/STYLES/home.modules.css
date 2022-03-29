@@ -6,7 +6,7 @@
   min-height: 380px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 3rem;
+  margin-top: 6rem;
   border-radius: 0.4rem;
 }
 
@@ -15,6 +15,12 @@
   display: flex;
   justify-content: space-between;
   margin: 1rem;
+}
+.buttonsNav{
+  margin: 0.5rem;
+}
+.buttonsNav button:hover {
+  cursor: pointer;
 }
 .infoUser {
   display: flex;
@@ -40,6 +46,9 @@
     margin: 0.5rem;
     padding: 0.5rem;
     border-radius: 0.4rem;
+}
+.button button:hover {
+    cursor: pointer;
 }
 .contentInstructions{
   display: flex;
