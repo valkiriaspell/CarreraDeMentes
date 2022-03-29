@@ -13,16 +13,44 @@ function SignUpFirebase() {
         password: '',
     })
 
+    const [error, setError] = useState({})
+
+    function validar(input){
+        let errors = {}
+
+        if(input.username === ''){
+            errors.username = 'El nombre de usuario es obligatorio'
+        }
+        if(input.avatar === ''){
+            errors.avatar = 'El avatar es obligatorio'
+        }
+        if(input.email === ''){
+            errors.email = 'El email es obligatorio'
+        }
+        if(input.password.length < 6){
+            errors.password = 'La contraseña debe contener al menos 6 caracteres'
+        }
+        return errors
+    }
+
     function handleChange(e){
         setInput({...input, [e.target.name]: e.target.value})
     }
 
     async function handleRegister(e){
         e.preventDefault()
-        const registrar = await firebaseRegistrarUsuario(input.email, input.password)
-        if(registrar.accessToken){
-            alert('Usuario registrado con exito')
-            // history.push('/home')
+        const validacion = validar(input)
+
+        if(Object.keys(validacion).length === 0){
+            const registrar = await firebaseRegistrarUsuario(input.email, input.password)
+            if(registrar.accessToken){
+                localStorage.setItem('token', registrar.accessToken)
+                history.push('/home')
+            }else{
+                setError({mensaje: registrar})
+            }
+        }else{
+            setError(()=> validacion)
         }
     }
 
@@ -62,6 +90,11 @@ function SignUpFirebase() {
             />
             <button type='submit'>Registrarse</button>
         </form>
+        {error.username && <p>{error.username}</p>}
+        {error.avatar && <p>{error.avatar}</p>}
+        {error.email && <p>{error.email}</p>}
+        {error.password && <p>{error.password}</p>}
+        {error.mensaje && <p>{error.mensaje}</p>}
     </div>
   )
 }
