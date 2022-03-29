@@ -13,8 +13,7 @@
     padding-top: 50px;
     text-align: left;
     flex-direction: column;    
-    background: rgb(2,0,36);
-background: linear-gradient(357deg, rgba(2,0,36,1) 0%, rgba(101,9,121,1) 35%, rgba(175,113,218,1) 100%);
+    background: #0000003d;
     width: 400px;
     margin: auto;
     justify-content: space-between;        
@@ -22,6 +21,8 @@ background: linear-gradient(357deg, rgba(2,0,36,1) 0%, rgba(101,9,121,1) 35%, rg
     padding-left: 20px;        
     padding-right: 20px;        
     margin-top: 55px; 
+    border-style: solid;
+    border-color: white;
   }
   
   .formName{

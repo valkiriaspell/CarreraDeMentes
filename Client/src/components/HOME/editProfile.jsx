@@ -33,9 +33,13 @@ export default function EditProfile() {
         switch (true) {
 
             case e.target.name === "name":
-                if (!/^[a-zA-Z ]*$/.test(e.target.value)) {
+                if (!/^[a-zA-Z]*$/.test(e.target.value)) {
                     setUsername(e.target.value);
-                    setErrorName("Escribir solo letras")
+                    setErrorName("No usar espacios, numeros o simbolos")
+                
+                } else if (e.target.value.length > 16) {
+                    setUsername(e.target.value);
+                    setErrorName("Máximo 16 carácteres")
                 } else {
                     setUsername(e.target.value);
                     setErrorName("")
@@ -73,7 +77,7 @@ export default function EditProfile() {
         return (
             <div className='formProfile'>
                 <form onSubmit={onSubmit}>
-
+                <label>Editar perfil</label>                
                     <div className='formName'>
                         <label>Nombre de Usuario:</label>
                         <>
