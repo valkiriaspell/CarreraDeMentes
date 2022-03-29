@@ -5,13 +5,13 @@ export const UPDATE_USER = 'UPDATE_USER'
 
 
 
-export function LoginAsGuest(userGuest){
+export function loginAsGuest(userGuest){
     return async function(dispatch){
         try{
-        const {data} = await axios.post('/ruta para hacer post', {userGuest})
-        return dispatch({type: LOGIN_USER_GUEST, payload: data})
+            const {data} = await axios.post('/ruta para hacer post', userGuest)
+            dispatch({type: 'LOGIN_USER_GUEST', payload: data})
         }catch(e) {
-          return console.log(e)
+            console.log(e)
         }
     }
 }
