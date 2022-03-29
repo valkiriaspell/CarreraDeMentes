@@ -10,6 +10,5 @@ export function loginAsGuest(userGuest){
         }catch(e) {
             console.log(e)
         }
-
     }
 }
