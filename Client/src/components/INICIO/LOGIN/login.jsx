@@ -11,32 +11,55 @@ function Login() {
         password: ''
     })
 
+    const [error, setError] = useState({})
+
+    function validar(input){
+        let errors = {}
+
+        if(input.password.length < 6){
+            errors.password = 'La contraseña debe contener al menos 6 caracteres'
+        }
+        return errors
+    }
+
     function handleOnChange(e){
         setInput({...input, [e.target.name]: e.target.value})
     }
 
     async function handleLogin(e){
         e.preventDefault()
-        const login = await firebaseLogin(input.email, input.password)
-        if(login.accessToken){
-            alert('Usuario logueado con exito')
-            // history.push('/home')
+        const validacion = validar(input)
+
+        if(Object.keys(validacion).length === 0){
+            const login = await firebaseLogin(input.email, input.password)
+            if(login.accessToken){
+                localStorage.setItem('token', login.accessToken)
+                history.push('/home')
+            }else{
+                setError({mensaje: login})
+            }
+        }else{
+            setError(()=> validacion)
         }
     }
 
     async function handleLoginGoogle(){
         const iniciarSesion = await firebaseLoginGoogle()
         if(iniciarSesion.accessToken){
-            alert('Usuario logueado con exito')
-            // history.push('/home')
-        } 
+            localStorage.setItem('token', iniciarSesion.accessToken)
+            history.push('/home')
+        }else{
+            setError({mensaje: iniciarSesion})
+        }
     }
 
     async function handleLoginFacebook(){
         const iniciarSesion = await firebaseLoginFacebook()
         if(iniciarSesion.accessToken){
-            alert('Usuario logueado con exito')
-            // history.push('/home')
+            localStorage.setItem('token', iniciarSesion.accessToken)
+            history.push('/home')
+        }else{
+            setError({mensaje: iniciarSesion})
         }
     }
 
@@ -59,7 +82,8 @@ function Login() {
             />
             <button type='submit'>Login</button>
         </form>
-
+        {error.mensaje && <p>{error.mensaje}</p>}
+        {error.password && <p>{error.password}</p>}
         <div>
             <Link to={'/signup'}>Sign Up</Link>
             <button onClick={handleLoginGoogle}>Login with Google</button>
