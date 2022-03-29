@@ -9,10 +9,7 @@ function LandingPage() {
 
     function handleLoginAsGuest(e){
         e.preventDefault();
-        dispatch(loginAsGuest({
-            user: "Anonimo",
-            avatar: "urlAvatarAnonimo"
-        }));
+        dispatch(loginAsGuest());
     }
 
     return (
