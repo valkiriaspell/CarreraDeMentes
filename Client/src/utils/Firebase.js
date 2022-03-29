@@ -22,7 +22,7 @@ export async function firebaseRegistrarUsuario(email, password){
         const registrar = await createUserWithEmailAndPassword(auth, email, password)
         return registrar.user;
     } catch (error) {
-        return error
+        return 'Intente nuevamente'
     }        
 }
 
@@ -42,7 +42,7 @@ export async function firebaseLoginGoogle(){
         const auth = getAuth();
         const signIn = await signInWithPopup(auth, provider)
         const credential = GoogleAuthProvider.credentialFromResult(signIn);
-        return credential
+        return signIn.user
     } catch (error) {
         return 'No se pudo iniciar sesión'
     }   
@@ -54,8 +54,18 @@ export async function firebaseLoginFacebook(){
         const auth = getAuth();
         const signIn = await signInWithPopup(auth, provider)
         const credential = FacebookAuthProvider.credentialFromResult(signIn);
-        return credential
+        return signIn.user
     } catch (error) {
         return 'No se pudo iniciar sesión'
     }   
+}
+
+export async function firebaseCerrarSesion(){
+    try {
+        const auth = getAuth();
+        const sesion = await auth.signOut()    
+        return sesion
+    } catch (error) {
+        console.log(error)
+    }
 }
