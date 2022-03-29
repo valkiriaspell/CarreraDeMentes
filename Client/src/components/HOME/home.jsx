@@ -4,6 +4,7 @@ import { firebaseCerrarSesion } from "../../utils/Firebase";
 import "../STYLES/home.modules.css";
 import { FaPowerOff } from "react-icons/fa";
 import UserCard from "./userCard";
+import Instructions from "./instructions";
 
 function Home() {
   const history = useHistory();
@@ -41,8 +42,8 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="content">
-          <div className="contentButtons">
+            <div className="content">
+            <div className="contentButtons">   
             <NavLink className="button" to={"/iniciarPartida"}>
               <button>Iniciar partida</button>
             </NavLink>
@@ -52,16 +53,11 @@ function Home() {
             <NavLink className="button" to={"/añadirPregunta"}>
               <button>Crear Preguntas</button>
             </NavLink>
+            </div>
+            <div>
+              <Instructions />
+            </div>
           </div>
-          <div className="contentInstructions">
-            <h3>¿Cómo Juego?</h3>
-            <span>1. Invita a tus amigos</span>
-            <span>2. Configura una partida a tu gusto</span>
-            <span>
-              3. Responde preguntas aletorias sobre las categorias selecionadas
-            </span>
-          </div>
-        </div>
       </div>
     );
   } else {
