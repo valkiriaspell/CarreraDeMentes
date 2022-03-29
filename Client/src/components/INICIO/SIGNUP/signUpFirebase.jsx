@@ -44,6 +44,7 @@ function SignUpFirebase() {
         if(Object.keys(validacion).length === 0){
             const registrar = await firebaseRegistrarUsuario(input.email, input.password)
             if(registrar.accessToken){
+                localStorage.setItem('email', registrar.email)
                 localStorage.setItem('token', registrar.accessToken)
                 history.push('/home')
             }else{
