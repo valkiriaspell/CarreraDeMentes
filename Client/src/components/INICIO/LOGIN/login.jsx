@@ -33,6 +33,7 @@ function Login() {
         if(Object.keys(validacion).length === 0){
             const login = await firebaseLogin(input.email, input.password)
             if(login.accessToken){
+                localStorage.setItem('email', login.email)
                 localStorage.setItem('token', login.accessToken)
                 history.push('/home')
             }else{
@@ -46,6 +47,7 @@ function Login() {
     async function handleLoginGoogle(){
         const iniciarSesion = await firebaseLoginGoogle()
         if(iniciarSesion.accessToken){
+            localStorage.setItem('email', iniciarSesion.email)
             localStorage.setItem('token', iniciarSesion.accessToken)
             history.push('/home')
         }else{
@@ -56,6 +58,7 @@ function Login() {
     async function handleLoginFacebook(){
         const iniciarSesion = await firebaseLoginFacebook()
         if(iniciarSesion.accessToken){
+            localStorage.setItem('email', iniciarSesion.email)
             localStorage.setItem('token', iniciarSesion.accessToken)
             history.push('/home')
         }else{
