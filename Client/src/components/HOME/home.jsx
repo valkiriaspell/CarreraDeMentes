@@ -6,7 +6,7 @@ import { FaPowerOff } from "react-icons/fa";
 import UserCard from "./userCard";
 import Instructions from "./instructions";
 
-function Home() {
+function Home(props) {
   const history = useHistory();
   const autenticado = localStorage.getItem("token");
 
@@ -32,7 +32,7 @@ function Home() {
           <h1>Inicio</h1>
           <div className="infoUser">
             {/* COMPONENTE USERCARD */}
-            <UserCard />
+            <UserCard location={props.location}/>
             <div>
               <NavLink className="buttonsNav" to={"/"}>
                 <button onClick={e => handleSignOut(e)}>
