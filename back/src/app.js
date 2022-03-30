@@ -7,7 +7,36 @@ const session = require('express-session');
 const cors = require('cors');
 require('./db.js');
 
+/// conexion de sockets
 const server = express();
+var app=require('http').Server(server);
+var io=require('socket.io')(app,{
+	cors:{
+		origin:"*"
+	}
+})
+//server.use(express.static('public'))
+
+io.on('connection',(socket)=>{//que hago cuando recibo 'connect'?
+        
+    const {room,email}=socket.handshake.query;    
+    socket.join(room)  
+    
+    io.to(room).emit('NEW_CONECTION',{email})
+    
+    socket.on('READY',(email)=>{
+        io.to(room).emit('READY',{email})
+    })
+
+    socket.on('disconect',(room)=>{//alguien se desconecta de la room
+        console.log("se desconecto")
+        socket.leave(room) 
+    })
+    socket.on('chat',(data)=>{ //alguien envia un nuevo mensaje
+        const {message,room,user}=data;//cual es el mensaje?  para que room? quien lo envia?
+        io.to(room).emit('chat',{message,user})
+    }) 
+})
 
 server.name = 'API';
 
@@ -57,4 +86,4 @@ server.use((req, res, next) => {
 
 server.use('/', routes);
 
-module.exports = server;
+module.exports = app;
