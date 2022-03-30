@@ -5,13 +5,22 @@ module.exports = (sequelize) => {
 		category: {
 			type: DataTypes.STRING,
 			allowNull: false,
+			validate: {
+				isAlpha: true,
+			}
 		},
 		question: {
 			type: DataTypes.STRING,
 			allowNull: false,
+			// validate: {
+			// 	is: /^\¿.*?\?$/i,
+			// }
 		},
 		imageUrl: {
 			type: DataTypes.TEXT,
+			validate: {
+				isUrl: true,
+			}
 		},
 		correct: {
 			type: DataTypes.STRING,

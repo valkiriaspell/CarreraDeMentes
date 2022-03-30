@@ -11,14 +11,24 @@ module.exports = (sequelize) => {
 		name: {
 			type: DataTypes.STRING,
 			allowNull: false,
+			validate: {
+				isAlpha: true,
+				len: [2,12], 
+			}
 		},
 		usersAmount: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
+			validate: {
+				isInt: true,
+			}
 		},
 		questionAmout: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
+			validate: {
+				isInt: true,
+			}
 		},
 		public: {
 			type: DataTypes.BOOLEAN,

@@ -11,39 +11,70 @@ module.exports = (sequelize) => {
 		name: {
 			type: DataTypes.STRING,
 			unique: true,
+			allowNull: false,
+			validate: {
+				isAlpha: true,
+				len: [2,12], 
+			}
 		},
 		email: {
 			type: DataTypes.STRING,
 			allowNull: false,
 			unique: true,
+			validate: {
+				isEmail: true
+			}
 		},
 		currentAvatar: {
 			//ID de avatar
 			type: DataTypes.INTEGER,
+			validate: {
+				isInt: true,
+				min: 1
+			}
 		},
 		avatarStock: {
 			type: DataTypes.INTEGER,
+			validate: {
+				isInt: true,
+			}
 		},
 		coins: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			defaultValue: 0,
+			validate: {
+				isInt: true,
+			}
 		},
 		experiencePoints: {
 			type: DataTypes.INTEGER,
 			defaultValue: 0,
+			validate: {
+				isInt: true,
+				min: 1
+			}
 		},
 		level: {
 			type: DataTypes.INTEGER,
 			defaultValue: 0,
+			validate: {
+				isInt: true,
+			}
 		},
 		wins: {
 			type: DataTypes.INTEGER,
 			defaultValue: 0,
+			validate: {
+				isInt: true,
+			}
 		},
 		friendId: {
-			//id de amigos
+			//Id de amigos
 			type: DataTypes.INTEGER,
+			validate: {
+				isInt: true,
+			}
 		},
 		host: {
 			type: DataTypes.BOOLEAN,
