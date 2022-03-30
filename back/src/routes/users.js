@@ -4,4 +4,7 @@ const {createUsers, getUser, getUsers} = require('../controllers/users');
 
 router.use('/', createUsers);
 
-module.exports = router;
+// escriban sus rutas acá
+router.get("/", async(req, res)=>{
+   
+})

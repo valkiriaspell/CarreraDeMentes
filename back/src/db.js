@@ -55,9 +55,9 @@ Users.belongsToMany(Users, {
 	foreignKey: 'friendIdTwo',
 	through: 'Friends',
 });
-
-GameRoom.belongsToMany(Question, {through: 'Game_Questions'});
-Question.belongsToMany(GameRoom, {through: 'Game_Questions'});
+// No va esta relacion porque no guardamos las salas y las preguntas son random
+// GameRoom.belongsToMany(Question, {through: 'Game_Questions'});
+// Question.belongsToMany(GameRoom, {through: 'Game_Questions'});
 
 Users.belongsToMany(Avatar, {through: 'Users_Avatars'});
 Avatar.belongsToMany(Users, {through: 'Users_Avatars'});

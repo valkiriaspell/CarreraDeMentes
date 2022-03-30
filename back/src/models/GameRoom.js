@@ -30,7 +30,7 @@ module.exports = (sequelize) => {
 				isInt: true,
 			}
 		},
-		public: {
+		public_: {
 			type: DataTypes.BOOLEAN,
 		},
 	});
