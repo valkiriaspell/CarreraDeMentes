@@ -1,7 +1,8 @@
-var express = require('express');
-var router = express.Router();
-module.exports = router;
-const {GameRoom, Question, Users, Chat, Avatar} = require('../db.js')
+const {Router} = require('express');
+const router = Router();
+const {createUsers, getUser, getUsers} = require('../controllers/users');
+
+router.use('/', createUsers);
 
 // escriban sus rutas acá
 router.get("/", async(req, res)=>{
