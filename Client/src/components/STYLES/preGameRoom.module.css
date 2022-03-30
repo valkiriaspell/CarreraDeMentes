@@ -1,0 +1,5 @@
+.container {
+  max-width: 800px;
+  border: solid 3px rgba(216, 221, 226, 0.4);
+  border-radius: 0.4rem;
+}

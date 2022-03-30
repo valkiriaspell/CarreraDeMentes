@@ -4,8 +4,8 @@ const EditRoom = () =>{
     const [settingGame, setSettingGame] = useState({
         category: "",
         difficulty: "easy",
-        rounds: "two",
-        public: true
+        rounds: "ten",
+        open: true
     })
 
     function handleChange(e){
@@ -16,7 +16,7 @@ const EditRoom = () =>{
     }
 
     function handleSubmit(e){
-
+        
     }
 
     return (
@@ -40,12 +40,12 @@ const EditRoom = () =>{
             </select>
             <label >Cantidad de rondas</label>
             <select name="rounds"  onChange={e => handleChange(e)}>
-                <option value="two" >2</option>
-                <option value="three" >3</option>
-                <option value="four" >4</option>
+                <option value="ten" >10</option>
+                <option value="fifteen" >15</option>
+                <option value="twenty" >20</option>
             </select>
             <label >Publica o Privada</label>
-            <select name="public"  onChange={e => handleChange(e)}>
+            <select name="open"  onChange={e => handleChange(e)}>
                 <option value={true} >publica</option>
                 <option value={false} >privada</option>
             </select>
