@@ -12,6 +12,9 @@ module.exports = (sequelize) => {
 		},
 		time: {
 			type: DataTypes.DATE,
+			validate: {
+				isDate: true, 
+			}
 		},
 		gameRoomId: {
 			type: DataTypes.UUID,
