@@ -11,7 +11,7 @@ export default function EditProfile() {
     const autenticado = localStorage.getItem('token')
 
     //////////  ---->    Local states data   <------ //////////////
-    const [msg, setMSG] = useState('');
+    const [msg, setMSG] = useState("");
     const [username, setUsername] = useState("");
     const [mail, setMail] = useState("");
     const [avatar, setAvatar] = useState("");
@@ -102,7 +102,8 @@ export default function EditProfile() {
                         </div>
                     </div>
                     <div className='Profilesubmit'>
-                        <input disabled={errorName || errorMail} className={errorName ? "disabled" : "enabled"} type="submit" value="Guardar cambios" />
+                        <input disabled={errorName || errorMail || !username && !mail && !avatar} className={errorName || errorMail || !username && !mail && !avatar ? "disabled" : "enabled"} type="submit" value="Guardar cambios" />
+                        
                     </div>
                     {msg ? <p>{msg}</p> : null}
                 </form>
