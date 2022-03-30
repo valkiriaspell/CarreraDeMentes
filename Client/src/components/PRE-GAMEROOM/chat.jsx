@@ -17,7 +17,7 @@ const Chat = ({idGameRoom}) =>{
 
     return (
         <div>
-            <p>jugadores {users.length}/6</p>
+            <p>jugadores {users?.length}/6</p>
             <div>
                 <ol>
                     {
