@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
 			allowNull: false,
 			unique: true,
 		},
-		currentAvatar: {
+		/*currentAvatar: {
 			//ID de avatar
 			type: DataTypes.INTEGER,
 		},
@@ -52,6 +52,6 @@ module.exports = (sequelize) => {
 		guest: {
 			type: DataTypes.BOOLEAN,
 			defaultValue: true,
-		},
+		},*/
 	});
 };

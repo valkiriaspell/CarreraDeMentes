@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
-		public: {
+		public_: {
 			type: DataTypes.BOOLEAN,
 		},
 	});
