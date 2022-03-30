@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import useChat from './useChatSocketIo'
 
 const Chat = ({idGameRoom}) =>{
     const {messages, sendMessage} = useChat(idGameRoom);
     const [newMessage, setNewMessage] = useState("");
-
+    const {users} = useSelector(state => state)
     function handleMessage(e){
         setNewMessage(e.target.value)
     }
