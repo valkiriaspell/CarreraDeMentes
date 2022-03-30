@@ -52,15 +52,19 @@
 .button button:hover {
   cursor: pointer;
 }
-.contentInstructions {
-  display: flex;
-  flex-direction: column;
-  border: solid 3px rgba(216, 221, 226, 0.4);
-  margin-right: 1rem;
-  border-radius: 0.4rem;
+
+/* ====== CARDS ====== */
+.cards {
+  border-radius: 0.5rem;
   background-color: rgba(130, 157, 189, 0.233);
-  color: rgba(221, 221, 221, 0.829);
+  width: 500px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
-.contentInstructions span {
-  margin: 1rem;
+
+/* ===== MEDIA QUERIES =====*/
+@media screen and (max-width: 500px) {
+  .cards {
+      display: none;
+    }
 }

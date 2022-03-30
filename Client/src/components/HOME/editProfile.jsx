@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { updateUser } from '../../redux/actions';
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import "../STYLES/editProfile.css"
 
 
@@ -24,6 +24,7 @@ export default function EditProfile() {
     /////////  ---->    Store states    <------ //////////////
     
     //necesito traer los avatars
+    let falseAvatars = ["avatar1","avatar2","avatar3","avatar4"]
 
 
 
@@ -33,9 +34,13 @@ export default function EditProfile() {
         switch (true) {
 
             case e.target.name === "name":
-                if (!/^[a-zA-Z ]*$/.test(e.target.value)) {
+                if (!/^[a-zA-Z]*$/.test(e.target.value)) {
                     setUsername(e.target.value);
-                    setErrorName("Escribir solo letras")
+                    setErrorName("No usar espacios, numeros o simbolos")
+                
+                } else if (e.target.value.length > 16) {
+                    setUsername(e.target.value);
+                    setErrorName("Máximo 16 carácteres")
                 } else {
                     setUsername(e.target.value);
                     setErrorName("")
@@ -64,6 +69,8 @@ export default function EditProfile() {
         //     mail: mail            
         // }))
         setMSG("Cambios guardados")
+        setUsername("")
+        setMail("")
         // setTimeout(() => { setMSG("...Going back to Home now") }, 3000);
 
         // setTimeout(() => { history.push('/home') }, 5000);
@@ -73,7 +80,7 @@ export default function EditProfile() {
         return (
             <div className='formProfile'>
                 <form onSubmit={onSubmit}>
-
+                <h3>Editar perfil</h3>                
                     <div className='formName'>
                         <label>Nombre de Usuario:</label>
                         <>
@@ -97,7 +104,9 @@ export default function EditProfile() {
                     <div className='Profilesubmit'>
                         <input disabled={errorName || errorMail} className={errorName ? "disabled" : "enabled"} type="submit" value="Guardar cambios" />
                     </div>
+                    {msg ? <p>{msg}</p> : null}
                 </form>
+                <Link to="/home"><button className='volver' >← Volver atras </button></Link>
             </div>
         );
     } else {
