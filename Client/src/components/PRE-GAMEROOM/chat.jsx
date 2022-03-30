@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useChat from './useChatSocketIo'
 
 const Chat = ({idGameRoom}) =>{
-    const {messages, sendMessage, users} = useChat(idGameRoom);
+    const {messages, sendMessage} = useChat(idGameRoom);
     const [newMessage, setNewMessage] = useState("");
 
     function handleMessage(e){
@@ -25,7 +25,7 @@ const Chat = ({idGameRoom}) =>{
                                 <li key={index}>
                                     {
                                         message.writtenByCurrentUser
-                                            ? `Me: ${message.text}`
+                                            ? `Me: ${message.text}` // ver si funciona bien
                                             : `${message.id}: ${message.text}`
                                     }
                                 </li>
