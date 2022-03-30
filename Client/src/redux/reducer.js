@@ -1,4 +1,4 @@
-import { LOGIN_USER_GUEST } from "./actions"
+import { LOGIN_USER_GUEST, LIST_USERS_IN_PRE_ROOM, SET_READY } from "./actions"
 
 const initialState = {
     user: {},
@@ -21,8 +21,8 @@ const reducer = (state = initialState, action) => {
         }
 
         case SET_READY: 
-        let index = preRoomUsers.findIndex(user => user.email === email)
-        preRoomUsers[index].ready = action.payload
+        let index = state.preRoomUsers.findIndex(user => user.email === action.payload)
+        state.preRoomUsers[index].ready = true
         return {
             ...state,
         }

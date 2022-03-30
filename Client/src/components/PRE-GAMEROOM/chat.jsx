@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import useChat from './useChatSocketIo'
 
 const Chat = ({idGameRoom}) =>{
     const {messages, sendMessage} = useChat(idGameRoom);
     const [newMessage, setNewMessage] = useState("");
-
+    const {users} = useSelector(state => state)
     function handleMessage(e){
         setNewMessage(e.target.value)
     }
@@ -16,7 +17,7 @@ const Chat = ({idGameRoom}) =>{
 
     return (
         <div>
-            <p>jugadores {users.length}/6</p>
+            <p>jugadores {users?.length}/6</p>
             <div>
                 <ol>
                     {

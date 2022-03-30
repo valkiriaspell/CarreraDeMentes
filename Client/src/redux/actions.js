@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 export const LOGIN_USER_GUEST = 'LOGIN_USER_GUEST'
-export const UPDATE_USER = 'UPDATE_USER'
 export const LIST_USERS_IN_PRE_ROOM = 'LIST_USERS_IN_PRE_ROOM'
 export const SET_READY = 'SET_READY'
 
@@ -48,5 +47,7 @@ export function listUseresInPreRoom(IdPreRoom){
 }
 
 export function setReady(email){
-    dispatch({type: 'SET_READY', payload: email})
+    return function(dispatch){
+        dispatch({type: 'SET_READY', payload: email})
+    }
 }

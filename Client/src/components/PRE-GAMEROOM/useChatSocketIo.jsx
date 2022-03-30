@@ -12,7 +12,7 @@ function useChatSocketIo(idGameRoom) {
 
     useEffect(() =>{
         //create web socket connection
-        socketIoRef.current(socketIOClient('http://localhost:3001/socket', {query: {idGameRoom, email: user.email}}));
+        socketIoRef.current = socketIOClient('http://localhost:3001/socket', {query: {idGameRoom, email: user.email}});
             const newUserInRoom = () =>{
                 dispatch(AddUserToPreRoom({
                     idGameRoom,
