@@ -1,8 +1,7 @@
 const {Users} = require('../db');
 
 const createUsers = async (
-	id,
-	name,
+	{name,
 	email,
 	currentAvatar,
 	avatarStock,
@@ -12,24 +11,27 @@ const createUsers = async (
 	wins,
 	friendId,
 	host,
-	guest
+	guest}
 ) => {
 	try {
-		const newUser = await Users.findOrCreate({
-			id,
-			name,
-			email,
-			currentAvatar,
-			avatarStock,
-			coins,
-			experiencePoints,
-			level,
-			wins,
-			friendId,
-			host,
-			guest,
+		const newUser = await Users.findOrCreate(
+			{
+				where: { email },
+      			defaults:{
+					name,
+					email,
+					currentAvatar,
+					avatarStock,
+					coins,
+					experiencePoints,
+					level,
+					wins,
+					friendId,
+					host,
+					guest,
+				}
 		});
-
+		console.log(newUser)
 		return newUser;
 	} catch (error) {
 		return error;
