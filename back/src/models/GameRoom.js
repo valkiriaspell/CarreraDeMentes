@@ -12,7 +12,6 @@ module.exports = (sequelize) => {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				isAlpha: true,
 				len: [2,12], 
 			}
 		},
@@ -30,8 +29,13 @@ module.exports = (sequelize) => {
 				isInt: true,
 			}
 		},
+		email:{
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
 		public_: {
 			type: DataTypes.BOOLEAN,
 		},
-	});
+	},
+    { timestamps: false });
 };
