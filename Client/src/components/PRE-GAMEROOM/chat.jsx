@@ -26,7 +26,7 @@ const Chat = ({idGameRoom}) =>{
                                     {
                                         message.writtenByCurrentUser
                                             ? `Me: ${message.text}`
-                                            : `${"usuario que envio el mensaje"} :${message.text}`
+                                            : `${message.id}: ${message.text}`
                                     }
                                 </li>
                             )

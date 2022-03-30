@@ -10,7 +10,7 @@ function useChatSocketIo(idGameRoom) {
         //create web socket connection
         socketIoRef.current(socketIOClient('http://localhost:3001/socket', {query: idGameRoom}));
 
-        //list of message, differentiating which are from current user
+        //received a new message, differentiating which are from current user and add to message list
         socketIoRef.current.on("NEW_MESSAGE", message =>{
             const incomingMessage = {
                 ...message,
