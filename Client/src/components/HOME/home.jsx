@@ -35,7 +35,7 @@ function Home() {
             <UserCard />
             <div>
               <NavLink className="buttonsNav" to={"/"}>
-                <button onClick={e => handleSignOut(e)}>
+                <button className="buttonCerrarSesión" onClick={e => handleSignOut(e)}>
                   <FaPowerOff />
                 </button>
               </NavLink>
