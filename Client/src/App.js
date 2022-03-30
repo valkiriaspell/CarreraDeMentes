@@ -25,11 +25,11 @@ function App() {
         <Route path="/login" component={initialPage} />
         <Route path="/signup" component={signUpFirebase} />
         <Route path="/editProfile" component={EditProfile} />
-        <Route path="/iniciarPartida" component={PreGameRoom} />
+        <Route path="/iniciarPartida/:idPreGameRoom" component={PreGameRoom} />
         <Route path="/partidasDisponibles" component={GameListRoom} />
         <Route path="/tienda" component={PlayStore} />
         <Route path="/añadirPregunta" component={FormAddQuestions} />
-        <Route path="/gameRoom/:idGameRoom" component={GameRoom} />
+        <Route path="/gameRoom" component={GameRoom} />
     </div>
   );
 }
