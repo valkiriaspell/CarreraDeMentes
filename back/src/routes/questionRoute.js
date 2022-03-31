@@ -4,6 +4,7 @@ const {data, getQuestions} = require('../controllers/question');
 var router = express.Router();
 module.exports = router;
 
+
 // escriban sus rutas acá
 router.get('/', async function (req, res) {
 	try {
