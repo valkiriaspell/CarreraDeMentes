@@ -1,42 +1,7 @@
 const { GameRoom, Users, Question } = require("../db.js");
 
-
-const questionRandom = async(usersAmount, skipCategory)=>{
-    try{
-        const question = []
-        const questionDB = await Question.findAll();
-
-        
-        while (usersAmount >=1 ) {
-
-            const random = getRandomInt(questionDB.length)
-            if(!skipCategory){
-                
-                usersAmount--;
-            }
-            
-        }
-
-
-        return question;
-
-    }catch(e){
-        console.log("Error a consultar las preguntas random: ", e);
-    }
-}
-
-// Obtenemos un numero random
-function getRandomInt(max) {
-    return Math.floor(Math.random() * (max - 1)) + 1;
-  }
-
-exports.createQuestionGameRoom = async()=>{
-    
-}
-
 exports.createBDGameRoom = async({ name, usersAmount, questionAmout, public_, email, idUser })=>{
     try{
-        const question = await questionRandom(questionAmout);
         const data = await GameRoom.create(
             { name,
              usersAmount,
@@ -45,14 +10,14 @@ exports.createBDGameRoom = async({ name, usersAmount, questionAmout, public_, em
              email,
             })
             data.addUser(idUser);
-            data.addQuestion(question);
-        return data;
+        return [true, "Sala creada: "+name];
     }catch(e){
         console.log("Error al crear la sala: ", e);
         return e
     }
 }
 
+// actializamos y agregamos un nuevo usuario a la sala
 exports.updateAddBDGameRoom = async({idGameRoom, idUser})=>{
     try{
 
@@ -65,15 +30,19 @@ exports.updateAddBDGameRoom = async({idGameRoom, idUser})=>{
     ]
     });
 
+    if(!data) return [false, "Sale no encontrada"]
+
     const {users, usersAmount} = data;
         
     if(users.length < usersAmount){
         await data.addUsers(idUser)
-        return true
-    }else{
-        return false;
+        return [true, "Usuario agregado exitosamente"]
+    }else if(users.length >= usersAmount){
+        return [false, "La sala ya esta llena"];
     }
+
     }catch(e){
+        console.log(e)
         return e
     }
 }
@@ -86,12 +55,8 @@ exports.seachAllBDGameRoom = async()=>{
             {
                 model: Users,
                 attributes: ["id", "name", "email"]
-            },
-            {
-                model: Question,
-                attributes: ["id", "question", "answer", "false1","false2", "false3", "category"]
             }
-    ]})
+        ]})
     
     return data
     }catch(e){
@@ -104,14 +69,21 @@ exports.seachAllBDGameRoom = async()=>{
 exports.deletByIdGameRoom = async({id})=>{
     try{
 
-        const dt = await GameRoom.destroy({ where: { id} });
+        const eliminado = await GameRoom.destroy({ where: { id} });
+        if(eliminado > 0){
+            
+            return [true, "Salas eliminada"]
+        }else{
+            return [false, "No se encotro la sala a eliminar"]
+        }
+        console.log(dt);
     }catch(e){
         return e
     }
 }
 
-
-exports.updateDeleteBDGameRoom = async({idGameRoom, idUser})=>{
+// Eliminar un usuario de la sala
+exports.updateDeleteBDGameRoom = async({idGameRoom, email, idUserDelet})=>{
     try{
 
     const data = await GameRoom.findByPk(idGameRoom,{
@@ -123,15 +95,18 @@ exports.updateDeleteBDGameRoom = async({idGameRoom, idUser})=>{
     ]
     });
 
-    const {users, usersAmount} = data;
+    if(!data) return [false, "Sale no encontrada"]
+
+    const {email: creator, users} = data;
         
-    if(users.length < usersAmount){
-        await data.addUsers(idUser)
-        return true
+    if(creator === email){
+        data.removeUser(idUserDelet)
+        return [true, "Usuario eliminado"]
     }else{
-        return false;
+        return [false, "Solo el creador de la sala puede aliminar un usuario"];
     }
     }catch(e){
+        console.log("Error al eliminar un usuario: ",e)
         return e
     }
 }

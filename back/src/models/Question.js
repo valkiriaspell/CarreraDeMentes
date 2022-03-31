@@ -2,7 +2,6 @@ const {DataTypes} = require('sequelize');
 
 module.exports = (sequelize) => {
 	sequelize.define('question', {
-		
 		question: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -10,7 +9,6 @@ module.exports = (sequelize) => {
 			// 	is: /^\¿.*?\?$/i,
 			// }
 		},
-		
 		answer: {
 			type: DataTypes.STRING,
 			allowNull: false,
