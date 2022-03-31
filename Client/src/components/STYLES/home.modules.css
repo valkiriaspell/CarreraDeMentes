@@ -20,16 +20,34 @@
 .buttonsNav button {
   margin: 0.5rem;
   border-radius: 0.3rem;
+  background-color: rgba(216, 221, 226, 0.4);
+  color: rgba(221, 221, 221, 0.829);
+  border: none;
 }
 .buttonsNav button:hover {
   cursor: pointer;
+  background-color: rgba(154, 158, 161, 0.4);
+}
+.buttonCerrarSesión {
+  padding-bottom: 0.2rem;
 }
 .infoUser {
   display: flex;
 }
-.nameUser {
+.avatarCard {
   display: flex;
   flex-direction: column;
+  padding-right: 0.5rem;
+  font-weight: bold;
+}
+.nameUser {
+  display: flex;
+  padding-top: 1rem;
+  padding-right: 1rem;
+  font-weight: bold;
+}
+.nameUser span {
+  padding: 0.3rem;
 }
 
 /* ====== CONTENT ====== */
@@ -48,9 +66,13 @@
   margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 0.4rem;
+  background-color: rgba(216, 221, 226, 0.4);
+  color: rgba(221, 221, 221, 0.829);
+  border: none;
 }
 .button button:hover {
   cursor: pointer;
+  background-color: rgba(154, 158, 161, 0.4);
 }
 
 /* ====== CARDS ====== */
