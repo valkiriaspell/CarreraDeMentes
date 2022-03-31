@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { updateUser } from '../../redux/actions';
 import { Link, useHistory } from 'react-router-dom'
-import "../STYLES/editProfile.css"
+import "../STYLES/form.css"
 
 
 export default function EditProfile() {
@@ -78,7 +78,7 @@ export default function EditProfile() {
     }
     if (autenticado) {
         return (
-            <div className='formProfile'>
+            <div className='form'>
                 <form onSubmit={onSubmit}>
                 <h3>Editar perfil</h3>                
                     <div className='formName'>
@@ -101,7 +101,7 @@ export default function EditProfile() {
                             <label>Carrousel de avatars</label>
                         </div>
                     </div>
-                    <div className='Profilesubmit'>
+                    <div className='FormSubmit'>
                         <input disabled={errorName || errorMail || !username && !mail && !avatar} className={errorName || errorMail || !username && !mail && !avatar ? "disabled" : "enabled"} type="submit" value="Guardar cambios" />
                         
                     </div>
