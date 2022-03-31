@@ -110,34 +110,3 @@ exports.updateDeleteBDGameRoom = async({idGameRoom, email, idUserDelet})=>{
         return e
     }
 }
-
-
-class NodeQuestions{
-    
-    constructor(valueId, value){
-        this.left = null;
-        this.rigth = null;
-        this.value = value;
-        this.valueId = valueId; 
-    }
-
-    insert(valueId, value){
-        const nodo = new NodeQuestions(valueId, value);
-        if (value < this.value)
-            this.left ? this.left.insert(valueId, value) : (this.left = nodo);
-        else this.right ? this.right.insert(valueId, value) : (this.right = nodo);
-    }
-
-
-    contains(valueId) {
-        if (this.valueId === valueId) return true;
-        if (valueId < this.valueId)
-          return this.left ? this.left.contains(valueId) : false;
-        else return this.right ? this.right.contains(valueId) : false;
-      }
-
-
-
-
-
-}
