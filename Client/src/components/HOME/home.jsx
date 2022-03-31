@@ -5,7 +5,7 @@ import "../STYLES/home.modules.css";
 import { FaPowerOff } from "react-icons/fa";
 import UserCard from "./userCard";
 import Instructions from "./instructions";
-import {BsFacebook, BsLinkedin, BsTwitter, BsWhatsapp} from 'react-icons/bs'
+import {BsFacebook, BsLinkedin, BsTwitter, BsWhatsapp} from 'react-icons/bs';
 
 function Home(props) {
   const history = useHistory();
