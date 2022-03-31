@@ -2,13 +2,6 @@ const {DataTypes} = require('sequelize');
 
 module.exports = (sequelize) => {
 	sequelize.define('question', {
-		category: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				isAlpha: true,
-			}
-		},
 		question: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -16,13 +9,8 @@ module.exports = (sequelize) => {
 			// 	is: /^\¿.*?\?$/i,
 			// }
 		},
-		imageUrl: {
-			type: DataTypes.TEXT,
-			validate: {
-				isUrl: true,
-			}
-		},
-		correct: {
+
+		answer: {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
@@ -37,6 +25,13 @@ module.exports = (sequelize) => {
 		false3: {
 			type: DataTypes.STRING,
 			allowNull: false,
+		},
+		category: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
+		image: {
+			type: DataTypes.TEXT,
 		},
 	});
 };
