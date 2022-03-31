@@ -6,7 +6,10 @@ async function data() {
 
 	dt.forEach(async (elm) => {
 		const {id, ...elms} = elm;
-		await Question.create({...elms});
+		await Question.findOrCreate({
+			where: { id },
+			defaults: {...elms} 
+		})
 	});
 	const allQuestions = await Question.findAll();
 	return allQuestions;

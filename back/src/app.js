@@ -81,11 +81,6 @@ server.use(
 );
 server.use(cookieParser('secret'));
 
-server.use((req, res, next) => {
-	console.log(req.session);
-	next();
-});
-
 server.use('/', routes);
 
 module.exports = app;
