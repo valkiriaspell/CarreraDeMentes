@@ -1,43 +1,44 @@
 const question = require('../Questions.json');
-const {Question} = require('../db');
+const { Question } = require('../db');
+
 
 //Guardar preguntas en base de datos
 async function data() {
 	const dt = JSON.parse(JSON.stringify(question));
 
 	dt.forEach(async (elm) => {
-		const {id, ...elms} = elm;
+		const { id, ...elms } = elm;
 		await Question.findOrCreate({
 			where: { id },
-			defaults: {...elms} 
+			defaults: { ...elms }
 		})
 	});
 	const allQuestions = await Question.findAll();
 	return allQuestions;
 }
-//Random con cantidad de preguntas
-async function getQuestions(count, category) {
-	const questionNumbers = [];
-	const questionList = [];
+//Obtener preguntas pedidas y linkear al gameroom correspondiente
+async function getQuestions(count, category, idRoom) {
 	const dbQuestions = await Question.findAll();
-	for (let index = 0; index < count; index++) {
-		var q;
-		while (!questionNumbers.includes(q)) {
-			q = Math.floor((Math.random() * dbQuestions.length) % dbQuestions.length);
-			if (dbQuestions[q].category !== category) {
-				questionNumbers.push(q);
-				questionList.push(dbQuestions[q]);
-			}
+	const questionList = [];
+
+	let questions = new Set() //2/35/256/58/45/78  random ids segun cantidad pedida
+	while (questions.size < count) {
+		q = Math.floor((Math.random() * dbQuestions.length) % dbQuestions.length);
+		if (dbQuestions[q].category !== category) {
+			questions.add(q)
 		}
 	}
-	return questionList;
-	//a que room le agrego estas preguntas??
-	// const room = await GameRoom.findOne({
-	// 	where: {
-	// 		id: idRoom,
-	// 	},
-	// });
-	//room.setQuestions(questionNumber)
+	
+	//guardo las preguntas en questionList
+	questions.forEach(q => questionList.push(dbQuestions[q]))
+	// return questionList	//Descomentar si necesitamos ver en thunder las preguntas traidas.
+	
+	const room = await GameRoom.findOne({
+		where: {
+			id: idRoom,
+		},
+	});
+	await room.setQuestions(questions)
 }
 
 module.exports = {
