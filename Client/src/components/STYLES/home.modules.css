@@ -1,0 +1,92 @@
+/* ====== CONTAINER ====== */
+.container {
+  border: solid 3px rgba(216, 221, 226, 0.4);
+  max-width: 800px;
+  max-height: 700px;
+  min-height: 380px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 6rem;
+  border-radius: 0.4rem;
+}
+
+/* ====== NAV ====== */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+  color: rgba(221, 221, 221, 0.829);
+}
+.buttonsNav button {
+  margin: 0.5rem;
+  border-radius: 0.3rem;
+  background-color: rgba(216, 221, 226, 0.4);
+  color: rgba(221, 221, 221, 0.829);
+  border: none;
+}
+.buttonsNav button:hover {
+  cursor: pointer;
+  background-color: rgba(154, 158, 161, 0.4);
+}
+.buttonCerrarSesión {
+  padding-bottom: 0.2rem;
+}
+.infoUser {
+  display: flex;
+}
+.avatarCard {
+  display: flex;
+  flex-direction: column;
+  padding-right: 0.5rem;
+  font-weight: bold;
+}
+.nameUser {
+  display: flex;
+  padding-top: 1rem;
+  padding-right: 1rem;
+  font-weight: bold;
+}
+.nameUser span {
+  padding: 0.3rem;
+}
+
+/* ====== CONTENT ====== */
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contentButtons {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+  margin-top: 6rem;
+}
+.button button {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  background-color: rgba(216, 221, 226, 0.4);
+  color: rgba(221, 221, 221, 0.829);
+  border: none;
+}
+.button button:hover {
+  cursor: pointer;
+  background-color: rgba(154, 158, 161, 0.4);
+}
+
+/* ====== CARDS ====== */
+.cards {
+  border-radius: 0.5rem;
+  background-color: rgba(130, 157, 189, 0.233);
+  width: 500px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* ===== MEDIA QUERIES =====*/
+@media screen and (max-width: 500px) {
+  .cards {
+      display: none;
+    }
+}

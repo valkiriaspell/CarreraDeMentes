@@ -1,0 +1,9 @@
+.containerPlayStore{
+    
+}
+
+.containerCardsBuy{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
