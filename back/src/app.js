@@ -19,22 +19,24 @@ var io=require('socket.io')(app,{
 
 io.on('connection',(socket)=>{//que hago cuando recibo 'connect'?
         
-    const {room,email}=socket.handshake.query;    
-    socket.join(room)  
+    const {room,email}=socket.handshake;    
+    socket.join(room)
+	//crear ruta en rooms para conectar un usuario nuevo
     
-    io.to(room).emit('NEW_CONECTION',{email})
+    io.to(room).emit('NEW_CONNECTION',{email})
     
     socket.on('READY',(email)=>{
-        io.to(room).emit('READY',{email})
+        io.to(room).emit('READY',email)
     })
 
-    socket.on('disconect',(room)=>{//alguien se desconecta de la room
+    socket.on('DISCONNECT',(room)=>{//alguien se desconecta de la room
         console.log("se desconecto")
-        socket.leave(room) 
+		//crear ruta en rooms para desconectar un usuario         
+		io.to(room).emit('DISCONNECTION',{email})
     })
-    socket.on('chat',(data)=>{ //alguien envia un nuevo mensaje
-        const {message,room,user}=data;//cual es el mensaje?  para que room? quien lo envia?
-        io.to(room).emit('chat',{message,user})
+    socket.on('NEW_MESSAGE',(data)=>{ //alguien envia un nuevo mensaje
+        const {text,name}=data;//cual es el mensaje?  para que room? quien lo envia?
+        io.to(room).emit('NEW_MESSAGE',{text,name})
     }) 
 })
 
