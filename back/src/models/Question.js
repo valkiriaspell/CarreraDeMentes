@@ -9,7 +9,6 @@ module.exports = (sequelize) => {
 			// 	is: /^\¿.*?\?$/i,
 			// }
 		},
-
 		answer: {
 			type: DataTypes.STRING,
 			allowNull: false,

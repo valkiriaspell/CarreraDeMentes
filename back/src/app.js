@@ -28,11 +28,14 @@ io.on('connection',(socket)=>{//que hago cuando recibo 'connect'?
     socket.on('READY',(email)=>{
         io.to(room).emit('READY',email)
     })
+	socket.on('START',()=>{
+		io.to(room).emit('START')
+	})
 
-    socket.on('DISCONNECT',(room)=>{//alguien se desconecta de la room
+    socket.on('DISCONNECT',()=>{//alguien se desconecta de la room
         console.log("se desconecto")
 		//crear ruta en rooms para desconectar un usuario         
-		io.to(room).emit('DISCONNECTION',{email})
+		io.to(room).emit('DISCONNECT')
     })
     socket.on('NEW_MESSAGE',(data)=>{ //alguien envia un nuevo mensaje
         const {text,name}=data;//cual es el mensaje?  para que room? quien lo envia?
