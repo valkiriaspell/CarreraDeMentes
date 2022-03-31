@@ -1,15 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import socketIOClient from 'socket.io-client';
-import { AddUserToPreRoom, listUseresInPreRoom, deleteUserFromRoom } from "../../redux/actions";
+import { AddUserToPreRoom, listUseresInPreRoom, deleteUserFromRoom, setReady } from "../../redux/actions";
 import s from '../STYLES/preGameRoom.module.css'
+import axios from "axios";
 
 function useChatSocketIo(idGameRoom) {
+    const history = useHistory();
     const dispatch = useDispatch();
     const {user} = useSelector(state => state);
 
     const [messages, setMessages] = useState([]);
     const socketIoRef = useRef();
+    let stateGame;
 
     useEffect(() =>{
         //create web socket connection
@@ -37,6 +41,7 @@ function useChatSocketIo(idGameRoom) {
                 const buttonReady = document.getElementById(email)
                 if(buttonReady.className === s.active){
                     buttonReady.className = s.inactive;
+                    dispatch(setReady(email))
                 } else {
                     buttonReady.className = s.active;
                 }
@@ -45,17 +50,24 @@ function useChatSocketIo(idGameRoom) {
             socketIoRef.current.on("NEW_CONNECTION", () =>{
                 dispatch(listUseresInPreRoom(idGameRoom));
             })
-
+            
             socketIoRef.current.on("DISCONNECT", () =>{
                 dispatch(listUseresInPreRoom(idGameRoom));
+            })
+
+            //when host press start-game button, all players redirect url game-room, 
+            socketIoRef.current.on("START", () =>{
+                stateGame = true
             })
            
 
             //destroy the socket reference when player leaves the room
             return () =>{
-                socketIoRef.current.emmit("DISCONNECT")
-                socketIoRef.current.disconnect();
-                dispatch(deleteUserFromRoom(user.email))
+                axios.delete(`/ruta para hacer post a una sala/:email`)
+                .then(() =>{
+                    socketIoRef.current.emmit("DISCONNECT")
+                    socketIoRef.current.disconnect();
+                })
             }
     }, [idGameRoom])
 
@@ -71,16 +83,11 @@ function useChatSocketIo(idGameRoom) {
         socketIoRef.current.emit("READY", {email: user.email})
     }
 
-    return { messages, sendMessage, sendReady}
+    function sendStartGame(){
+        socketIoRef.current.emit("START")
+    }
+
+    return { messages, sendMessage, sendReady, sendStartGame, stateGame}
 }
 
 export default useChatSocketIo;
-
-//action ingresarsala => post mail, idSala presala
-
-//cuando llege new connection
-//hacer get => idSala me traigo los users(emails)
-
-//cuando aprete ready hago un socketIOClient.emit(ready, email del usuario)
-
-//cuando reciba un ready con un email ponerlo en verde a ese usuario
