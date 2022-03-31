@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { updateUser } from '../../redux/actions';
 import { Link, useHistory } from 'react-router-dom'
-import "../../STYLES/addQuestions.css"
+import "../../STYLES/form.css"
 
 
 export default function FormAddQuestions() {
@@ -142,7 +142,7 @@ export default function FormAddQuestions() {
 
     if (autenticado) {
         return (
-            <div className='formProfile'>
+            <div className='form'>
                 <form onSubmit={onSubmit}>
                     <h3>Crear nueva pregunta</h3>
                     <div className='formName'>
@@ -202,7 +202,7 @@ export default function FormAddQuestions() {
                     </div>
                     {errorAnswer ? <p className='error'>{errorAnswer}</p> : null}
                     {errorTotal ? <p className='error'>{errorTotal}</p> : null}
-                    <div className='Profilesubmit'>
+                    <div className='FormSubmit' >
 
                         <input disabled={!question || errorQuestion || errorAnswer || errorImage || errorTotal} className={!question || errorQuestion || errorAnswer || errorTotal || errorImage  ?
                              "disabled" : "enabled"} type="submit" value="Enviar pregunta" />
