@@ -1,4 +1,4 @@
-import { LOGIN_USER_GUEST, LIST_USERS_IN_PRE_ROOM, DELETE_USER_FROM_ROOM } from "./actions"
+import { LOGIN_USER_GUEST, LIST_USERS_IN_PRE_ROOM, SET_READY } from "./actions"
 
 const initialState = {
     user: {},
@@ -20,10 +20,15 @@ const reducer = (state = initialState, action) => {
             preRoomUsers: action.payload
         }
 
-        case DELETE_USER_FROM_ROOM: 
+        case SET_READY: 
+        const index = state.preRoomUsers.findIndex(user => user.email === action.payload)
+        state.preRoomUsers[index].ready
+            ? state.preRoomUsers[index].ready === true
+                ? state.preRoomUsers[index].ready = false
+                : state.preRoomUsers[index].ready = true
+            : state.preRoomUsers[index].ready = true
         return {
             ...state,
-            preRoomUsers: state.preRoomUsers.filter(user => user.email !== action.payload)
         }
 
         
