@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
-import { Link, useHistory } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 import { firebaseLogin, firebaseLoginFacebook, firebaseLoginGoogle } from '../../../utils/Firebase';
+import "../../STYLES/login.modules.css"
+import Google from "../../IMG/google.png"
+import Facebook from "../../IMG/facebook.png"
+// import User from "../../IMG/user.png"
 
 function Login() {
 
@@ -67,8 +71,12 @@ function Login() {
     }
 
   return (
-    <div>
+    <div className='containerLogin'>
+        <div className='contentLogin'>
         <form onSubmit={handleLogin}>
+            <div>
+                {/* <img src={User} alt="User" width={50} /> */}
+            </div>
             <input 
                 name='email'
                 type='email'
@@ -83,14 +91,16 @@ function Login() {
                 value={input.password}
                 onChange={(e) => handleOnChange(e)}
             />
-            <button type='submit'>Login</button>
+            <button className='buttonLogin' type='submit'>Ingresar</button>
+            <NavLink className="linkContraseña" to={"#"}>¿Olvidaste tu contraseña?</NavLink>
         </form>
         {error.mensaje && <p>{error.mensaje}</p>}
         {error.password && <p>{error.password}</p>}
-        <div>
-            <Link to={'/signup'}>Sign Up</Link>
-            <button onClick={handleLoginGoogle}>Login with Google</button>
-            <button onClick={handleLoginFacebook}>Login with Facebook</button>
+        <div className='contentLogin2'>
+            <Link className='buttonSingUP' to={'/signup'}>Registrarse</Link>
+            <button onClick={handleLoginFacebook}>Ingresar con Facebook <img src={Facebook} width={20} alt="Facebook" /></button>
+            <button onClick={handleLoginGoogle}>Ingresar con Google <img src={Google} width={20} alt="Google" /></button>
+        </div>
         </div>
     </div>
   )
