@@ -70,6 +70,6 @@ function PreGameRoom({match}) {
         return <div></div>
     }
 }
- 
+
 
 export default PreGameRoom;
