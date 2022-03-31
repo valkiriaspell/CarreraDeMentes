@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import Chat from './chat'
 import EditRoom from './editRoom'
 import useChat from './useChatSocketIo'
+import s from '../STYLES/preGameRoom.module.css'
 
 function PreGameRoom({match}) {
     const {preRoomUsers} = useSelector(state => state)
@@ -18,16 +19,16 @@ function PreGameRoom({match}) {
         return (
             <div>
                 <ul>
-{/*                     {
-                        preRoom?.map(user =>{
+                    {
+                        preRoomUsers?.map(user =>{
                             return (
                                 <>
                                     <li key={user.email}>{user.name}</li>
-                                    <button key={user.email} className={user.ready ? algo : otro}>listo</button>
+                                    <button key={user.email} className={s.inactive} id={user.email} >listo</button>
                                 </>
                             )
                         })
-                    } */}
+                    }
                     <li>personajes 1</li>
                     <li>personajes 2</li>
                     <li>personajes 3</li>

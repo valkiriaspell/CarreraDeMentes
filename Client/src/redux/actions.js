@@ -3,6 +3,7 @@ import axios from 'axios';
 export const LOGIN_USER_GUEST = 'LOGIN_USER_GUEST'
 export const LIST_USERS_IN_PRE_ROOM = 'LIST_USERS_IN_PRE_ROOM'
 export const SET_READY = 'SET_READY'
+export const DELETE_USER_FROM_ROOM = 'DELETE_USER_FROM_ROOM'
 
 
 
@@ -46,8 +47,14 @@ export function listUseresInPreRoom(IdPreRoom){
     }
 }
 
-export function setReady(email){
-    return function(dispatch){
-        dispatch({type: 'SET_READY', payload: email})
+export function deleteUserFromRoom(email){
+    return async function(dispatch){
+        try{
+            const {data} = await axios.delete(`/ruta para hacer post a una sala/:email`)
+            dispatch({type: 'DELETE_USER_FROM_ROOM', email})
+        }catch(e) {
+            console.log(e)
+        }
     }
 }
+
