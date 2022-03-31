@@ -6,6 +6,7 @@ import EditRoom from './editRoom'
 import useSocket from './useSocketIo'
 import s from '../STYLES/preGameRoom.module.css'
 import GameRoom from '../GAMEROOM/gameRoom'
+import ListPlayers from "./listPlayers";
 
 function PreGameRoom({match}) {
     const {preRoomUsers, user} = useSelector(state => state)
@@ -13,38 +14,24 @@ function PreGameRoom({match}) {
     const autenticado = localStorage.getItem('token')
 
     const {idGameRoom} = match.params;
-    const {sendReady, sendStartGame, stateGame} = useSocket(idGameRoom)
+    const {sendReady, sendStartGame, game, expelPlayer} = useSocket(idGameRoom)
 
     function countReady(){
         const readys = preRoomUsers.filter(user => user.ready === true);
         return readys.length;
     }
 
+    function handleShareRoom(){
+
+    }
+
 
     if(autenticado){
         return (
-            stateGame === false
+            game === false
             ?
                 <div>
-                    <ul>
-                        {
-                            preRoomUsers?.map(user =>{
-                                return (
-                                    <>
-                                        <li key={user.email}>{user.name}</li>
-                                        <button key={user.email} className={s.inactive} id={user.email} >listo</button>
-                                    </>
-                                )
-                            })
-                        }
-                        <li>personajes 1</li>
-                        <li>personajes 2</li>
-                        <li>personajes 3</li>
-                        <li>personajes 4</li>
-                        <li>personajes 5</li>
-                        <li>personajes 6</li>
-                    </ul>
-
+                    <ListPlayers expelPlayer={expelPlayer} />
                     <EditRoom />
                     <Chat idGameRoom={idGameRoom}/>
                     {
@@ -52,6 +39,7 @@ function PreGameRoom({match}) {
                             ? (<button 
                                 disabled={preRoomUsers?.length -1 === countReady() ? false : true}
                                 onClick={sendStartGame}
+                                className={s.button}
                             >
                                 Iniciar
                             </button>)
@@ -60,7 +48,8 @@ function PreGameRoom({match}) {
                             >
                                 Listo
                             </button>)
-                    }  
+                    }
+                    <button onClick={handleShareRoom} >invitar</button>
                 </div>
                 
             : <GameRoom/>

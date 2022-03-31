@@ -13,7 +13,7 @@ function useChatSocketIo(idGameRoom) {
 
     const [messages, setMessages] = useState([]);
     const socketIoRef = useRef();
-    let stateGame;
+    const [game, setGame] = useState(false)
 
     useEffect(() =>{
         //create web socket connection
@@ -55,15 +55,19 @@ function useChatSocketIo(idGameRoom) {
                 dispatch(listUseresInPreRoom(idGameRoom));
             })
 
+            socketIoRef.current.on("EXPEL_PLAYER", (email) =>{
+                user.email === email && history.push('/home')
+            })
+
             //when host press start-game button, all players redirect url game-room, 
             socketIoRef.current.on("START", () =>{
-                stateGame = true
+                setGame(true)
             })
            
 
-            //destroy the socket reference when player leaves the room
+            //remove player from room (DB) when player leaves the room and destroy the socket reference
             return () =>{
-                axios.delete(`/ruta para hacer post a una sala/:email`)
+                axios.delete(`/ruta para hacer delete/:email`)
                 .then(() =>{
                     socketIoRef.current.emmit("DISCONNECT")
                     socketIoRef.current.disconnect();
@@ -87,7 +91,11 @@ function useChatSocketIo(idGameRoom) {
         socketIoRef.current.emit("START")
     }
 
-    return { messages, sendMessage, sendReady, sendStartGame, stateGame}
+    function expelPlayer(e){
+        socketIoRef.current.emit("EXPEL_PLAYER", e.target.id)
+    }
+
+    return { messages, sendMessage, sendReady, sendStartGame, game, expelPlayer}
 }
 
 export default useChatSocketIo;

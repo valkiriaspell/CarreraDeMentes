@@ -12,7 +12,6 @@ import { initializeApp } from 'firebase/app';
 import initialPage from './components/INICIO/initialPage';
 import signUpFirebase from './components/INICIO/SIGNUP/signUpFirebase';
 import LandingPage from './components/LANDINGPAGE/landingPage';
-import GameRoom from './components/GAMEROOM/gameRoom';
 
 initializeApp(config)
 
@@ -25,11 +24,10 @@ function App() {
         <Route path="/login" component={initialPage} />
         <Route path="/signup" component={signUpFirebase} />
         <Route path="/editProfile" component={EditProfile} />
-        <Route path="/iniciarPartida/:idPreGameRoom" component={PreGameRoom} />
+        <Route path="/room/:idGameRoom" component={PreGameRoom} />
         <Route path="/partidasDisponibles" component={GameListRoom} />
         <Route path="/tienda" component={PlayStore} />
         <Route path="/añadirPregunta" component={FormAddQuestions} />
-        <Route path="/gameRoom" component={GameRoom} />
     </div>
   );
 }
