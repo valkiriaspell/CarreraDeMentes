@@ -90,3 +90,79 @@
       display: none;
     }
 }
+
+/* ===== SOCIAL ICONS =====*/
+
+.social-icons {
+  display: block;
+  justify-content: center;
+  list-style-type: disc;
+  -webkit-margin-before: 1em;
+  margin-block-start: 1em;
+  -webkit-margin-after: 1em;
+  margin-block-end: 1em;
+  -webkit-margin-start: 0;
+  margin-inline-start: 0;
+  -webkit-margin-end: 0;
+  margin-inline-end: 0;
+  -webkit-padding-start: 20px;
+  padding-inline-start: 20px;
+  text-align: center;
+  padding: 0;
+  list-style: none;
+  margin: 1em;
+}
+
+
+.social-icons li {
+  text-align: -webkit-match-parent;
+  display: inline-block;
+  margin: 0.25em;
+  position: relative;
+  font-size: 1.2em;
+  vertical-align: top;   
+  /* esto le da el tamaño a los icons */
+}
+
+.social-icons i {
+  color: rgb(30, 29, 29);
+  position: absolute;
+  top: 0.30em;
+  /* con top y left marco la distancia del icon hacia el box donde se encuentra */
+  left: 0.65em;
+  transition: all 265ms ease-out;
+  vertical-align: top; 
+  
+}
+
+.social-icons a {
+  display: inline-block;  
+}
+
+.social-icons a:before {
+  transform: scale(1);
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  content: " ";
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  display: block;
+  background: linear-gradient(45deg, #000000, #ffffff);
+  transition: all 265ms ease-out;
+}
+
+.social-icons a:hover:before {
+  transform: scale(0);
+  transition: all 265ms ease-in;
+}
+
+/* La sig propiedad hace el efecto hover de los iconos de socialmedia */
+.social-icons a:hover i {
+  transform: scale(2);
+  -ms-transform: scale(2);
+  -webkit-transform: scale(2);
+  color: #ffffff;  
+  -webkit-text-fill-color: transparent;
+  transition: all 265ms ease-in;
+}
