@@ -3,6 +3,7 @@ import axios from 'axios';
 export const LOGIN_USER_GUEST = 'LOGIN_USER_GUEST'
 export const LIST_USERS_IN_PRE_ROOM = 'LIST_USERS_IN_PRE_ROOM'
 export const SET_READY = 'SET_READY'
+export const GET_AVATARS = 'GET_AVATARS'
 
 
 
@@ -17,9 +18,18 @@ export function loginAsGuest(){
     }
 }
 
-export const updateUser = (userData)=> async (dispatch)=>{
+export const updateUser = (userData)=> async ()=>{
     try {
         const result = await axios.post(`/ ruta para actualizar user`, userData)  
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getAvatars = ()=> async (dispatch)=>{
+    try {
+        const result = await axios.get(`/ ruta para ver avatars`)
+        dispatch({type: GET_AVATARS, payload: result.data})  
     } catch (error) {
         console.log(error)
     }
