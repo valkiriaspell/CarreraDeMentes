@@ -105,7 +105,7 @@ function Login() {
             />
             </div>
             <button className='buttonLogin' type='submit'>Ingresar</button>
-            <NavLink className="linkContraseña" to={"#"}>¿Olvidaste tu contraseña?</NavLink>
+            <NavLink className="linkContraseña" to={'recuperarcontrasena'}>¿Olvidaste tu contraseña?</NavLink>
         </form>
         {error.mensaje && <p>{error.mensaje}</p>}
         {error.password && <p>{error.password}</p>}
