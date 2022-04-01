@@ -14,7 +14,7 @@ const createUsers = async (
 	guest}
 ) => {
 	try {
-		const newUser = await Users.findOrCreate(
+		const [newUser, bool] = await Users.findOrCreate(
 			{
 				where: { email },
       			defaults:{
@@ -47,11 +47,15 @@ const getUser = async (email) => {
 		return error;
 	}
 };
-const getUsers = async () => {
+const getUsers = async ({email}) => {
 	try {
-		let usersFound = await Users.findAll();
+		let userFound = await Users.findOne({
+			where: {
+				email: email
+			}
+		});
 
-		return usersFound;
+		return userFound;
 	} catch (error) {
 		return error;
 	}
