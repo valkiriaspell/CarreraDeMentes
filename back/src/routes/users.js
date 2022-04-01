@@ -6,11 +6,17 @@ const {createUsers, getUser, getUsers} = require('../controllers/users');
 // escriban sus rutas acá
 router.get('/', async (req, res) => {
 	try {
-		const userAll = await getUsers();
-		if (!userAll) {
-			res.send('No se encontro ningun usuario en la base de datos');
+		const {email} = req.query;
+		if (email) {
+			const userFound = await getUser(email);
+			res.json(userFound);
 		} else {
-			res.send(userAll);
+			const userAll = await getUsers();
+			if (!userAll) {
+				res.json('No se encontro ningun usuario en la base de datos');
+			} else {
+				res.json(userAll);
+			}
 		}
 	} catch (e) {
 		res.status(500).send('Error: ' + e);
@@ -22,7 +28,8 @@ router.post('/', async (req, res) => {
 		if (!creado) {
 			res.send('Problemas en el servidor no pudo ser creado');
 		} else {
-			res.send('Users Creado');
+			console.log(creado);
+			res.send(creado);
 		}
 	} catch (e) {
 		res.status(500).send('Error: ' + e);

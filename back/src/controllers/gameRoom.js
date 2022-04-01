@@ -1,4 +1,4 @@
-const { GameRoom, Users, Question } = require("../db.js");
+const {GameRoom, Users, Question} = require('../db.js');
 
 exports.createBDGameRoom = async ({ name, usersAmount, questionAmout = 0, public_, email, idUser }) => {
     try {

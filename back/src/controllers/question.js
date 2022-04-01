@@ -2,7 +2,7 @@ const question = require('../Questions.json');
 const { Question, GameRoom } = require('../db');
 
 
-//Guardar preguntas en base de datos
+// Guardar preguntas en base de datos
 async function data() {
 	try {
 
@@ -22,7 +22,7 @@ async function data() {
 		return e
 	}
 }
-//Obtener preguntas pedidas y linkear al gameroom correspondiente
+// Obtener preguntas pedidas y linkear al gameroom correspondiente
 async function getQuestions(count, category, idRoom) {
 	try {
 
