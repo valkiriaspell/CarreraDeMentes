@@ -6,16 +6,24 @@ import { FaPowerOff } from "react-icons/fa";
 import UserCard from "./userCard";
 import Instructions from "./instructions";
 import {BsFacebook, BsLinkedin, BsTwitter, BsWhatsapp} from 'react-icons/bs';
+import { modifyHost } from "../../redux/actions";
+import { useSelector, useDispatch } from "react-redux";
 
 function Home(props) {
+  const dispatch = useDispatch();
   const history = useHistory();
   const autenticado = localStorage.getItem("token");
-
+  const {user} = useSelector(state => state);
   async function handleSignOut(e) {
     e.preventDefault();
     await firebaseCerrarSesion();
     localStorage.clear();
     history.push("/");
+  }
+
+  function handleCreateRoom(user){
+    dispatch(modifyHost())
+    dispatch()
   }
 
   if (autenticado) {
@@ -45,8 +53,8 @@ function Home(props) {
         </div>
             <div className="content">
             <div className="contentButtons">   
-            <NavLink className="button" to={"/room"}>
-              <button>Iniciar partida</button>
+            <NavLink className="button" to={`/room/${user}`}>
+              <button onClick={handleCreateRoom} >Iniciar partida</button>
             </NavLink>
             <NavLink className="button" to={"/partidasDisponibles"}>
               <button>Partidas disponibles</button>
