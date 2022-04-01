@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import socketIOClient from 'socket.io-client';
-import { AddUserToPreRoom, listUseresInPreRoom, deleteUserFromRoom, setReady } from "../../redux/actions";
+import { AddUserToPreRoom, listUsersInPreRoom, deleteUserFromRoom, setReady } from "../../redux/actions";
 import s from '../STYLES/preGameRoom.module.css'
 import axios from "axios";
 
@@ -23,7 +23,7 @@ function useChatSocketIo(idGameRoom) {
                     idGameRoom,
                     email: user.email,
                 }))
-                .then(() => dispatch(listUseresInPreRoom(idGameRoom)))
+                .then(() => dispatch(listUsersInPreRoom(idGameRoom)))
             }
             newUserInRoom();
 
@@ -48,11 +48,11 @@ function useChatSocketIo(idGameRoom) {
             })
 
             socketIoRef.current.on("NEW_CONNECTION", () =>{
-                dispatch(listUseresInPreRoom(idGameRoom));
+                dispatch(listUsersInPreRoom(idGameRoom));
             })
             
             socketIoRef.current.on("DISCONNECT", () =>{
-                dispatch(listUseresInPreRoom(idGameRoom));
+                dispatch(listUsersInPreRoom(idGameRoom));
             })
 
             socketIoRef.current.on("EXPEL_PLAYER", (email) =>{
