@@ -1,23 +1,23 @@
-const {Users} = require('../db');
+const { Users } = require('../db');
 
 const createUsers = async (
-	{name,
-	email,
-	currentAvatar,
-	avatarStock,
-	coins,
-	experiencePoints,
-	level,
-	wins,
-	friendId,
-	host,
-	guest}
+	{ name,
+		email,
+		currentAvatar,
+		avatarStock,
+		coins,
+		experiencePoints,
+		level,
+		wins,
+		friendId,
+		host,
+		guest }
 ) => {
 	try {
 		const newUser = await Users.findOrCreate(
 			{
 				where: { email },
-      			defaults:{
+				defaults: {
 					name,
 					email,
 					currentAvatar,
@@ -30,8 +30,8 @@ const createUsers = async (
 					host,
 					guest,
 				}
-		});
-		console.log(newUser)
+			});
+
 		return newUser;
 	} catch (error) {
 		return error;
@@ -40,7 +40,7 @@ const createUsers = async (
 
 const getUser = async (email) => {
 	try {
-		let userFound = await Users.findAll({where: {email: email}});
+		let userFound = await Users.findAll({ where: { email: email } });
 
 		return userFound;
 	} catch (error) {
