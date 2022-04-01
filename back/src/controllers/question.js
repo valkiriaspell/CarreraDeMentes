@@ -2,7 +2,7 @@ const question = require('../Questions.json');
 const { Question } = require('../db');
 
 
-//Guardar preguntas en base de datos
+// Guardar preguntas en base de datos
 async function data() {
 	const dt = JSON.parse(JSON.stringify(question));
 
@@ -16,7 +16,7 @@ async function data() {
 	const allQuestions = await Question.findAll();
 	return allQuestions;
 }
-//Obtener preguntas pedidas y linkear al gameroom correspondiente
+// Obtener preguntas pedidas y linkear al gameroom correspondiente
 async function getQuestions(count, category, idRoom) {
 	const dbQuestions = await Question.findAll();
 	const questionList = [];
