@@ -3,7 +3,7 @@
   background-color: rgba(216, 221, 226, 0.068);
   border: solid 3px rgba(216, 221, 226, 0.253);
   max-width: 500px;
-  min-height: 600px;
+  min-height: 645px;
   margin-top: 2rem;
   margin-left: auto;
   margin-right: auto;
@@ -19,7 +19,7 @@
   flex-direction: column;
   align-items: center;
   background-color: rgba(216, 221, 226, 0.212);
-  margin-top: 5rem;
+  margin-top: 8rem;
   width: 350px;
   height: 450px;
   border-radius: 0.4rem;
@@ -32,18 +32,38 @@
   width: 200px;
   margin-top: 4rem;
 }
+.imgUser {
+  top: -90px;
+  position: relative;
+  margin: auto;
+  background-color: rgba(185, 193, 202, 0.58);
+  border-radius: 50%;
+}
 .contentLogin input {
   background-color: rgba(216, 221, 226, 0);
   border: none;
   margin: 0.5rem;
   width: 200px;
+  color: rgba(221, 221, 221, 0.829);
   border-bottom: solid 3px rgba(216, 221, 226, 0.4);
+  font-size: 15px;
 }
 .contentLogin input::placeholder {
   color: rgba(221, 221, 221, 0.829);
-  background-color: rgba(216, 221, 226, 0);
+}
+.contentLogin input:focus {
+  outline: none;
+  resize: none;
+}
+.input {
+  display: flex;
+  align-items: center;
+  top: -65px;
+  position: relative;
 }
 .buttonLogin {
+  top: -65px;
+  position: relative;
   color: rgba(221, 221, 221, 0.829);
   background-color: rgba(216, 221, 226, 0.521);
   margin-top: 1rem;
@@ -58,6 +78,8 @@
   background-color: rgba(165, 166, 167, 0.521);
 }
 .linkContraseña {
+  top: -65px;
+  position: relative;
   text-decoration: none;
   color: rgba(221, 221, 221, 0.829);
   font-size: 10px;
@@ -72,6 +94,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 1rem;
+  top: -65px;
+  position: relative;
+}
+.imgArrow {
+  margin: 1rem;
 }
 .buttonSingUP {
   text-decoration: none;
@@ -81,7 +109,6 @@
   font-weight: bold;
   padding: 0.2rem;
   background-color: rgba(216, 221, 226, 0.521);
-  margin-top: 3rem;
 }
 .buttonSingUP:hover {
   background-color: rgba(165, 166, 167, 0.521);

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { updateUser } from '../../redux/actions';
+// import { newQuestion } from '../../redux/actions';
 import { Link, useHistory } from 'react-router-dom'
 import "../../STYLES/form.css"
 
@@ -125,11 +125,14 @@ export default function FormAddQuestions() {
             } else {
                 setErrorA("")
                 setMSG("Tu pregunta fue enviada para validación")
-                // dispatch(updateUser({
-                //     name: username,
-                //     avatar,               
-                //     mail,
-                //     category,            
+                // dispatch(newQuestion({
+                //     question,
+                //     category,               
+                //     answer,
+                //     false1,
+                //     false2,            
+                //     false3,            
+                //     img,            
                 // }))
                 setQuestion("")
                 setAnswer("")
