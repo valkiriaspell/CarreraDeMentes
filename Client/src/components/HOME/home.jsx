@@ -6,7 +6,7 @@ import { FaPowerOff } from "react-icons/fa";
 import UserCard from "./userCard";
 import Instructions from "./instructions";
 import {BsFacebook, BsLinkedin, BsTwitter, BsWhatsapp} from 'react-icons/bs';
-import { modifyHost } from "../../redux/actions";
+import { createRoom, modifyHost } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 
 function Home(props) {
@@ -21,9 +21,11 @@ function Home(props) {
     history.push("/");
   }
 
-  function handleCreateRoom(user){
+  function handleCreateRoom(){
     dispatch(modifyHost())
-    dispatch()
+    .then(() => {
+      dispatch(createRoom(user))
+    })
   }
 
   if (autenticado) {
@@ -53,7 +55,7 @@ function Home(props) {
         </div>
             <div className="content">
             <div className="contentButtons">   
-            <NavLink className="button" to={`/room/${user}`}>
+            <NavLink className="button" to={`/room/${user.name}`}>
               <button onClick={handleCreateRoom} >Iniciar partida</button>
             </NavLink>
             <NavLink className="button" to={"/partidasDisponibles"}>
