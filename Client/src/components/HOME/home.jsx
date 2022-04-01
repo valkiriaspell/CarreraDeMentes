@@ -45,7 +45,7 @@ function Home(props) {
         </div>
             <div className="content">
             <div className="contentButtons">   
-            <NavLink className="button" to={"/iniciarPartida"}>
+            <NavLink className="button" to={"/room"}>
               <button>Iniciar partida</button>
             </NavLink>
             <NavLink className="button" to={"/partidasDisponibles"}>
