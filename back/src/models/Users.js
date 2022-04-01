@@ -12,10 +12,10 @@ module.exports = (sequelize) => {
 			type: DataTypes.STRING,
 			unique: true,
 			allowNull: false,
-			validate: {
+/* 			validate: {
 				isAlpha: true,
 				len: [2,12], 
-			}
+			} */
 		},
 		email: {
 			type: DataTypes.STRING,
@@ -52,7 +52,7 @@ module.exports = (sequelize) => {
 			defaultValue: 0,
 			validate: {
 				isInt: true,
-				min: 1
+				min: 0
 			}
 		},
 		level: {

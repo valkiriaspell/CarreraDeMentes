@@ -6,12 +6,15 @@ import Perfil from "../../IMG/user.png";
 import User from "../../IMG/person.png";
 import Email from "../../IMG/email.png";
 import Contraseña from "../../IMG/unlock.png";
+import { useDispatch } from "react-redux";
+import { registerUser } from "../../../redux/actions";
 
 function SignUpFirebase() {
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const [input, setInput] = useState({
-    username: "",
+    name: "",
     avatar: "",
     email: "",
     password: "",
@@ -22,8 +25,8 @@ function SignUpFirebase() {
   function validar(input) {
     let errors = {};
 
-    if (input.username === "") {
-      errors.username = "El nombre de usuario es obligatorio";
+    if (input.name === "") {
+      errors.name = "El nombre de usuario es obligatorio";
     }
     if (input.avatar === "") {
       errors.avatar = "El avatar es obligatorio";
@@ -46,6 +49,7 @@ function SignUpFirebase() {
     const validacion = validar(input);
 
     if (Object.keys(validacion).length === 0) {
+      dispatch(registerUser({...input}))
       const registrar = await firebaseRegistrarUsuario(
         input.email,
         input.password
@@ -72,10 +76,10 @@ function SignUpFirebase() {
           <div className="input">
             <img src={User} alt="User" width={22} />
             <input
-              name="username"
+              name="name"
               type="text"
-              placeholder="Username"
-              value={input.username}
+              placeholder="name"
+              value={input.name}
               onChange={(e) => handleChange(e)}
               autoComplete="off"
             />
@@ -115,7 +119,7 @@ function SignUpFirebase() {
           <button type="submit">Registrarse</button>
         </form>
       </div>
-      {error.username && <p>{error.username}</p>}
+      {error.name && <p>{error.name}</p>}
       {error.avatar && <p>{error.avatar}</p>}
       {error.email && <p>{error.email}</p>}
       {error.password && <p>{error.password}</p>}
