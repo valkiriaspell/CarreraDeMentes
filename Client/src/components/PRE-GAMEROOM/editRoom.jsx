@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import s from '../STYLES/preGameRoom.module.css'
 
 const EditRoom = () =>{
     const [settingGame, setSettingGame] = useState({
@@ -20,13 +21,16 @@ const EditRoom = () =>{
     }
 
     return (
+        <div className={s.containerEditRoom}>
         <form onSubmit={e => handleSubmit(e)}>
+            <div>
             <label >Tiempo</label>
             <select name="difficulty"  onChange={e => handleChange(e)}>
                 <option value="easy">15</option>
                 <option value="medium">20</option>
                 <option value="dificult">25</option>
             </select>
+            </div>
             <label >Categoria excluida</label>
             <select name="category"  onChange={e => handleChange(e)}>
                 <option value="">Ninguna</option>
@@ -51,6 +55,7 @@ const EditRoom = () =>{
             </select>
             <button type="submit" >establecer cambios</button>
         </form>
+        </div>
     )
 }
 

@@ -1,5 +1,41 @@
 .container {
-  max-width: 800px;
+  width: 700px;
+  height: 450px;
   border: solid 3px rgba(216, 221, 226, 0.4);
   border-radius: 0.4rem;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3rem;
+}
+
+.containerPlayers {
+  border: solid 3px rgba(216, 221, 226, 0.4);
+  width: 280px;
+  height: 400px;
+  margin: 1rem;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  border-radius: 0.4rem;
+}
+.containerPlayers li {
+  display: flex;
+  padding: 0.7rem;
+  list-style: none;
+  margin: 1rem;
+  background-color: rgba(117, 121, 125, 0.4);
+  width: 12rem;
+  border-radius: 2rem;
+}
+
+.containerEditRoom {
+  margin: 1rem;
+  width: 300px;
+  height: 200px;
+  border: solid 3px rgba(216, 221, 226, 0.4);
+}
+.container2{
+  display: flex;
+  flex-direction: column;
 }

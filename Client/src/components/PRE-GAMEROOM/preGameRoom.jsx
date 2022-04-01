@@ -30,10 +30,19 @@ function PreGameRoom({match}) {
         return (
             game === false
             ?
-                <div>
+                <div className={s.container}>
+                    <div>
                     <ListPlayers expelPlayer={expelPlayer} />
+                    </div>
+                    <div className={s.container2}>
+                    <div>
                     <EditRoom />
+                    </div>
+                    <div>
                     <Chat idGameRoom={idGameRoom}/>
+                    </div>
+                    
+                    <div>
                     {
                         user.host === true
                             ? (<button 
@@ -50,6 +59,8 @@ function PreGameRoom({match}) {
                             </button>)
                     }
                     <button onClick={handleShareRoom} >invitar</button>
+                    </div>
+                </div>
                 </div>
                 
             : <GameRoom/>

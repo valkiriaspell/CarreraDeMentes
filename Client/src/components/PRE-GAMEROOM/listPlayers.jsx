@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-
 import s from '../STYLES/preGameRoom.module.css'
 
 const ListPlayers = ({expelPlayer}) =>{
@@ -13,6 +12,7 @@ const ListPlayers = ({expelPlayer}) =>{
     }
 
     return (
+        <div className={s.containerPlayers}>
         <ul>
         {
             user.host === true 
@@ -56,6 +56,7 @@ const ListPlayers = ({expelPlayer}) =>{
         <li>personajes 5</li>
         <li>personajes 6</li>
     </ul>
+        </div>
     )
 }
 
