@@ -47,7 +47,7 @@ async function getQuestions(count, category, idRoom) {
 
 
 
-		// Validaciones
+		// validaciones
 		if (questionRoom && questionRoom.length) questionRoom.forEach(({ id }) => idQuestionRoom.push(id));
 		if (questionAmout > 0 && !questionRoom) count = quetiosTotal;
 

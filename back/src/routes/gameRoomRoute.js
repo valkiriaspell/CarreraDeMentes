@@ -4,7 +4,7 @@ module.exports = router;
 const { createBDGameRoom, updateAddBDGameRoom, updateDeleteBDGameRoom, seachAllBDGameRoom, deletByIdGameRoom } = require("../controllers/gameRoom");
 const { GameRoom, Question, Users, Chat, Avatar } = require('../db.js')
 
-// escriban sus rutas acá
+
 
 // Ruta para crear una nueva sala
 router.post("/", async (req, res) => {

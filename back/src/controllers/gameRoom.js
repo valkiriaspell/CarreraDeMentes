@@ -18,7 +18,7 @@ exports.createBDGameRoom = async ({ name, usersAmount, questionAmout = 0, public
     }
 }
 
-// actializamos y agregamos un nuevo usuario a la sala
+// actualizamos y agregamos un nuevo usuario a la sala
 exports.updateAddBDGameRoom = async ({ idGameRoom, idUser }) => {
     try {
 
