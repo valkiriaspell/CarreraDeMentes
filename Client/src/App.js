@@ -12,6 +12,7 @@ import { initializeApp } from 'firebase/app';
 import initialPage from './components/INICIO/initialPage';
 import signUpFirebase from './components/INICIO/SIGNUP/signUpFirebase';
 import LandingPage from './components/LANDINGPAGE/landingPage';
+import RecuperarContrasena from './components/INICIO/RECUPERARCONTRASENA/recuperarContrasena';
 
 initializeApp(config)
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/home" component={Home} />
         <Route path="/login" component={initialPage} />
         <Route path="/signup" component={signUpFirebase} />
+        <Route path="/recuperarcontrasena" component={RecuperarContrasena} />
         <Route path="/editProfile" component={EditProfile} />
         <Route path="/room/:idRoom" component={PreGameRoom} />
         <Route path="/partidasDisponibles" component={GameListRoom} />
