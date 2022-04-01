@@ -1,0 +1,168 @@
+/* ====== CONTAINER ====== */
+.container {
+  border: solid 3px rgba(216, 221, 226, 0.4);
+  max-width: 800px;
+  max-height: 700px;
+  min-height: 380px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 6rem;
+  border-radius: 0.4rem;
+}
+
+/* ====== NAV ====== */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+  color: rgba(221, 221, 221, 0.829);
+}
+.buttonsNav button {
+  margin: 0.5rem;
+  border-radius: 0.3rem;
+  background-color: rgba(216, 221, 226, 0.4);
+  color: rgba(221, 221, 221, 0.829);
+  border: none;
+}
+.buttonsNav button:hover {
+  cursor: pointer;
+  background-color: rgba(154, 158, 161, 0.4);
+}
+.buttonCerrarSesión {
+  padding-bottom: 0.2rem;
+}
+.infoUser {
+  display: flex;
+}
+.avatarCard {
+  display: flex;
+  flex-direction: column;
+  padding-right: 0.5rem;
+  font-weight: bold;
+}
+.nameUser {
+  display: flex;
+  padding-top: 1rem;
+  padding-right: 1rem;
+  font-weight: bold;
+}
+.nameUser span {
+  padding: 0.3rem;
+}
+
+/* ====== CONTENT ====== */
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contentButtons {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+  margin-top: 6rem;
+}
+.button button {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  background-color: rgba(216, 221, 226, 0.4);
+  color: rgba(221, 221, 221, 0.829);
+  border: none;
+}
+.button button:hover {
+  cursor: pointer;
+  background-color: rgba(154, 158, 161, 0.4);
+}
+
+/* ====== CARDS ====== */
+.cards {
+  border-radius: 0.5rem;
+  background-color: rgba(130, 157, 189, 0.233);
+  width: 500px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* ===== MEDIA QUERIES =====*/
+@media screen and (max-width: 500px) {
+  .cards {
+      display: none;
+    }
+}
+
+/* ===== SOCIAL ICONS =====*/
+
+.social-icons {
+  display: block;
+  justify-content: center;
+  list-style-type: disc;
+  -webkit-margin-before: 1em;
+  margin-block-start: 1em;
+  -webkit-margin-after: 1em;
+  margin-block-end: 1em;
+  -webkit-margin-start: 0;
+  margin-inline-start: 0;
+  -webkit-margin-end: 0;
+  margin-inline-end: 0;
+  -webkit-padding-start: 20px;
+  padding-inline-start: 20px;
+  text-align: center;
+  padding: 0;
+  list-style: none;
+  margin: 1em;
+}
+
+
+.social-icons li {
+  text-align: -webkit-match-parent;
+  display: inline-block;
+  margin: 0.25em;
+  position: relative;
+  font-size: 1.2em;
+  vertical-align: top;   
+  /* esto le da el tamaño a los icons */
+}
+
+.social-icons i {
+  color: rgb(30, 29, 29);
+  position: absolute;
+  top: 0.30em;
+  /* con top y left marco la distancia del icon hacia el box donde se encuentra */
+  left: 0.65em;
+  transition: all 265ms ease-out;
+  vertical-align: top; 
+  
+}
+
+.social-icons a {
+  display: inline-block;  
+}
+
+.social-icons a:before {
+  transform: scale(1);
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  content: " ";
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  display: block;
+  background: linear-gradient(45deg, #000000, #ffffff);
+  transition: all 265ms ease-out;
+}
+
+.social-icons a:hover:before {
+  transform: scale(0);
+  transition: all 265ms ease-in;
+}
+
+/* La sig propiedad hace el efecto hover de los iconos de socialmedia */
+.social-icons a:hover i {
+  transform: scale(2);
+  -ms-transform: scale(2);
+  -webkit-transform: scale(2);
+  color: #ffffff;  
+  -webkit-text-fill-color: transparent;
+  transition: all 265ms ease-in;
+}
