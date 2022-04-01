@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 import { LOGIN_USER_GUEST, LIST_USERS_IN_PRE_ROOM, SET_READY, NEW_USER, LOGIN, HOST_TRUE, CREATE_ROOM } from "./actions"
+=======
+import { LOGIN_USER_GUEST, LIST_USERS_IN_PRE_ROOM, SET_READY,GET_AVATARS } from "./actions"
+>>>>>>> RutasFront
 
 const initialState = {
     user: {},
-    preRoomUsers: []
+    preRoomUsers: [],
+    avatars: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -53,6 +58,11 @@ const reducer = (state = initialState, action) => {
             : state.preRoomUsers[index].ready = true
         return {
             ...state,
+        }
+        case GET_AVATARS: 
+        return {
+            ...state,
+            avatars: action.payload
         }
 
         

@@ -67,10 +67,14 @@ function Home(props) {
               <Instructions />
             </div>
           </div>
-          <a href='http://www.facebook.com/sharer.php?u=https://www.linkedin.com/in/matias-beier-dev' target="blanck"><BsFacebook/></a>
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.linkedin.com/in/matias-beier-dev" target="blanck"><BsLinkedin/></a>
-          <a href="https://twitter.com/intent/tweet?text=juega%20conmigo&url=https://www.linkedin.com/in/matias-beier-dev/&hashtags=CarreradeMente" target="blanck"><BsTwitter/></a>
-          <a href="https://api.whatsapp.com/send?text=https://www.linkedin.com/in/matias-beier-dev" target="blanck"><BsWhatsapp/></a>
+          <div>
+          <ul className="social-icons">
+         <li><a href='http://www.facebook.com/sharer.php?u=https://www.linkedin.com/in/matias-beier-dev' target="blanck"><i><BsFacebook/></i></a></li> 
+         <li><a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.linkedin.com/in/matias-beier-dev" target="blanck"><i><BsLinkedin/></i></a></li>
+          <li><a href="https://twitter.com/intent/tweet?text=juega%20conmigo&url=https://www.linkedin.com/in/matias-beier-dev/&hashtags=CarreradeMente" target="blanck"><i><BsTwitter/></i></a></li>
+          <li><a href="https://api.whatsapp.com/send?text=https://www.linkedin.com/in/matias-beier-dev" target="blanck"><i><BsWhatsapp/></i></a></li>
+          </ul>
+          </div>
       </div>
     );
   } else {
