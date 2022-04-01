@@ -5,6 +5,7 @@ import "../STYLES/home.modules.css";
 import { FaPowerOff } from "react-icons/fa";
 import UserCard from "./userCard";
 import Instructions from "./instructions";
+import {BsFacebook, BsLinkedin, BsTwitter, BsWhatsapp} from 'react-icons/bs';
 
 function Home(props) {
   const history = useHistory();
@@ -58,6 +59,10 @@ function Home(props) {
               <Instructions />
             </div>
           </div>
+          <a href='http://www.facebook.com/sharer.php?u=https://www.linkedin.com/in/matias-beier-dev' target="blanck"><BsFacebook/></a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.linkedin.com/in/matias-beier-dev" target="blanck"><BsLinkedin/></a>
+          <a href="https://twitter.com/intent/tweet?text=juega%20conmigo&url=https://www.linkedin.com/in/matias-beier-dev/&hashtags=CarreradeMente" target="blanck"><BsTwitter/></a>
+          <a href="https://api.whatsapp.com/send?text=https://www.linkedin.com/in/matias-beier-dev" target="blanck"><BsWhatsapp/></a>
       </div>
     );
   } else {

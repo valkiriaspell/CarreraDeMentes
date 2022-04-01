@@ -3,49 +3,62 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Chat from './chat'
 import EditRoom from './editRoom'
-import useChat from './useChatSocketIo'
+import useSocket from './useSocketIo'
+import s from '../STYLES/preGameRoom.module.css'
+import GameRoom from '../GAMEROOM/gameRoom'
+import ListPlayers from "./listPlayers";
 
 function PreGameRoom({match}) {
-    const {preRoomUsers} = useSelector(state => state)
+    const {preRoomUsers, user} = useSelector(state => state)
     const history = useHistory();
     const autenticado = localStorage.getItem('token')
 
     const {idGameRoom} = match.params;
-    const {sendReady} = useChat(idGameRoom)
+    const {sendReady, sendStartGame, game, expelPlayer} = useSocket(idGameRoom)
+
+    function countReady(){
+        const readys = preRoomUsers.filter(user => user.ready === true);
+        return readys.length;
+    }
+
+    function handleShareRoom(){
+
+    }
 
 
     if(autenticado){
         return (
-            <div>
-                <ul>
-{/*                     {
-                        preRoom?.map(user =>{
-                            return (
-                                <>
-                                    <li key={user.email}>{user.name}</li>
-                                    <button key={user.email} className={user.ready ? algo : otro}>listo</button>
-                                </>
-                            )
-                        })
-                    } */}
-                    <li>personajes 1</li>
-                    <li>personajes 2</li>
-                    <li>personajes 3</li>
-                    <li>personajes 4</li>
-                    <li>personajes 5</li>
-                    <li>personajes 6</li>
-                </ul>
-
-                <EditRoom />
-                <Chat idGameRoom={idGameRoom}/>
-                <button onClick={sendReady}>estoy listo</button>
-            </div>
+            game === false
+            ?
+                <div>
+                    <ListPlayers expelPlayer={expelPlayer} />
+                    <EditRoom />
+                    <Chat idGameRoom={idGameRoom}/>
+                    {
+                        user.host === true
+                            ? (<button 
+                                disabled={preRoomUsers?.length -1 === countReady() ? false : true}
+                                onClick={sendStartGame}
+                                className={s.button}
+                            >
+                                Iniciar
+                            </button>)
+                            : (<button 
+                                onClick={sendReady}
+                            >
+                                Listo
+                            </button>)
+                    }
+                    <button onClick={handleShareRoom} >invitar</button>
+                </div>
+                
+            : <GameRoom/>
         )
     } else{
         history.push('/login')
         return <div></div>
     }
 }
- 
+
 
 export default PreGameRoom;

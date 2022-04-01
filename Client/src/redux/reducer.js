@@ -21,11 +21,16 @@ const reducer = (state = initialState, action) => {
         }
 
         case SET_READY: 
-        let index = state.preRoomUsers.findIndex(user => user.email === action.payload)
-        state.preRoomUsers[index].ready = true
+        const index = state.preRoomUsers.findIndex(user => user.email === action.payload)
+        state.preRoomUsers[index].ready
+            ? state.preRoomUsers[index].ready === true
+                ? state.preRoomUsers[index].ready = false
+                : state.preRoomUsers[index].ready = true
+            : state.preRoomUsers[index].ready = true
         return {
             ...state,
         }
+
         
         default:
             return state;

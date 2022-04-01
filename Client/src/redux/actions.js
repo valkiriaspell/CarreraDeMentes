@@ -46,8 +46,10 @@ export function listUseresInPreRoom(IdPreRoom){
     }
 }
 
+
 export function setReady(email){
-    return function(dispatch){
-        dispatch({type: 'SET_READY', payload: email})
+    return  function(dispatch){
+            dispatch({type: 'SET_READY', payload: email})
     }
 }
+
