@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-import { LOGIN_USER_GUEST, LIST_USERS_IN_PRE_ROOM, SET_READY, NEW_USER, LOGIN, HOST_TRUE, CREATE_ROOM } from "./actions"
-=======
-import { LOGIN_USER_GUEST, LIST_USERS_IN_PRE_ROOM, SET_READY,GET_AVATARS } from "./actions"
->>>>>>> RutasFront
+import { LOGIN_USER_GUEST, LIST_USERS_IN_PRE_ROOM, SET_READY, NEW_USER, LOGIN, HOST_TRUE, CREATE_ROOM, GET_AVATARS } from "./actions"
+
 
 const initialState = {
     user: {},

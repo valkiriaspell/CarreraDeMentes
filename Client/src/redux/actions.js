@@ -3,14 +3,11 @@ import axios from 'axios';
 export const LOGIN_USER_GUEST = 'LOGIN_USER_GUEST'
 export const LIST_USERS_IN_PRE_ROOM = 'LIST_USERS_IN_PRE_ROOM'
 export const SET_READY = 'SET_READY'
-<<<<<<< HEAD
 export const NEW_USER = 'NEW_USER'
 export const LOGIN = 'LOGIN'
 export const HOST_TRUE = 'HOST_TRUE'
 export const CREATE_ROOM = 'CREATE_ROOM'
-=======
 export const GET_AVATARS = 'GET_AVATARS'
->>>>>>> RutasFront
 
 
 
@@ -25,7 +22,6 @@ export function loginAsGuest(){
     }
 }
 
-<<<<<<< HEAD
 export function registerUser(user){
     return async function(dispatch){
         try{
@@ -48,10 +44,7 @@ export function loginUser({email}){
     }
 }
 
-export const updateUser = (userData)=> async (dispatch)=>{
-=======
 export const updateUser = (userData)=> async ()=>{
->>>>>>> RutasFront
     try {
         const result = await axios.post(`/ ruta para actualizar user`, userData)  
     } catch (error) {
@@ -59,7 +52,6 @@ export const updateUser = (userData)=> async ()=>{
     }
 }
 
-<<<<<<< HEAD
 export function modifyHost(){
     return function(dispatch){
         dispatch({type: 'HOST_TRUE'})
@@ -75,14 +67,14 @@ export function createRoom(user){
         }catch(e) {
             console.log(e)
         }
-=======
+    }
+}
 export const getAvatars = ()=> async (dispatch)=>{
     try {
         const result = await axios.get(`/ ruta para ver avatars`)
         dispatch({type: GET_AVATARS, payload: result.data})  
     } catch (error) {
         console.log(error)
->>>>>>> RutasFront
     }
 }
 
