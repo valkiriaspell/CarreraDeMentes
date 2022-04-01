@@ -76,7 +76,7 @@ export const getAvatars = ()=> async (dispatch)=>{
     } catch (error) {
         console.log(error)
     }
-}
+} 
 
 export function AddUserToPreRoom(user, room){
     return async function(){
