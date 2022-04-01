@@ -28,7 +28,8 @@ router.post('/', async (req, res) => {
 		if (!creado) {
 			res.send('Problemas en el servidor no pudo ser creado');
 		} else {
-			res.send('Users Creado');
+			console.log(creado);
+			res.send(creado);
 		}
 	} catch (e) {
 		res.status(500).send('Error: ' + e);
