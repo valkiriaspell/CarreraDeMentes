@@ -4,7 +4,8 @@ import {
     signInWithEmailAndPassword,
     GoogleAuthProvider,
     FacebookAuthProvider,
-    signInWithPopup
+    signInWithPopup,
+    sendPasswordResetEmail 
 } from "firebase/auth";
 
 export const config = {
@@ -67,5 +68,18 @@ export async function firebaseCerrarSesion(){
         return sesion
     } catch (error) {
         console.log(error)
+    }
+}
+
+export async function firebaseRecuperarContrasena(email){
+    const actionCodeSettings = {
+        url: 'http://localhost:3000/login'
+      };      
+    try {
+        const auth = getAuth();
+        const recuperar = await sendPasswordResetEmail(auth, email, actionCodeSettings)
+        return recuperar
+    } catch (error) {
+        return 'No se pudo recuperar la contraseña'
     }
 }

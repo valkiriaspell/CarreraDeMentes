@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { HiOutlineRefresh } from "react-icons/hi";
 import Search from "../IMG/search.png";
+import { useSelector } from "react-redux";
 
 let arrayGames = [
   {
@@ -35,6 +36,7 @@ let arrayGames = [
 
 function GameListRoom() {
   const [games, setGames] = useState([]);
+  const {user} = useSelector(state => state);
 
   useEffect(() => {
     setGames(arrayGames);
@@ -88,7 +90,9 @@ function GameListRoom() {
               <span>{game.name}</span>
               <span>{game.users}</span>
               <span>{game.questions}</span>
-              <button className="unirseGameList">Unirse</button>
+              <NavLink to={`/room/${user.id}`} >
+                <button className="unirseGameList">Unirse</button>
+              </NavLink>
             </div>
           );
         })
