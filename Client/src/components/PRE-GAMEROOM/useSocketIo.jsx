@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import socketIOClient from 'socket.io-client';
-import { AddUserToPreRoom, listUseresInPreRoom, deleteUserFromRoom, setReady } from "../../redux/actions";
+import { AddUserToPreRoom, listUsersInPreRoom, deleteUserFromRoom, setReady } from "../../redux/actions";
 import s from '../STYLES/preGameRoom.module.css'
 import axios from "axios";
 
@@ -21,12 +21,16 @@ function useChatSocketIo(idGameRoom) {
             const newUserInRoom = () =>{
                 dispatch(AddUserToPreRoom({
                     idGameRoom,
-                    email: user.email,
+                    idUser: user.id
                 }))
-                .then(() => dispatch(listUseresInPreRoom(idGameRoom)))
+                .then(() => dispatch(listUsersInPreRoom(idGameRoom)))
             }
-            newUserInRoom();
+            !user.host && newUserInRoom();
 
+            socketIoRef.current.on("NEW_CONNECTION", () =>{
+                /* dispatch(listUsersInPreRoom(idGameRoom)); */
+            })
+            
             //received a new message, differentiating which are from current user and add to message list
             socketIoRef.current.on("NEW_MESSAGE", message =>{
                 const incomingMessage = {
@@ -47,16 +51,13 @@ function useChatSocketIo(idGameRoom) {
                 }
             })
 
-            socketIoRef.current.on("NEW_CONNECTION", () =>{
-                dispatch(listUseresInPreRoom(idGameRoom));
-            })
             
             socketIoRef.current.on("DISCONNECT", () =>{
-                dispatch(listUseresInPreRoom(idGameRoom));
+                dispatch(listUsersInPreRoom(idGameRoom));
             })
 
             socketIoRef.current.on("EXPEL_PLAYER", (email) =>{
-                user.email === email && history.push('/home')
+                user.id === email && history.push('/home')
             })
 
             //when host press start-game button, all players redirect url game-room, 
@@ -67,7 +68,7 @@ function useChatSocketIo(idGameRoom) {
 
             //remove player from room (DB) when player leaves the room and destroy the socket reference
             return () =>{
-                axios.delete(`/ruta para hacer delete/:email`)
+                axios.put(`/gameRoom/${user.id}`, {idGameRoom, idUserDelet: user.id})
                 .then(() =>{
                     socketIoRef.current.emmit("DISCONNECT")
                     socketIoRef.current.disconnect();
@@ -92,7 +93,8 @@ function useChatSocketIo(idGameRoom) {
     }
 
     function expelPlayer(e){
-        socketIoRef.current.emit("EXPEL_PLAYER", e.target.id)
+        let email = e.target.id
+        socketIoRef.current.emit("EXPEL_PLAYER", email)
     }
 
     return { messages, sendMessage, sendReady, sendStartGame, game, expelPlayer}

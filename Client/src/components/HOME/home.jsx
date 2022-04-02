@@ -6,11 +6,14 @@ import { FaPowerOff } from "react-icons/fa";
 import UserCard from "./userCard";
 import Instructions from "./instructions";
 import {BsFacebook, BsLinkedin, BsTwitter, BsWhatsapp} from 'react-icons/bs';
+import { createRoom, modifyHost } from "../../redux/actions";
+import { useSelector, useDispatch } from "react-redux";
 
 function Home(props) {
+  const dispatch = useDispatch();
   const history = useHistory();
   const autenticado = localStorage.getItem("token");
-
+  const {user} = useSelector(state => state);
   async function handleSignOut(e) {
     e.preventDefault();
     await firebaseCerrarSesion();
@@ -18,6 +21,12 @@ function Home(props) {
     history.push("/");
   }
 
+  function handleCreateRoom(){
+    dispatch(modifyHost())
+    dispatch(createRoom(user))
+    .then(() => history.push(`/room/${user.id}`))
+  }
+ 
   if (autenticado) {
     return (
       <div className="container">
@@ -45,9 +54,9 @@ function Home(props) {
         </div>
             <div className="content">
             <div className="contentButtons">   
-            <NavLink className="button" to={"/room"}>
-              <button>Iniciar partida</button>
-            </NavLink>
+
+              <button onClick={handleCreateRoom} >Iniciar partida</button>
+
             <NavLink className="button" to={"/partidasDisponibles"}>
               <button>Partidas disponibles</button>
             </NavLink>
@@ -59,10 +68,14 @@ function Home(props) {
               <Instructions />
             </div>
           </div>
-          <a href='http://www.facebook.com/sharer.php?u=https://www.linkedin.com/in/matias-beier-dev' target="blanck"><BsFacebook/></a>
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.linkedin.com/in/matias-beier-dev" target="blanck"><BsLinkedin/></a>
-          <a href="https://twitter.com/intent/tweet?text=juega%20conmigo&url=https://www.linkedin.com/in/matias-beier-dev/&hashtags=CarreradeMente" target="blanck"><BsTwitter/></a>
-          <a href="https://api.whatsapp.com/send?text=https://www.linkedin.com/in/matias-beier-dev" target="blanck"><BsWhatsapp/></a>
+          <div>
+          <ul className="social-icons">
+         <li><a href='http://www.facebook.com/sharer.php?u=https://www.linkedin.com/in/matias-beier-dev' target="blanck"><i><BsFacebook/></i></a></li> 
+         <li><a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.linkedin.com/in/matias-beier-dev" target="blanck"><i><BsLinkedin/></i></a></li>
+          <li><a href="https://twitter.com/intent/tweet?text=juega%20conmigo&url=https://www.linkedin.com/in/matias-beier-dev/&hashtags=CarreradeMente" target="blanck"><i><BsTwitter/></i></a></li>
+          <li><a href="https://api.whatsapp.com/send?text=https://www.linkedin.com/in/matias-beier-dev" target="blanck"><i><BsWhatsapp/></i></a></li>
+          </ul>
+          </div>
       </div>
     );
   } else {

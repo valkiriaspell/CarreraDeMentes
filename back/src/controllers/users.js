@@ -1,7 +1,7 @@
 const {Users} = require('../db');
 
-const createUsers = async (
-	{name,
+const createUsers = async ({
+	name,
 	email,
 	currentAvatar,
 	avatarStock,
@@ -11,27 +11,26 @@ const createUsers = async (
 	wins,
 	friendId,
 	host,
-	guest}
-) => {
+	guest,
+}) => {
 	try {
-		const newUser = await Users.findOrCreate(
-			{
-				where: { email },
-      			defaults:{
-					name,
-					email,
-					currentAvatar,
-					avatarStock,
-					coins,
-					experiencePoints,
-					level,
-					wins,
-					friendId,
-					host,
-					guest,
-				}
+		const [newUser, bool] = await Users.findOrCreate({
+			where: {email},
+			defaults: {
+				name,
+				email,
+				currentAvatar,
+				avatarStock,
+				coins,
+				experiencePoints,
+				level,
+				wins,
+				friendId,
+				host,
+				guest,
+			},
 		});
-		console.log(newUser)
+		/* console.log(newUser); */
 		return newUser;
 	} catch (error) {
 		return error;
@@ -40,7 +39,7 @@ const createUsers = async (
 
 const getUser = async (email) => {
 	try {
-		let userFound = await Users.findAll({where: {email: email}});
+		let userFound = await Users.findOne({where: {email: email}});
 
 		return userFound;
 	} catch (error) {
@@ -49,9 +48,9 @@ const getUser = async (email) => {
 };
 const getUsers = async () => {
 	try {
-		let usersFound = await Users.findAll();
+		let userFound = await Users.findAll();
 
-		return usersFound;
+		return userFound;
 	} catch (error) {
 		return error;
 	}

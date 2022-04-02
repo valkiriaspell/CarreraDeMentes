@@ -8,9 +8,11 @@ import Contraseña from "../../IMG/unlock.png"
 import Email from "../../IMG/email.png"
 import Arrow from "../../IMG/arrow.png"
 import Perfil from "../../IMG/user.png"
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../../redux/actions';
 
 function Login() {
-
+    const dispatch = useDispatch();
     const history = useHistory()
 
     const [input, setInput] = useState({
@@ -40,6 +42,7 @@ function Login() {
         if(Object.keys(validacion).length === 0){
             const login = await firebaseLogin(input.email, input.password)
             if(login.accessToken){
+                dispatch(loginUser(input.email))
                 localStorage.setItem('email', login.email)
                 localStorage.setItem('token', login.accessToken)
                 history.push('/home')
@@ -102,7 +105,7 @@ function Login() {
             />
             </div>
             <button className='buttonLogin' type='submit'>Ingresar</button>
-            <NavLink className="linkContraseña" to={"#"}>¿Olvidaste tu contraseña?</NavLink>
+            <NavLink className="linkContraseña" to={'recuperarcontrasena'}>¿Olvidaste tu contraseña?</NavLink>
         </form>
         {error.mensaje && <p>{error.mensaje}</p>}
         {error.password && <p>{error.password}</p>}
