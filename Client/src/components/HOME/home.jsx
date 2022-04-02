@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { firebaseCerrarSesion } from "../../utils/Firebase";
 import "../STYLES/home.modules.css";
@@ -6,7 +6,7 @@ import { FaPowerOff } from "react-icons/fa";
 import UserCard from "./userCard";
 import Instructions from "./instructions";
 import {BsFacebook, BsLinkedin, BsTwitter, BsWhatsapp} from 'react-icons/bs';
-import { createRoom, modifyHost } from "../../redux/actions";
+import { createRoom, loginUser, modifyHost } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 
 function Home(props) {
@@ -14,6 +14,9 @@ function Home(props) {
   const history = useHistory();
   const autenticado = localStorage.getItem("token");
   const {user} = useSelector(state => state);
+  
+
+
   async function handleSignOut(e) {
     e.preventDefault();
     await firebaseCerrarSesion();
@@ -42,7 +45,7 @@ function Home(props) {
           <h1>Inicio</h1>
           <div className="infoUser">
             {/* COMPONENTE USERCARD */}
-            <UserCard location={props.location}/>
+            <UserCard  location={props.location}/>
             <div>
               <NavLink className="buttonsNav" to={"/"}>
                 <button className="buttonCerrarSesión" onClick={e => handleSignOut(e)}>

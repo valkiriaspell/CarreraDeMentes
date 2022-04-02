@@ -50,7 +50,7 @@ exports.createBDGameRoom = async ({
 			email, */
 		});
 		await data.addUser(idUser);
-		const devolver = await GameRoom.findOne({
+		const devolver = await GameRoom.findOne({ // cambiar por data.dataValues.users = [idUser, name]
 			where: {id: data.dataValues.id},
 			include: [
 				{

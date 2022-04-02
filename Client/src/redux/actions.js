@@ -33,10 +33,10 @@ export function registerUser(user){
     }
 }
 
-export function loginUser({email}){
+export function loginUser(email){
     return async function(dispatch){
         try{
-            const {data} = await axios.get(`http://localhost:3001?email=${email}`)
+            const {data} = await axios.get(`http://localhost:3001/users?email=${email}`)
             dispatch({type: 'LOGIN', payload: data})
         }catch(e) {
             console.log(e)

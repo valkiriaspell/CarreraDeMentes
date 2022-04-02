@@ -10,14 +10,15 @@ function useChatSocketIo(idGameRoom) {
     const history = useHistory();
     const dispatch = useDispatch();
     const {user} = useSelector(state => state);
+    const room = idGameRoom;
 
-    const [messages, setMessages] = useState([]);
+    const [messages, setMessages] = useState({});
     const socketIoRef = useRef();
     const [game, setGame] = useState(false)
 
     useEffect(() =>{
         //create web socket connection
-        socketIoRef.current = socketIOClient('http://localhost:3001', {idGameRoom, email: user.email});
+        socketIoRef.current = socketIOClient('http://localhost:3001', {room, email: user.email});
             const newUserInRoom = () =>{
                 dispatch(AddUserToPreRoom({
                     idGameRoom,
@@ -33,11 +34,12 @@ function useChatSocketIo(idGameRoom) {
             
             //received a new message, differentiating which are from current user and add to message list
             socketIoRef.current.on("NEW_MESSAGE", message =>{
-                const incomingMessage = {
+                console.log("error") //no quitar
+                const incomingMessage = { // no recibo el message.id
                     ...message,
-                    writtenByCurrentUser: message.id === socketIoRef.current.id
+                    writtenByCurrentUser: message.email === socketIoRef.current.email
                 }
-                setMessages([...messages, incomingMessage])
+                setMessages(incomingMessage)
             })
 
             //change readyState from user to click in button
@@ -78,9 +80,11 @@ function useChatSocketIo(idGameRoom) {
 
     //send a message to all players in chat
     function sendMessage(message){
+        console.log("hola") //no quitar
         socketIoRef.current.emit("NEW_MESSAGE", {
-            text: message,
-            name: user.name
+            text: message, 
+            name: user.name,
+            email: socketIoRef.current.email
         })
     }
 
