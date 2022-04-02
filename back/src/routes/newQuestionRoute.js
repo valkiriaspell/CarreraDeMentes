@@ -10,7 +10,7 @@ router.post('/', async function (req, res){
         const addQuestion = await createNewQuestion(question, answer, false1, false2, false3, category, img)
         res.status(200).json(addQuestion)
 
-    } catch (error) {
+    } catch(error) {
         res.status(404).send(`No se pudo guardar la pregunta en la DB: ${error}`)
     }
 })
