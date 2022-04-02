@@ -1,9 +1,9 @@
-const {Users} = require('../db');
+const {Users, Avatars} = require('../db');
 
 const createUsers = async ({
 	name,
 	email,
-	currentAvatar,
+	idAvatar,
 	avatarStock,
 	coins,
 	experiencePoints,
@@ -19,7 +19,6 @@ const createUsers = async ({
 			defaults: {
 				name,
 				email,
-				currentAvatar,
 				avatarStock,
 				coins,
 				experiencePoints,
@@ -30,31 +29,36 @@ const createUsers = async ({
 				guest,
 			},
 		});
-		/* console.log(newUser); */
-		return newUser;
+		newUser.addAvatars(idAvatar);
+
+		const userRelated = Users.findOne({
+			where: {email},
+			include: Avatars,
+		});
+		return userRelated;
 	} catch (error) {
 		return error;
 	}
 };
+let guestUser = 100;
 const createGuestUser = async () => {
 	try {
-		const guestUser = 100;
-		const newUser = await Users.findOrCreate({
-			defaults: {
-				name: `User${guestUser}`,
-				email: `UserGuest${guestUser}.user@gmail.com`,
-				// currentAvatar, hay que ver que le ponemos
-				// avatarStock,
-				coins: 0,
-				experiencePoints: 0,
-				level: 0,
-				wins: 0,
-				host: false,
-				guest: true,
-			},
-		});
 		guestUser++;
-		return newUser;
+		console.log('entrando');
+
+		const newUser = await Users.create({
+			name: `User${guestUser}`,
+			email: `UserGuest${guestUser}.user@gmail.com`,
+			guest: true,
+		});
+
+		console.log(newUser);
+		newUser.addAvatars(1);
+		const userRelated = Users.findOne({
+			where: {name: `User${guestUser}`},
+			include: Avatars,
+		});
+		return userRelated;
 	} catch (error) {
 		return error;
 	}

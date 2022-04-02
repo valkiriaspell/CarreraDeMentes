@@ -32,7 +32,8 @@ router.post('/', async (req, res) => {
 	try {
 		const {guest} = req.body;
 		if (guest === true) {
-			createGuestUser();
+			const guestUser = await createGuestUser();
+			res.send(guestUser);
 		} else {
 			const userCreated = await createUsers(req.body);
 			if (!userCreated) {
