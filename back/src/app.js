@@ -32,6 +32,10 @@ io.on('connection',(socket)=>{//que hago cuando recibo 'connect'?
 		io.to(room).emit('START')
 	})
 
+	socket.on('EXPEL_PLAYER',(email)=>{
+		io.to(room).emit('EXPEL_PLAYER',email)
+	})
+
     socket.on('DISCONNECT',()=>{//alguien se desconecta de la room
         console.log("se desconecto")
 		//crear ruta en rooms para desconectar un usuario         
