@@ -1,0 +1,17 @@
+.avatars{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.avatars img{
+    height: 100px;
+    border-radius: 50%;
+}
+
+.flechitas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
