@@ -1,8 +1,8 @@
 require('dotenv').config();
-const {Sequelize} = require('sequelize');
+const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const {DB_USER, DB_PASSWORD, DB_HOST, DB_NAME} = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
 const sequelize = new Sequelize(
 	`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
@@ -55,12 +55,12 @@ Users.belongsToMany(Users, {
 	foreignKey: 'friendIdTwo',
 	through: 'Friends',
 });
-// No va esta relacion porque no guardamos las salas y las preguntas son random
-// GameRoom.belongsToMany(Question, {through: 'Game_Questions'});
-// Question.belongsToMany(GameRoom, {through: 'Game_Questions'});
 
-Users.belongsToMany(Avatar, {through: 'Users_Avatars'});
-Avatar.belongsToMany(Users, {through: 'Users_Avatars'});
+GameRoom.belongsToMany(Question, { through: 'Game_Questions' });
+Question.belongsToMany(GameRoom, { through: 'Game_Questions' });
+
+Users.belongsToMany(Avatar, { through: 'Users_Avatars' });
+Avatar.belongsToMany(Users, { through: 'Users_Avatars' });
 
 GameRoom.hasMany(Users);
 Users.belongsTo(GameRoom);
