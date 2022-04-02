@@ -112,16 +112,7 @@ exports.updateDeleteBDGameRoom = async ({idGameRoom, idUserDelet}) => {
 					attributes: ['id'],
 				},
 			],
-		});
-
-        const data = await GameRoom.findByPk(idGameRoom, {
-            include: [
-                {
-                    model: Users,
-                    attributes: ["id"]
-                }
-            ]
-        });
+		});     
 
 			await data.removeUser(idUserDelet);
 			return [true, 'Usuario eliminado'];
