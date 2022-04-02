@@ -7,22 +7,19 @@ const { GameRoom, Question, Users, Chat, Avatar } = require('../db.js')
 
 
 // Ruta para crear una nueva sala
-router.post("/", async (req, res) => {
-
-    try {
-        const [bool, msj] = await createBDGameRoom(req.body);
-        if (bool) {
-            res.send(msj);
-        } else {
-
-            res.send("No se pudo crear la sala")
-        }
-    } catch (e) {
-        res.status(500).send("Error al crear una sala: " + e);
-    }
-
-
-})
+router.post('/', async (req, res) => {
+	try {
+		const [bool, msj] = await createBDGameRoom(req.body);
+		if (bool) {
+			console.log(msj)
+			res.send(msj);
+		} else {
+			res.send('No se pudo crear la sala');
+		}
+	} catch (e) {
+		res.status(500).send('Error al crear una sala: ' + e);
+	}
+});
 
 // Ruta para agregar un usuario a la Sala
 router.put("/", async (req, res) => {

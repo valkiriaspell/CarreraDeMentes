@@ -9,7 +9,7 @@ import Email from "../../IMG/email.png"
 import Arrow from "../../IMG/arrow.png"
 import Perfil from "../../IMG/user.png"
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../../../redux/actions';
+import { loginUser, registerUser } from '../../../redux/actions';
 
 function Login() {
     const dispatch = useDispatch();
@@ -57,6 +57,7 @@ function Login() {
     async function handleLoginGoogle(){
         const iniciarSesion = await firebaseLoginGoogle()
         if(iniciarSesion.accessToken){
+            /* dispatch(registerUser()) */
             localStorage.setItem('email', iniciarSesion.email)
             localStorage.setItem('token', iniciarSesion.accessToken)
             history.push('/home')
@@ -68,6 +69,7 @@ function Login() {
     async function handleLoginFacebook(){
         const iniciarSesion = await firebaseLoginFacebook()
         if(iniciarSesion.accessToken){
+            /* dispatch(registerUser()) */
             localStorage.setItem('email', iniciarSesion.email)
             localStorage.setItem('token', iniciarSesion.accessToken)
             history.push('/home')
@@ -105,7 +107,7 @@ function Login() {
             />
             </div>
             <button className='buttonLogin' type='submit'>Ingresar</button>
-            <NavLink className="linkContraseña" to={"#"}>¿Olvidaste tu contraseña?</NavLink>
+            <NavLink className="linkContraseña" to={'recuperarcontrasena'}>¿Olvidaste tu contraseña?</NavLink>
         </form>
         {error.mensaje && <p>{error.mensaje}</p>}
         {error.password && <p>{error.password}</p>}

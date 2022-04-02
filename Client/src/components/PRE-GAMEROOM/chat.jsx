@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import useSocket from './useSocketIo'
 
-const Chat = ({idGameRoom}) =>{
-    const {messages, sendMessage} = useSocket(idGameRoom);
+const Chat = ({idUser}) =>{
+    const {messages, sendMessage} = useSocket(idUser);
+    const [listMessages, setListMessages] = useState([])
     const [newMessage, setNewMessage] = useState("");
     const {preRoomUsers} = useSelector(state => state)
+
+    
+    useEffect(() =>{
+        messages.text &&
+    setListMessages([...listMessages, messages])
+    }, [messages])
+
     function handleMessage(e){
         setNewMessage(e.target.value)
     }
@@ -15,20 +23,20 @@ const Chat = ({idGameRoom}) =>{
         setNewMessage("");
     }
 
-
+console.log(listMessages)
     return (
         <div>
-            <p>jugadores {preRoomUsers?.length}/6</p>
+            <p>jugadores {preRoomUsers?.users?.length}/6</p>
             <div>
                 <ol>
                     {
-                        messages.map((message, index) => {
+                        listMessages?.map((message, index) => {
                             return (
                                 <li key={index}>
                                     {
                                         message.writtenByCurrentUser
-                                            ? `Me: ${message.text}` 
-                                            : `${message.name}: ${message.text}`
+                                            ? `Me: ${message?.text}` 
+                                            : `${message?.name}: ${message?.text}`
                                     }
                                 </li>
                             )

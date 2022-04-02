@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import socketIOClient from 'socket.io-client';
-import { AddUserToPreRoom, listUseresInPreRoom, deleteUserFromRoom, setReady } from "../../redux/actions";
+import { AddUserToPreRoom, listUsersInPreRoom, deleteUserFromRoom, setReady } from "../../redux/actions";
 import s from '../STYLES/preGameRoom.module.css'
 import axios from "axios";
 
@@ -10,30 +10,36 @@ function useChatSocketIo(idGameRoom) {
     const history = useHistory();
     const dispatch = useDispatch();
     const {user} = useSelector(state => state);
+    const room = idGameRoom;
 
-    const [messages, setMessages] = useState([]);
+    const [messages, setMessages] = useState({});
     const socketIoRef = useRef();
     const [game, setGame] = useState(false)
 
     useEffect(() =>{
         //create web socket connection
-        socketIoRef.current = socketIOClient('http://localhost:3001', {idGameRoom, email: user.email});
+        socketIoRef.current = socketIOClient('http://localhost:3001', {room, email: user.email});
             const newUserInRoom = () =>{
                 dispatch(AddUserToPreRoom({
                     idGameRoom,
-                    email: user.email,
+                    idUser: user.id
                 }))
-                .then(() => dispatch(listUseresInPreRoom(idGameRoom)))
+                .then(() => dispatch(listUsersInPreRoom(idGameRoom)))
             }
-            newUserInRoom();
+            !user.host && newUserInRoom();
 
+            socketIoRef.current.on("NEW_CONNECTION", () =>{
+                /* dispatch(listUsersInPreRoom(idGameRoom)); */
+            })
+            
             //received a new message, differentiating which are from current user and add to message list
             socketIoRef.current.on("NEW_MESSAGE", message =>{
-                const incomingMessage = {
+                console.log("error") //no quitar
+                const incomingMessage = { // no recibo el message.id
                     ...message,
-                    writtenByCurrentUser: message.id === socketIoRef.current.id
+                    writtenByCurrentUser: message.email === socketIoRef.current.email
                 }
-                setMessages([...messages, incomingMessage])
+                setMessages(incomingMessage)
             })
 
             //change readyState from user to click in button
@@ -47,16 +53,13 @@ function useChatSocketIo(idGameRoom) {
                 }
             })
 
-            socketIoRef.current.on("NEW_CONNECTION", () =>{
-                dispatch(listUseresInPreRoom(idGameRoom));
-            })
             
             socketIoRef.current.on("DISCONNECT", () =>{
-                dispatch(listUseresInPreRoom(idGameRoom));
+                dispatch(listUsersInPreRoom(idGameRoom));
             })
 
             socketIoRef.current.on("EXPEL_PLAYER", (email) =>{
-                user.email === email && history.push('/home')
+                user.id === email && history.push('/home')
             })
 
             //when host press start-game button, all players redirect url game-room, 
@@ -67,7 +70,7 @@ function useChatSocketIo(idGameRoom) {
 
             //remove player from room (DB) when player leaves the room and destroy the socket reference
             return () =>{
-                axios.delete(`/ruta para hacer delete/:email`)
+                axios.put(`/gameRoom/${user.id}`, {idGameRoom, idUserDelet: user.id})
                 .then(() =>{
                     socketIoRef.current.emmit("DISCONNECT")
                     socketIoRef.current.disconnect();
@@ -77,9 +80,11 @@ function useChatSocketIo(idGameRoom) {
 
     //send a message to all players in chat
     function sendMessage(message){
+        console.log("hola") //no quitar
         socketIoRef.current.emit("NEW_MESSAGE", {
-            text: message,
-            name: user.name
+            text: message, 
+            name: user.name,
+            email: socketIoRef.current.email
         })
     }
 
@@ -92,7 +97,8 @@ function useChatSocketIo(idGameRoom) {
     }
 
     function expelPlayer(e){
-        socketIoRef.current.emit("EXPEL_PLAYER", e.target.id)
+        let email = e.target.id
+        socketIoRef.current.emit("EXPEL_PLAYER", email)
     }
 
     return { messages, sendMessage, sendReady, sendStartGame, game, expelPlayer}

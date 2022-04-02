@@ -11,11 +11,12 @@ export const GET_AVATARS = 'GET_AVATARS'
 
 
 
-export function loginAsGuest(){
+export function loginAsGuest(guest){
     return async function(dispatch){
         try{
-            const {data} = await axios.get('/ruta para hacer post')
-            dispatch({type: 'LOGIN_USER_GUEST', payload: data})
+            const test = await axios.post('http://localhost:3001/users', guest)
+            dispatch({type: 'LOGIN_USER_GUEST', payload: test.data})
+            return test.data
         }catch(e) {
             console.log(e)
         }
@@ -33,10 +34,10 @@ export function registerUser(user){
     }
 }
 
-export function loginUser({email}){
+export function loginUser(email){
     return async function(dispatch){
         try{
-            const {data} = await axios.get(`http://localhost:3001?email=${email}`)
+            const {data} = await axios.get(`http://localhost:3001/users?email=${email}`)
             dispatch({type: 'LOGIN', payload: data})
         }catch(e) {
             console.log(e)
@@ -61,37 +62,38 @@ export function modifyHost(){
 export function createRoom(user){
     return async function(dispatch){
         try{
-            const {data} = await axios.post('/', user)
+            const {data} = await axios.post('http://localhost:3001/gameRoom', {name: user.name, idUser: user.id})
             dispatch({type: 'CREATE_ROOM', payload: data})
-            console.log(data)
         }catch(e) {
             console.log(e)
         }
-    }
-}
-export const getAvatars = ()=> async (dispatch)=>{
-    try {
-        const result = await axios.get(`/ ruta para ver avatars`)
-        dispatch({type: GET_AVATARS, payload: result.data})  
-    } catch (error) {
-        console.log(error)
     }
 }
 
-export function AddUserToPreRoom(user){
+export const getAvatars = ()=> async (dispatch)=>{
+    try {
+        const result = await axios.get(`http://localhost:3001/avatar`)
+        dispatch({type: GET_AVATARS, payload: result.data}) 
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+export function AddUserToPreRoom(idGameRoom, idUser){
     return async function(){
         try{
-            const {data} = await axios.post('/ruta para hacer post a una sala', user)
+            const {data} = await axios.put('http://localhost:3001/gameRoom', {idUser, idGameRoom})
             console.log(data)
         }catch(e) {
             console.log(e)
         }
     }
 }
-export function listUseresInPreRoom(IdPreRoom){
+//arreglar en back
+export function listUsersInPreRoom(IdRoom){
     return async function(dispatch){
         try{
-            const {data} = await axios.get(`/ruta para hacer post a una sala?IdPreRoom=${IdPreRoom}`)
+            const {data} = await axios.get(`http://localhost:3001/gameRoom?IdPreRoom=${IdRoom}`)
             dispatch({type: 'LIST_USERS_IN_PRE_ROOM', payload: data})
         }catch(e) {
             console.log(e)
@@ -99,10 +101,8 @@ export function listUseresInPreRoom(IdPreRoom){
     }
 }
 
-
 export function setReady(email){
     return  function(dispatch){
             dispatch({type: 'SET_READY', payload: email})
     }
 }
-

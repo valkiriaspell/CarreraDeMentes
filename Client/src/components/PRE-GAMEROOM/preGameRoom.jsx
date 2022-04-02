@@ -12,17 +12,12 @@ function PreGameRoom({match}) {
     const {preRoomUsers, user} = useSelector(state => state)
     const history = useHistory();
     const autenticado = localStorage.getItem('token')
-
-    const {idGameRoom} = match.params;
-    const {sendReady, sendStartGame, game, expelPlayer} = useSocket(idGameRoom)
+    const {idUser} = match.params;
+    const {sendReady, sendStartGame, game, expelPlayer} = useSocket(idUser)
 
     function countReady(){
-        const readys = preRoomUsers.filter(user => user.ready === true);
-        return readys.length;
-    }
-
-    function handleShareRoom(){
-
+        const readys = preRoomUsers?.users?.filter(user => user.ready === true);
+        return readys?.length;
     }
 
 
@@ -39,14 +34,14 @@ function PreGameRoom({match}) {
                     <EditRoom />
                     </div>
                     <div>
-                    <Chat idGameRoom={idGameRoom}/>
+                    <Chat idUser={idUser}/>
                     </div>
                     
                     <div>
                     {
                         user.host === true
                             ? (<button 
-                                disabled={preRoomUsers?.length -1 === countReady() ? false : true}
+                                disabled={preRoomUsers?.users?.length -1 === 0 ? true : preRoomUsers?.users?.length -1 === countReady ? true : false}
                                 onClick={sendStartGame}
                                 className={s.button}
                             >
@@ -58,7 +53,7 @@ function PreGameRoom({match}) {
                                 Listo
                             </button>)
                     }
-                    <button onClick={handleShareRoom} >invitar</button>
+                    <button >invitar</button>
                     </div>
                 </div>
                 </div>

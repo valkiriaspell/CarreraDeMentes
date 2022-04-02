@@ -1,9 +1,9 @@
-const { Users } = require('../db');
+const {Users, Avatars} = require('../db');
 
 const createUsers = async ({
 	name,
 	email,
-	currentAvatar,
+	idAvatar,
 	avatarStock,
 	coins,
 	experiencePoints,
@@ -19,7 +19,6 @@ const createUsers = async ({
 			defaults: {
 				name,
 				email,
-				currentAvatar,
 				avatarStock,
 				coins,
 				experiencePoints,
@@ -30,8 +29,36 @@ const createUsers = async ({
 				guest,
 			},
 		});
+		newUser.addAvatars(idAvatar);
+
+		const userRelated = Users.findOne({
+			where: {email},
+			include: Avatars,
+		});
+		return userRelated;
+	} catch (error) {
+		return error;
+	}
+};
+let guestUser = 100;
+const createGuestUser = async () => {
+	try {
+		guestUser++;
+		console.log('entrando');
+
+		const newUser = await Users.create({
+			name: `User${guestUser}`,
+			email: `UserGuest${guestUser}.user@gmail.com`,
+			guest: true,
+		});
+
 		console.log(newUser);
-		return newUser;
+		newUser.addAvatars(1);
+		const userRelated = Users.findOne({
+			where: {name: `User${guestUser}`},
+			include: Avatars,
+		});
+		return userRelated;
 	} catch (error) {
 		return error;
 	}
@@ -55,9 +82,33 @@ const getUsers = async () => {
 		return error;
 	}
 };
+const deleteUser = async (id) => {
+	try {
+		const eliminado = await Users.destroy({where: {id: id}});
+
+		return 'Usuario eliminado correctamente';
+	} catch (e) {
+		return e;
+	}
+};
+const modifyUser = async (id, name, currentAvatar) => {
+	try {
+		const modifiedUser = await Users.update(
+			{name: name, currentAvatar: currentAvatar},
+			{where: {id: id}}
+		);
+		console.log(modifiedUser);
+		return modifiedUser;
+	} catch (e) {
+		return e;
+	}
+};
 
 module.exports = {
 	createUsers,
 	getUser,
 	getUsers,
+	deleteUser,
+	createGuestUser,
+	modifyUser,
 };

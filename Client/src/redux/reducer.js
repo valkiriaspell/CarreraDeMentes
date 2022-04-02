@@ -3,7 +3,7 @@ import { LOGIN_USER_GUEST, LIST_USERS_IN_PRE_ROOM, SET_READY, NEW_USER, LOGIN, H
 
 const initialState = {
     user: {},
-    preRoomUsers: [],
+    preRoomUsers: {},
     avatars: []
 }
 
@@ -47,15 +47,16 @@ const reducer = (state = initialState, action) => {
         }
 
         case SET_READY: 
-        const index = state.preRoomUsers.findIndex(user => user.email === action.payload)
-        state.preRoomUsers[index].ready
-            ? state.preRoomUsers[index].ready === true
-                ? state.preRoomUsers[index].ready = false
-                : state.preRoomUsers[index].ready = true
-            : state.preRoomUsers[index].ready = true
+        const index = state.preRoomUsers.users.findIndex(user => user.email === action.payload)
+        state.preRoomUsers.users[index].ready
+            ? state.preRoomUsers.users[index].ready === true
+                ? state.preRoomUsers.users[index].ready = false
+                : state.preRoomUsers.users[index].ready = true
+            : state.preRoomUsers.users[index].ready = true
         return {
             ...state,
         }
+
         case GET_AVATARS: 
         return {
             ...state,

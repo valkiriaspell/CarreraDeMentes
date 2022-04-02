@@ -62,7 +62,7 @@
   margin-left: 2rem;
   margin-top: 6rem;
 }
-.button button {
+.button {
   margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 0.4rem;
@@ -70,7 +70,7 @@
   color: rgba(221, 221, 221, 0.829);
   border: none;
 }
-.button button:hover {
+.button:hover {
   cursor: pointer;
   background-color: rgba(154, 158, 161, 0.4);
 }
@@ -125,7 +125,7 @@
 }
 
 .social-icons i {
-  color: rgb(30, 29, 29);
+  color: rgba(231, 231, 231, 0.726);
   position: absolute;
   top: 0.30em;
   /* con top y left marco la distancia del icon hacia el box donde se encuentra */
@@ -146,9 +146,9 @@
   content: " ";
   width: 40px;
   height: 40px;
-  border-radius: 100%;
+  border-radius: 50%;
   display: block;
-  background: linear-gradient(45deg, #000000, #ffffff);
+  background: linear-gradient(45deg, rgb(237, 45, 83), rgba(9, 20, 33, 0.619));
   transition: all 265ms ease-out;
 }
 
@@ -162,7 +162,7 @@
   transform: scale(2);
   -ms-transform: scale(2);
   -webkit-transform: scale(2);
-  color: #ffffff;  
+  color: rgba(231, 231, 231, 0.726);
   -webkit-text-fill-color: transparent;
   transition: all 265ms ease-in;
 }
