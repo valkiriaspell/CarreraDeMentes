@@ -15,10 +15,10 @@ const Chat = ({idGameRoom}) =>{
         setNewMessage("");
     }
 
-
+console.log(preRoomUsers?.users)
     return (
         <div>
-            <p>jugadores {preRoomUsers?.length}/6</p>
+            <p>jugadores {preRoomUsers?.users?.length}/6</p>
             <div>
                 <ol>
                     {

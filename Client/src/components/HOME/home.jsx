@@ -23,11 +23,10 @@ function Home(props) {
 
   function handleCreateRoom(){
     dispatch(modifyHost())
-    .then(() => {
-      dispatch(createRoom(user))
-    })
+    dispatch(createRoom(user))
+    .then(() => history.push(`/room/${user.id}`))
   }
-
+ 
   if (autenticado) {
     return (
       <div className="container">
@@ -55,9 +54,9 @@ function Home(props) {
         </div>
             <div className="content">
             <div className="contentButtons">   
-            <NavLink className="button" to={`/room/${user.name}`}>
+
               <button onClick={handleCreateRoom} >Iniciar partida</button>
-            </NavLink>
+
             <NavLink className="button" to={"/partidasDisponibles"}>
               <button>Partidas disponibles</button>
             </NavLink>

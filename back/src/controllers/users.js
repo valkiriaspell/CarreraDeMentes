@@ -30,7 +30,7 @@ const createUsers = async ({
 				guest,
 			},
 		});
-		console.log(newUser);
+		/* console.log(newUser); */
 		return newUser;
 	} catch (error) {
 		return error;
