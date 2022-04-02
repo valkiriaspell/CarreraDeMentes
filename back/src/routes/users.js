@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
 		if (!creado) {
 			res.send('Problemas en el servidor no pudo ser creado');
 		} else {
-			console.log(creado);
+			/* console.log(creado); */
 			res.send(creado);
 		}
 	} catch (e) {
