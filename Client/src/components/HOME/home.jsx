@@ -26,7 +26,7 @@ function Home(props) {
     dispatch(createRoom(user))
     .then(() => history.push(`/room/${user.id}`))
   }
-
+ 
   if (autenticado) {
     return (
       <div className="container">
