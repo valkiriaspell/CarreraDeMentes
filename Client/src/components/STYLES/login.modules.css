@@ -32,6 +32,9 @@
   width: 200px;
   margin-top: 4rem;
 }
+.contentLogin a {
+  text-decoration: none;
+}
 .imgUser {
   top: -90px;
   position: relative;
@@ -123,6 +126,7 @@
   font-weight: bold;
   color: rgba(129, 126, 126, 0.829);
 }
+
 .contentLogin2 img {
   margin-left: 0.8rem;
 }

@@ -3,6 +3,8 @@ import Perfil from "../IMG/user.png"
 import Email from "../IMG/email.png"
 import Contraseña from "../IMG/unlock.png"
 import "../STYLES/footer.css"
+import { Link } from 'react-router-dom';
+import "../STYLES/login.modules.css"
 
 export default function LoginAdmin() {
     const [input, setInput] = useState({
@@ -41,6 +43,8 @@ export default function LoginAdmin() {
                     </div>
                     <button className='buttonLogin' type='submit'>Ingresar</button>
                 </form>
+                <Link to="/"><button className='volver' >← Volver atras </button></Link>
+                
             </div>
         </div>
     )
