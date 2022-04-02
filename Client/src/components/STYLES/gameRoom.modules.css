@@ -1,0 +1,139 @@
+.containerGameRoom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ====== LISTA DE JUGADORES ====== */
+.containerListPlayerRoom {
+  background-color: rgba(216, 221, 226, 0.039);
+  border: solid 3px rgba(216, 221, 226, 0.253);
+  width: 310px;
+  height: 500px;
+  margin: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 0.4rem;
+}
+.contentListPlayerRoom {
+  background-color: rgba(216, 221, 226, 0.349);
+  border: solid 3px rgba(216, 221, 226, 0.253);
+  width: 250px;
+  margin: 0.5rem;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+.positionPlayers {
+  color: rgba(230, 231, 232, 0.539);
+  margin-left: 1rem;
+  margin-top: 0.3rem;
+}
+.infoPlayer {
+  display: flex;
+  flex-direction: column;
+  color: rgba(230, 231, 232, 0.539);
+}
+
+/* ====== GAME ====== */
+.containerGame {
+  background-color: rgba(216, 221, 226, 0.039);
+  border: solid 3px rgba(216, 221, 226, 0.253);
+  padding: 1rem;
+  border-radius: 0.4rem;
+  margin-top: 2rem;
+  max-width: 350px;
+  max-height: 650px;
+}
+
+/* ====== CATEGORIA ====== */
+.categoryQuestion {
+  background-color: rgba(21, 108, 195, 0.311);
+  border-radius: 2rem;
+  color: rgba(230, 231, 232, 0.539);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+/* ====== PREGUNTA ====== */
+.question {
+  background-color: rgba(254, 254, 254, 0.71);
+  border-radius: 0.3rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+/* ====== IMAGEN ====== */
+.imageQuestion img {
+  border-radius: 0.4rem;
+  height: 150px;
+}
+
+/* ====== RESPUESTAS ====== */
+.contentQuestions {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+.contentQuestions button {
+  background-color: rgba(254, 254, 254, 0.71);
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 0.3rem;
+  font-weight: bold;
+  border: none;
+}
+.contentQuestions button:hover {
+  background-color: rgba(158, 157, 157, 0.356);
+  color: rgba(230, 231, 232, 0.539);
+}
+.contentQuestions button:active {
+  background-color: rgba(12, 37, 221, 0.279);
+  color: rgba(230, 231, 232, 0.539);
+}
+.buttonStart {
+  background-color: rgba(254, 254, 254, 0.71);
+  border: none;
+  border-radius: 0.3rem;
+  margin-top: 0.3rem;
+  font-weight: bold;
+}
+.buttonStart:hover {
+  background-color: rgba(158, 157, 157, 0.356);
+  color: rgba(230, 231, 232, 0.539);
+}
+
+
+/* ===== CHAT =====*/
+.containerChatGame {
+  background-color: rgba(216, 221, 226, 0.039);
+  border: solid 3px rgba(216, 221, 226, 0.253);
+  min-width: 280px;
+  height: 500px;
+  margin: 3rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 0.4rem;
+}
+.containerChatGame span  {
+  display: flex;
+  color: rgba(230, 231, 232, 0.539);
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+/* ===== MEDIA QUERIES =====*/
+@media screen and (max-width: 500px) {
+  .containerGame {
+    margin: 2rem;
+  }
+  .containerListPlayerRoom {
+    display: none;
+  }
+  .containerChatGame {
+    display: none;
+  }
+}
