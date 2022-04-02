@@ -14,6 +14,7 @@ function LandingPage() {
         dispatch(loginAsGuest());
     }
 
+    
     return (
         <div className="containerLanding">
             <div className="logoLanging">
