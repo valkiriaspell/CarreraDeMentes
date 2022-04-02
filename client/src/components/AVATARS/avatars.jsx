@@ -6,7 +6,7 @@ import Carousel from "react-elastic-carousel";
 import Item from "./item.js";
 
 function Avatars({setAvatar}){        
-    const [number, setNumber] = useState(0)  
+    const [avatarSelected, setAvatarhere] = useState(false)  
   
     
     const {avatars} = useSelector(state => state);
@@ -20,13 +20,18 @@ function Avatars({setAvatar}){
         { width: 800, itemsToShow: 4 },      
     ];   
     
-
+const handleAvatar = (currentAvatar, currentIndex) => {
+    console.log(currentIndex+1,"currentindex")
+    setAvatar(currentIndex+1)
+    
+}
     return (
         <div>
-            <Carousel breakPoints={breakPoints}>
+            <Carousel breakPoints={breakPoints} pagination={false} onChange={(currentAvatar, currentIndex) => handleAvatar(currentAvatar, currentIndex)}>
                 {avatars?.map(a => 
-                <Item><button onClick={() => setAvatar(a.imageUrl)} className="itemAvatar"><div className="itemAvatar"><img key={a.id} src={a.imageUrl} alt={a.id}></img></div></button></Item>)}         
+                <Item key={a.id}><button key={a.id} id= {a.id}  className="itemAvatar"><img key={a.id} src={a.imageUrl} alt={a.id}></img></button></Item>)}         
         </Carousel>
+                
         </div>
     )
 }

@@ -19,7 +19,7 @@ function SignUpFirebase() {
     email: "",
     password: "",
   });
-  const [avatar, setAvatar] = useState("")
+  const [avatar, setAvatar] = useState(1)
 
   const [error, setError] = useState({});
 
