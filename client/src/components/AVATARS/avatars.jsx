@@ -17,8 +17,8 @@ function Avatars({setAvatar}){
         { width: 1, itemsToShow: 1 },
         { width: 350, itemsToShow: 2 },
         { width: 568, itemsToShow: 3 },
-        { width: 800, itemsToShow: 4 },
-      ];   
+        { width: 800, itemsToShow: 4 },      
+    ];   
     
 
     return (
