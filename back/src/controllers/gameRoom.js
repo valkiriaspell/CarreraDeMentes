@@ -1,37 +1,26 @@
 const {GameRoom, Users, Question} = require('../db.js');
 
 //buscar todas las salas
-exports.seachAllBDGameRoom = async (idRoom) => {
-	try {
-		if (idRoom) {
-			const data = await GameRoom.findOne({
-				where: {id: idRoom},
-				include: [
-					{
-						model: Users,
-						attributes: ['id', 'name', 'email'],
-					},
-				],
-			});
+exports.seachAllBDGameRoom = async () => {
+    try {
+        const data = await GameRoom.findAll({
+            include: [
+                {
+                    model: Users,
+                    attributes: ["id", "name", "email"]
+                },
+                {
+                    model: Question
+                }
+            ]
+        })
 
-			return data;
-		} else {
-			const data = await GameRoom.findAll({
-				include: [
-					{
-						model: Users,
-						attributes: ['id', 'name', 'email'],
-					},
-				],
-			});
-
-			return data;
-		}
-	} catch (e) {
-		console.log('error:', e);
-		return e;
-	}
-};
+        return data
+    } catch (e) {
+        console.log("error:", e)
+        return e
+    }
+}
 
 exports.createBDGameRoom = async ({
 	name,
@@ -97,19 +86,21 @@ exports.updateAddBDGameRoom = async ({idGameRoom, idUser}) => {
 
 
 // Eliminar una sala por su id
-exports.deletByIdGameRoom = async ({id}) => {
-	try {
-		const eliminado = await GameRoom.destroy({where: {id}});
-		if (eliminado > 0) {
-			return [true, 'Salas eliminada'];
-		} else {
-			return [false, 'No se encotro la sala a eliminar'];
-		}
-		console.log(dt);
-	} catch (e) {
-		return e;
-	}
-};
+exports.deletByIdGameRoom = async ({ id }) => {
+    try {
+
+        const eliminado = await GameRoom.destroy({ where: { id } });
+        if (eliminado > 0) {
+
+            return [true, "Salas eliminada"]
+        } else {
+            return [false, "No se encotro la sala a eliminar"]
+        }
+
+    } catch (e) {
+        return e
+    }
+}
 
 // Eliminar un usuario de la sala
 exports.updateDeleteBDGameRoom = async ({idGameRoom, idUserDelet}) => {
@@ -123,7 +114,14 @@ exports.updateDeleteBDGameRoom = async ({idGameRoom, idUserDelet}) => {
 			],
 		});
 
-		if (!data) return [false, 'Sale no encontrada'];
+        const data = await GameRoom.findByPk(idGameRoom, {
+            include: [
+                {
+                    model: Users,
+                    attributes: ["id"]
+                }
+            ]
+        });
 
 			await data.removeUser(idUserDelet);
 			return [true, 'Usuario eliminado'];

@@ -22,8 +22,11 @@ const EditRoom = () =>{
 
     return (
         <div className={s.containerEditRoom}>
-        <form onSubmit={e => handleSubmit(e)}>
+        <form className={s.formEditRoom} onSubmit={e => handleSubmit(e)}>
             <div>
+                <h5 style={{fontWeight: "bold"}}>Ajuste de la Partida</h5>
+            </div>
+            <div className={s.contentEditRoom}>
             <label >Tiempo</label>
             <select name="difficulty"  onChange={e => handleChange(e)}>
                 <option value="easy">15</option>
@@ -31,6 +34,7 @@ const EditRoom = () =>{
                 <option value="dificult">25</option>
             </select>
             </div>
+            <div className={s.contentEditRoom}>
             <label >Categoria excluida</label>
             <select name="category"  onChange={e => handleChange(e)}>
                 <option value="">Ninguna</option>
@@ -42,18 +46,25 @@ const EditRoom = () =>{
                 <option value="movies">Cine</option>
                 <option value="geography">Geografia</option>
             </select>
+            </div>
+            <div className={s.contentEditRoom}>
             <label >Cantidad de rondas</label>
             <select name="rounds"  onChange={e => handleChange(e)}>
                 <option value="ten" >10</option>
                 <option value="fifteen" >15</option>
                 <option value="twenty" >20</option>
             </select>
+            </div>
+            <div className={s.contentEditRoom}>
             <label >Publica o Privada</label>
             <select name="open"  onChange={e => handleChange(e)}>
                 <option value={true} >publica</option>
                 <option value={false} >privada</option>
             </select>
-            <button type="submit" >establecer cambios</button>
+            </div>
+            <div className={s.buttonSubmitChanges}>
+            <button type="submit" >Establecer cambios</button>
+            </div>
         </form>
         </div>
     )
