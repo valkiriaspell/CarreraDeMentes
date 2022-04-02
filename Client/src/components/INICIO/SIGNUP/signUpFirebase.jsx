@@ -15,11 +15,11 @@ function SignUpFirebase() {
   const history = useHistory();
 
   const [input, setInput] = useState({
-    name: "",
-    avatar: "",
+    name: "",    
     email: "",
     password: "",
   });
+  const [avatar, setAvatar] = useState("")
 
   const [error, setError] = useState({});
 
@@ -54,7 +54,12 @@ function SignUpFirebase() {
     const validacion = validar(input);
 
     if (Object.keys(validacion).length === 0) {
-      dispatch(registerUser({...input}))
+      dispatch(registerUser({
+      name: input.name,    
+      email: input.email,
+      password: input.password,
+      avatar: avatar
+      }))
       const registrar = await firebaseRegistrarUsuario(
         input.email,
         input.password
@@ -113,7 +118,7 @@ function SignUpFirebase() {
             />
           </div>
           <div className="avatarsRegister">
-          <Avatars setAvatar={setInput}/>
+          <Avatars setAvatar={setAvatar}/>
           </div>
           
           <button className="registerButton" type="submit">Registrarse</button>

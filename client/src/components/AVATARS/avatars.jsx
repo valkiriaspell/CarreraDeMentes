@@ -25,7 +25,7 @@ function Avatars({setAvatar}){
         <div>
             <Carousel breakPoints={breakPoints}>
                 {avatars?.map(a => 
-                <Item><button onClick={() => setAvatar(a.imgUrl)} className="itemAvatar"><div className="itemAvatar"><img key={a.id} src={a.imageUrl} alt={a.id}></img></div></button></Item>)}         
+                <Item><button onClick={() => setAvatar(a.imageUrl)} className="itemAvatar"><div className="itemAvatar"><img key={a.id} src={a.imageUrl} alt={a.id}></img></div></button></Item>)}         
         </Carousel>
         </div>
     )
