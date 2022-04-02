@@ -9,6 +9,7 @@
     "react": "^17.0.2",
     "react-bootstrap": "^2.2.2",
     "react-dom": "^17.0.2",
+    "react-elastic-carousel": "^0.11.5",
     "react-icons": "^4.3.1",
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.2.0",
@@ -18,6 +19,7 @@
     "redux-thunk": "^2.4.1",
     "socket.io": "^4.4.1",
     "socket.io-client": "^4.4.1",
+    "styled-components": "^5.3.5",
     "thunk": "^0.0.1",
     "web-vitals": "^2.1.4"
   },

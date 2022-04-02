@@ -56,7 +56,7 @@ function Instructions() {
             <div className="carousel-caption d-none d-md-block">
               <h5>Responde preguntas</h5>
               <p>
-                Responde preguntas aleatorias sobre las categotias seleccionadas, antes de que s ete acabe el tiempo.
+                Responde preguntas aleatorias sobre las categotias seleccionadas, antes de que se te acabe el tiempo.
               </p>
             </div>
           </div>

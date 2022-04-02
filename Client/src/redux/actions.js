@@ -71,7 +71,7 @@ export function createRoom(user){
 
 export const getAvatars = ()=> async (dispatch)=>{
     try {
-        const result = await axios.get(`/ ruta para ver avatars`)
+        const result = await axios.get(`http://localhost:3001/avatar`)
         dispatch({type: GET_AVATARS, payload: result.data}) 
     } catch (error) {
         console.log(error)
