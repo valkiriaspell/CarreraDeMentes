@@ -4,10 +4,13 @@
     justify-content: space-between;
     align-items: center;
 }
-
-.avatars img{
-    height: 100px;
+.itemAvatar {
+    background: none;
+}
+.itemAvatar img{
+    height: 150px;
     border-radius: 50%;
+    background: none;
 }
 
 .flechitas {

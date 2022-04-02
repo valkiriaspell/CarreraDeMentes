@@ -25,7 +25,7 @@ function Avatars(){
         <div>
             <Carousel breakPoints={breakPoints}>
                 {avatars?.map(a => 
-                <Item><img key={a.id} src={a.imageUrl} alt={a.id}></img></Item>)}         
+                <Item><div className="itemAvatar"><img key={a.id} src={a.imageUrl} alt={a.id}></img></div></Item>)}         
         </Carousel>
         </div>
     )
