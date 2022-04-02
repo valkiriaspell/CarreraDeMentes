@@ -4,7 +4,8 @@ import Avatar from "../IMG/avatar.png"
 import Nivel from "../IMG/level.png"
 import Monedas from "../IMG/coin.png"
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../../redux/actions';
 
 function UserCard({location}) {
   const {user} = useSelector(state => state);
@@ -23,11 +24,18 @@ function UserCard({location}) {
       }  
     }())
   } , [location])
+  
+  const dispatch = useDispatch()
+  const email = localStorage.getItem("email");
+  useEffect(() =>{
+    !user.name && 
+    dispatch(loginUser(email))
+  }, [email])
 
   return (
     <div className="infoUser">
       <div className="avatarCard">
-        <img src={Avatar} alt="Avatar" width={50} />
+        <img src={user.currentAvatar} alt="Avatar" width={50} />
         <span>{user?.name}</span>
       </div>
       <div className="nameUser">

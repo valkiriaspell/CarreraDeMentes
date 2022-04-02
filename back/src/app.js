@@ -42,8 +42,8 @@ io.on('connection',(socket)=>{//que hago cuando recibo 'connect'?
 		io.to(room).emit('DISCONNECT')
     })
     socket.on('NEW_MESSAGE',(data)=>{ //alguien envia un nuevo mensaje
-        const {text,name}=data;//cual es el mensaje?  para que room? quien lo envia?
-        io.to(room).emit('NEW_MESSAGE',{text,name})
+        const {text,name, email}=data;//cual es el mensaje?  para que room? quien lo envia?
+        io.to(room).emit('NEW_MESSAGE',{text,name, email})
     }) 
 })
 
