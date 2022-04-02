@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { firebaseRegistrarUsuario } from "../../../utils/Firebase";
 import { useHistory } from "react-router-dom";
 import "../../STYLES/singUp.modules.css";
@@ -7,20 +7,25 @@ import User from "../../IMG/person.png";
 import Email from "../../IMG/email.png";
 import Contraseña from "../../IMG/unlock.png";
 import { useDispatch } from "react-redux";
-import { registerUser } from "../../../redux/actions";
+import { getAvatars, registerUser } from "../../../redux/actions";
+import Avatars from "../../AVATARS/avatars";
 
 function SignUpFirebase() {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const [input, setInput] = useState({
-    name: "",
-    avatar: "",
+    name: "",    
     email: "",
     password: "",
   });
+  const [avatar, setAvatar] = useState("")
 
   const [error, setError] = useState({});
+
+  useEffect(() => {
+    dispatch(getAvatars()) 
+}, [])
 
   function validar(input) {
     let errors = {};
@@ -49,7 +54,12 @@ function SignUpFirebase() {
     const validacion = validar(input);
 
     if (Object.keys(validacion).length === 0) {
-      dispatch(registerUser({...input}))
+      dispatch(registerUser({
+      name: input.name,    
+      email: input.email,
+      password: input.password,
+      avatar: avatar
+      }))
       const registrar = await firebaseRegistrarUsuario(
         input.email,
         input.password
@@ -69,6 +79,7 @@ function SignUpFirebase() {
   return (
     <div className="containerSingUp">
       <div className="contentSingUp">
+        
         <form onSubmit={handleRegister}>
           <div className="imgUser">
             <img src={Perfil} alt="User" width={60} />
@@ -84,6 +95,7 @@ function SignUpFirebase() {
               autoComplete="off"
             />
           </div>
+         
           <div className="input">
             <img src={Email} alt="Email" width={23} />
             <input
@@ -105,18 +117,11 @@ function SignUpFirebase() {
               onChange={(e) => handleChange(e)}
             />
           </div>
-          <select
-            name="avatar"
-            onChange={(e) => handleChange(e)}
-            defaultValue="Seleccione un avatar"
-          >
-            <option disabled={true}>Seleccione un avatar</option>
-            <option value="avatar 1">Avatar 1</option>
-            <option value="avatar 2">Avatar 2</option>
-            <option value="avatar 3">Avatar 3</option>
-            <option value="avatar 4">Avatar 4</option>
-          </select>
-          <button type="submit">Registrarse</button>
+          <div className="avatarsRegister">
+          <Avatars setAvatar={setAvatar}/>
+          </div>
+          
+          <button className="registerButton" type="submit">Registrarse</button>
         </form>
       </div>
       {error.name && <p>{error.name}</p>}

@@ -27,7 +27,7 @@ module.exports = (sequelize) => {
 		},
 		currentAvatar: {
 			//ID de avatar
-			type: DataTypes.INTEGER,
+			type: DataTypes.INTEGER,//defaultValue: un avatar para cuando se logue con face o google
 			validate: {
 				isInt: true,
 				min: 1
