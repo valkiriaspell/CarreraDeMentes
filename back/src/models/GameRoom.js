@@ -18,23 +18,22 @@ module.exports = (sequelize) => {
 		usersAmount: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
+			defaultValue: 6,
 			validate: {
 				isInt: true,
 			}
 		},
-		questionAmout: {
+		questionAmount: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
+			defaultValue: 10,
 			validate: {
 				isInt: true,
 			}
-		},
-		email:{
-			type: DataTypes.STRING,
-			allowNull: false,
 		},
 		public_: {
 			type: DataTypes.BOOLEAN,
+			defaultValue: true
 		},
 	},
     { timestamps: false });

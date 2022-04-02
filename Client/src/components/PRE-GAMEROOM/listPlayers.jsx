@@ -7,54 +7,54 @@ const ListPlayers = ({expelPlayer}) =>{
 
     function handleExpectPlayer(e){
         //validate that player is not ready before to expel him out of the room
-        const userToExpel = preRoomUsers.findIndex(user=> user.email === e.target.id)
-        preRoomUsers[userToExpel].ready !== true && expelPlayer(e);
+        const userToExpel = preRoomUsers?.users.findIndex(user=> user.id === e.target.id)
+        preRoomUsers?.users[userToExpel].ready !== true && expelPlayer(e);
     }
-
     return (
         <div className={s.containerPlayers}>
         <ul>
         {
             user.host === true 
             ?
-            preRoomUsers?.map(user =>{
+            preRoomUsers?.users?.map(us =>{
+                console.log(us)
                 return (
-                    <>
-                        <button key={user.email} className={s.inactive} id={user.email} >listo</button>
-                        <li key={user.email}>{user.name}</li>
+                    <div key={us.id}>
+                        <div key={us.id} className={s.inactive} id={us.id} >listo</div>
+                        <li key={`${user.id}2`}>{us.id}</li>
                         <button 
                             onClick={handleExpectPlayer} 
                             id={user.email}
-                            key={user.email} 
+                            key={`${user.id}3`} 
                             disabled={user.host ? true : false} 
                         >
                             x
                         </button>
                         {
-                            user.host === true && <div>H</div>
+                            user.host === true && <div key={`${user.id}4`} >H</div>
                         }
-                    </>
+                    </div>
                 )
             })
-            :
-            preRoomUsers?.map(user =>{
+            : 
+            preRoomUsers?.users?.map(user =>{
                 return (
-                    <>
-                        <button key={user.email} className={s.inactive} id={user.email} >listo</button>
-                        <li key={user.email}>{user.name}</li>
+                    <div key={`${user.id}6`}>
+                        <button key={`${user.id}6`} className={s.inactive} id={user.email} >listo</button>
+                        <li key={`${user.id}7`}>{user.name}</li>
                         {
-                            user.host === true && <div>H</div>
+                            user.host === true && <div key={`${user.id}8`} >H</div>
                         }
-                    </>
+                    </div>
                 )
             })
         }
-        <li>personajes 1</li>
+{/*         <li>personajes 1</li>
         <li>personajes 2</li>
         <li>personajes 3</li>
         <li>personajes 4</li>
         <li>personajes 5</li>
-        <li>personajes 6</li>
+        <li>personajes 6</li> */}
     </ul>
         </div>
     )
