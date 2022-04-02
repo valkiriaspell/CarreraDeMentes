@@ -1,4 +1,10 @@
-const {Users, Avatars} = require('../db');
+const { Users, Avatar } = require('../db');
+
+const includesAvatar = { include: [{ model: Avatar }] };
+const msjError = (msj) => ({ error: msj });
+
+let guestUser = 100;
+
 
 const createUsers = async ({
 	name,
@@ -15,7 +21,7 @@ const createUsers = async ({
 }) => {
 	try {
 		const [newUser, bool] = await Users.findOrCreate({
-			where: {email},
+			where: { email },
 			defaults: {
 				name,
 				email,
@@ -29,22 +35,19 @@ const createUsers = async ({
 				guest,
 			},
 		});
-		newUser.addAvatars(idAvatar);
+		bool && await newUser.addAvatar(idAvatar);
 
-		const userRelated = Users.findOne({
-			where: {email},
-			include: Avatars,
-		});
-		return userRelated;
+		return await Users.findOne({ where: { email }, ...includesAvatar })
+
+
 	} catch (error) {
 		return error;
 	}
 };
-let guestUser = 100;
+
 const createGuestUser = async () => {
 	try {
 		guestUser++;
-		console.log('entrando');
 
 		const newUser = await Users.create({
 			name: `User${guestUser}`,
@@ -52,13 +55,10 @@ const createGuestUser = async () => {
 			guest: true,
 		});
 
-		console.log(newUser);
-		newUser.addAvatars(1);
-		const userRelated = Users.findOne({
-			where: {name: `User${guestUser}`},
-			include: Avatars,
-		});
-		return userRelated;
+		await newUser.addAvatar(1);
+
+		return await Users.findOne({ where: { name: `User${guestUser}` }, ...includesAvatar })
+
 	} catch (error) {
 		return error;
 	}
@@ -66,39 +66,49 @@ const createGuestUser = async () => {
 
 const getUser = async (email) => {
 	try {
-		let userFound = await Users.findOne({where: {email: email}});
-
-		return userFound;
+		const userFound = await Users.findOne({ where: { email }, ...includesAvatar });
+		return !userFound ? msjError("El email no existe") : userFound
 	} catch (error) {
 		return error;
 	}
 };
 const getUsers = async () => {
 	try {
-		let userFound = await Users.findAll();
+		const userFound = await Users.findAll(includesAvatar);
 
-		return userFound;
+		return !userFound.length ? msjError("No hay ningun usuario en la base de dato") : userFound;
 	} catch (error) {
 		return error;
 	}
 };
 const deleteUser = async (id) => {
 	try {
-		const eliminado = await Users.destroy({where: {id: id}});
+		const eliminado = await Users.destroy({ where: { id } });
 
-		return 'Usuario eliminado correctamente';
+		return eliminado > 0 ? 'Usuario eliminado correctamente' : msjError("El usuario no existe")
 	} catch (e) {
 		return e;
 	}
 };
-const modifyUser = async (id, name, currentAvatar) => {
+const modifyUser = async ({ id, name, idAvatar }) => {
 	try {
-		const modifiedUser = await Users.update(
-			{name: name, currentAvatar: currentAvatar},
-			{where: {id: id}}
-		);
-		console.log(modifiedUser);
-		return modifiedUser;
+
+		const userId = async () => await Users.findByPk(id, { ...includesAvatar });
+
+		const user = await userId()
+		const newAvatar = await Avatar.findByPk(idAvatar)
+
+		if (!user) return msjError("Usuario no encontrado");
+		if (!newAvatar) return msjError("El avatar no fue encontrado en la base de datos");
+		if (user.guest) return msjError("Lo sinto, los invitados no pueden cambiar de avatar")
+
+		await user.removeAvatar(user.avatars[0].id);
+		await user.addAvatar(idAvatar);
+		await user.update({ name }, { where: { id } });
+
+		const data = await userId()
+
+		return data;
 	} catch (e) {
 		return e;
 	}
