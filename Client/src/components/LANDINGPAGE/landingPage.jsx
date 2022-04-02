@@ -1,20 +1,30 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useHistory } from "react-router-dom";
 import { loginAsGuest } from "../../redux/actions";
 import "../STYLES/landingPage.modules.css"
 import Cat from "../IMG/cat.gif"
 
 
 function LandingPage() {
+    
+    const { user } = useSelector(state => state)
+    const history = useHistory()
     const dispatch = useDispatch()
 
-    function handleLoginAsGuest(e){
+    async function handleLoginAsGuest(e){
         e.preventDefault();
-        dispatch(loginAsGuest());
+        const guest = {
+            guest: true,
+        }
+        const login = await dispatch(loginAsGuest(guest));
+        if(login.email){
+            localStorage.setItem('token', login.email)
+            history.push("/home")
+        }
+        console.log(login)
     }
 
-    
     return (
         <div className="containerLanding">
             <div className="logoLanging">

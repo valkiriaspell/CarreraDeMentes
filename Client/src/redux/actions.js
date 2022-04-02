@@ -11,11 +11,12 @@ export const GET_AVATARS = 'GET_AVATARS'
 
 
 
-export function loginAsGuest(){
+export function loginAsGuest(guest){
     return async function(dispatch){
         try{
-            const {data} = await axios.get('/ruta para hacer post')
-            dispatch({type: 'LOGIN_USER_GUEST', payload: data})
+            const test = await axios.post('http://localhost:3001/users', guest)
+            dispatch({type: 'LOGIN_USER_GUEST', payload: test.data})
+            return test.data
         }catch(e) {
             console.log(e)
         }
