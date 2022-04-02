@@ -17,6 +17,7 @@ router.post('/', async (req, res) => {
 	try {
 		const [bool, msj] = await createBDGameRoom(req.body);
 		if (bool) {
+			console.log(msj)
 			res.send(msj);
 		} else {
 			res.send('No se pudo crear la sala');

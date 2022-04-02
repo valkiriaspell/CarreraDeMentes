@@ -26,7 +26,7 @@ function App() {
         <Route path="/signup" component={signUpFirebase} />
         <Route path="/recuperarcontrasena" component={RecuperarContrasena} />
         <Route path="/editProfile" component={EditProfile} />
-        <Route path="/room/:idRoom" component={PreGameRoom} />
+        <Route path="/room/:idUser" component={PreGameRoom} />
         <Route path="/partidasDisponibles" component={GameListRoom} />
         <Route path="/tienda" component={PlayStore} />
         <Route path="/añadirPregunta" component={FormAddQuestions} />
