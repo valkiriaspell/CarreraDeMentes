@@ -18,7 +18,7 @@ function LandingPage() {
         <div className="containerLanding">
             <div className="logoLanging">
                     <img src={Cat} alt="Cat"  width={300}/>
-                    <span>Pagina en contrucción... hacemos todo lo posible.</span>
+                    <span>Pagina en construcción... hacemos todo lo posible.</span>
             </div>
             <NavLink className="link" to='/home'>
                 <button  onClick={e => handleLoginAsGuest(e)}>
