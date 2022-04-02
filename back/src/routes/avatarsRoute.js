@@ -9,7 +9,7 @@ router.get('/', async function (req, res) {
         res.status(200).json(avatar)
 
     } catch (error) {
-        res.status(404).send(`Avatar can not GET: ${error}`)
+        res.status(404).send(`No se puede encontrar el avatar: ${error}`)
     }
 })
 
