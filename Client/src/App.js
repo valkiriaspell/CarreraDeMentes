@@ -12,6 +12,7 @@ import { initializeApp } from 'firebase/app';
 import initialPage from './components/INICIO/initialPage';
 import signUpFirebase from './components/INICIO/SIGNUP/signUpFirebase';
 import LandingPage from './components/LANDINGPAGE/landingPage';
+import GameRoom from './components/GAMEROOM/gameRoom';
 import RecuperarContrasena from './components/INICIO/RECUPERARCONTRASENA/recuperarContrasena';
 
 initializeApp(config)
@@ -30,6 +31,7 @@ function App() {
         <Route path="/partidasDisponibles" component={GameListRoom} />
         <Route path="/tienda" component={PlayStore} />
         <Route path="/añadirPregunta" component={FormAddQuestions} />
+        <Route path="/partida" component={GameRoom} />
     </div>
   );
 }
