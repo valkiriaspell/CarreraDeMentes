@@ -14,6 +14,8 @@ import signUpFirebase from './components/INICIO/SIGNUP/signUpFirebase';
 import LandingPage from './components/LANDINGPAGE/landingPage';
 import GameRoom from './components/GAMEROOM/gameRoom';
 import RecuperarContrasena from './components/INICIO/RECUPERARCONTRASENA/recuperarContrasena';
+import Footer from './components/FOOTER/footer';
+import loginAdmin from './components/ADMIN/login';
 
 initializeApp(config)
 
@@ -22,7 +24,9 @@ function App() {
   return (
     <div className="App">
         <Route exact path="/" component={LandingPage} />
+        <Route exact path="/" component={Footer} />
         <Route path="/home" component={Home} />
+        <Route path="/home" component={Footer} />
         <Route path="/login" component={initialPage} />
         <Route path="/signup" component={signUpFirebase} />
         <Route path="/recuperarcontrasena" component={RecuperarContrasena} />
@@ -32,6 +36,7 @@ function App() {
         <Route path="/tienda" component={PlayStore} />
         <Route path="/añadirPregunta" component={FormAddQuestions} />
         <Route path="/partida" component={GameRoom} />
+        <Route path="/administrador" component={loginAdmin} />
     </div>
   );
 }
