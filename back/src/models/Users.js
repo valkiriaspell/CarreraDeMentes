@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
 			type: DataTypes.STRING,
 			unique: true,
 			allowNull: false,
-/* 			validate: {
+			/* 			validate: {
 				isAlpha: true,
 				len: [2,12], 
 			} */
@@ -22,22 +22,15 @@ module.exports = (sequelize) => {
 			allowNull: false,
 			unique: true,
 			validate: {
-				isEmail: true
-			}
+				isEmail: true,
+			},
 		},
-		currentAvatar: {
-			//ID de avatar
-			type: DataTypes.INTEGER,//defaultValue: un avatar para cuando se logue con face o google
-			validate: {
-				isInt: true,
-				min: 1
-			}
-		},
+
 		avatarStock: {
 			type: DataTypes.INTEGER,
 			validate: {
 				isInt: true,
-			}
+			},
 		},
 		coins: {
 			type: DataTypes.INTEGER,
@@ -45,36 +38,36 @@ module.exports = (sequelize) => {
 			defaultValue: 0,
 			validate: {
 				isInt: true,
-			}
+			},
 		},
 		experiencePoints: {
 			type: DataTypes.INTEGER,
 			defaultValue: 0,
 			validate: {
 				isInt: true,
-				min: 0
-			}
+				min: 0,
+			},
 		},
 		level: {
 			type: DataTypes.INTEGER,
 			defaultValue: 0,
 			validate: {
 				isInt: true,
-			}
+			},
 		},
 		wins: {
 			type: DataTypes.INTEGER,
 			defaultValue: 0,
 			validate: {
 				isInt: true,
-			}
+			},
 		},
 		friendId: {
 			//Id de amigos
 			type: DataTypes.INTEGER,
 			validate: {
 				isInt: true,
-			}
+			},
 		},
 		host: {
 			type: DataTypes.BOOLEAN,
@@ -82,7 +75,7 @@ module.exports = (sequelize) => {
 		},
 		guest: {
 			type: DataTypes.BOOLEAN,
-			defaultValue: true,
+			defaultValue: false,
 		},
 	});
 };
