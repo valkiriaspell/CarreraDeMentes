@@ -73,16 +73,16 @@ export default function EditProfile() {
                 <form onSubmit={onSubmit}>
                 <h3>Editar perfil</h3>                
                     <div className='formName'>
-                        <label>Nombre de Usuario:</label>
+                        <label>Nuevo nombre de Usuario:</label>
                         <>
                             <input className={errorName !== "" ? 'danger' : "inputName"} name="name" type="text" value={username} onChange={(e) => validation(e)} />
                             {errorName ? <p className='error'>{errorName}</p> : null}
                         </>
                     </div>                   
                     <div className='formAvatar'>
-                        <label>Avatar</label>
+                        <label>Seleccionar Avatar:</label>
                         <div>
-                            <Avatars />
+                        <Avatars setAvatar={setAvatar}/>
                         </div>
                     </div>
                     <div className='FormSubmit'>

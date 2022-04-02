@@ -112,8 +112,11 @@ function SignUpFirebase() {
               onChange={(e) => handleChange(e)}
             />
           </div>
+          <div className="avatarsRegister">
+          <Avatars setAvatar={setInput}/>
+          </div>
           
-          <button type="submit">Registrarse</button>
+          <button className="registerButton" type="submit">Registrarse</button>
         </form>
       </div>
       {error.name && <p>{error.name}</p>}

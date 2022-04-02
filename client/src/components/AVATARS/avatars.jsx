@@ -5,12 +5,12 @@ import "../STYLES/avatars.css"
 import Carousel from "react-elastic-carousel";
 import Item from "./item.js";
 
-function Avatars(){  
-    const [avatar, setAvatar] = useState("")  
+function Avatars({setAvatar}){        
     const [number, setNumber] = useState(0)  
   
     
     const {avatars} = useSelector(state => state);
+    
     console.log(avatars, "aqui avatars")
     
     const breakPoints = [
@@ -25,7 +25,7 @@ function Avatars(){
         <div>
             <Carousel breakPoints={breakPoints}>
                 {avatars?.map(a => 
-                <Item><div className="itemAvatar"><img key={a.id} src={a.imageUrl} alt={a.id}></img></div></Item>)}         
+                <Item><button onClick={() => setAvatar(a.imgUrl)} className="itemAvatar"><div className="itemAvatar"><img key={a.id} src={a.imageUrl} alt={a.id}></img></div></button></Item>)}         
         </Carousel>
         </div>
     )
