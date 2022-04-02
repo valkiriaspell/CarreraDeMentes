@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { firebaseCerrarSesion } from "../../utils/Firebase";
 import "../STYLES/home.modules.css";
@@ -92,7 +92,7 @@ function Home(props) {
                 </i>
               </a>
             </li>
-            <li>
+            <li> 
               <a
                 href="https://twitter.com/intent/tweet?text=juega%20conmigo&url=https://www.linkedin.com/in/matias-beier-dev/&hashtags=CarreradeMente"
                 target="blanck"
