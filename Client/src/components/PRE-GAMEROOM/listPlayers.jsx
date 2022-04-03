@@ -14,7 +14,7 @@ const ListPlayers = ({ expelPlayer }) => {
         <div className={s.containerPlayers}>
             <ul className="allPlayers">
                 {
-                    user.host === true
+                    user?.host === true
                         ?
                         preRoomUsers?.users?.map(us => {
                             console.log(us)
@@ -22,12 +22,14 @@ const ListPlayers = ({ expelPlayer }) => {
                                 <div className="eachPlayer" key={us.id}>
                                     <li key={`${user.id}2`}>{user.name}</li>
                                     {user.host === true && <div key={`${user.id}4`} >Host</div>}
-                                    <button
+                                    {
+                                        us.id !== user.id &&
+                                        <button
                                         onClick={handleExpectPlayer}
                                         id={user.email}
                                         key={`${user.id}3`}
-                                        disabled={user.host ? true : false}
-                                    >x </button>
+                                        >x </button>
+                                    }
                             <div key={us.id} className={s.inactive} id={us.id} >listo</div>
                                 </div>
                             )
@@ -45,12 +47,6 @@ const ListPlayers = ({ expelPlayer }) => {
                             )
                         })
                 }
-                {/*         <li>personajes 1</li>
-        <li>personajes 2</li>
-        <li>personajes 3</li>
-        <li>personajes 4</li>
-        <li>personajes 5</li>
-        <li>personajes 6</li> */}
             </ul>
         </div>
     )
