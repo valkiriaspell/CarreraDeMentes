@@ -37,13 +37,13 @@ export default function EditProfile() {
         switch (true) {
 
             case e.target.name === "name":
-                if (!/^[a-zA-Z]*$/.test(e.target.value)) {
+                if (/^[a-z0-9_-]$/.test(e.target.value)) { 
                     setUsername(e.target.value);
-                    setErrorName("No usar espacios, numeros o simbolos")
+                    setErrorName("Caracteres no permitidos")
                 
                 } else if (e.target.value.length > 16) {
                     setUsername(e.target.value);
-                    setErrorName("Máximo 16 carácteres")
+                    setErrorName("Máximo 16 caracteres")
                 } else {
                     setUsername(e.target.value);
                     setErrorName("")
