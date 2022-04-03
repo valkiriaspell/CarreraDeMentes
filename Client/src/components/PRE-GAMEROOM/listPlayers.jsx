@@ -6,7 +6,7 @@ import readyDark from "../IMG/readyDark.png"
 import readyGreen from "../IMG/readyGreen2.png"
 import { Link } from "react-router-dom";
 
-const ListPlayers = ({ expelPlayer }) => {
+const ListPlayers = ({ expelPlayer, image }) => {
     const { preRoomUsers, user } = useSelector(state => state)
 /*     const [readyPlayer, setReady] = useState(readyDark) */
 
@@ -29,6 +29,7 @@ const ListPlayers = ({ expelPlayer }) => {
         console.log("ready")
       }, [readyPlayer]) */
 
+
     return (
         <div className={s.containerPlayers}>
 
@@ -37,7 +38,7 @@ const ListPlayers = ({ expelPlayer }) => {
                     user?.host === true
                         ?
                         preRoomUsers?.users?.map(us => {
-                            console.log(us)
+                            console.log(us.id)
                             return (
 
                                     <li key={`${us.id}2`}>
@@ -49,7 +50,7 @@ const ListPlayers = ({ expelPlayer }) => {
                                         <div>{us.name}</div>
 
                                         <div className={s.readyButton} >
-                                        <img key={us.id} id={us.id} src={readyDark} alt="ready"/>
+                                        <img key={us.id} id={us.id} src={image} alt="ready"/>
                                         </div>
 
 
@@ -75,8 +76,8 @@ const ListPlayers = ({ expelPlayer }) => {
                                             <img src={corona} alt="corona" />
                                         </div>
                                     }
-                                    <img key={us.id} id={us.id} src={readyDark} alt="ready"/>
                                     <div key={`${us.id}7`}>{us.name}</div>
+                                    <img key={us.id} id={us.id} src={image} alt="ready"/>
                                 </li>
                             )
                         })

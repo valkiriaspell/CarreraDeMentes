@@ -114,11 +114,11 @@ export function listUsersInPreRoom(IdRoom){
     }
 }
 
-export function setReady(id){
+/* export function setReady(id){
     return  function(dispatch){
             dispatch({type: 'SET_READY', payload: id})
     }
-}
+} */
 
 export function listAllRooms(){
     return async function(dispatch){

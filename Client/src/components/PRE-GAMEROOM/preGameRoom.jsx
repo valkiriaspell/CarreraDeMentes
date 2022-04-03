@@ -12,6 +12,8 @@ import { Link } from "react-router-dom";
 import style from "../STYLES/form.css"
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { AiFillSound } from "react-icons/ai";
+import readyDark from "../IMG/readyDark.png"
+import readyGreen from "../IMG/readyGreen2.png"
 
 function PreGameRoom({match}) {
     /* const dispatch = useDispatch(); */
@@ -32,12 +34,13 @@ function PreGameRoom({match}) {
                 })
                 .then((value) => listUsersInPreRoom(value))
     }, [email]) */
-  const { sendReady, sendStartGame, game, expelPlayer } = useSocket(idUser);
+  const { sendReady, sendStartGame, game, expelPlayer, image } = useSocket(idUser);
 
   function countReady() {
     const readys = preRoomUsers?.users?.filter((user) => user.ready === true);
     return readys?.length;
   }
+  
 
   if (autenticado) {
     return game === false ? (
@@ -53,7 +56,7 @@ function PreGameRoom({match}) {
           <AiFillSound style={{ width: "30px" }} />
         </div>
         <div>
-          <ListPlayers expelPlayer={expelPlayer} />
+          <ListPlayers expelPlayer={expelPlayer} image={image}/>
         </div>
         <div>
           <div>
@@ -67,7 +70,8 @@ function PreGameRoom({match}) {
             {/* <NavLink to={"/partida"}>
               <button>Iniciar</button>
             </NavLink> */}
-            {user?.host === true ? (
+            {user?.host === true 
+            ? (
               <button
                 disabled={
                   preRoomUsers?.users?.length - 1 === 0

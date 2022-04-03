@@ -17,6 +17,7 @@ function useChatSocketIo(idGameRoom) {
     const socketIoRef = useRef();
     const [game, setGame] = useState(false)
     const email = localStorage.getItem("email");
+    const [image, setImage] = useState(readyDark)
     useEffect(() =>{
         //create web socket connection
         const newUserInRoom = () =>{
@@ -51,12 +52,12 @@ function useChatSocketIo(idGameRoom) {
             //change readyState from user to click in button
             socketIoRef.current.on("READY", ({id}) =>{
                 const imgReady = document.getElementById(id)
-                console.log(imgReady)
+                
                 if(imgReady.src === readyDark){
-                    dispatch(setReady(id))
-                    imgReady.src = readyGreen;
+                    /* dispatch(setReady(id)) */
+                    setImage(readyGreen);
                 } else {
-                    imgReady.src = readyDark;
+                    setImage(readyDark);
                 }
             })
 
@@ -108,7 +109,7 @@ function useChatSocketIo(idGameRoom) {
         socketIoRef.current.emit("EXPEL_PLAYER", id)
     }
 
-    return { messages, sendMessage, sendReady, sendStartGame, game, expelPlayer}
+    return { messages, sendMessage, sendReady, sendStartGame, game, expelPlayer, image}
 }
 
 export default useChatSocketIo;

@@ -53,7 +53,7 @@ const reducer = (state = initialState, action) => {
             listRooms: action.payload
         }
 
-        case SET_READY: 
+/*         case SET_READY: 
         const index = state.preRoomUsers.users.findIndex(user => user.id === action.payload)
         state.preRoomUsers.users[index].ready
             ? state.preRoomUsers.users[index].ready === true
@@ -62,7 +62,7 @@ const reducer = (state = initialState, action) => {
             : state.preRoomUsers.users[index].ready = true
         return {
             ...state,
-        }
+        } */
 
         case GET_AVATARS: 
         return {
