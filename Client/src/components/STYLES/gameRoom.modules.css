@@ -37,6 +37,14 @@
   color: rgba(230, 231, 232, 0.539);
 }
 
+.allPlayers{
+  color: white;
+}
+.eachPlayer{
+  display: flex;
+  flex-direction: column;
+}
+
 /* ====== GAME ====== */
 .containerGame {
   background-color: rgba(216, 221, 226, 0.039);

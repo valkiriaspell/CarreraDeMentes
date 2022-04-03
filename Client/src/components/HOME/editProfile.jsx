@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { updateUser } from '../../redux/actions';
 import { Link, useHistory } from 'react-router-dom'
-import { getAvatars } from '../../redux/actions';
+import { getAvatars, updateUser } from '../../redux/actions';
 import Avatars from '../AVATARS/avatars';
 import "../STYLES/form.css"
 
@@ -15,16 +15,17 @@ export default function EditProfile() {
     //////////  ---->    Local states data   <------ //////////////
     const [msg, setMSG] = useState("");
     const [username, setUsername] = useState("");    
-    const [avatar, setAvatar] = useState("");
-
+    const [avatar, setAvatar] = useState(1);
+    
     //////////  ---->    Local states errors   <------ //////////////
     const [errorName, setErrorName] = useState("")    
-
-
-    /////////  ---->    Store states    <------ //////////////
+    
+    
+    /////////  ---->    Store states    <------ //////////////     
+    const {user} = useSelector(state => state);
     
     useEffect(() => {
-        dispatch(getAvatars()) 
+        dispatch(getAvatars())        
     }, [])
     
     
@@ -56,11 +57,12 @@ export default function EditProfile() {
     //////////  ---->    on Submit   <------ //////////////
     const onSubmit = (e) => {
         e.preventDefault()
-        // dispatch(updateUser({
-        //     name: username,
-        //     avatar: avatar,               
-        //     mail: mail            
-        // }))
+        dispatch(updateUser({
+            id: user.id,
+            name: username,
+            idAvatar: avatar,
+                      
+        }))
         setMSG("Cambios guardados")
         setUsername("")
      

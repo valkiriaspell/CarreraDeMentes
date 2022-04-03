@@ -47,7 +47,7 @@ export function loginUser(email){
 
 export const updateUser = (userData)=> async ()=>{
     try {
-        const result = await axios.post(`/ ruta para actualizar user`, userData)  
+        const result = await axios.put(`http://localhost:3001/users`, userData)  
     } catch (error) {
         console.log(error)
     }

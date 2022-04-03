@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 let listPlayers = [
   {
     username: "Valki",
-    points: "420",
+    points: "120",
     avatar: "https://cdn-icons-png.flaticon.com/512/4322/4322991.png",
     position: "1°"
   },
