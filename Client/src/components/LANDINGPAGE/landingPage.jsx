@@ -20,6 +20,7 @@ function LandingPage() {
         const login = await dispatch(loginAsGuest(guest));
         if(login.email){
             localStorage.setItem('token', login.email)
+            localStorage.setItem('email', login.email)
             history.push("/home")
         }
         console.log(login)
