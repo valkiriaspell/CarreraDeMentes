@@ -8,6 +8,7 @@ export const LOGIN = 'LOGIN'
 export const HOST_TRUE = 'HOST_TRUE'
 export const CREATE_ROOM = 'CREATE_ROOM'
 export const GET_AVATARS = 'GET_AVATARS'
+export const LIST_ROOMS = 'LIST_ROOMS'
 
 
 
@@ -38,7 +39,9 @@ export function loginUser(email){
     return async function(dispatch){
         try{
             const {data} = await axios.get(`http://localhost:3001/users?email=${email}`)
+            console.log('logg')
             dispatch({type: 'LOGIN', payload: data})
+            return data
         }catch(e) {
             console.log(e)
         }
@@ -62,8 +65,10 @@ export function modifyHost(){
 export function createRoom(user){
     return async function(dispatch){
         try{
-            const {data} = await axios.post('http://localhost:3001/gameRoom', {name: user.name, idUser: user.id})
+            const {data} = await axios.post('http://localhost:3001/gameRoom', {name: user.name, idUser: user.id, currentAvatar: user.currentAvatar})
+            console.log(data)
             dispatch({type: 'CREATE_ROOM', payload: data})
+            return data
         }catch(e) {
             console.log(e)
         }
@@ -79,11 +84,12 @@ export const getAvatars = ()=> async (dispatch)=>{
     }
 } 
 
-export function AddUserToPreRoom(idGameRoom, idUser){
+export function AddUserToPreRoom({idGameRoom, idUser}){
     return async function(){
+        console.log(idGameRoom, idUser)
         try{
             const {data} = await axios.put('http://localhost:3001/gameRoom', {idUser, idGameRoom})
-            console.log(data)
+            return data
         }catch(e) {
             console.log(e)
         }
@@ -93,7 +99,8 @@ export function AddUserToPreRoom(idGameRoom, idUser){
 export function listUsersInPreRoom(IdRoom){
     return async function(dispatch){
         try{
-            const {data} = await axios.get(`http://localhost:3001/gameRoom?IdPreRoom=${IdRoom}`)
+            const {data} = await axios.get(`http://localhost:3001/gameRoom?idRoom=${IdRoom}`)
+            console.log('99', data.users[0])
             dispatch({type: 'LIST_USERS_IN_PRE_ROOM', payload: data})
         }catch(e) {
             console.log(e)
@@ -101,8 +108,19 @@ export function listUsersInPreRoom(IdRoom){
     }
 }
 
-export function setReady(email){
+export function setReady(id){
     return  function(dispatch){
-            dispatch({type: 'SET_READY', payload: email})
+            dispatch({type: 'SET_READY', payload: id})
+    }
+}
+
+export function listAllRooms(){
+    return async function(dispatch){
+        try{
+            const {data} = await axios.get('http://localhost:3001/gameRoom')
+            dispatch({type: 'LIST_ROOMS', payload: data})
+        }catch(e) {
+            console.log(e)
+        }
     }
 }

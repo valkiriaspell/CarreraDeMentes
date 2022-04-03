@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useSocket from './useSocketIo'
 import styles from "../STYLES/preGameRoom.module.css"
 
@@ -9,7 +9,6 @@ const Chat = ({idUser}) =>{
     const [newMessage, setNewMessage] = useState("");
     const {preRoomUsers} = useSelector(state => state)
 
-    
     useEffect(() =>{
         messages.text &&
     setListMessages([...listMessages, messages])
@@ -24,7 +23,7 @@ const Chat = ({idUser}) =>{
         setNewMessage("");
     }
 
-console.log(listMessages)
+
     return (
         <div>
             <p>Jugadores {preRoomUsers?.users?.length}/6</p>

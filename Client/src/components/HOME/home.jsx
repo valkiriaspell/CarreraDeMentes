@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { firebaseCerrarSesion } from "../../utils/Firebase";
 import "../STYLES/home.modules.css";
@@ -6,7 +6,7 @@ import { FaPowerOff } from "react-icons/fa";
 import UserCard from "./userCard";
 import Instructions from "./instructions";
 import { BsFacebook, BsLinkedin, BsTwitter, BsWhatsapp } from "react-icons/bs";
-import { createRoom, loginUser, modifyHost } from "../../redux/actions";
+import { createRoom, modifyHost } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 
 function Home(props) {
@@ -22,14 +22,12 @@ function Home(props) {
     history.push("/");
   }
 
-  function handleCreateRoom() {
-    dispatch(modifyHost());
-    dispatch(createRoom(user)).then(() => history.push(`/room/${user.id}`));
+  async function handleCreateRoom() {
+    const idRoom = await dispatch(createRoom(user))
+    dispatch(modifyHost())
+    history.push(`/room/${idRoom?.id}`)
   }
 
-  useEffect(() =>{     
-    dispatch(loginUser(email))
-  }, [])
 
   if (autenticado) {
     return (

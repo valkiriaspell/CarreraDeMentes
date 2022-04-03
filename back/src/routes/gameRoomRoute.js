@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
 	try {
 		const [bool, msj] = await createBDGameRoom(req.body);
 		if (bool) {
-			console.log(msj)
+
 			res.send(msj);
 		} else {
 			res.send('No se pudo crear la sala');
@@ -74,12 +74,11 @@ router.delete("/:id", async (req, res) => {
 // Ruta para obtener todas las salas
 router.get("/", async (req, res) => {
 
-    try {
-        const data = await seachAllBDGameRoom();
-        res.send(data);
-    } catch (e) {
-        res.status(500).send("Error al buscar una sala: " + e);
-    }
+	try{
+		const data = await seachAllBDGameRoom(idRoom);
 
-
-})
+		res.send(data);
+	} catch (e) {
+		res.status(500).send('Error al buscar una sala: ' + e);
+	}
+});
