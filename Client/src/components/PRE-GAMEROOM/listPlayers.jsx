@@ -20,28 +20,29 @@ const ListPlayers = ({ expelPlayer }) => {
                             console.log(us)
                             return (
                                 <div className="eachPlayer" key={us.id}>
-                                    <li key={`${user.id}2`}>{user.name}</li>
-                                    {user.host === true && <div key={`${user.id}4`} >Host</div>}
-                                    {
-                                        us.id !== user.id &&
+                                    <li key={`${us.id}2`}>{us.name}</li>
+                                    {user.id === us.id
+                                        ? <div key={`${user.id}4`} >Host</div>
+                                        :
                                         <button
                                         onClick={handleExpectPlayer}
-                                        id={user.email}
-                                        key={`${user.id}3`}
-                                        >x </button>
+                                        key={`${us.id}3`}
+                                        >
+                                            x 
+                                        </button>
                                     }
                             <div key={us.id} className={s.inactive} id={us.id} >listo</div>
                                 </div>
                             )
                         })
                         :
-                        preRoomUsers?.users?.map(user => {
+                        preRoomUsers?.users?.map(us => {
                             return (
-                                <div key={`${user.id}6`}>
-                                    <button key={`${user.id}6`} className={s.inactive} id={user.email} >listo</button>
-                                    <li key={`${user.id}7`}>{user.name}</li>
+                                <div key={`${us.id}6`}>
+                                    <button key={`${us.id}6`} className={s.inactive} id={us.id} >listo</button>
+                                    <li key={`${us.id}7`}>{us.name}</li>
                                     {
-                                        user.host === true && <div key={`${user.id}8`} >H</div>
+                                        us.host === true && <div key={`${us.id}8`} >H</div>
                                     }
                                 </div>
                             )

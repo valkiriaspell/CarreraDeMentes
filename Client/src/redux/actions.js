@@ -5,7 +5,7 @@ export const LIST_USERS_IN_PRE_ROOM = 'LIST_USERS_IN_PRE_ROOM'
 export const SET_READY = 'SET_READY'
 export const NEW_USER = 'NEW_USER'
 export const LOGIN = 'LOGIN'
-export const HOST_TRUE = 'HOST_TRUE'
+export const HOST = 'HOST'
 export const CREATE_ROOM = 'CREATE_ROOM'
 export const GET_AVATARS = 'GET_AVATARS'
 export const LIST_ROOMS = 'LIST_ROOMS'
@@ -56,9 +56,16 @@ export const updateUser = (userData)=> async ()=>{
     }
 }
 
-export function modifyHost(){
-    return function(dispatch){
-        dispatch({type: 'HOST_TRUE'})
+export function modifyHost(email){
+    return async function(dispatch){
+        try{
+            const {data} = await axios.put(`http://localhost:3001/users/?email=${email}`)
+            dispatch({type: 'HOST', payload: data})
+            return data
+        }catch(e){
+            console.log(e)
+        }
+        
     }
 }
 

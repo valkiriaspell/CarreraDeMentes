@@ -1,4 +1,4 @@
-import { LOGIN_USER_GUEST, LIST_USERS_IN_PRE_ROOM, LIST_ROOMS, SET_READY, NEW_USER, LOGIN, HOST_TRUE, CREATE_ROOM, GET_AVATARS } from "./actions"
+import { LOGIN_USER_GUEST, LIST_USERS_IN_PRE_ROOM, LIST_ROOMS, SET_READY, NEW_USER, LOGIN, HOST, CREATE_ROOM, GET_AVATARS } from "./actions"
 
 
 const initialState = {
@@ -29,10 +29,10 @@ const reducer = (state = initialState, action) => {
             user: action.payload
         }
 
-        case HOST_TRUE: 
-        state.user.host = true
+        case HOST: 
         return {
             ...state,
+            user: action.payload
         }
 
         case CREATE_ROOM: 
