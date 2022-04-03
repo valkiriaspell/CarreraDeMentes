@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
 	try {
 		const [bool, msj] = await createBDGameRoom(req.body);
 		if (bool) {
-			console.log(msj)
+
 			res.send(msj);
 		} else {
 			res.send('No se pudo crear la sala');
@@ -29,6 +29,7 @@ router.post('/', async (req, res) => {
 
 // Ruta para agregar un usuario a la Sala
 router.put('/', async (req, res) => {
+	console.log(req.body)
 	try {
 		const [bool, msj] = await updateAddBDGameRoom(req.body);
 		if (bool) {
@@ -75,6 +76,7 @@ router.get('/', async (req, res) => {
 		const {idRoom} = req.query;
 
 		const data = await seachAllBDGameRoom(idRoom);
+
 		res.send(data);
 	} catch (e) {
 		res.status(500).send('Error al buscar una sala: ' + e);

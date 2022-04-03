@@ -17,21 +17,21 @@ const ListPlayers = ({expelPlayer}) =>{
             user.host === true 
             ?
             preRoomUsers?.users?.map(us =>{
-                console.log(us)
                 return (
                     <div key={us.id}>
                         <div key={us.id} className={s.inactive} id={us.id} >listo</div>
-                        <li key={`${user.id}2`}>{us.id}</li>
+                        <li key={`${us.id}2`}>{us.name}</li>
+                        <img src={us.currentAvatar} key={`${us.id}9`} alt="avatar" />
                         <button 
                             onClick={handleExpectPlayer} 
-                            id={user.email}
-                            key={`${user.id}3`} 
-                            disabled={user.host ? true : false} 
+                            id={us.id}
+                            key={`${us.id}3`} 
+                            disabled={us.host ? true : false} 
                         >
                             x
                         </button>
                         {
-                            user.host === true && <div key={`${user.id}4`} >H</div>
+                            us.host === true && <div key={`${us.id}4`} >H</div>
                         }
                     </div>
                 )
@@ -40,7 +40,7 @@ const ListPlayers = ({expelPlayer}) =>{
             preRoomUsers?.users?.map(user =>{
                 return (
                     <div key={`${user.id}6`}>
-                        <button key={`${user.id}6`} className={s.inactive} id={user.email} >listo</button>
+                        <button key={`${user.id}6`} className={s.inactive} id={user.id} >listo</button>
                         <li key={`${user.id}7`}>{user.name}</li>
                         {
                             user.host === true && <div key={`${user.id}8`} >H</div>

@@ -13,7 +13,7 @@ function Home(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const autenticado = localStorage.getItem("token");
-  const { user } = useSelector((state) => state);
+  const { user, preRoomUsers } = useSelector((state) => state);
   async function handleSignOut(e) {
     e.preventDefault();
     await firebaseCerrarSesion();
@@ -21,9 +21,10 @@ function Home(props) {
     history.push("/");
   }
 
-  function handleCreateRoom() {
-    dispatch(modifyHost());
-    dispatch(createRoom(user)).then(() => history.push(`/room/${user.id}`));
+  async function handleCreateRoom() {
+    const idRoom = await dispatch(createRoom(user))
+    dispatch(modifyHost())
+    history.push(`/room/${idRoom?.id}`)
   }
 
   if (autenticado) {

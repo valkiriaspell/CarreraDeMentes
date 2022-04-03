@@ -3,29 +3,38 @@ const {GameRoom, Users, Question} = require('../db.js');
 //buscar todas las salas
 exports.seachAllBDGameRoom = async (idRoom) => {
 	try {
-		if (idRoom) {
+		if (idRoom !== undefined) {
+
 			const data = await GameRoom.findOne({
 				where: {id: idRoom},
 				include: [
 					{
 						model: Users,
-						attributes: ['id', 'name', 'email'],
+						attributes: ['id', 'name'],
 					},
 				],
 			});
-
-			return data;
+			return data.dataValues;
 		} else {
+
 			const data = await GameRoom.findAll({
 				include: [
 					{
 						model: Users,
-						attributes: ['id', 'name', 'email'],
+						attributes: ['id', 'name'],
 					},
 				],
 			});
+			const rooms = data.map(room => {
+				return {
+					id: room.dataValues.id,
+					name: room.dataValues.name,
+					questionAmount: room.dataValues.questionAmount,
+					numberUsersInRoom: room.dataValues.users.length
+				}
+			})
 
-			return data;
+			return rooms;
 		}
 	} catch (e) {
 		console.log('error:', e);
@@ -40,6 +49,7 @@ exports.createBDGameRoom = async ({
 	public_,
 	email, */
 	idUser,
+	currentAvatar
 }) => {
 	try {
 		const data = await GameRoom.create({
@@ -50,16 +60,9 @@ exports.createBDGameRoom = async ({
 			email, */
 		});
 		await data.addUser(idUser);
-		const devolver = await GameRoom.findOne({ // cambiar por data.dataValues.users = [idUser, name]
-			where: {id: data.dataValues.id},
-			include: [
-				{
-					model: Users,
-					attributes: ['id'],
-				},
-			],
-		})
-		return [true, devolver.dataValues];
+		data.dataValues.users = [{idUser, name, currentAvatar}]
+
+		return [true, data.dataValues];
 	} catch (e) {
 		console.log('Error al crear la sala: ', e);
 		return e;
@@ -68,12 +71,13 @@ exports.createBDGameRoom = async ({
 
 // actializamos y agregamos un nuevo usuario a la sala
 exports.updateAddBDGameRoom = async ({idGameRoom, idUser}) => {
+
 	try {
 		const data = await GameRoom.findByPk(idGameRoom, {
 			include: [
 				{
 					model: Users,
-					attributes: ['id'],
+					attributes: ['id', 'name', 'currentAvatar'],
 				},
 			],
 		});
@@ -84,7 +88,7 @@ exports.updateAddBDGameRoom = async ({idGameRoom, idUser}) => {
 
 		if (users.length < usersAmount) {
 			await data.addUsers(idUser);
-			return [true, 'Usuario agregado exitosamente'];
+			return [true, idGameRoom];
 		} else if (users.length >= usersAmount) {
 			return [false, 'La sala ya esta llena'];
 		}

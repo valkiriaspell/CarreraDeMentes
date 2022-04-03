@@ -23,13 +23,16 @@ io.on('connection',(socket)=>{//que hago cuando recibo 'connect'?
     socket.join(room)
 	//crear ruta en rooms para conectar un usuario nuevo
     
-    io.to(room).emit('NEW_CONNECTION',{email})
+    io.to(room).emit('NEW_CONNECTION', email)
     
-    socket.on('READY',(email)=>{
-        io.to(room).emit('READY',email)
+    socket.on('READY',(id)=>{
+        io.to(room).emit('READY',id)
     })
 	socket.on('START',()=>{
 		io.to(room).emit('START')
+	})
+	socket.on('EXPEL_PLAYER',(id)=>{
+		io.to(room).emit('EXPEL_PLAYER', id)
 	})
 
     socket.on('DISCONNECT',()=>{//alguien se desconecta de la room
