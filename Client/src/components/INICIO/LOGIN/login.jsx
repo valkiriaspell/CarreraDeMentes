@@ -164,8 +164,6 @@ function Login() {
             ¿Olvidaste tu contraseña?
           </NavLink>
         </form>
-        {error.mensaje && <p>{error.mensaje}</p>}
-        {error.password && <p>{error.password}</p>}
         <div className="contentLogin2">
           <img src={Arrow} alt="Arrow" className="imgArrow" width={27} />
           <Link className="buttonSingUP" to={"/signup"}>

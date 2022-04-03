@@ -45,7 +45,7 @@ function SignUpFirebase() {
       })
     }
     if (input.password.length < 6) {
-      errors.password = errors.avatar = Swal.fire({
+      errors.password = Swal.fire({
         title: `La contraseña debe contener al menos 6 caracteres`,
         icon: "warning",
         confirmButtonText: "OK",
@@ -178,11 +178,6 @@ function SignUpFirebase() {
           <button className="registerButton" type="submit">Registrarse</button>
         </form>
       </div>
-      {error.name && <p>{error.name}</p>}
-      {error.avatar && <p>{error.avatar}</p>}
-      {error.email && <p>{error.email}</p>}
-      {error.password && <p>{error.password}</p>}
-      {error.mensaje && <p>{error.mensaje}</p>}
     </div>
   );
 }
