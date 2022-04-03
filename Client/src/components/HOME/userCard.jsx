@@ -27,7 +27,7 @@ function UserCard({location}) {
   const dispatch = useDispatch()
   const email = localStorage.getItem("email");
   useEffect(() =>{
-    !user.name && 
+     
     dispatch(loginUser(email))
   }, [])
 
