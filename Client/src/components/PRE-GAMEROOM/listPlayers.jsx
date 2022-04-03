@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import s from '../STYLES/preGameRoom.module.css'
 import corona from "../IMG/corona.png"
+import readyDark from "../IMG/readyDark.png"
+import readyGreen from "../IMG/readyGreen.png"
 
 const ListPlayers = ({ expelPlayer }) => {
     const { preRoomUsers, user } = useSelector(state => state)
+    const [readyPlayer, setReady] = useState(readyDark)
 
     function handleExpectPlayer(e) {
         //validate that player is not ready before to expel him out of the room
         const userToExpel = preRoomUsers?.users.findIndex(user => user.id === e.target.id)
         preRoomUsers?.users[userToExpel].ready !== true && expelPlayer(e);
     }
+
+       
+    function ready () {
+        if (readyPlayer === readyDark) {
+            setReady(readyGreen)
+        } else {
+            setReady(readyDark)
+        }
+    }
+
+    useEffect(() =>{
+        console.log("ready")
+      }, [readyPlayer])
+
     return (
         <div className={s.containerPlayers}>
             <ul className={s.allPlayers}>
@@ -25,7 +42,8 @@ const ListPlayers = ({ expelPlayer }) => {
                                         <img src={corona} alt="corona">
                                         </img>
                                     </div>}{user.name}
-                                <div key={us.id} className={s.inactive} id={us.id} >listo</div>
+                                <div key={us.id} id={us.id} ><button className="readyButton" key={us.id} onClick={()=> ready()}>
+                                    <img src={readyPlayer} alt="ready"></img></button></div>
                                 </li>
                                 {us.id !== user.id && <button
                                     onClick={handleExpectPlayer}

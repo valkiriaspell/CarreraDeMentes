@@ -24,6 +24,10 @@
   height: 30px;
   
 }
+.allPlayers img{
+  height: 25px;
+  
+}
 .containerPlayers li {
   display: flex;
   flex-direction: row;
@@ -35,7 +39,11 @@
   width: 12rem;
   border-radius: 2rem;
 }
-
+/* ======= BOTON READY ======= */
+.readyButton {
+  border-radius:10px;
+outline:none;
+}
 
 /* ======= BOTONES INVITAR E INICIAR ======= */
 .buttonsPreGameRoom button {
