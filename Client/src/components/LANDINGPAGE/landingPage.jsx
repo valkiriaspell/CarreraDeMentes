@@ -37,7 +37,7 @@ function LandingPage() {
                 </button>
             </NavLink>
             <NavLink className="link" to='/login'>
-                <button>Iniciar sesion o Registrarse</button>
+                <button>Iniciar sesión o Registrarse</button>
             </NavLink>
         </div>
     )
