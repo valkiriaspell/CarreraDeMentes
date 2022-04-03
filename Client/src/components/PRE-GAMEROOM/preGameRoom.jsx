@@ -17,7 +17,7 @@ function PreGameRoom({match}) {
     const autenticado = localStorage.getItem('token')
     const {idUser} = match.params;
     /* const email = localStorage.getItem("email"); */
-/*     useEffect(() =>{ 
+/*     useEffect(() =>{
                 !user.host &&
                 loginUser(email)
                 .then((val)=>{
