@@ -41,6 +41,26 @@ exports.seachAllBDGameRoom = async (idRoom) => {
 		return e;
 	}
 };
+/* exports.seachAllBDGameRoom = async () => {
+    try {
+        const data = await GameRoom.findAll({
+            include: [
+                {
+                    model: Users,
+                    attributes: ["id", "name", "email"]
+                },
+                {
+                    model: Question
+                }
+            ]
+        })
+
+        return data
+    } catch (e) {
+        console.log("error:", e)
+        return e
+    }
+} */
 
 exports.createBDGameRoom = async ({
 	name,
@@ -101,19 +121,21 @@ exports.updateAddBDGameRoom = async ({idGameRoom, idUser}) => {
 
 
 // Eliminar una sala por su id
-exports.deletByIdGameRoom = async ({id}) => {
-	try {
-		const eliminado = await GameRoom.destroy({where: {id}});
-		if (eliminado > 0) {
-			return [true, 'Salas eliminada'];
-		} else {
-			return [false, 'No se encotro la sala a eliminar'];
-		}
-		console.log(dt);
-	} catch (e) {
-		return e;
-	}
-};
+exports.deletByIdGameRoom = async ({ id }) => {
+    try {
+
+        const eliminado = await GameRoom.destroy({ where: { id } });
+        if (eliminado > 0) {
+
+            return [true, "Salas eliminada"]
+        } else {
+            return [false, "No se encotro la sala a eliminar"]
+        }
+
+    } catch (e) {
+        return e
+    }
+}
 
 // Eliminar un usuario de la sala
 exports.updateDeleteBDGameRoom = async ({idGameRoom, idUserDelet}) => {
@@ -125,9 +147,7 @@ exports.updateDeleteBDGameRoom = async ({idGameRoom, idUserDelet}) => {
 					attributes: ['id'],
 				},
 			],
-		});
-
-		if (!data) return [false, 'Sale no encontrada'];
+		});     
 
 			await data.removeUser(idUserDelet);
 			return [true, 'Usuario eliminado'];

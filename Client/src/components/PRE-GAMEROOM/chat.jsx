@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useSocket from './useSocketIo'
+import styles from "../STYLES/preGameRoom.module.css"
 
 const Chat = ({idUser}) =>{
     const {messages, sendMessage} = useSocket(idUser);
@@ -25,8 +26,8 @@ const Chat = ({idUser}) =>{
 
     return (
         <div>
-            <p>jugadores {preRoomUsers?.users?.length}/6</p>
-            <div>
+            <p>Jugadores {preRoomUsers?.users?.length}/6</p>
+            <div className={styles.containerChat}>
                 <ol>
                     {
                         listMessages?.map((message, index) => {
@@ -34,7 +35,7 @@ const Chat = ({idUser}) =>{
                                 <li key={index}>
                                     {
                                         message.writtenByCurrentUser
-                                            ? `Me: ${message?.text}` 
+                                            ? `Yo: ${message?.text}` 
                                             : `${message?.name}: ${message?.text}`
                                     }
                                 </li>
@@ -43,11 +44,11 @@ const Chat = ({idUser}) =>{
                     }
 
                 </ol>
-                <div>
-                    <input type="text" placeholder="escribe un mensaje..." value={newMessage} onChange={handleMessage}/>
+            </div>
+                <div className={styles.containerSendMessages}>
+                    <input type="text" placeholder="Escribe un mensaje..." value={newMessage} onChange={handleMessage}/>
                     <button onClick={e => handleSendMessage(e)} >Enviar</button>
                 </div>
-            </div>
         </div>
     )
 }

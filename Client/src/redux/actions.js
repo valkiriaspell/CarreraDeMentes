@@ -12,11 +12,12 @@ export const LIST_ROOMS = 'LIST_ROOMS'
 
 
 
-export function loginAsGuest(){
+export function loginAsGuest(guest){
     return async function(dispatch){
         try{
-            const {data} = await axios.get('/ruta para hacer post')
-            dispatch({type: 'LOGIN_USER_GUEST', payload: data})
+            const test = await axios.post('http://localhost:3001/users', guest)
+            dispatch({type: 'LOGIN_USER_GUEST', payload: test.data})
+            return test.data
         }catch(e) {
             console.log(e)
         }
@@ -49,7 +50,7 @@ export function loginUser(email){
 
 export const updateUser = (userData)=> async ()=>{
     try {
-        const result = await axios.post(`/ ruta para actualizar user`, userData)  
+        const result = await axios.put(`http://localhost:3001/users`, userData)  
     } catch (error) {
         console.log(error)
     }

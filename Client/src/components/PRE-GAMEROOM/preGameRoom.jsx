@@ -43,7 +43,7 @@ function PreGameRoom({match}) {
                     <div>
                     <ListPlayers expelPlayer={expelPlayer} />
                     </div>
-                    <div className={s.container2}>
+                    <div>
                     <div>
                     <EditRoom />
                     </div>
@@ -51,7 +51,7 @@ function PreGameRoom({match}) {
                     <Chat idUser={idUser}/>
                     </div>
                     
-                    <div>
+                    <div className={s.buttonsPreGameRoom}>
                     {
                         user.host === true
                             ? (<button 

@@ -13,7 +13,7 @@ function Home(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const autenticado = localStorage.getItem("token");
-  const { user, preRoomUsers } = useSelector((state) => state);
+  const { user } = useSelector((state) => state);
   async function handleSignOut(e) {
     e.preventDefault();
     await firebaseCerrarSesion();
@@ -26,6 +26,7 @@ function Home(props) {
     dispatch(modifyHost())
     history.push(`/room/${idRoom?.id}`)
   }
+
 
   if (autenticado) {
     return (

@@ -1,4 +1,4 @@
-const {Router} = require('express');
+const { Router } = require('express');
 const router = Router();
 module.exports = router;
 const {
@@ -12,7 +12,7 @@ const {
 // escriban sus rutas acá
 router.get('/', async (req, res) => {
 	try {
-		const {email} = req.query;
+		const { email } = req.query;
 		if (email) {
 			const userFound = await getUser(email);
 			res.json(userFound);
@@ -29,10 +29,12 @@ router.get('/', async (req, res) => {
 	}
 });
 router.post('/', async (req, res) => {
+	console.log(req.body.guest)
 	try {
-		const {guest} = req.body;
+		const { guest } = req.body;
 		if (guest === true) {
-			createGuestUser();
+			const guestUser = await createGuestUser();
+			res.send(guestUser);
 		} else {
 			const userCreated = await createUsers(req.body);
 			if (!userCreated) {
@@ -48,7 +50,7 @@ router.post('/', async (req, res) => {
 });
 router.delete('/', async (req, res) => {
 	try {
-		const {id} = req.query;
+		const { id } = req.query;
 		const userDeleted = await deleteUser(id);
 		res.send(userDeleted);
 	} catch (e) {
@@ -57,8 +59,8 @@ router.delete('/', async (req, res) => {
 });
 router.put('/', async (req, res) => {
 	try {
-		const {id, name, currentAvatar} = req.body;
-		const userUpdated = await modifyUser(id, name, currentAvatar);
+
+		const userUpdated = await modifyUser(req.body);
 		console.log(userUpdated);
 		res.send(userUpdated);
 	} catch (e) {

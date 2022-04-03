@@ -9,18 +9,19 @@ require('./db.js');
 
 /// conexion de sockets
 const server = express();
-var app=require('http').Server(server);
-var io=require('socket.io')(app,{
-	cors:{
-		origin:"*"
-	}
-})
+var app = require('http').Server(server);
+var io = require('socket.io')(app, {
+	cors: {
+		origin: '*',
+	},
+});
 //server.use(express.static('public'))
 
-io.on('connection',(socket)=>{//que hago cuando recibo 'connect'?
-        
-    const {room,email}=socket.handshake;    
-    socket.join(room)
+io.on('connection', (socket) => {
+	//que hago cuando recibo 'connect'?
+
+	const {room, email} = socket.handshake;
+	socket.join(room);
 	//crear ruta en rooms para conectar un usuario nuevo
     
     io.to(room).emit('NEW_CONNECTION', email)
@@ -35,16 +36,18 @@ io.on('connection',(socket)=>{//que hago cuando recibo 'connect'?
 		io.to(room).emit('EXPEL_PLAYER', id)
 	})
 
-    socket.on('DISCONNECT',()=>{//alguien se desconecta de la room
-        console.log("se desconecto")
-		//crear ruta en rooms para desconectar un usuario         
-		io.to(room).emit('DISCONNECT')
-    })
-    socket.on('NEW_MESSAGE',(data)=>{ //alguien envia un nuevo mensaje
-        const {text,name, email}=data;//cual es el mensaje?  para que room? quien lo envia?
-        io.to(room).emit('NEW_MESSAGE',{text,name, email})
-    }) 
-})
+	socket.on('DISCONNECT', () => {
+		//alguien se desconecta de la room
+		console.log('se desconecto');
+		//crear ruta en rooms para desconectar un usuario
+		io.to(room).emit('DISCONNECT');
+	});
+	socket.on('NEW_MESSAGE', (data) => {
+		//alguien envia un nuevo mensaje
+		const {text, name, email} = data; //cual es el mensaje?  para que room? quien lo envia?
+		io.to(room).emit('NEW_MESSAGE', {text, name, email});
+	});
+});
 
 server.name = 'API';
 
