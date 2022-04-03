@@ -74,7 +74,7 @@ router.delete("/:id", async (req, res) => {
 // Ruta para obtener todas las salas
 router.get("/", async (req, res) => {
 
-<<<<<<< HEAD
+	try{
 		const data = await seachAllBDGameRoom(idRoom);
 
 		res.send(data);
@@ -82,14 +82,3 @@ router.get("/", async (req, res) => {
 		res.status(500).send('Error al buscar una sala: ' + e);
 	}
 });
-=======
-    try {
-        const data = await seachAllBDGameRoom();
-        res.send(data);
-    } catch (e) {
-        res.status(500).send("Error al buscar una sala: " + e);
-    }
-
-
-})
->>>>>>> dev

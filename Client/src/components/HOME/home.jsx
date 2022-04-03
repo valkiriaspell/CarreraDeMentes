@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { firebaseCerrarSesion } from "../../utils/Firebase";
 import "../STYLES/home.modules.css";
@@ -14,6 +14,7 @@ function Home(props) {
   const history = useHistory();
   const autenticado = localStorage.getItem("token");
   const { user } = useSelector((state) => state);
+  const email = localStorage.getItem("email");
   async function handleSignOut(e) {
     e.preventDefault();
     await firebaseCerrarSesion();
