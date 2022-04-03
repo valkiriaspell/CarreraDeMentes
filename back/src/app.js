@@ -36,7 +36,7 @@ io.on('connection', (socket) => {
 	socket.on('EXPEL_PLAYER',(id)=>{
 		io.to(idGameRoom).emit('EXPEL_PLAYER', id)
 	})
-
+ 
 	socket.on('DISCONNECT', () => {
 		//alguien se desconecta de la room
 		console.log('se desconecto');
