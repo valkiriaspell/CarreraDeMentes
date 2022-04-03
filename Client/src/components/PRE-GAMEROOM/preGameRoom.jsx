@@ -9,18 +9,19 @@ import GameRoom from "../GAMEROOM/gameRoom";
 import ListPlayers from "./listPlayers";
 import { Link } from "react-router-dom";
 /* import { AddUserToPreRoom, listUsersInPreRoom, loginUser } from "../../redux/actions"; */
-import style from "../STYLES/form.css";
+import style from "../STYLES/form.css"
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { AiFillSound } from "react-icons/ai";
 
-function PreGameRoom({ match }) {
-  /* const dispatch = useDispatch(); */
-  const { preRoomUsers, user } = useSelector((state) => state);
-  const history = useHistory();
-  const autenticado = localStorage.getItem("token");
-  const { idUser } = match.params;
-  /* const email = localStorage.getItem("email"); */
-  /*     useEffect(() =>{
+function PreGameRoom({match}) {
+    /* const dispatch = useDispatch(); */
+    const {preRoomUsers, user} = useSelector(state => state)
+    const history = useHistory();
+    const autenticado = localStorage.getItem('token')
+    console.log("match: ", match.params)
+    const {idUser} = match.params;
+    /* const email = localStorage.getItem("email"); */
+/*     useEffect(() =>{
                 !user.host &&
                 loginUser(email)
                 .then((val)=>{

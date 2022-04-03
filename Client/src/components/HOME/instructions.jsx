@@ -38,7 +38,7 @@ function Instructions() {
             <div className="carousel-caption d-none d-md-block">
               <h5>Invita a tus amigos</h5>
               <p>
-                Comparte el link de la sala con tus amigos y diviertete.
+                Comparte el link de la sala con tus amigos y diviértete.
               </p>
             </div>
           </div>
@@ -47,7 +47,7 @@ function Instructions() {
             <div className="carousel-caption d-none d-md-block">
               <h5>Configura una partida a tu gusto</h5>
               <p>
-                Personaliza la partida a tu gusto, cambiando la cantidad de preguntas, la dificultad o categotias.
+                Personaliza la partida a tu gusto, cambiando la cantidad de preguntas, dificultad o categorías.
               </p>
             </div>
           </div>
@@ -56,7 +56,7 @@ function Instructions() {
             <div className="carousel-caption d-none d-md-block">
               <h5>Responde preguntas</h5>
               <p>
-                Responde preguntas aleatorias sobre las categotias seleccionadas, antes de que se te acabe el tiempo.
+                Responde a preguntas aleatorias de diversas categorías, antes de que se te acabe el tiempo.
               </p>
             </div>
           </div>

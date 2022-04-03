@@ -47,14 +47,31 @@
   align-items: center;
   border-radius: 0.4rem;
 }
+.coronaHost img{
+  height: 30px;
+  
+}
+.allPlayers img{
+  height: 25px;
+  
+}
 .containerPlayers li {
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;  
   padding: 0.7rem;
   list-style: none;
   margin: 1rem;
   background-color: rgba(117, 121, 125, 0.4);
   width: 12rem;
   border-radius: 2rem;
+}
+/* ======= BOTON READY ======= */
+.readyButton {
+  border-radius:10px;
+outline:none;
+background: none;
+border: none;
 }
 
 /* ======= BOTONES INVITAR E INICIAR ======= */

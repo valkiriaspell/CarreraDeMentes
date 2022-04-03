@@ -20,32 +20,33 @@ var io = require('socket.io')(app, {
 io.on('connection', (socket) => {
 	//que hago cuando recibo 'connect'?
 
-	const {room, email} = socket.handshake;
-	socket.join(room);
+	const {idGameRoom, email} = socket.handshake.query;
+	console.log('yo soy la room', idGameRoom)
+	socket.join(idGameRoom);
 	//crear ruta en rooms para conectar un usuario nuevo
     
-    io.to(room).emit('NEW_CONNECTION', email)
+    io.to(idGameRoom).emit('NEW_CONNECTION', email)
     
     socket.on('READY',(id)=>{
-        io.to(room).emit('READY',id)
+        io.to(idGameRoom).emit('READY',id)
     })
 	socket.on('START',()=>{
-		io.to(room).emit('START')
+		io.to(idGameRoom).emit('START')
 	})
 	socket.on('EXPEL_PLAYER',(id)=>{
-		io.to(room).emit('EXPEL_PLAYER', id)
+		io.to(idGameRoom).emit('EXPEL_PLAYER', id)
 	})
-
+ 
 	socket.on('DISCONNECT', () => {
 		//alguien se desconecta de la room
 		console.log('se desconecto');
 		//crear ruta en rooms para desconectar un usuario
-		io.to(room).emit('DISCONNECT');
+		io.to(idGameRoom).emit('DISCONNECT');
 	});
-	socket.on('NEW_MESSAGE', (data) => {
+	socket.on('NEW_MESSAGE', ({text, name, email}) => {
 		//alguien envia un nuevo mensaje
-		const {text, name, email} = data; //cual es el mensaje?  para que room? quien lo envia?
-		io.to(room).emit('NEW_MESSAGE', {text, name, email});
+		/* const {text, name, email} = data; */ //cual es el mensaje?  para que room? quien lo envia?
+		io.to(idGameRoom).emit('NEW_MESSAGE', {text, name, email});
 	});
 });
 

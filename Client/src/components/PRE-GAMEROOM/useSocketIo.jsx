@@ -10,8 +10,7 @@ function useChatSocketIo(idGameRoom) {
     const history = useHistory();
     const dispatch = useDispatch();
     const {user} = useSelector(state => state);
-    const room = idGameRoom;
-
+    
     const [messages, setMessages] = useState({});
     const socketIoRef = useRef();
     const [game, setGame] = useState(false)
@@ -21,19 +20,19 @@ function useChatSocketIo(idGameRoom) {
         const newUserInRoom = () =>{
             !user.name && dispatch(loginUser(email))
             .then((data) => dispatch(AddUserToPreRoom({
-                idGameRoom: room, 
+                idGameRoom, 
                 idUser: data?.id
             })))
             .then((idD) =>dispatch(listUsersInPreRoom(idD)))
             .then(() => console.log('listo'))
         }
         !user.host && newUserInRoom();
-
-        socketIoRef.current = socketIOClient('http://localhost:3001', {room, email: user.email});
+        console.log('idGameRoom: ', idGameRoom)
+        socketIoRef.current = socketIOClient('http://localhost:3001',{query:{idGameRoom, email: user.email} } );
 
             socketIoRef.current.on("NEW_CONNECTION", (email) =>{
                 email !== user.email &&
-                dispatch(listUsersInPreRoom(room));
+                dispatch(listUsersInPreRoom(idGameRoom));
             })
             
             //received a new message, differentiating which are from current user and add to message list
@@ -60,7 +59,7 @@ function useChatSocketIo(idGameRoom) {
 
             
             socketIoRef.current.on("DISCONNECT", () =>{
-                dispatch(listUsersInPreRoom(room));
+                dispatch(listUsersInPreRoom(idGameRoom));
             })
 
             socketIoRef.current.on("EXPEL_PLAYER", (id) =>{
@@ -89,7 +88,7 @@ function useChatSocketIo(idGameRoom) {
         socketIoRef.current.emit("NEW_MESSAGE", {
             text: message, 
             name: user?.name,
-            email: user?.email
+            email: user?.email,
         })
     }
 

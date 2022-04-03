@@ -37,10 +37,9 @@ export default function EditProfile() {
         switch (true) {
 
             case e.target.name === "name":
-                if (/^[a-z0-9_-]$/.test(e.target.value)) { 
+                if (/[\*\/\"\|\{\}\[\]\^\$\#\%\&\!\?\+\s]/.test(e.target.value)) { 
                     setUsername(e.target.value);
-                    setErrorName("Caracteres no permitidos")
-                
+                    setErrorName("Caracteres no permitidos")                
                 } else if (e.target.value.length > 16) {
                     setUsername(e.target.value);
                     setErrorName("Máximo 16 caracteres")
