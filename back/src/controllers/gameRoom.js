@@ -10,7 +10,7 @@ exports.seachAllBDGameRoom = async (idRoom) => {
 				include: [
 					{
 						model: Users,
-						attributes: ['id', 'name'],
+						attributes: ['id', 'name', 'host'],
 					},
 				],
 			});
@@ -21,7 +21,7 @@ exports.seachAllBDGameRoom = async (idRoom) => {
 				include: [
 					{
 						model: Users,
-						attributes: ['id', 'name'],
+						attributes: ['id'],
 					},
 				],
 			});
