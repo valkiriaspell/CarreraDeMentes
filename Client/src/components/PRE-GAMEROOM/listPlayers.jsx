@@ -58,7 +58,8 @@ const ListPlayers = ({ expelPlayer }) => {
                     preRoomUsers?.users?.map(user => {
                         return (
                             <div key={`${user.id}6`}>
-                                <button key={`${user.id}6`} className={s.inactive} id={user.email} >listo</button>
+                               <div key={user.id} id={user.id} > <button className={s.readyButton} key={user.id} onClick={()=> ready()}>
+                                    <img src={readyPlayer} alt="ready"></img></button></div>
                                 <li key={`${user.id}7`}>{user.name}</li>
                                 {
                                     user.host === true && <div key={`${user.id}8`} >H</div>
