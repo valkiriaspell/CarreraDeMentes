@@ -57,7 +57,11 @@ function Login() {
     async function handleLoginGoogle(){
         const iniciarSesion = await firebaseLoginGoogle()
         if(iniciarSesion.accessToken){
-            /* dispatch(registerUser()) */
+            await dispatch(registerUser({
+                name: iniciarSesion.email, 
+                email: iniciarSesion.email,
+                idAvatar: 1
+            }))
             localStorage.setItem('email', iniciarSesion.email)
             localStorage.setItem('token', iniciarSesion.accessToken)
             history.push('/home')
@@ -69,7 +73,11 @@ function Login() {
     async function handleLoginFacebook(){
         const iniciarSesion = await firebaseLoginFacebook()
         if(iniciarSesion.accessToken){
-            /* dispatch(registerUser()) */
+            await dispatch(registerUser({
+                name: iniciarSesion.email, 
+                email: iniciarSesion.email,
+                idAvatar: 1
+            }))
             localStorage.setItem('email', iniciarSesion.email)
             localStorage.setItem('token', iniciarSesion.accessToken)
             history.push('/home')
