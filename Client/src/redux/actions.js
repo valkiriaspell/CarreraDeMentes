@@ -39,7 +39,6 @@ export function loginUser(email){
     return async function(dispatch){
         try{
             const {data} = await axios.get(`http://localhost:3001/users?email=${email}`)
-            console.log('logg')
             dispatch({type: 'LOGIN', payload: data})
             return data
         }catch(e) {

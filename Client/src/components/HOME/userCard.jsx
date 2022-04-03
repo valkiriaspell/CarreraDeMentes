@@ -23,17 +23,16 @@ function UserCard({location}) {
       }  
     }())
   } , [location])
-  /* console.log(user, "avatar recibido de este user") */
   const dispatch = useDispatch()
   const email = localStorage.getItem("email");
   useEffect(() =>{
-    dispatch(loginUser(email))
+      dispatch(loginUser(email))
   }, [])
 
   return (
     <div className="infoUser">
       <div className="avatarCard">
-        <img src={user?.avatars?.[0].imageUrl} alt="Avatar" width={50} />
+        <img src={user?.avatars?.[0]?.imageUrl} alt="Avatar" width={50} />
         <span>{user?.name}</span>
       </div>
       <div className="nameUser">
