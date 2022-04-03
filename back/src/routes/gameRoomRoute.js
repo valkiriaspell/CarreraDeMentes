@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
 
 // Ruta para agregar un usuario a la Sala
 router.put("/", async (req, res) => {
-
+console.log(req.body)
     try {
         const [bool, msj] = await updateAddBDGameRoom(req.body);
         if (bool) {
@@ -33,7 +33,7 @@ router.put("/", async (req, res) => {
         }
 
     } catch (e) {
-        console.log("Error al agregar un Usuario a una sala:", e)
+        console.log("Error al agregar un Usuario a una sala:")
         res.status(500).send("Error al agregar un Usuario a una sala: " + e);
     }
 
@@ -73,7 +73,7 @@ router.delete("/:id", async (req, res) => {
 
 // Ruta para obtener todas las salas
 router.get("/", async (req, res) => {
-
+    const {idRoom} = req.query
 	try{
 		const data = await seachAllBDGameRoom(idRoom);
 

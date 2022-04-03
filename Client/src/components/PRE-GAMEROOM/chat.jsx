@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useSocket from './useSocketIo'
 import styles from "../STYLES/preGameRoom.module.css"
+import { loginUser } from "../../redux/actions";
 
 const Chat = ({idUser}) =>{
     const {messages, sendMessage} = useSocket(idUser);
     const [listMessages, setListMessages] = useState([])
     const [newMessage, setNewMessage] = useState("");
     const {preRoomUsers} = useSelector(state => state)
-
+const dispatch = useDispatch()
+const {user} = useSelector(state => state)
     useEffect(() =>{
         messages.text &&
     setListMessages([...listMessages, messages])
@@ -17,9 +19,12 @@ const Chat = ({idUser}) =>{
     function handleMessage(e){
         setNewMessage(e.target.value)
     }
-
+    const email = localStorage.getItem("email");
     function handleSendMessage(e){
-        sendMessage(newMessage);
+        !user.name 
+            ?  dispatch(loginUser(email))
+            .then(() => sendMessage(newMessage))
+            : sendMessage(newMessage);
         setNewMessage("");
     }
 

@@ -99,7 +99,7 @@ export function AddUserToPreRoom({idGameRoom, idUser}){
 export function listUsersInPreRoom(IdRoom){
     return async function(dispatch){
         try{
-            const {data} = await axios.get(`http://localhost:3001/gameRoom?idRoom=${IdRoom}`)
+            const {data} = await axios.get(`http://localhost:3001/gameRoom/?idRoom=${IdRoom}`)
             console.log('99', data.users[0])
             dispatch({type: 'LIST_USERS_IN_PRE_ROOM', payload: data})
         }catch(e) {
