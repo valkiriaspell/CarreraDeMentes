@@ -20,6 +20,7 @@
     "socket.io": "^4.4.1",
     "socket.io-client": "^4.4.1",
     "styled-components": "^5.3.5",
+    "sweetalert2": "^11.4.8",
     "thunk": "^0.0.1",
     "web-vitals": "^2.1.4"
   },

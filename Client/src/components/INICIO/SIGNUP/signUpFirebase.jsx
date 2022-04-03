@@ -9,6 +9,7 @@ import Contraseña from "../../IMG/unlock.png";
 import { useDispatch } from "react-redux";
 import { getAvatars, registerUser } from "../../../redux/actions";
 import Avatars from "../../AVATARS/avatars";
+import Swal from "sweetalert2";
 
 function SignUpFirebase() {
   const dispatch = useDispatch();
@@ -25,23 +26,76 @@ function SignUpFirebase() {
 
   useEffect(() => {
     dispatch(getAvatars()) 
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
 
   function validar(input) {
     let errors = {};
 
-    if (input.name === "") {
-      errors.name = "El nombre de usuario es obligatorio";
-    }
-    if (input.avatar === "") {
-      errors.avatar = "El avatar es obligatorio";
-    }
-    if (input.email === "") {
-      errors.email = "El email es obligatorio";
+    if (
+      !input.name ||
+      !input.email ||
+      !input.password
+    ) {
+      return Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Debes completar todos los campos',
+        heightAuto: false,
+      })
     }
     if (input.password.length < 6) {
-      errors.password = "La contraseña debe contener al menos 6 caracteres";
+      errors.password = Swal.fire({
+        title: `La contraseña debe contener al menos 6 caracteres`,
+        icon: "warning",
+        confirmButtonText: "OK",
+        heightAuto: false,
+        backdrop: `
+                rgba(0,0,123,0.4)
+                left top
+                no-repeat
+              `,
+      });
     }
+    // if (input.name === "") {
+    //   errors.name = Swal.fire({
+    //     title: `El nombre de usuario es obligatorio`,
+    //     icon: "warning",
+    //     confirmButtonText: "OK",
+    //     heightAuto: false,
+    //     backdrop: `
+    //             rgba(0,0,123,0.4)
+    //             left top
+    //             no-repeat
+    //           `,
+    //   });
+    // }
+    // if (input.avatar === "") {
+    //   errors.avatar = Swal.fire({
+    //     title: `El avatar es obligatorio`,
+    //     icon: "warning",
+    //     confirmButtonText: "OK",
+    //     heightAuto: false,
+    //     backdrop: `
+    //             rgba(0,0,123,0.4)
+    //             left top
+    //             no-repeat
+    //           `,
+    //   });
+    // }
+    // if (input.email === "") {
+    //   errors.email = errors.avatar = Swal.fire({
+    //     title: `El email es obligatorio`,
+    //     icon: "warning",
+    //     confirmButtonText: "OK",
+    //     heightAuto: false,
+    //     backdrop: `
+    //             rgba(0,0,123,0.4)
+    //             left top
+    //             no-repeat
+    //           `,
+    //   });
+    // }
     return errors;
   }
 
@@ -124,11 +178,6 @@ function SignUpFirebase() {
           <button className="registerButton" type="submit">Registrarse</button>
         </form>
       </div>
-      {error.name && <p>{error.name}</p>}
-      {error.avatar && <p>{error.avatar}</p>}
-      {error.email && <p>{error.email}</p>}
-      {error.password && <p>{error.password}</p>}
-      {error.mensaje && <p>{error.mensaje}</p>}
     </div>
   );
 }
