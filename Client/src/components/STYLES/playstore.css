@@ -1,9 +1,31 @@
 .containerPlayStore{
-    
+    overflow-x: hidden;
+    margin-top: 2rem;
+}
+.containerPlayStore h1{
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 2px 2px #000;
+}
+.btnVolverTienda{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    border: none;
+}
+.btnVolverTienda:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .containerCardsBuy{
     display: flex;
     width: 100%;
     justify-content: center;
+    margin-top: 2rem;
 }
