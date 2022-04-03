@@ -91,17 +91,18 @@ exports.createBDGameRoom = async ({
 
 // actializamos y agregamos un nuevo usuario a la sala
 exports.updateAddBDGameRoom = async ({idGameRoom, idUser}) => {
-
+console.log('vamos mal', idGameRoom, idUser)
 	try {
+		console.log('id', idGameRoom, idUser)
 		const data = await GameRoom.findByPk(idGameRoom, {
 			include: [
 				{
 					model: Users,
-					attributes: ['id', 'name', 'currentAvatar'],
+					attributes: ['id', 'name'],
 				},
 			],
 		});
-
+console.log("esta es la data", data)
 		if (!data) return [false, 'Sale no encontrada'];
 
 		const {users, usersAmount} = data;

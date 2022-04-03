@@ -18,13 +18,14 @@ function useChatSocketIo(idGameRoom) {
     const email = localStorage.getItem("email");
     useEffect(() =>{
         //create web socket connection
-        const newUserInRoom = async () =>{
-            await !user.name && dispatch(loginUser(email))
-            const idD = await dispatch(AddUserToPreRoom({
+        const newUserInRoom = () =>{
+            !user.name && dispatch(loginUser(email))
+            .then((data) => dispatch(AddUserToPreRoom({
                 idGameRoom: room, 
-                idUser: user.id
-            }))
-            dispatch(listUsersInPreRoom(idD))
+                idUser: data?.id
+            })))
+            .then((idD) =>dispatch(listUsersInPreRoom(idD)))
+            .then(() => console.log('listo'))
         }
         !user.host && newUserInRoom();
 
@@ -87,8 +88,8 @@ function useChatSocketIo(idGameRoom) {
         console.log("hola") //no quitar
         socketIoRef.current.emit("NEW_MESSAGE", {
             text: message, 
-            name: user.name,
-            email: user.email
+            name: user?.name,
+            email: user?.email
         })
     }
 
