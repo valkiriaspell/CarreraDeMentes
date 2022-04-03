@@ -35,7 +35,7 @@ function UserCard({location}) {
   return (
     <div className="infoUser">
       <div className="avatarCard">
-        <img src={Avatar} alt="Avatar" width={50} />
+        <img src={user.currentAvatar} alt="Avatar" width={50} />
         <span>{user?.name}</span>
       </div>
       <div className="nameUser">
