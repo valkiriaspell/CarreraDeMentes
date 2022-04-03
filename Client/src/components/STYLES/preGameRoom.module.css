@@ -43,6 +43,8 @@
 .readyButton {
   border-radius:10px;
 outline:none;
+background: none;
+border: none;
 }
 
 /* ======= BOTONES INVITAR E INICIAR ======= */

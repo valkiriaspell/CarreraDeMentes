@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import s from '../STYLES/preGameRoom.module.css'
 import corona from "../IMG/corona.png"
 import readyDark from "../IMG/readyDark.png"
-import readyGreen from "../IMG/readyGreen.png"
+import readyGreen from "../IMG/readyGreen2.png"
 
 const ListPlayers = ({ expelPlayer }) => {
     const { preRoomUsers, user } = useSelector(state => state)
@@ -42,7 +42,7 @@ const ListPlayers = ({ expelPlayer }) => {
                                         <img src={corona} alt="corona">
                                         </img>
                                     </div>}{user.name}
-                                <div key={us.id} id={us.id} ><button className="readyButton" key={us.id} onClick={()=> ready()}>
+                                <div key={us.id} id={us.id} ><button className={s.readyButton} key={us.id} onClick={()=> ready()}>
                                     <img src={readyPlayer} alt="ready"></img></button></div>
                                 </li>
                                 {us.id !== user.id && <button
