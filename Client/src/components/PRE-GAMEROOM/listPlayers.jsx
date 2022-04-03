@@ -48,8 +48,9 @@ const ListPlayers = ({ expelPlayer }) => {
                                         }
                                         <div>{us.name}</div>
 
-
+                                        <div className={s.readyButton} >
                                         <img key={us.id} id={us.id} src={readyDark} alt="ready"/>
+                                        </div>
 
 
                                         {user.id !== us.id &&

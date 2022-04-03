@@ -15,7 +15,7 @@ function PreGameRoom({match}) {
     const {preRoomUsers, user} = useSelector(state => state)
     const history = useHistory();
     const autenticado = localStorage.getItem('token')
-    console.log("match: ", match.params)
+    /* console.log("match: ", match.params) */
     const {idUser} = match.params;
     /* const email = localStorage.getItem("email"); */
 /*     useEffect(() =>{

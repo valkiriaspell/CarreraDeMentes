@@ -37,7 +37,9 @@ const history = useHistory()
   function handleJoinRoom(game){
     dispatch(AddUserToPreRoom({idGameRoom: game.id, idUser: user.id}))
     .then(()=> dispatch(listUsersInPreRoom(game.id)))
-    .then(() => history.push(`/room/${game.id}`))
+    .then(() => {
+      console.log(user?.host)
+      history.push(`/room/${game.id}`)})
   }
   return (
     <div className="containerGameList">

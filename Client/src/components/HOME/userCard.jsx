@@ -23,7 +23,7 @@ function UserCard({location}) {
       }  
     }())
   } , [location])
-  console.log(user, "avatar recibido de este user")
+  /* console.log(user, "avatar recibido de este user") */
   const dispatch = useDispatch()
   const email = localStorage.getItem("email");
   useEffect(() =>{
