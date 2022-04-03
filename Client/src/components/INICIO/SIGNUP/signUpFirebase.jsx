@@ -58,7 +58,7 @@ function SignUpFirebase() {
       name: input.name,    
       email: input.email,
       password: input.password,
-      avatar: avatar
+      idAvatar: avatar
       }))
       const registrar = await firebaseRegistrarUsuario(
         input.email,

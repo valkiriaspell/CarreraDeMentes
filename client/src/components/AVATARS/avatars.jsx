@@ -29,7 +29,7 @@ const handleAvatar = (currentAvatar, currentIndex) => {
         <div>
             <Carousel breakPoints={breakPoints} pagination={false} onChange={(currentAvatar, currentIndex) => handleAvatar(currentAvatar, currentIndex)}>
                 {avatars?.map(a => 
-                <Item key={a.id}><button key={a.id} id= {a.id}  className="itemAvatar"><img key={a.id} src={a.imageUrl} alt={a.id}></img></button></Item>)}         
+                <Item key={a.id}><div key={a.id} id= {a.id}  className="itemAvatar"><img key={a.id} src={a.imageUrl} alt={a.id}></img></div></Item>)}         
         </Carousel>
                 
         </div>
