@@ -2,7 +2,7 @@ import React from 'react'
 import '../STYLES/cardBuy.css'
 import axios from 'axios'
 
-function CardBuy({monedas, precio, referencia}) {
+function CardBuy({monedas, precio, referencia, img}) {
 
   const email = localStorage.getItem('email')
 
@@ -22,11 +22,8 @@ function CardBuy({monedas, precio, referencia}) {
     <div className='containerCardsB'>
         <div className='cardContent'>
             <h3>{monedas}</h3>
-            <h2>Mentecitas</h2>
-            <div className='btnComprar' onClick={()=> handleComprar(monedas, precio, email, referencia)}>
-                <h2>Comprar</h2>
-                <h3>{precio} ARS</h3>
-            </div>
+            <img src={img} alt='coins'/>
+            <button type='button' onClick={()=> handleComprar(monedas, precio, email, referencia)}>{precio} ARS</button>
         </div>
     </div>
   )

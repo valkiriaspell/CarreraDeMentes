@@ -1,7 +1,47 @@
 const {GameRoom, Users, Question} = require('../db.js');
 
 //buscar todas las salas
-exports.seachAllBDGameRoom = async () => {
+exports.seachAllBDGameRoom = async (idRoom) => {
+	try {
+		if (idRoom !== undefined) {
+
+			const data = await GameRoom.findOne({
+				where: {id: idRoom},
+				include: [
+					{
+						model: Users,
+						attributes: ['id', 'name'],
+					},
+				],
+			});
+			return data.dataValues;
+		} else {
+
+			const data = await GameRoom.findAll({
+				include: [
+					{
+						model: Users,
+						attributes: ['id', 'name'],
+					},
+				],
+			});
+			const rooms = data.map(room => {
+				return {
+					id: room.dataValues.id,
+					name: room.dataValues.name,
+					questionAmount: room.dataValues.questionAmount,
+					numberUsersInRoom: room.dataValues.users.length
+				}
+			})
+
+			return rooms;
+		}
+	} catch (e) {
+		console.log('error:', e);
+		return e;
+	}
+};
+/* exports.seachAllBDGameRoom = async () => {
     try {
         const data = await GameRoom.findAll({
             include: [
@@ -20,7 +60,7 @@ exports.seachAllBDGameRoom = async () => {
         console.log("error:", e)
         return e
     }
-}
+} */
 
 exports.createBDGameRoom = async ({
 	name,
@@ -29,6 +69,7 @@ exports.createBDGameRoom = async ({
 	public_,
 	email, */
 	idUser,
+	currentAvatar
 }) => {
 	try {
 		const data = await GameRoom.create({
@@ -39,16 +80,9 @@ exports.createBDGameRoom = async ({
 			email, */
 		});
 		await data.addUser(idUser);
-		const devolver = await GameRoom.findOne({ // cambiar por data.dataValues.users = [idUser, name]
-			where: {id: data.dataValues.id},
-			include: [
-				{
-					model: Users,
-					attributes: ['id'],
-				},
-			],
-		})
-		return [true, devolver.dataValues];
+		data.dataValues.users = [{idUser, name, currentAvatar}]
+
+		return [true, data.dataValues];
 	} catch (e) {
 		console.log('Error al crear la sala: ', e);
 		return e;
@@ -57,23 +91,25 @@ exports.createBDGameRoom = async ({
 
 // actializamos y agregamos un nuevo usuario a la sala
 exports.updateAddBDGameRoom = async ({idGameRoom, idUser}) => {
+console.log('vamos mal', idGameRoom, idUser)
 	try {
+		console.log('id', idGameRoom, idUser)
 		const data = await GameRoom.findByPk(idGameRoom, {
 			include: [
 				{
 					model: Users,
-					attributes: ['id'],
+					attributes: ['id', 'name'],
 				},
 			],
 		});
-
+console.log("esta es la data", data)
 		if (!data) return [false, 'Sale no encontrada'];
 
 		const {users, usersAmount} = data;
 
 		if (users.length < usersAmount) {
 			await data.addUsers(idUser);
-			return [true, 'Usuario agregado exitosamente'];
+			return [true, idGameRoom];
 		} else if (users.length >= usersAmount) {
 			return [false, 'La sala ya esta llena'];
 		}

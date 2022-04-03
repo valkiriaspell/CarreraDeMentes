@@ -4,56 +4,34 @@ import { NavLink } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { HiOutlineRefresh } from "react-icons/hi";
 import Search from "../IMG/search.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { listAllRooms } from "../../redux/actions";
 
-let arrayGames = [
-  {
-    name: "User2543",
-    users: "3/6",
-    questions: "20",
-  },
-  {
-    name: "User5872",
-    users: "2/6",
-    questions: "15",
-  },
-  {
-    name: "User7098",
-    users: "4/6",
-    questions: "20",
-  },
-  {
-    name: "User9843",
-    users: "5/6",
-    questions: "10",
-  },
-  {
-    name: "User4553",
-    users: "1/6",
-    questions: "15",
-  },
-];
 
 function GameListRoom() {
-  const [games, setGames] = useState([]);
+  const dispatch = useDispatch();
   const {user} = useSelector(state => state);
+  const {listRooms} = useSelector(state => state)
 
-  useEffect(() => {
+/*   useEffect(() => {
     setGames(arrayGames);
-  }, [setGames]);
+  }, [setGames]); */
 
-  const searchGames = (e) => {
+/*   const searchGames = (e) => {
     if (e && e !== "") {
       const listGames = games.filter((a) =>
         a.name.toLowerCase().includes(e.toLowerCase())
-      );
-      setGames(listGames);
-      console.log(listGames);
-    }
-  };
+      ); */
+/*       setGames(listGames); */
+/*       console.log(listGames); */
+/*     }
+  }; */
+  useEffect(() =>{
+    dispatch(listAllRooms())
+  })
 
   const refreshGames = () => {
-    setGames(arrayGames);
+    dispatch(listAllRooms())
   };
 
   return (
@@ -71,7 +49,7 @@ function GameListRoom() {
           <input
             type="text"
             placeholder="Buscar partidas"
-            onChange={(e) => searchGames(e.target.value)}
+            /* onChange={(e) => searchGames(e.target.value)} */
           />
           <img className="shGamelist" src={Search} alt="Search" />
         </div>
@@ -83,14 +61,14 @@ function GameListRoom() {
         <span></span>
         <span></span>
       </div>
-      {games.length > 0 ? (
-        games.map((game) => {
+      {listRooms?.length > 0 ? (
+        listRooms?.map((game) => {
           return (
-            <div key={game.name} className="infoPartidas">
+            <div key={game.id} className="infoPartidas">
               <span>{game.name}</span>
-              <span>{game.users}</span>
-              <span>{game.questions}</span>
-              <NavLink to={`/room/${user.id}`} >
+              <span>{game.numberUsersInRoom}</span>
+              <span>{game.questionAmount}</span>
+              <NavLink to={`/room/${game.id}`} >
                 <button className="unirseGameList">Unirse</button>
               </NavLink>
             </div>
