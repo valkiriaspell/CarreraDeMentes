@@ -69,7 +69,7 @@ function PreGameRoom({match}) {
                                 Listo
                             </button>)
                     }
-                    <button >invitar</button>
+                    <button >Invitar</button>
                     </div>
                 </div>
                 </div>
