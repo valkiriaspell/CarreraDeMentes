@@ -89,7 +89,7 @@ function SignUpFirebase() {
             <input
               name="name"
               type="text"
-              placeholder="name"
+              placeholder="Name"
               value={input.name}
               onChange={(e) => handleChange(e)}
               autoComplete="off"

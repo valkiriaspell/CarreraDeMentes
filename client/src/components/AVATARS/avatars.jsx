@@ -21,8 +21,8 @@ function Avatars({setAvatar}){
     ];   
     
 const handleAvatar = (currentAvatar, currentIndex) => {
-    console.log(currentIndex+1,"currentindex")
-    setAvatar(currentIndex+1)
+    console.log(currentAvatar.item.children.key,"currentAvatar")
+    setAvatar(currentAvatar.item.children.key)
     
 }
     return (
