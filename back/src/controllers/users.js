@@ -100,11 +100,15 @@ const modifyUser = async ({ id, name, idAvatar }) => {
 
 		if (!user) return msjError("Usuario no encontrado");
 		if (!newAvatar) return msjError("El avatar no fue encontrado en la base de datos");
-		if (user.guest) return msjError("Lo sinto, los invitados no pueden cambiar de avatar")
+		if (user.guest) return msjError("Lo siento, los invitados no pueden cambiar de avatar")
 
 		await user.removeAvatar(user.avatars[0].id);
 		await user.addAvatar(idAvatar);
-		await user.update({ name }, { where: { id } });
+		//agregue validacion para cambio de nombre si es que me mandan un nombre, sino no... (valki)
+		if (name !== ""){
+
+			await user.update({ name }, { where: { id } });
+		}
 
 		const data = await userId()
 

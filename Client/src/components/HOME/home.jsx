@@ -6,7 +6,7 @@ import { FaPowerOff } from "react-icons/fa";
 import UserCard from "./userCard";
 import Instructions from "./instructions";
 import { BsFacebook, BsLinkedin, BsTwitter, BsWhatsapp } from "react-icons/bs";
-import { createRoom, modifyHost } from "../../redux/actions";
+import { createRoom, loginUser, modifyHost } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 
 function Home(props) {
@@ -14,6 +14,7 @@ function Home(props) {
   const history = useHistory();
   const autenticado = localStorage.getItem("token");
   const { user } = useSelector((state) => state);
+  const email = localStorage.getItem("email");
   async function handleSignOut(e) {
     e.preventDefault();
     await firebaseCerrarSesion();
@@ -25,6 +26,10 @@ function Home(props) {
     dispatch(modifyHost());
     dispatch(createRoom(user)).then(() => history.push(`/room/${user.id}`));
   }
+
+  useEffect(() =>{     
+    dispatch(loginUser(email))
+  }, [])
 
   if (autenticado) {
     return (
