@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { firebaseRegistrarUsuario } from "../../../utils/Firebase";
+import { firebaseRegistrarUsuario, firebaseVerificarUsuario } from "../../../utils/Firebase";
 import { useHistory } from "react-router-dom";
 import "../../STYLES/singUp.modules.css";
 import Perfil from "../../IMG/user.png";
@@ -119,9 +119,9 @@ function SignUpFirebase() {
         input.password
       );
       if (registrar.accessToken) {
-        localStorage.setItem("email", registrar.email);
-        localStorage.setItem("token", registrar.accessToken);
-        history.push("/home");
+        const verificarEmail = await firebaseVerificarUsuario(registrar);
+        alert(verificarEmail)
+        history.push("/login");
       } else {
         setError({ mensaje: registrar });
       }

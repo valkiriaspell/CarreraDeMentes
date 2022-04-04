@@ -92,14 +92,18 @@ function Login() {
 
     if (Object.keys(validacion).length === 0) {
       const login = await firebaseLogin(input.email, input.password);
-      if (login.accessToken) {
-        dispatch(loginUser(input.email));
-        localStorage.setItem("email", login.email);
-        localStorage.setItem("token", login.accessToken);
-        history.push("/home");
+      if(login?.accessToken){
+        if (login.emailVerified === true) {
+          dispatch(loginUser(input.email));
+          localStorage.setItem("email", login.email);
+          localStorage.setItem("token", login.accessToken);
+          history.push("/home");
+        } else {
+          alert('Por favor, verifique su cuenta para poder ingresar');
+        }
       } else {
         setError({ mensaje: login });
-      }
+      }      
     } else {
       setError(() => validacion);
     }
