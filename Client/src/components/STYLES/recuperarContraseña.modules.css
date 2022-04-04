@@ -1,0 +1,77 @@
+.containerReContraseña {
+  background-color: rgba(216, 221, 226, 0.068);
+  border: solid 3px rgba(216, 221, 226, 0.253);
+  max-width: 400px;
+  min-height: 445px;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+/* ====== BOTÓN VOLVER ====== */
+.contentVolver {
+  display: flex;
+  justify-content: start;
+  width: 370px;
+}
+.contentReContraseña {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(216, 221, 226, 0.212);
+  margin-top: 6rem;
+  width: 300px;
+  height: 270px;
+  border-radius: 0.4rem;
+}
+.imgProfile {
+  top: -30px;
+  position: relative;
+  margin: auto;
+  background-color: rgba(185, 193, 202, 0.58);
+  border-radius: 50%;
+}
+.contentReContraseña input {
+  background-color: rgba(216, 221, 226, 0);
+  border: none;
+  margin: 0.5rem;
+  width: 200px;
+  color: rgba(221, 221, 221, 0.829);
+  border-bottom: solid 3px rgba(216, 221, 226, 0.4);
+  margin-bottom: 2rem;
+}
+.contentReContraseña input::placeholder {
+  color: rgba(221, 221, 221, 0.829);
+}
+.contentReContraseña input:focus {
+  outline: none;
+  resize: none;
+}
+.contentReContraseña button {
+  text-decoration: none;
+  color: rgba(221, 221, 221, 0.829);
+  width: 13rem;
+  border-radius: 2rem;
+  font-weight: bold;
+  padding: 0.4rem;
+  background-color: rgba(216, 221, 226, 0.521);
+  border: none;
+}
+.contentReContraseña button:hover {
+  background-color: rgba(165, 166, 167, 0.521);
+  cursor: pointer;
+}
+
+/* ===== MEDIA QUERIES =====*/
+@media screen and (max-width: 500px) {
+  .containerReContraseña {
+    margin: 3rem 1rem;
+  }
+  .contentVolver {
+    width: 320px;
+  }
+}
