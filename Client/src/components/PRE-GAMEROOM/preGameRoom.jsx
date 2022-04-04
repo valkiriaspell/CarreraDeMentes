@@ -34,7 +34,7 @@ function PreGameRoom({match}) {
                 })
                 .then((value) => listUsersInPreRoom(value))
     }, [email]) */
-  const { sendReady, sendStartGame, game, expelPlayer, image } = useSocket(idUser);
+  const { sendReady, sendStartGame, game, expelPlayer } = useSocket(idUser);
 
   function countReady() {
     const readys = preRoomUsers?.users?.filter((user) => user.ready === true);
@@ -56,7 +56,7 @@ function PreGameRoom({match}) {
           <AiFillSound style={{ width: "30px" }} />
         </div>
         <div>
-          <ListPlayers expelPlayer={expelPlayer} image={image}/>
+          <ListPlayers expelPlayer={expelPlayer} />
         </div>
         <div>
           <div>
