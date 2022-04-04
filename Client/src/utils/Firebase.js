@@ -141,7 +141,7 @@ export async function firebaseVerificarUsuario(usuario){
     };
     const auth = getAuth();
     const test = await sendEmailVerification(usuario, actionCodeSettings)
-    return 'Te mandamos un email para verificar tu cuenta, por favor revisa tu bandeja de entrada'
+    return 
   } catch (error) {
     console.log(error)
   }

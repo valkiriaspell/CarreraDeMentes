@@ -120,7 +120,13 @@ function SignUpFirebase() {
       );
       if (registrar.accessToken) {
         const verificarEmail = await firebaseVerificarUsuario(registrar);
-        alert(verificarEmail)
+        Swal.fire({
+          icon: 'success',
+          title: 'Te mandamos un email para verificar tu cuenta, por favor revisa tu bandeja de entrada',
+          showConfirmButton: false,
+          heightAuto: false,
+          timer: 3000
+        })
         history.push("/login");
       } else {
         setError({ mensaje: registrar });

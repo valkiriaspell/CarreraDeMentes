@@ -99,7 +99,17 @@ function Login() {
           localStorage.setItem("token", login.accessToken);
           history.push("/home");
         } else {
-          alert('Por favor, verifique su cuenta para poder ingresar');
+          return Swal.fire({
+            title: `Por favor, verifique su cuenta para poder ingresar`,
+            icon: "warning",
+            confirmButtonText: "OK",
+            heightAuto: false,
+            backdrop: `
+                    rgba(0,0,123,0.4)
+                    left top
+                    no-repeat
+                  `,
+          });
         }
       } else {
         setError({ mensaje: login });
@@ -158,7 +168,6 @@ function Login() {
               placeholder="Email"
               value={input.email}
               onChange={(e) => handleOnChange(e)}
-              autoComplete="off"
             />
           </div>
           <div className="input">
