@@ -17,7 +17,7 @@ function useChatSocketIo(idGameRoom) {
     const socketIoRef = useRef();
     const [game, setGame] = useState(false)
     const email = localStorage.getItem("email");
-/*     const [image, setImage] = useState('../IMG/readyDark.png') */
+    /* const [image, setImage] = useState(readyDark) */
     useEffect(() =>{
         //create web socket connection
         const newUserInRoom = () =>{
@@ -50,12 +50,8 @@ function useChatSocketIo(idGameRoom) {
             })
 
             //change readyState from user to click in button
-            socketIoRef.current.on("READY", ({id}) =>{
-                const imgReady = document.getElementById(id)
-
-                    /* dispatch(setReady(id)) */
-                    imgReady.src = readyGreen;
-
+            socketIoRef.current.on("READY", (id) =>{
+                dispatch(getReadyUser(id))
             })
 
             
@@ -93,7 +89,19 @@ function useChatSocketIo(idGameRoom) {
         })
     }
 
-    function sendReady(){
+    async function changeReady(id, bool){
+        try{
+            const {data} = await axios.put(`http://localhost:3001/users/ready/?id=${id}&bool=${bool}`)
+            console.log(data)
+        }catch(e) {
+            console.log(e)
+        }
+    }
+    async function sendReady(){
+        const imgReady = document.getElementById(user.id)
+        imgReady.src === readyGreen
+        ? await changeReady(id=user.id, false)
+        : await changeReady(id=user.id, true)
         socketIoRef.current.emit("READY", {id: user.id})
     }
 
