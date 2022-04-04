@@ -5,6 +5,8 @@ import socketIOClient from 'socket.io-client';
 import { AddUserToPreRoom, listUsersInPreRoom, deleteUserFromRoom, setReady, loginUser } from "../../redux/actions";
 import s from '../STYLES/preGameRoom.module.css'
 import axios from "axios";
+import readyGreen from "../IMG/readyGreen2.png"
+import readyDark from "../IMG/readyDark.png"
 
 function useChatSocketIo(idGameRoom) {
     const history = useHistory();
@@ -15,6 +17,7 @@ function useChatSocketIo(idGameRoom) {
     const socketIoRef = useRef();
     const [game, setGame] = useState(false)
     const email = localStorage.getItem("email");
+/*     const [image, setImage] = useState('../IMG/readyDark.png') */
     useEffect(() =>{
         //create web socket connection
         const newUserInRoom = () =>{
@@ -48,13 +51,11 @@ function useChatSocketIo(idGameRoom) {
 
             //change readyState from user to click in button
             socketIoRef.current.on("READY", ({id}) =>{
-                const buttonReady = document.getElementById(id)
-                if(buttonReady.className === s.active){
-                    buttonReady.className = s.inactive;
-                    dispatch(setReady(id))
-                } else {
-                    buttonReady.className = s.active;
-                }
+                const imgReady = document.getElementById(id)
+
+                    /* dispatch(setReady(id)) */
+                    imgReady.src = readyGreen;
+
             })
 
             

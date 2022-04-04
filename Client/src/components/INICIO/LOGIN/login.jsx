@@ -105,29 +105,39 @@ function Login() {
     }
   }
 
-  async function handleLoginGoogle() {
-    const iniciarSesion = await firebaseLoginGoogle();
-    if (iniciarSesion.accessToken) {
-      /* dispatch(registerUser()) */
-      localStorage.setItem("email", iniciarSesion.email);
-      localStorage.setItem("token", iniciarSesion.accessToken);
-      history.push("/home");
-    } else {
-      setError({ mensaje: iniciarSesion });
+    async function handleLoginGoogle(){
+        const iniciarSesion = await firebaseLoginGoogle()
+        if(iniciarSesion.accessToken){
+            await dispatch(registerUser({
+                name: iniciarSesion.email, 
+                email: iniciarSesion.email,
+                idAvatar: 1
+            }))
+            localStorage.setItem('email', iniciarSesion.email)
+            localStorage.setItem('token', iniciarSesion.accessToken)
+            history.push('/home')
+        }else{
+            setError({mensaje: iniciarSesion})
+        }
     }
-  }
+  
 
-  async function handleLoginFacebook() {
-    const iniciarSesion = await firebaseLoginFacebook();
-    if (iniciarSesion.accessToken) {
-      /* dispatch(registerUser()) */
-      localStorage.setItem("email", iniciarSesion.email);
-      localStorage.setItem("token", iniciarSesion.accessToken);
-      history.push("/home");
-    } else {
-      setError({ mensaje: iniciarSesion });
+    async function handleLoginFacebook(){
+        const iniciarSesion = await firebaseLoginFacebook()
+        if(iniciarSesion.accessToken){
+            await dispatch(registerUser({
+                name: iniciarSesion.email, 
+                email: iniciarSesion.email,
+                idAvatar: 1
+            }))
+            localStorage.setItem('email', iniciarSesion.email)
+            localStorage.setItem('token', iniciarSesion.accessToken)
+            history.push('/home')
+        }else{
+            setError({mensaje: iniciarSesion})
+        }
     }
-  }
+  
 
   return (
     <div className="containerLogin">
