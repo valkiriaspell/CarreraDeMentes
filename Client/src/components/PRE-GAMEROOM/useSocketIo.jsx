@@ -52,7 +52,6 @@ function useChatSocketIo(idGameRoom) {
             //change readyState from user to click in button
             socketIoRef.current.on("READY", ({id}) =>{
                 const imgReady = document.getElementById(id)
-                
 
                     /* dispatch(setReady(id)) */
                     imgReady.src = readyGreen;
