@@ -1,4 +1,4 @@
-import { LOGIN_USER_GUEST, LIST_USERS_IN_PRE_ROOM, LIST_ROOMS, SET_READY, NEW_USER, LOGIN, HOST_TRUE, CREATE_ROOM, GET_AVATARS } from "./actions"
+import { LOGIN_USER_GUEST, LIST_USERS_IN_PRE_ROOM, LIST_ROOMS, SET_READY, NEW_USER, LOGIN, HOST, CREATE_ROOM, GET_AVATARS } from "./actions"
 
 
 const initialState = {
@@ -29,10 +29,10 @@ const reducer = (state = initialState, action) => {
             user: action.payload
         }
 
-        case HOST_TRUE: 
-        state.user.host = true
+        case HOST: 
         return {
             ...state,
+            user: action.payload
         }
 
         case CREATE_ROOM: 
@@ -53,7 +53,7 @@ const reducer = (state = initialState, action) => {
             listRooms: action.payload
         }
 
-        case SET_READY: 
+/*         case SET_READY: 
         const index = state.preRoomUsers.users.findIndex(user => user.id === action.payload)
         state.preRoomUsers.users[index].ready
             ? state.preRoomUsers.users[index].ready === true
@@ -62,7 +62,7 @@ const reducer = (state = initialState, action) => {
             : state.preRoomUsers.users[index].ready = true
         return {
             ...state,
-        }
+        } */
 
         case GET_AVATARS: 
         return {

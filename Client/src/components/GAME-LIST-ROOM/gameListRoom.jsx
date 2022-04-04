@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "../STYLES/gameListRoom.modules.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { HiOutlineRefresh } from "react-icons/hi";
 import Search from "../IMG/search.png";
 import { useDispatch, useSelector } from "react-redux";
-import { listAllRooms } from "../../redux/actions";
+import { AddUserToPreRoom, listAllRooms, listUsersInPreRoom } from "../../redux/actions";
 
 
 function GameListRoom() {
@@ -33,7 +33,14 @@ function GameListRoom() {
   const refreshGames = () => {
     dispatch(listAllRooms())
   };
-
+const history = useHistory()
+  function handleJoinRoom(game){
+    dispatch(AddUserToPreRoom({idGameRoom: game.id, idUser: user.id}))
+    .then(()=> dispatch(listUsersInPreRoom(game.id)))
+    .then(() => {
+      console.log(user?.host)
+      history.push(`/room/${game.id}`)})
+  }
   return (
     <div className="containerGameList">
       <div className="navGameList">
@@ -68,9 +75,7 @@ function GameListRoom() {
               <span>{game.name}</span>
               <span>{game.numberUsersInRoom}</span>
               <span>{game.questionAmount}</span>
-              <NavLink to={`/room/${game.id}`} >
-                <button className="unirseGameList">Unirse</button>
-              </NavLink>
+                <button className="unirseGameList" onClick={() => handleJoinRoom(game)} >Unirse</button>
             </div>
           );
         })

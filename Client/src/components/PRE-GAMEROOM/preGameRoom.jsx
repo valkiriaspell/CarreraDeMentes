@@ -12,13 +12,15 @@ import { Link } from "react-router-dom";
 import style from "../STYLES/form.css"
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { AiFillSound } from "react-icons/ai";
+import readyDark from "../IMG/readyDark.png"
+import readyGreen from "../IMG/readyGreen2.png"
 
 function PreGameRoom({match}) {
     /* const dispatch = useDispatch(); */
     const {preRoomUsers, user} = useSelector(state => state)
     const history = useHistory();
     const autenticado = localStorage.getItem('token')
-    console.log("match: ", match.params)
+    /* console.log("match: ", match.params) */
     const {idUser} = match.params;
     /* const email = localStorage.getItem("email"); */
 /*     useEffect(() =>{
@@ -38,6 +40,7 @@ function PreGameRoom({match}) {
     const readys = preRoomUsers?.users?.filter((user) => user.ready === true);
     return readys?.length;
   }
+  
 
   if (autenticado) {
     return game === false ? (
@@ -67,7 +70,8 @@ function PreGameRoom({match}) {
             {/* <NavLink to={"/partida"}>
               <button>Iniciar</button>
             </NavLink> */}
-            {user?.host === true ? (
+            {user?.host === true 
+            ? (
               <button
                 disabled={
                   preRoomUsers?.users?.length - 1 === 0

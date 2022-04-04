@@ -121,7 +121,7 @@ const modifyUser = async ({ id, name, idAvatar }) => {
 const modifyHost = async (email) => {
 	try{
 		const userHost = await Users.update(
-			{host: true ? false : true}, 
+			{host: true }, 
 			{where: {email}}
 			)
 			console.log(userHost)
