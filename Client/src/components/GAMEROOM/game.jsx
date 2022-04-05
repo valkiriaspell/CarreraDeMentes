@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import TimerGame from "./timeGame";
 
 // let arrayQuestions = [
 //   {
@@ -82,6 +83,7 @@ function randomQuestions(array) {
 }
 
 function Game() {
+  // ======= QUESTIONS =======
   const [questions, setQuestions] = useState([]);
 
   let [question, setQ] = useState("Question");
@@ -104,13 +106,38 @@ function Game() {
     return data.slice(0, config[0].count);
   }
 
+  // ======= TIMER =======
+  const [seconds, setSeconds] = useState(30);
+  const [percentage, setPercentage] = useState(100);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setPercentage(percentage - 33.3);
+    }, 10000);
+  }, [setPercentage, percentage]);
+
+  // if (percentage <= 0) {
+  //   setPercentage(100);
+  // }
+  if (seconds <= 0) {
+    setSeconds(30);
+  }
+
+  useEffect(() => {
+    let intervalo = null;
+    intervalo = setInterval(() => {
+      setSeconds((seconds) => seconds - 1);
+    }, 1000);
+
+    return () => clearInterval(intervalo);
+  }, [question]);
+
   useEffect(() => {
     getUrl("http://localhost:3001/question").then((res) => {
       let data = sliceQuestions(res.data);
       setQuestions(data);
-      console.log(data);
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setQuestions]);
 
   const startGame = () => {
@@ -121,7 +148,7 @@ function Game() {
     setF3(questions[0].false3);
     setCat(questions[0].category);
 
-    questions?.map((q, index) =>
+   questions?.map((q, index) =>
       setTimeout(() => {
         setQ(q.question);
         setA(q.answer);
@@ -130,13 +157,17 @@ function Game() {
         setF3(q.false3);
         setCat(q.category);
         setImage(q.image);
-      }, 10000 * index)
+        setSeconds(30);
+        setPercentage(100);
+      }, 30000 * index)
     );
   };
 
+
   return (
     <div className="containerGame">
-      <div className="categoryQuestion">
+      <div className="contentNav">
+        <TimerGame seconds={seconds} percentage={percentage} />
         <h3>{category}</h3>
       </div>
       <div className="question">
