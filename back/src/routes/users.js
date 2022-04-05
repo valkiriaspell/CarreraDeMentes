@@ -36,6 +36,7 @@ router.get('/ready', async (req, res) => {
 	try {
 		const {id} = req.query;
 		const userReady = await getReadyUser(id);
+
 		res.json(userReady);
 	} catch (e) {
 		res.status(500).send('Error: ' + e);
