@@ -1,0 +1,22 @@
+[
+    {
+        "coins": 500,
+        "url": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Coins-Tienda%2Fcoins1.svg?alt=media&token=bc116d6b-e8f9-47f2-8af3-e02df985d4d6"
+    },
+    {
+        "coins": 1000,
+        "url": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Coins-Tienda%2Fcoins2.svg?alt=media&token=3c5797b2-e2dd-4f2f-9919-e66f59d4933c"
+    },
+    {
+        "coins": 2500,
+        "url": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Coins-Tienda%2Fcoins3.svg?alt=media&token=7efcae85-10b7-479b-b08b-dbfa71497254"
+    },
+    {
+        "coins": 5000,
+        "url": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Coins-Tienda%2Fcoins4.svg?alt=media&token=2266b704-f992-4ba0-84ff-f192f2c184da"
+    },
+    {
+        "coins": 10000,
+        "url": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Coins-Tienda%2Fcoins5.svg?alt=media&token=c6e3df89-8b23-4705-8e60-237a42b7f4ed"
+    }  
+]
