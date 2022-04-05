@@ -87,7 +87,7 @@ const getReadyUser = async (id) => {
 		const readyFound = await Users.findOne({where: {id}});
 
 
-		let obj = {id: readyFound.id, host: readyFound.host};
+		let obj = {id: readyFound.id, ready: readyFound.ready};
 
 		return obj;
 

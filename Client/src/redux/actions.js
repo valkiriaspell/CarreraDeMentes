@@ -9,6 +9,8 @@ export const HOST = 'HOST'
 export const CREATE_ROOM = 'CREATE_ROOM'
 export const GET_AVATARS = 'GET_AVATARS'
 export const LIST_ROOMS = 'LIST_ROOMS'
+export const CHANGE_READY = 'CHANGE_READY'
+export const GET_READY_USER = 'GET_READY_USER'
 
 
 
@@ -17,6 +19,7 @@ export function loginAsGuest(guest){
         try{
             const test = await axios.post('http://localhost:3001/users', guest)
             dispatch({type: 'LOGIN_USER_GUEST', payload: test.data})
+            console.log(test.data)
             return test.data
         }catch(e) {
             console.log(e)
@@ -55,10 +58,10 @@ export const updateUser = (userData)=> async ()=>{
     }
 }
 
-export function modifyHost(email){
+export function modifyHost(email, host){
     return async function(dispatch){
         try{
-            const {data} = await axios.put(`http://localhost:3001/users/?email=${email}`)
+            const {data} = await axios.put(`http://localhost:3001/users/?email=${email}&host=${host}`)
             dispatch({type: 'HOST', payload: data})
             return data
         }catch(e){
@@ -113,11 +116,16 @@ export function listUsersInPreRoom(IdRoom){
     }
 }
 
-/* export function setReady(id){
-    return  function(dispatch){
-            dispatch({type: 'SET_READY', payload: id})
+export function getReadyUser(id){
+    return async function(dispatch){ // me traigo el id y ready(un bolean)
+        try{ 
+            const {data} = await axios.get(`http://localhost:3001/users/ready/?id=${id}`)
+            dispatch({type: 'GET_READY_USER', payload: data})
+        }catch(e) {
+            console.log(e) 
+        }
     }
-} */
+}
 
 export function listAllRooms(){
     return async function(dispatch){

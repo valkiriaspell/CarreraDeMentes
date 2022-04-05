@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import socketIOClient from 'socket.io-client';
-import { AddUserToPreRoom, listUsersInPreRoom, deleteUserFromRoom, setReady, loginUser } from "../../redux/actions";
+import { AddUserToPreRoom, listUsersInPreRoom, deleteUserFromRoom, setReady, loginUser, getReadyUser } from "../../redux/actions";
 import s from '../STYLES/preGameRoom.module.css'
 import axios from "axios";
 import readyGreen from "../IMG/readyGreen2.png"
@@ -17,11 +17,11 @@ function useChatSocketIo(idGameRoom) {
     const socketIoRef = useRef();
     const [game, setGame] = useState(false)
     const email = localStorage.getItem("email");
-/*     const [image, setImage] = useState('../IMG/readyDark.png') */
+
     useEffect(() =>{
         //create web socket connection
         const newUserInRoom = () =>{
-            !user.name && dispatch(loginUser(email))
+            !user?.name && dispatch(loginUser(email))
             .then((data) => dispatch(AddUserToPreRoom({
                 idGameRoom, 
                 idUser: data?.id
@@ -29,8 +29,8 @@ function useChatSocketIo(idGameRoom) {
             .then((idD) =>dispatch(listUsersInPreRoom(idD)))
             .then(() => console.log('listo'))
         }
-        !user.host && newUserInRoom();
-        console.log('idGameRoom: ', idGameRoom)
+        !user?.host && newUserInRoom();
+        /* console.log('idGameRoom: ', idGameRoom) */
         socketIoRef.current = socketIOClient('http://localhost:3001',{query:{idGameRoom, email: user.email} } );
 
             socketIoRef.current.on("NEW_CONNECTION", (email) =>{
@@ -51,11 +51,7 @@ function useChatSocketIo(idGameRoom) {
 
             //change readyState from user to click in button
             socketIoRef.current.on("READY", ({id}) =>{
-                const imgReady = document.getElementById(id)
-
-                    /* dispatch(setReady(id)) */
-                    imgReady.src = readyGreen;
-
+                dispatch(getReadyUser(id))
             })
 
             
@@ -75,7 +71,7 @@ function useChatSocketIo(idGameRoom) {
 
             //remove player from room (DB) when player leaves the room and destroy the socket reference
             return () =>{
-                axios.put('http://localhost:3001/gameRoom', {idGameRoom, idUserDelet: user.id})
+                axios.put('http://localhost:3001/gameRoom/delete', {idGameRoom, idUserDelet: user.id})
                 .then(() =>{
                     socketIoRef.current.emmit("DISCONNECT")
                     socketIoRef.current.disconnect();
@@ -93,7 +89,21 @@ function useChatSocketIo(idGameRoom) {
         })
     }
 
-    function sendReady(){
+    async function changeReady(id, bool){
+        try{
+            const {data} = await axios.put(`http://localhost:3001/users/ready/?id=${id}&bool=${bool}`)
+            console.log(data)
+        }catch(e) {
+            console.log(e)
+        }
+    }
+    //when someone press ready, find de element with yours id,
+    //and change the ready prop, if it is true change to false
+    async function sendReady(){
+        const imgReady = document.getElementById(user.id)
+        imgReady.src === readyGreen
+        ? await changeReady(user.id, false)
+        : await changeReady(user.id, true)
         socketIoRef.current.emit("READY", {id: user.id})
     }
 
