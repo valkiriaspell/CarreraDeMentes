@@ -9,6 +9,7 @@ const {
 	modifyHost,
 	createGuestUser,
 	getReadyUser,
+	bannerUser,
 	putUserReady
 } = require('../controllers/users');
 
@@ -95,5 +96,16 @@ router.put('/', async (req, res) => {
 		}
 	} catch (e) {
 		res.status(500).send('Error al modificar usuario: ' + e);
+	}
+});
+
+router.put('/banner', async (req, res) => {
+	try {
+		const {email} = req.query;
+			const userBanner = await bannerUser(email);
+			res.send(userBanner);
+		
+	} catch (error) {
+		res.status(500).send(`Error al bannear el usuario: ${error}`);
 	}
 });
