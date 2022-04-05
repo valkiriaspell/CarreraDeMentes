@@ -1,10 +1,9 @@
-const { Users, Avatar } = require('../db');
+const {Users, Avatar} = require('../db');
 
-const includesAvatar = { include: [{ model: Avatar }] };
-const msjError = (msj) => ({ error: msj });
+const includesAvatar = {include: [{model: Avatar}]};
+const msjError = (msj) => ({error: msj});
 
 let guestUser = 100;
-
 
 const createUsers = async ({
 	name,
@@ -21,7 +20,7 @@ const createUsers = async ({
 }) => {
 	try {
 		const [newUser, bool] = await Users.findOrCreate({
-			where: { email },
+			where: {email},
 			defaults: {
 				name,
 				email,
@@ -35,11 +34,9 @@ const createUsers = async ({
 				guest,
 			},
 		});
-		bool && await newUser.addAvatar(idAvatar);
+		bool && (await newUser.addAvatar(idAvatar));
 
-		return await Users.findOne({ where: { email }, ...includesAvatar })
-
-
+		return await Users.findOne({where: {email}, ...includesAvatar});
 	} catch (error) {
 		return error;
 	}
@@ -57,8 +54,10 @@ const createGuestUser = async () => {
 
 		await newUser.addAvatar(1);
 
-		return await Users.findOne({ where: { name: `User${guestUser}` }, ...includesAvatar })
-
+		return await Users.findOne({
+			where: {name: `User${guestUser}`},
+			...includesAvatar,
+		});
 	} catch (error) {
 		return error;
 	}
@@ -66,8 +65,8 @@ const createGuestUser = async () => {
 
 const getUser = async (email) => {
 	try {
-		const userFound = await Users.findOne({ where: { email }, ...includesAvatar });
-		return !userFound ? msjError("El email no existe") : userFound
+		const userFound = await Users.findOne({where: {email}, ...includesAvatar});
+		return !userFound ? msjError('El email no existe') : userFound;
 	} catch (error) {
 		return error;
 	}
@@ -76,41 +75,68 @@ const getUsers = async () => {
 	try {
 		const userFound = await Users.findAll(includesAvatar);
 
-		return !userFound.length ? msjError("No hay ningun usuario en la base de dato") : userFound;
+		return !userFound.length
+			? msjError('No hay ningun usuario en la base de dato')
+			: userFound;
+	} catch (error) {
+		return error;
+	}
+};
+const getReadyUser = async (id) => {
+	try {
+		const readyFound = await Users.findOne({where: {id}});
+
+
+		let obj = {id: readyFound.id, ready: readyFound.ready};
+
+		return obj;
+
+
+	} catch (error) {
+		return error;
+	}
+};
+const putUserReady = async (id, bool) => {
+	try {
+		const readyFound = await Users.findOne({where: {id}});
+		await readyFound.update({ready: bool}, {where: {id}});
+		return 'Usuario modificado con exito';
 	} catch (error) {
 		return error;
 	}
 };
 const deleteUser = async (id) => {
 	try {
-		const eliminado = await Users.destroy({ where: { id } });
+		const eliminado = await Users.destroy({where: {id}});
 
-		return eliminado > 0 ? 'Usuario eliminado correctamente' : msjError("El usuario no existe")
+		return eliminado > 0
+			? 'Usuario eliminado correctamente'
+			: msjError('El usuario no existe');
 	} catch (e) {
 		return e;
 	}
 };
-const modifyUser = async ({ id, name, idAvatar }) => {
+const modifyUser = async ({id, name, idAvatar}) => {
 	try {
+		const userId = async () => await Users.findByPk(id, {...includesAvatar});
 
-		const userId = async () => await Users.findByPk(id, { ...includesAvatar });
+		const user = await userId();
+		const newAvatar = await Avatar.findByPk(idAvatar);
 
-		const user = await userId()
-		const newAvatar = await Avatar.findByPk(idAvatar)
-
-		if (!user) return msjError("Usuario no encontrado");
-		if (!newAvatar) return msjError("El avatar no fue encontrado en la base de datos");
-		if (user.guest) return msjError("Lo siento, los invitados no pueden cambiar de avatar")
+		if (!user) return msjError('Usuario no encontrado');
+		if (!newAvatar)
+			return msjError('El avatar no fue encontrado en la base de datos');
+		if (user.guest)
+			return msjError('Lo siento, los invitados no pueden cambiar de avatar');
 
 		await user.removeAvatar(user.avatars[0].id);
 		await user.addAvatar(idAvatar);
 		//agregue validacion para cambio de nombre si es que me mandan un nombre, sino no... (valki)
-		if (name !== ""){
-
-			await user.update({ name }, { where: { id } });
+		if (name !== '') {
+			await user.update({name}, {where: {id}});
 		}
 
-		const data = await userId()
+		const data = await userId();
 
 		return data;
 	} catch (e) {
@@ -118,18 +144,16 @@ const modifyUser = async ({ id, name, idAvatar }) => {
 	}
 };
 
-const modifyHost = async (email) => {
-	try{
-		const userHost = await Users.update(
-			{host: true }, 
-			{where: {email}}
-			)
-			console.log(userHost)
-			return await Users.findOne({ where: { email }})
-	} catch(error) {
-		console.log(error)
+const modifyHost = async (email, host) => {
+	try {
+		const userHost = await Users.findOne({where: {email}});
+
+		const userUpdated = await userHost.update({host: host}, {where: {email}});
+		return userUpdated;
+	} catch (error) {
+		console.log(error);
 	}
-}
+};
 
 module.exports = {
 	createUsers,
@@ -138,5 +162,7 @@ module.exports = {
 	deleteUser,
 	createGuestUser,
 	modifyUser,
-	modifyHost
+	modifyHost,
+	getReadyUser,
+	putUserReady,
 };

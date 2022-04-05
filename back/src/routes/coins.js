@@ -30,7 +30,6 @@ router.post("/", async (req, res) => {
 // Agregar nuevas coins
 router.post("/multiplesCoins", async (req, res) => {
     try {
-
         const [bool, msj] = await addMultCoins(req.body);
         bool ? res.send(msj) : res.send(e);
     } catch (e) {
