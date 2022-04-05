@@ -1,4 +1,4 @@
-const {GameRoom, Users, Question} = require('../db.js');
+const { GameRoom, Users, Question } = require('../db.js');
 
 //buscar todas las salas
 exports.seachAllBDGameRoom = async (idRoom) => {
@@ -6,7 +6,7 @@ exports.seachAllBDGameRoom = async (idRoom) => {
 		if (idRoom !== undefined) {
 
 			const data = await GameRoom.findOne({
-				where: {id: idRoom},
+				where: { id: idRoom },
 				include: [
 					{
 						model: Users,
@@ -42,45 +42,45 @@ exports.seachAllBDGameRoom = async (idRoom) => {
 	}
 };
 /* exports.seachAllBDGameRoom = async () => {
-    try {
-        const data = await GameRoom.findAll({
-            include: [
-                {
-                    model: Users,
-                    attributes: ["id", "name", "email"]
-                },
-                {
-                    model: Question
-                }
-            ]
-        })
+	try {
+		const data = await GameRoom.findAll({
+			include: [
+				{
+					model: Users,
+					attributes: ["id", "name", "email"]
+				},
+				{
+					model: Question
+				}
+			]
+		})
 
-        return data
-    } catch (e) {
-        console.log("error:", e)
-        return e
-    }
+		return data
+	} catch (e) {
+		console.log("error:", e)
+		return e
+	}
 } */
 
 exports.createBDGameRoom = async ({
 	name,
-/* 	usersAmount,
-	questionAmout,
-	public_,
-	email, */
+	/* 	usersAmount,
+		questionAmout,
+		public_,
+		email, */
 	idUser,
 	currentAvatar
 }) => {
 	try {
 		const data = await GameRoom.create({
 			name,
-/* 			usersAmount,
-			questionAmout,
-			public_,
-			email, */
+			/* 			usersAmount,
+						questionAmout,
+						public_,
+						email, */
 		});
 		await data.addUser(idUser);
-		data.dataValues.users = [{id: idUser, name, currentAvatar}]
+		data.dataValues.users = [{ id: idUser, name, currentAvatar }]
 
 		return [true, data.dataValues];
 	} catch (e) {
@@ -90,8 +90,8 @@ exports.createBDGameRoom = async ({
 };
 
 // actializamos y agregamos un nuevo usuario a la sala
-exports.updateAddBDGameRoom = async ({idGameRoom, idUser}) => {
-console.log('vamos mal', idGameRoom, idUser)
+exports.updateAddBDGameRoom = async ({ idGameRoom, idUser }) => {
+	console.log('vamos mal', idGameRoom, idUser)
 	try {
 		console.log('id', idGameRoom, idUser)
 		const data = await GameRoom.findByPk(idGameRoom, {
@@ -102,10 +102,10 @@ console.log('vamos mal', idGameRoom, idUser)
 				},
 			],
 		});
-console.log("esta es la data", data)
+		console.log("esta es la data", data)
 		if (!data) return [false, 'Sale no encontrada'];
 
-		const {users, usersAmount} = data;
+		const { users, usersAmount } = data;
 
 		if (users.length < usersAmount) {
 			await data.addUsers(idUser);
@@ -123,23 +123,23 @@ console.log("esta es la data", data)
 
 // Eliminar una sala por su id
 exports.deletByIdGameRoom = async ({ id }) => {
-    try {
+	try {
 
-        const eliminado = await GameRoom.destroy({ where: { id } });
-        if (eliminado > 0) {
+		const eliminado = await GameRoom.destroy({ where: { id } });
+		if (eliminado > 0) {
 
-            return [true, "Salas eliminada"]
-        } else {
-            return [false, "No se encotro la sala a eliminar"]
-        }
+			return [true, "Salas eliminada"]
+		} else {
+			return [false, "No se encotro la sala a eliminar"]
+		}
 
-    } catch (e) {
-        return e
-    }
+	} catch (e) {
+		return e
+	}
 }
 
 // Eliminar un usuario de la sala
-exports.updateDeleteBDGameRoom = async ({idGameRoom, idUserDelet}) => {
+exports.updateDeleteBDGameRoom = async ({ idGameRoom, idUserDelet }) => {
 	try {
 		const data = await GameRoom.findByPk(idGameRoom, {
 			include: [
@@ -148,10 +148,10 @@ exports.updateDeleteBDGameRoom = async ({idGameRoom, idUserDelet}) => {
 					attributes: ['id'],
 				},
 			],
-		});     
+		});
 
-			await data.removeUser(idUserDelet);
-			return [true, 'Usuario eliminado'];
+		await data.removeUser(idUserDelet);
+		return [true, 'Usuario eliminado'];
 
 	} catch (e) {
 		console.log('Error al eliminar un usuario: ', e);
