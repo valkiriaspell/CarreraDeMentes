@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 module.exports = router;
-const { addCoins, getAllMinMaxCoins, updateCoins, deleteCoins } = require("../controllers/coins")
+const { addCoins, addMultCoins, getAllMinMaxCoins, updateCoins, deleteCoins } = require("../controllers/coins")
 
 // Buscar todas los coins
 router.get("/", async (_req, res) => {
@@ -26,10 +26,20 @@ router.post("/", async (req, res) => {
     }
 });
 
+// Agregar nuevas coins
+router.post("/multiplesCoins", async (req, res) => {
+    try {
+        console.log(req.body)
+        const [bool, msj] = await addMultCoins(req.body);
+        bool ? res.send(msj) : res.send(e);
+    } catch (e) {
+        res.status(500).send("Error an agregar coins: " + e);
+    }
+});
+
 // Modificar coins
 router.put("/", async (req, res) => {
     try {
-
         const [bool, msj] = await updateCoins(req.body);
 
         bool ? res.send(msj) : res.send(msj);
