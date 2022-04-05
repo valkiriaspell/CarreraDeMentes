@@ -86,6 +86,10 @@ module.exports = (sequelize) => {
 			type: DataTypes.STRING,
 			defaultValue: 'normal',
 		},
+		banner: {
+			type: DataTypes.BOOLEAN,
+			defaultValue: false,
+		}
 
 	});
 };
