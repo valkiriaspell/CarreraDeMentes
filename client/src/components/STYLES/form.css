@@ -102,6 +102,12 @@
     font-size: 14px;
     padding: 2px;       
 }
+
+.terminos {
+    height: 0px;
+    font-size: 10px;
+    overflow: hidden;
+}
 /* ====== Errors ====== */
 .danger {
     color: red;        
@@ -129,4 +135,32 @@
     background-color: rgba(154, 158, 161, 0.4);
     cursor: pointer;
   }
+.checkbox{
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;    
+    margin: none;
+    
+    
+}
+.checkbox label {
+    position: relative;
+    left: -40%;
+    
+}
+#check {        
+    margin: none;    
+    height: 12px;
+    margin-top: none;
+    margin-bottom: none;
+    position: relative;
+    left: -20%;
+    top: -5px;   
+}
 
+.checkbox button {
+    border-style: none;
+    background: rgba(20, 4, 4, 0.371);
+    color: white;
+    cursor: pointer;
+}
