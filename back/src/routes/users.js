@@ -9,6 +9,7 @@ const {
 	modifyHost,
 	createGuestUser,
 	getReadyUser,
+	putUserReady
 } = require('../controllers/users');
 
 // escriban sus rutas acá

@@ -37,8 +37,18 @@ function PreGameRoom({match}) {
   const { sendReady, sendStartGame, game, expelPlayer } = useSocket(idUser);
 
   function countReady() {
-    const readys = preRoomUsers?.users?.filter((user) => user.ready === true);
-    return readys?.length;
+    /* console.log('entre en count') */
+    const arrayIds = preRoomUsers?.users?.map(user => user.id)
+    let readys = 0;
+    let imgReady = ""
+    for(let i = 0; i < arrayIds.length; i++){
+      imgReady = document.getElementById(arrayIds[i])
+/*       console.log(imgReady)
+      console.log(readyGreen) */
+      if(imgReady?.src === readyGreen) readys++
+    }
+    /* console.log(readys) */
+    return readys
   }
   
 
@@ -67,9 +77,7 @@ function PreGameRoom({match}) {
           </div>
 
           <div className={s.buttonsPreGameRoom}>
-            {/* <NavLink to={"/partida"}>
-              <button>Iniciar</button>
-            </NavLink> */}
+
             {
               user?.host === true 
                 ? (
@@ -77,9 +85,9 @@ function PreGameRoom({match}) {
                   disabled={
                     preRoomUsers?.users?.length - 1 === 0
                       ? true
-                      : preRoomUsers?.users?.length - 1 === countReady
-                        ? true
-                        : false
+                      : preRoomUsers?.users?.length - 1 === countReady()
+                        ? false
+                        : true
                   }
                   onClick={sendStartGame}
                   className={s.button}

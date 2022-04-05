@@ -50,7 +50,7 @@ function useChatSocketIo(idGameRoom) {
             })
 
             //change readyState from user to click in button
-            socketIoRef.current.on("READY", (id) =>{
+            socketIoRef.current.on("READY", ({id}) =>{
                 dispatch(getReadyUser(id))
             })
 

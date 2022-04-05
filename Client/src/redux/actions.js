@@ -122,7 +122,7 @@ export function getReadyUser(id){
             const {data} = await axios.get(`http://localhost:3001/users/ready/?id=${id}`)
             dispatch({type: 'GET_READY_USER', payload: data})
         }catch(e) {
-            console.log(e)
+            console.log(e) 
         }
     }
 }
