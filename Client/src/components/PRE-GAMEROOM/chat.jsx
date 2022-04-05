@@ -33,22 +33,23 @@ const {user} = useSelector(state => state)
         <div>
             <p>Jugadores {preRoomUsers?.users?.length}/6</p>
             <div className={styles.containerChat}>
-                <ol>
+                <textarea cols="43" rows="8" wrap="hard" disabled={true} value=
+                
                     {
-                        listMessages?.map((message, index) => {
+                        listMessages?.map((message) => {
                             return (
-                                <li key={index}>
-                                    {
+                                
                                         message.writtenByCurrentUser
-                                            ? `Yo: ${message?.text}` 
-                                            : `${message?.name}: ${message?.text}`
-                                    }
-                                </li>
+                                            ? "Yo: " + message?.text + "\n"
+                                            : message?.name + ": " + message?.text + "\n"
+                                            
+
+                                
                             )
                         })
                     }
-
-                </ol>
+                ></textarea>
+                
             </div>
                 <div className={styles.containerSendMessages}>
                     <input type="text" placeholder="Escribe un mensaje..." value={newMessage} onChange={handleMessage}/>

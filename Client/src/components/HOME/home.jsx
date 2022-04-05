@@ -23,7 +23,7 @@ function Home(props) {
   }
 
   async function handleCreateRoom() {
-    const host = await dispatch(modifyHost(email))
+    const host = await dispatch(modifyHost(email, true))
     console.log(host)
     const idRoom = await dispatch(createRoom(user))
     

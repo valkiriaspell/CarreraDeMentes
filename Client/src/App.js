@@ -16,6 +16,7 @@ import GameRoom from './components/GAMEROOM/gameRoom';
 import RecuperarContrasena from './components/INICIO/RECUPERARCONTRASENA/recuperarContrasena';
 import Footer from './components/FOOTER/footer';
 import loginAdmin from './components/ADMIN/login';
+import AdminHome from './components/ADMIN/adminHome';
 
 initializeApp(config)
 
@@ -37,6 +38,7 @@ function App() {
         <Route path="/añadirPregunta" component={FormAddQuestions} />
         <Route path="/partida" component={GameRoom} />
         <Route path="/administrador" component={loginAdmin} />
+        <Route path="/adminHome" component={AdminHome} />
     </div>
   );
 }

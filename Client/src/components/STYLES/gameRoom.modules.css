@@ -52,17 +52,31 @@
   padding: 1rem;
   border-radius: 0.4rem;
   margin-top: 2rem;
-  max-width: 350px;
-  max-height: 650px;
+  width: 430px;
+  height: 700px;
 }
 
 /* ====== CATEGORIA ====== */
-.categoryQuestion {
+.contentNav {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  height: 3rem;
+  margin-left: -3rem;
+
+}
+.contentNav h3 {
   background-color: rgba(21, 108, 195, 0.311);
   border-radius: 2rem;
+  height: 2.5rem;
+  width: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: rgba(230, 231, 232, 0.539);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
+}   
+
 
 /* ====== PREGUNTA ====== */
 .question {
@@ -70,6 +84,8 @@
   border-radius: 0.3rem;
   margin: 1rem;
   padding: 1rem;
+  width: 370px;
+  height: 160px;
 }
 
 /* ====== IMAGEN ====== */
@@ -137,6 +153,11 @@
 @media screen and (max-width: 500px) {
   .containerGame {
     margin: 2rem;
+    width: 350px;
+  }
+  .question {
+    width: 280px;
+    height: 160px;
   }
   .containerListPlayerRoom {
     display: none;
