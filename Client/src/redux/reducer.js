@@ -55,7 +55,7 @@ const reducer = (state = initialState, action) => {
 
         case GET_READY_USER: 
         const index = state.preRoomUsers.users.findIndex(user => user.id === action.payload.id)
-        state.preRoomUsers.users[index].ready = action.payload.bool
+        state.preRoomUsers.users[index].ready = action.payload.ready
         return {
             ...state,
         }
