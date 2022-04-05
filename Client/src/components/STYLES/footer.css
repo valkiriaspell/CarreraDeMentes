@@ -1,14 +1,14 @@
 .footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    color: white;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color: white;
+  width: 100%;
+  height: 35px;
+  position: fixed;
+  bottom: 0;
 }
-.footer a{
-    text-decoration: none;
-    color: white;
+.footer a {
+  text-decoration: none;
+  color: white;
 }

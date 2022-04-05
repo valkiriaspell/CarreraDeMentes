@@ -6,6 +6,7 @@ const {
 	getUser,
 	getUsers,
 	modifyUser,
+	modifyHost,
 	createGuestUser,
 } = require('../controllers/users');
 
@@ -59,10 +60,15 @@ router.delete('/', async (req, res) => {
 });
 router.put('/', async (req, res) => {
 	try {
-
-		const userUpdated = await modifyUser(req.body);
-		console.log(userUpdated);
-		res.send(userUpdated);
+		const {email} = req.query
+		if(email) {
+			const host = await modifyHost(email)
+			res.send(host)
+		} else {
+			const userUpdated = await modifyUser(req.body);
+			console.log(userUpdated);
+			res.send(userUpdated);
+		}
 	} catch (e) {
 		res.status(500).send('Error al modificar usuario: ' + e);
 	}

@@ -5,35 +5,37 @@ import socketIOClient from 'socket.io-client';
 import { AddUserToPreRoom, listUsersInPreRoom, deleteUserFromRoom, setReady, loginUser } from "../../redux/actions";
 import s from '../STYLES/preGameRoom.module.css'
 import axios from "axios";
+import readyGreen from "../IMG/readyGreen2.png"
+import readyDark from "../IMG/readyDark.png"
 
 function useChatSocketIo(idGameRoom) {
     const history = useHistory();
     const dispatch = useDispatch();
     const {user} = useSelector(state => state);
-    const room = idGameRoom;
-
+    
     const [messages, setMessages] = useState({});
     const socketIoRef = useRef();
     const [game, setGame] = useState(false)
     const email = localStorage.getItem("email");
+/*     const [image, setImage] = useState('../IMG/readyDark.png') */
     useEffect(() =>{
         //create web socket connection
         const newUserInRoom = () =>{
             !user.name && dispatch(loginUser(email))
             .then((data) => dispatch(AddUserToPreRoom({
-                idGameRoom: room, 
+                idGameRoom, 
                 idUser: data?.id
             })))
             .then((idD) =>dispatch(listUsersInPreRoom(idD)))
             .then(() => console.log('listo'))
         }
         !user.host && newUserInRoom();
-
-        socketIoRef.current = socketIOClient('http://localhost:3001', {room, email: user.email});
+        console.log('idGameRoom: ', idGameRoom)
+        socketIoRef.current = socketIOClient('http://localhost:3001',{query:{idGameRoom, email: user.email} } );
 
             socketIoRef.current.on("NEW_CONNECTION", (email) =>{
                 email !== user.email &&
-                dispatch(listUsersInPreRoom(room));
+                dispatch(listUsersInPreRoom(idGameRoom));
             })
             
             //received a new message, differentiating which are from current user and add to message list
@@ -49,18 +51,16 @@ function useChatSocketIo(idGameRoom) {
 
             //change readyState from user to click in button
             socketIoRef.current.on("READY", ({id}) =>{
-                const buttonReady = document.getElementById(id)
-                if(buttonReady.className === s.active){
-                    buttonReady.className = s.inactive;
-                    dispatch(setReady(id))
-                } else {
-                    buttonReady.className = s.active;
-                }
+                const imgReady = document.getElementById(id)
+
+                    /* dispatch(setReady(id)) */
+                    imgReady.src = readyGreen;
+
             })
 
             
             socketIoRef.current.on("DISCONNECT", () =>{
-                dispatch(listUsersInPreRoom(room));
+                dispatch(listUsersInPreRoom(idGameRoom));
             })
 
             socketIoRef.current.on("EXPEL_PLAYER", (id) =>{
@@ -89,7 +89,7 @@ function useChatSocketIo(idGameRoom) {
         socketIoRef.current.emit("NEW_MESSAGE", {
             text: message, 
             name: user?.name,
-            email: user?.email
+            email: user?.email,
         })
     }
 

@@ -118,6 +118,19 @@ const modifyUser = async ({ id, name, idAvatar }) => {
 	}
 };
 
+const modifyHost = async (email) => {
+	try{
+		const userHost = await Users.update(
+			{host: true }, 
+			{where: {email}}
+			)
+			console.log(userHost)
+			return await Users.findOne({ where: { email }})
+	} catch(error) {
+		console.log(error)
+	}
+}
+
 module.exports = {
 	createUsers,
 	getUser,
@@ -125,4 +138,5 @@ module.exports = {
 	deleteUser,
 	createGuestUser,
 	modifyUser,
+	modifyHost
 };

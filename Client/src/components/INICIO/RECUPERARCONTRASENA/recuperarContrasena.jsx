@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { firebaseRecuperarContrasena } from '../../../utils/Firebase'
+import Swal from "sweetalert2";
 
 function RecuperarContrasena() {
 
@@ -10,6 +11,13 @@ function RecuperarContrasena() {
     async function handleClick(e){
         e.preventDefault()
         const test = await firebaseRecuperarContrasena(input.email)
+        Swal.fire({
+            icon: 'success',
+            title: 'Te mandamos un email para que recuperes tu contraseña, por favor revisa tu bandeja de entrada',
+            showConfirmButton: false,
+            heightAuto: false,
+            timer: 3000
+          })
         console.log(test)
     }
 

@@ -10,7 +10,7 @@ exports.seachAllBDGameRoom = async (idRoom) => {
 				include: [
 					{
 						model: Users,
-						attributes: ['id', 'name'],
+						attributes: ['id', 'name', 'host'],
 					},
 				],
 			});
@@ -21,7 +21,7 @@ exports.seachAllBDGameRoom = async (idRoom) => {
 				include: [
 					{
 						model: Users,
-						attributes: ['id', 'name'],
+						attributes: ['id'],
 					},
 				],
 			});
@@ -80,7 +80,7 @@ exports.createBDGameRoom = async ({
 			email, */
 		});
 		await data.addUser(idUser);
-		data.dataValues.users = [{idUser, name, currentAvatar}]
+		data.dataValues.users = [{id: idUser, name, currentAvatar}]
 
 		return [true, data.dataValues];
 	} catch (e) {
