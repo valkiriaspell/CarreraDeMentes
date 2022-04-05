@@ -1,9 +1,10 @@
 const { Coins } = require("../db");
 
+// Agregar un coins
 exports.addCoins = async ({ coins, url }) => {
     try {
 
-        const data = await Coins.create({ coins, url });
+        await Coins.create({ coins, url });
 
         return [true, "coins agragado a la base de datos"];
 
@@ -12,7 +13,20 @@ exports.addCoins = async ({ coins, url }) => {
     }
 }
 
+exports.addMultCoins = async (array) => {
+    try {
 
+        array.forEach(async (obj) => {
+            await Coins.create(obj);
+        })
+        return [true, "Creados: " + array.length]
+
+    } catch (e) {
+
+    }
+}
+
+// Devolver todos los coins de menor a amayor
 exports.getAllMinMaxCoins = async () => {
     try {
         const data = await Coins.findAll();
@@ -28,6 +42,7 @@ exports.getAllMinMaxCoins = async () => {
     }
 }
 
+// Actualizar un coins
 exports.updateCoins = async ({ idCoins, newCoins }) => {
     try {
         const data = await Coins.findByPk(idCoins);
@@ -43,7 +58,7 @@ exports.updateCoins = async ({ idCoins, newCoins }) => {
     }
 }
 
-
+// Eliminar un conis
 exports.deleteCoins = async ({ idCoins }) => {
     try {
         const data = await Coins.destroy({ where: { id: idCoins } });
@@ -56,7 +71,7 @@ exports.deleteCoins = async ({ idCoins }) => {
 }
 
 
-//oredenar de menor a mayor por ranquing
+// oredenar de menor a mayor por coins
 const orederMinMaxRanting = (a, b) => {
     if (a.coins > b.coins) return 1;
     if (b.coins > a.coins) return -1;
