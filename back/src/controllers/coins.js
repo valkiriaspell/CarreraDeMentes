@@ -26,6 +26,22 @@ exports.addMultCoins = async (array) => {
     }
 }
 
+exports.addInitServerMultCoins = async (array) => {
+    try {
+
+        array.forEach(async (obj) => {
+            await Coins.findOrCreate({
+                where: { coins: obj.coins },
+                defaults: { ...obj }
+            });
+        })
+        return [true, "Creados: " + array.length]
+
+    } catch (e) {
+
+    }
+}
+
 // Devolver todos los coins de menor a amayor
 exports.getAllMinMaxCoins = async () => {
     try {
