@@ -13,6 +13,19 @@ exports.addCoins = async ({ coins, url }) => {
     }
 }
 
+exports.addMultCoins = async (array) => {
+    try {
+
+        array.forEach(async (obj) => {
+            await Coins.create(obj);
+        })
+        return [true, "Creados: " + array.length]
+
+    } catch (e) {
+
+    }
+}
+
 // Devolver todos los coins de menor a amayor
 exports.getAllMinMaxCoins = async () => {
     try {
