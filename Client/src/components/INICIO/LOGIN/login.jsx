@@ -92,14 +92,28 @@ function Login() {
 
     if (Object.keys(validacion).length === 0) {
       const login = await firebaseLogin(input.email, input.password);
-      if (login.accessToken) {
-        dispatch(loginUser(input.email));
-        localStorage.setItem("email", login.email);
-        localStorage.setItem("token", login.accessToken);
-        history.push("/home");
+      if(login?.accessToken){
+        if (login.emailVerified === true) {
+          dispatch(loginUser(input.email));
+          localStorage.setItem("email", login.email);
+          localStorage.setItem("token", login.accessToken);
+          history.push("/home");
+        } else {
+          return Swal.fire({
+            title: `Por favor, verifique su cuenta para poder ingresar`,
+            icon: "warning",
+            confirmButtonText: "OK",
+            heightAuto: false,
+            backdrop: `
+                    rgba(0,0,123,0.4)
+                    left top
+                    no-repeat
+                  `,
+          });
+        }
       } else {
         setError({ mensaje: login });
-      }
+      }      
     } else {
       setError(() => validacion);
     }
@@ -154,7 +168,6 @@ function Login() {
               placeholder="Email"
               value={input.email}
               onChange={(e) => handleOnChange(e)}
-              autoComplete="off"
             />
           </div>
           <div className="input">

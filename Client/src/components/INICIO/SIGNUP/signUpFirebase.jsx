@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { firebaseRegistrarUsuario } from "../../../utils/Firebase";
+import { firebaseRegistrarUsuario, firebaseVerificarUsuario } from "../../../utils/Firebase";
 import { useHistory } from "react-router-dom";
 import "../../STYLES/singUp.modules.css";
+import { NavLink } from "react-router-dom";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 import Perfil from "../../IMG/user.png";
 import User from "../../IMG/person.png";
 import Email from "../../IMG/email.png";
@@ -119,9 +121,15 @@ function SignUpFirebase() {
         input.password
       );
       if (registrar.accessToken) {
-        localStorage.setItem("email", registrar.email);
-        localStorage.setItem("token", registrar.accessToken);
-        history.push("/home");
+        const verificarEmail = await firebaseVerificarUsuario(registrar);
+        Swal.fire({
+          icon: 'success',
+          title: 'Te mandamos un email para verificar tu cuenta, por favor revisa tu bandeja de entrada',
+          showConfirmButton: false,
+          heightAuto: false,
+          timer: 3000
+        })
+        history.push("/login");
       } else {
         setError({ mensaje: registrar });
       }
@@ -133,12 +141,19 @@ function SignUpFirebase() {
   return (
     <div className="containerSingUp">
       <div className="contentSingUp">
+        <div className='volverSingUp'>
+        <NavLink style={{ textDecoration: "none" }} to={"/login"}>
+        <button className="buttonVolver">
+          <AiOutlineArrowLeft style={{ marginRight: "0.4rem" }} /> Volver
+        </button>
+        </NavLink>
+        </div>
         
         <form onSubmit={handleRegister}>
-          <div className="imgUser">
+          <div className="userImg">
             <img src={Perfil} alt="User" width={60} />
           </div>
-          <div className="input">
+          <div className="cotainerInput">
             <img src={User} alt="User" width={22} />
             <input
               name="name"
@@ -150,7 +165,7 @@ function SignUpFirebase() {
             />
           </div>
          
-          <div className="input">
+          <div className="cotainerInput">
             <img src={Email} alt="Email" width={23} />
             <input
               name="email"
@@ -161,7 +176,7 @@ function SignUpFirebase() {
               autoComplete="off"
             />
           </div>
-          <div className="input">
+          <div className="cotainerInput">
             <img src={Contraseña} alt="Contraseña" width={20} />
             <input
               name="password"
