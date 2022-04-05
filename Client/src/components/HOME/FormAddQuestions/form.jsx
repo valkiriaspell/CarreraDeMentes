@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { newQuestion } from '../../redux/actions';
+import { newQuestion } from '../../../redux/actions';
 import { Link, useHistory } from 'react-router-dom'
 import "../../STYLES/form.css"
 
-
 export default function FormAddQuestions() {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const history = useHistory();
     const autenticado = localStorage.getItem('token')
+    const email = localStorage.getItem('email')    
 
     //////////  ---->    Local states data   <------ //////////////
     const [question, setQuestion] = useState('');
@@ -17,9 +17,9 @@ export default function FormAddQuestions() {
     const [false1, setF1] = useState("");
     const [false2, setF2] = useState("");
     const [false3, setF3] = useState("");
-    const [img, setImg] = useState("");
+    const [image, setImg] = useState("");
     const [msg, setMSG] = useState("");
-
+    const [terminos, setTerminos] = useState(false);
 
     //////////  ---->    Local states errors   <------ //////////////
     const [errorQuestion, setErrorQ] = useState("")
@@ -88,7 +88,7 @@ export default function FormAddQuestions() {
                     setErrorA("")
                 }
                 break;
-            case e.target.name === "img":
+            case e.target.name === "image":
                 if (true) {
                     setImg(e.target.value);
                     setErrorImage("")
@@ -98,12 +98,25 @@ export default function FormAddQuestions() {
                 console.log("default");
         }
         console.log(errorAnswer, errorQuestion, errorImage)
-        !question || !answer || !false1 || !false2 || !false3 || !img ? setErrorTotal("Completar formulario") : setErrorTotal("")
+        !question || !answer || !false1 || !false2 || !false3 || !image ? setErrorTotal("Completar formulario") : setErrorTotal("")
     }
-    
-    
-    
-    
+
+    function conditions(e) {
+        e.preventDefault()
+        let [terminos] = document.getElementsByClassName("terminos")
+        console.log(terminos, "terminos")      
+        if(terminos.classList.contains('desplegado')){
+            terminos.style.height='0px'
+            terminos.classList.remove('desplegado')
+        }else{
+            terminos.classList.add('desplegado')
+            terminos.style.height='60px'
+        }  
+    }
+
+    function handleTerms() {
+        terminos ? setTerminos(false) : setTerminos(true)
+    }
     //////////  ---->    on Submit   <------ //////////////
     const onSubmit = (e) => {
         e.preventDefault()
@@ -125,15 +138,16 @@ export default function FormAddQuestions() {
             } else {
                 setErrorA("")
                 setMSG("Tu pregunta fue enviada para validación")
-                // dispatch(newQuestion({
-                //     question,
-                //     category,               
-                //     answer,
-                //     false1,
-                //     false2,            
-                //     false3,            
-                //     img,            
-                // }))
+                dispatch(newQuestion({
+                    question,
+                    category,               
+                    answer,
+                    false1,
+                    false2,            
+                    false3,            
+                    image,
+                    email
+                }))
                 setQuestion("")
                 setAnswer("")
                 setF1("")
@@ -158,15 +172,15 @@ export default function FormAddQuestions() {
                     <div>
                         <label>Categoria*</label>
                         <div>
-                        <select onChange={setCategory} name="" id="categories">
-                            {
-                                falseCategories.length > 0 &&
-                                falseCategories.map((e, index) => (
-                                    <option key={index} value={e}> {e} </option>
-                                )
-                                )
-                            }
-                        </select>
+                            <select onChange={setCategory} name="" id="categories">
+                                {
+                                    falseCategories.length > 0 &&
+                                    falseCategories.map((e, index) => (
+                                        <option key={index} value={e}> {e} </option>
+                                    )
+                                    )
+                                }
+                            </select>
                         </div>
                     </div>
                     <div className='formMail'>
@@ -199,7 +213,7 @@ export default function FormAddQuestions() {
                     <div className='formMail'>
                         <label>Imagen*</label>
                         <div>
-                            <input className={errorImage !== "" ? 'danger' : "inputEmail"} name="img" type="text" value={img} onChange={(e) => validation(e)} />
+                            <input className={errorImage !== "" ? 'danger' : "inputEmail"} name="image" type="text" value={image} onChange={(e) => validation(e)} />
                             {errorImage ? <p className='error'>{errorImage}</p> : null}
                         </div>
                     </div>
@@ -207,13 +221,27 @@ export default function FormAddQuestions() {
                     {errorTotal ? <p className='error'>{errorTotal}</p> : null}
                     <div className='FormSubmit' >
 
-                        <input disabled={!question || errorQuestion || errorAnswer || errorImage || errorTotal} className={!question || errorQuestion || errorAnswer || errorTotal || errorImage  ?
-                             "disabled" : "enabled"} type="submit" value="Enviar pregunta" />
+                        <div className='checkbox'><input type="checkbox" id="check" value={terminos} onClick={() => handleTerms()} />
+                            <label>
+                                He leído y acepto las <button onClick={(e) => conditions(e)}>condiciones</button>
+                            </label>
+                        </div>
+                            <div className="terminos">
+                                <ul>
+                                    <li> Recomendamos verificar la veracidad de la respuesta enviada como "correcta".
+                                    </li>
+                                    <li> No se permiten palabras ofensivas.
+                                    </li>
+                                    <li> El incumplimiento de lo anterior podría incurrir en la sanción de su cuenta
+                                    </li>
+                                    </ul></div>
+                        <input disabled={!question || !terminos || errorQuestion || errorAnswer || errorImage || errorTotal} className={!question || !terminos || errorQuestion || errorAnswer || errorTotal || errorImage ?
+                            "disabled" : "enabled"} type="submit" value="Enviar pregunta" />
                     </div>
                     {msg ? <p>{msg}</p> : null}
                 </form>
                 <Link to="/home"><button className='volver' >← Volver atras </button></Link>
-                
+
             </div>
         );
     } else {
