@@ -2,14 +2,14 @@ import React from 'react'
 import '../STYLES/cardBuy.css'
 import axios from 'axios'
 
-function CardBuy({monedas, precio, referencia, img}) {
+function CardBuy({precio, referencia, img}) {
 
   const email = localStorage.getItem('email')
 
-  async function handleComprar(monedas, precio, email, referencia) {
+  async function handleComprar(precio, email, referencia) {
     const ordenCompra = { //orden de compra
       quantity: 1, // cantidad
-      description: `${monedas} Mentecitas`, //nombre del producto
+      description: `${precio} Monedas`, //nombre del producto
       price: precio, //precio del producto
       email: email, //email del usuario
       external_reference: referencia //referencia del producto, asi sabemos que compro para luego agregar a sus monedas en la bd
@@ -21,9 +21,9 @@ function CardBuy({monedas, precio, referencia, img}) {
   return (
     <div className='containerCardsB'>
         <div className='cardContent'>
-            <h3>{monedas}</h3>
+            <h3>{precio}</h3>
             <img src={img} alt='coins'/>
-            <button type='button' onClick={()=> handleComprar(monedas, precio, email, referencia)}>{precio} ARS</button>
+            <button type='button' onClick={()=> handleComprar(precio, email, referencia)}>{precio} ARS</button>
         </div>
     </div>
   )

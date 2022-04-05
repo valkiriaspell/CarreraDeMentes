@@ -5,7 +5,13 @@ const morgan = require('morgan');
 const routes = require('./routes/index.js');
 const session = require('express-session');
 const cors = require('cors');
+const mercadopago = require('mercadopago');
 require('./db.js');
+
+//Configuracion Mercado Pago
+mercadopago.configure({
+	access_token: "TEST-7940442895738454-033013-316fbf92cbb44208d0f2464c77e0235b-838427933",
+});
 
 /// conexion de sockets
 const server = express();

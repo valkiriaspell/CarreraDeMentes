@@ -7,6 +7,7 @@ const gameRoom = require('./gameRoomRoute.js');
 const question = require('./questionRoute.js');
 const users = require('./users.js');
 const coins = require('./coins.js')
+const mercadoPago = require('./mercadoPago.js')
 
 const router = Router();
 
@@ -18,5 +19,6 @@ router.use('/gameRoom', gameRoom);
 router.use('/question', question);
 router.use('/users', users);
 router.use('/coins', coins);
+router.use('/mercadopago', mercadoPago)
 
 module.exports = router;
