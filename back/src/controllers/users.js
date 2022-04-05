@@ -86,7 +86,9 @@ const getReadyUser = async (id) => {
 	try {
 		const readyFound = await Users.findOne({where: {id}});
 
-		return readyFound;
+		let obj = {id: readyFound.id, host: readyFound.host};
+
+		return obj;
 	} catch (error) {
 		return error;
 	}
