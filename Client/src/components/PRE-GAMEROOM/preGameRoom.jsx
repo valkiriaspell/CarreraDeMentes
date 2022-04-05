@@ -16,23 +16,23 @@ import readyDark from "../IMG/readyDark.png"
 import readyGreen from "../IMG/readyGreen2.png"
 
 function PreGameRoom({match}) {
-    /* const dispatch = useDispatch(); */
+/*     const dispatch = useDispatch(); */
     const {preRoomUsers, user} = useSelector(state => state)
     const history = useHistory();
     const autenticado = localStorage.getItem('token')
     /* console.log("match: ", match.params) */
     const {idUser} = match.params;
-    /* const email = localStorage.getItem("email"); */
-/*     useEffect(() =>{
+/*     const email = localStorage.getItem("email");
+    useEffect(() =>{
                 !user.host &&
-                loginUser(email)
+                dispatch(loginUser(email))
                 .then((val)=>{
-                    AddUserToPreRoom({
+                    dispatch(AddUserToPreRoom({
                         idGameRoom: idUser, 
                         idUser: val
-                    })
+                    }))
                 })
-                .then((value) => listUsersInPreRoom(value))
+                .then((value) => dispatch(listUsersInPreRoom(value)))
     }, [email]) */
   const { sendReady, sendStartGame, game, expelPlayer } = useSocket(idUser);
 
@@ -70,24 +70,25 @@ function PreGameRoom({match}) {
             {/* <NavLink to={"/partida"}>
               <button>Iniciar</button>
             </NavLink> */}
-            {user?.host === true 
-            ? (
-              <button
-                disabled={
-                  preRoomUsers?.users?.length - 1 === 0
-                    ? true
-                    : preRoomUsers?.users?.length - 1 === countReady
-                    ? true
-                    : false
-                }
-                onClick={sendStartGame}
-                className={s.button}
-              >
-                Iniciar
-              </button>
-            ) : (
-              <button onClick={sendReady}>Listo</button>
-            )}
+            {
+              user?.host === true 
+                ? (
+                <button
+                  disabled={
+                    preRoomUsers?.users?.length - 1 === 0
+                      ? true
+                      : preRoomUsers?.users?.length - 1 === countReady
+                        ? true
+                        : false
+                  }
+                  onClick={sendStartGame}
+                  className={s.button}
+                >
+                  Iniciar
+                </button>
+                ) 
+                : <button onClick={sendReady}>Listo</button>  
+            }
             <button>Invitar</button>
           </div>
         </div>

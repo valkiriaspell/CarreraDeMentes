@@ -19,6 +19,7 @@ export function loginAsGuest(guest){
         try{
             const test = await axios.post('http://localhost:3001/users', guest)
             dispatch({type: 'LOGIN_USER_GUEST', payload: test.data})
+            console.log(test.data)
             return test.data
         }catch(e) {
             console.log(e)
