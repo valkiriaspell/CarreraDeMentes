@@ -82,7 +82,7 @@ function randomQuestions(array) {
   return array;
 }
 
-function Game() {
+function Game({ preRoomUsers }) {
   // ======= QUESTIONS =======
   const [questions, setQuestions] = useState([]);
 
@@ -96,7 +96,7 @@ function Game() {
 
   const config = [
     {
-      count: 15,
+      count: 10,
       category: "Musica",
     },
   ];
@@ -148,7 +148,7 @@ function Game() {
     setF3(questions[0].false3);
     setCat(questions[0].category);
 
-   questions?.map((q, index) =>
+    questions?.map((q, index) =>
       setTimeout(() => {
         setQ(q.question);
         setA(q.answer);
