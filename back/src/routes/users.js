@@ -1,4 +1,4 @@
-const { Router } = require('express');
+const {Router} = require('express');
 const router = Router();
 module.exports = router;
 const {
@@ -8,12 +8,13 @@ const {
 	modifyUser,
 	modifyHost,
 	createGuestUser,
+	getReadyUser,
 } = require('../controllers/users');
 
 // escriban sus rutas acá
 router.get('/', async (req, res) => {
 	try {
-		const { email } = req.query;
+		const {email} = req.query;
 		if (email) {
 			const userFound = await getUser(email);
 			res.json(userFound);
@@ -29,10 +30,32 @@ router.get('/', async (req, res) => {
 		res.status(500).send('Error: ' + e);
 	}
 });
-router.post('/', async (req, res) => {
-	console.log(req.body.guest)
+
+router.get('/ready', async (req, res) => {
 	try {
-		const { guest } = req.body;
+		const {id} = req.query;
+		const userReady = await getReadyUser(id);
+
+		res.json(userReady);
+	} catch (e) {
+		res.status(500).send('Error: ' + e);
+	}
+});
+router.put('/ready', async (req, res) => {
+	try {
+		const {id, bool} = req.query;
+
+		const userReady = await putUserReady(id, bool);
+		res.send(userReady);
+	} catch (e) {
+		res.status(500).send('Error al modificar usuario: ' + e);
+	}
+});
+
+router.post('/', async (req, res) => {
+	console.log(req.body.guest);
+	try {
+		const {guest} = req.body;
 		if (guest === true) {
 			const guestUser = await createGuestUser();
 			res.send(guestUser);
@@ -51,7 +74,7 @@ router.post('/', async (req, res) => {
 });
 router.delete('/', async (req, res) => {
 	try {
-		const { id } = req.query;
+		const {id} = req.query;
 		const userDeleted = await deleteUser(id);
 		res.send(userDeleted);
 	} catch (e) {
@@ -60,10 +83,10 @@ router.delete('/', async (req, res) => {
 });
 router.put('/', async (req, res) => {
 	try {
-		const {email} = req.query
-		if(email) {
-			const host = await modifyHost(email)
-			res.send(host)
+		const {email, host} = req.query;
+		if (email) {
+			const hostFound = await modifyHost(email, host);
+			res.send(hostFound);
 		} else {
 			const userUpdated = await modifyUser(req.body);
 			console.log(userUpdated);

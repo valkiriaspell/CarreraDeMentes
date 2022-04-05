@@ -116,6 +116,7 @@
 .buttonSingUP:hover {
   background-color: rgba(165, 166, 167, 0.521);
   color: rgba(221, 221, 221, 0.829);
+  cursor: pointer;
 }
 .contentLogin2 button {
   margin-top: 1rem;
