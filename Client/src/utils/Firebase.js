@@ -6,6 +6,7 @@ import {
   FacebookAuthProvider,
   signInWithPopup,
   sendPasswordResetEmail,
+  sendEmailVerification
 } from "firebase/auth";
 import Swal from "sweetalert2";
 
@@ -130,5 +131,18 @@ export async function firebaseRecuperarContrasena(email) {
                     no-repeat
                   `,
     });
+  }
+}
+
+export async function firebaseVerificarUsuario(usuario){
+  try {
+    const actionCodeSettings = {
+      url: "http://localhost:3000/login",
+    };
+    const auth = getAuth();
+    const test = await sendEmailVerification(usuario, actionCodeSettings)
+    return 
+  } catch (error) {
+    console.log(error)
   }
 }
