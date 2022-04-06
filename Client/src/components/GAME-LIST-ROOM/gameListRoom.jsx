@@ -29,14 +29,14 @@ function GameListRoom() {
   }; */
   useEffect(() =>{
     dispatch(listAllRooms())
-  })
+  }, [])
 
   const refreshGames = () => {
     dispatch(listAllRooms())
   };
 const history = useHistory()
   function handleJoinRoom(game){
-    dispatch(AddUserToPreRoom({idGameRoom: game.id, idUser: user.id}))
+    AddUserToPreRoom({idGameRoom: game.id, idUser: user.id})
     .then(()=> dispatch(listUsersInPreRoom(game.id)))
     .then(() => {
       console.log(user?.host)
