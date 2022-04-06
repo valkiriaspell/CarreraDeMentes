@@ -117,6 +117,9 @@ export default function FormAddQuestions() {
     function handleTerms() {
         terminos ? setTerminos(false) : setTerminos(true)
     }
+    function handleCategory(e) {
+        setCategory(e.target.value)
+    }
     //////////  ---->    on Submit   <------ //////////////
     const onSubmit = (e) => {
         e.preventDefault()
@@ -173,7 +176,7 @@ export default function FormAddQuestions() {
                     <div>
                         <label>Categoria*</label>
                         <div>
-                            <select onChange={setCategory} name="" id="categories">
+                            <select onChange={(e) =>handleCategory(e)} name="" id="categories">
                                 {
                                     falseCategories.length > 0 &&
                                     falseCategories.map((e, index) => (
@@ -212,7 +215,7 @@ export default function FormAddQuestions() {
                         </div>
                     </div>
                     <div className='formMail'>
-                        <label>Imagen*</label>
+                        <label>URL de Imagen*</label>
                         <div>
                             <input className={errorImage !== "" ? 'danger' : "inputEmail"} name="image" type="text" value={image} onChange={(e) => validation(e)} />
                             {errorImage ? <p className='error'>{errorImage}</p> : null}
