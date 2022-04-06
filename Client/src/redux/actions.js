@@ -159,7 +159,7 @@ export function newQuestion(question){
 export function getNewQuestions(){
     return async function(dispatch){
         try{
-            const data = await axios.get('http://localhost:3001/newQuestion')
+            const {data} = await axios.get('http://localhost:3001/newQuestion')
             dispatch({type: GET_QUESTIONS , payload: data})
         }catch(e) {
             console.log(e)
