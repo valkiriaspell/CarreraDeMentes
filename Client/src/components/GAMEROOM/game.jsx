@@ -68,18 +68,27 @@ async function getUrl(url) {
 }
 
 function randomQuestions(array) {
-  var m = array.length,
-    t,
-    i;
+  console.log(array);
+  var m1 = Math.floor((Math.random() * array.length) % array.length);
 
-  while (m) {
-    i = Math.floor(Math.random() * m--);
-
-    t = array[m];
-    array[m] = array[i];
-    array[i] = t;
+  var m2 = Math.floor((Math.random() * array.length) % array.length);
+  while (m2 === m1) {
+    m2 = Math.floor((Math.random() * array.length) % array.length);
   }
-  return array;
+
+  var m3 = Math.floor((Math.random() * array.length) % array.length);
+  while (m3 === m1 || m3 === m2) {
+    m3 = Math.floor((Math.random() * array.length) % array.length);
+  }
+
+  var m4 = Math.floor((Math.random() * array.length) % array.length);
+  while (m4 === m1 || m4 === m2 || m4 === m3) {
+    m4 = Math.floor((Math.random() * array.length) % array.length);
+  }
+
+  var attacks = [array[m1], array[m2], array[m3], array[m4]];
+  console.log(attacks);
+  return attacks;
 }
 
 function Game({ preRoomUsers }) {
@@ -93,34 +102,36 @@ function Game({ preRoomUsers }) {
   let [false3, setF3] = useState("");
   let [image, setImage] = useState("");
   let [category, setCat] = useState("");
+  let [respuestas, setRespuestas] = useState([]);
 
   const config = [
     {
       count: 10,
       category: "Musica",
+      time: 20,
     },
   ];
 
-  function sliceQuestions(array) {
-    let data = randomQuestions(array);
-    return data.slice(0, config[0].count);
-  }
+  // function sliceQuestions(array) {
+  //   return array.slice(0, config[0].count);
+  // }
 
   // ======= TIMER =======
-  const [seconds, setSeconds] = useState(30);
+  const [seconds, setSeconds] = useState(config[0].time);
   const [percentage, setPercentage] = useState(100);
 
   useEffect(() => {
     setTimeout(() => {
-      setPercentage(percentage - 33.3);
-    }, 10000);
-  }, [setPercentage, percentage]);
+      let resta = Math.floor(percentage / seconds);
+      setPercentage(percentage - resta);
+    }, 1000);
+  }, [setPercentage, percentage, seconds]);
 
-  // if (percentage <= 0) {
-  //   setPercentage(100);
-  // }
+  if (percentage <= 0) {
+    setPercentage(100);
+  }
   if (seconds <= 0) {
-    setSeconds(30);
+    setSeconds(config[0].time);
   }
 
   useEffect(() => {
@@ -134,8 +145,7 @@ function Game({ preRoomUsers }) {
 
   useEffect(() => {
     getUrl("http://localhost:3001/question").then((res) => {
-      let data = sliceQuestions(res.data);
-      setQuestions(data);
+      setQuestions(res.data);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setQuestions]);
@@ -157,12 +167,38 @@ function Game({ preRoomUsers }) {
         setF3(q.false3);
         setCat(q.category);
         setImage(q.image);
-        setSeconds(30);
-        setPercentage(100);
-      }, 30000 * index)
+        setSeconds(config[0].time);
+        setRespuestas(
+          randomQuestions([
+            { data: q.answer },
+            { data: q.false1 },
+            { data: q.false2 },
+            { data: q.false3 },
+          ])
+        );
+        
+      }, 20000 * index)
     );
   };
 
+  // let array = [
+  //   {
+  //     data: answer,
+  //     id: "one",
+  //   },
+  //   {
+  //     data: false1,
+  //     id: "two",
+  //   },
+  //   {
+  //     data: false2,
+  //     id: "three",
+  //   },
+  //   {
+  //     data: false3,
+  //     id: "four",
+  //   },
+  // ];
 
   return (
     <div className="containerGame">
@@ -178,10 +214,10 @@ function Game({ preRoomUsers }) {
       </div>
       <div>
         <div className="contentQuestions">
-          <button>{answer}</button>
-          <button>{false2}</button>
-          <button>{false3}</button>
-          <button>{false1}</button>
+          {respuestas &&
+            respuestas.map((q, index) => {
+              return <button key={index}>{q.data}</button>;
+            })}
         </div>
         <button className="buttonStart" onClick={startGame}>
           START

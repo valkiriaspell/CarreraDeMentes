@@ -9,7 +9,7 @@ function TimerGame({ seconds, percentage }) {
         <div>
       <CircularProgressbar
         className="contentTimer"
-        value={0}
+        value={percentage}
         text={seconds}
         styles={buildStyles({
           textColor: "rgba(255,255,255,.5)",
