@@ -13,6 +13,8 @@ export const CHANGE_READY = 'CHANGE_READY'
 export const GET_QUESTIONS = 'GET_QUESTIONS'
 export const GET_READY_USER = 'GET_READY_USER'
 export const USER_TOKEN = 'USER_TOKEN'
+export const EDIT_ROOM = 'EDIT_ROOM'
+export const DELETE_ROOM = 'DELETE_ROOM'
 
 
 
@@ -44,6 +46,7 @@ export function loginUser(email){
     return async function(dispatch){
         try{
             const {data} = await axios.get(`http://localhost:3001/users?email=${email}`)
+            console.log(data)
             dispatch({type: 'LOGIN', payload: data})
             return data
         }catch(e) {
@@ -55,6 +58,7 @@ export function loginUser(email){
 export const updateUser = (userData)=> async ()=>{
     try {
         const result = await axios.put(`http://localhost:3001/users`, userData)  
+        console.log(result)
     } catch (error) {
         console.log(error)
     }
@@ -95,22 +99,12 @@ export const getAvatars = ()=> async (dispatch)=>{
     }
 } 
 
-export function AddUserToPreRoom({idGameRoom, idUser}){
-    return async function(){
-        console.log(idGameRoom, idUser)
-        try{
-            const {data} = await axios.put('http://localhost:3001/gameRoom', {idUser, idGameRoom})
-            return data
-        }catch(e) {
-            console.log(e)
-        }
-    }
-}
 //arreglar en back
 export function listUsersInPreRoom(IdRoom){
     return async function(dispatch){
         try{
             const {data} = await axios.get(`http://localhost:3001/gameRoom/?idRoom=${IdRoom}`)
+            console.log(data)
             dispatch({type: 'LIST_USERS_IN_PRE_ROOM', payload: data})
         }catch(e) {
             console.log(e)
@@ -134,6 +128,17 @@ export function listAllRooms(){
         try{
             const {data} = await axios.get('http://localhost:3001/gameRoom')
             dispatch({type: 'LIST_ROOMS', payload: data})
+        }catch(e) {
+            console.log(e)
+        }
+    }
+}
+
+export function editRoom({idRoom, public_, questions}){
+    return async function(dispatch){
+        try{
+            const {data} = await axios.put('http://localhost:3001/gameRoom', {idRoom, public_, questions})
+            dispatch({type: 'EDIT_ROOM', payload: data})
         }catch(e) {
             console.log(e)
         }

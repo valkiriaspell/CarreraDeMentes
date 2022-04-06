@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import useSocket from './useSocketIo'
 import styles from "../STYLES/preGameRoom.module.css"
-import { loginUser } from "../../redux/actions";
 
 const Chat = ({idUser}) =>{
     const {messages, sendMessage} = useSocket(idUser);
     const [listMessages, setListMessages] = useState([])
     const [newMessage, setNewMessage] = useState("");
     const {preRoomUsers} = useSelector(state => state)
-const dispatch = useDispatch()
-const {user} = useSelector(state => state)
+
     useEffect(() =>{
         messages.text &&
     setListMessages([...listMessages, messages])
@@ -19,12 +17,9 @@ const {user} = useSelector(state => state)
     function handleMessage(e){
         setNewMessage(e.target.value)
     }
-    const email = localStorage.getItem("email");
+
     function handleSendMessage(e){
-        !user.name 
-            ?  dispatch(loginUser(email))
-            .then(() => sendMessage(newMessage))
-            : sendMessage(newMessage);
+        sendMessage(newMessage);
         setNewMessage("");
     }
 
@@ -33,22 +28,25 @@ const {user} = useSelector(state => state)
         <div>
             <p>Jugadores {preRoomUsers?.users?.length}/6</p>
             <div className={styles.containerChat}>
-                <textarea cols="43" rows="8" wrap="hard" disabled={true} value=
-                
+                <div style={{heigth:50 + "px"}} disabled={true} > 
                     {
                         listMessages?.map((message) => {
                             return (
-                                
                                         message.writtenByCurrentUser
-                                            ? "Yo: " + message?.text + "\n"
-                                            : message?.name + ": " + message?.text + "\n"
-                                            
-
-                                
+                                            ? <p key={`${message.name}${message?.text}`} 
+                                                style={{textAlign: "justify"}} 
+                                                >
+                                                    {`Yo: ${message?.text}`}
+                                                </p>
+                                            : <p key={`${message.name}${message?.text}`} 
+                                                style={{textAlign: "justify", wordBreak: "break-word"}} 
+                                                >
+                                                    {`${message?.name}: ${message?.text}`}
+                                                </p> 
                             )
                         })
                     }
-                ></textarea>
+                </div>
                 
             </div>
                 <div className={styles.containerSendMessages}>
