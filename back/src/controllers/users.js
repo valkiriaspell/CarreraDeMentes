@@ -17,7 +17,7 @@ const createUsers = async ({
 	friendId,
 	host,
 	guest,
-	admin
+	admin,
 }) => {
 	try {
 		const [newUser, bool] = await Users.findOrCreate({
@@ -33,7 +33,7 @@ const createUsers = async ({
 				friendId,
 				host,
 				guest,
-				admin
+				admin,
 			},
 		});
 		bool && (await newUser.addAvatar(idAvatar));
@@ -153,6 +153,19 @@ const modifyHost = async (email, host) => {
 		console.log(error);
 	}
 };
+const modifyAdmin = async (email, admin) => {
+	try {
+		const userAdmin = await Users.findOne({where: {email}});
+
+		const userUpdated = await userAdmin.update(
+			{admin: admin},
+			{where: {email}}
+		);
+		return userUpdated;
+	} catch (error) {
+		console.log(error);
+	}
+};
 
 const bannerUser = async (email) => {
 	try {
@@ -179,4 +192,5 @@ module.exports = {
 	getReadyUser,
 	putUserReady,
 	bannerUser,
+	modifyAdmin,
 };
