@@ -1,4 +1,4 @@
-import { LOGIN_USER_GUEST, LIST_USERS_IN_PRE_ROOM, LIST_ROOMS, GET_READY_USER, NEW_USER, LOGIN, HOST, CREATE_ROOM, GET_AVATARS, GET_QUESTIONS } from "./actions"
+import { LOGIN_USER_GUEST, LIST_USERS_IN_PRE_ROOM, LIST_ROOMS, GET_READY_USER, NEW_USER, LOGIN, HOST, CREATE_ROOM, GET_AVATARS, GET_QUESTIONS, USER_TOKEN } from "./actions"
 
 
 const initialState = {
@@ -6,7 +6,8 @@ const initialState = {
     preRoomUsers: {},
     avatars: [],
     listRooms: [],
-    newQuestions: []
+    newQuestions: [],
+    userToken: {}
 }
 
 const reducer = (state = initialState, action) => {
@@ -71,6 +72,12 @@ const reducer = (state = initialState, action) => {
             ...state,
             newQuestions: action.payload
         }
+
+        case USER_TOKEN:
+            return {
+                ...state,
+                userToken: {token: action.payload}
+            }
 
         
         default:
