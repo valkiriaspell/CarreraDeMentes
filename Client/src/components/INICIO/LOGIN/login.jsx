@@ -13,7 +13,7 @@ import Email from "../../IMG/email.png";
 import Arrow from "../../IMG/arrow.png";
 import Perfil from "../../IMG/user.png";
 import { useDispatch } from "react-redux";
-import { loginUser, registerUser } from "../../../redux/actions";
+import { loginUser, registerUser, userToken } from "../../../redux/actions";
 import Swal from "sweetalert2";
 
 const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
@@ -95,6 +95,7 @@ function Login() {
       if(login?.accessToken){
         if (login.emailVerified === true) {
           dispatch(loginUser(input.email));
+          dispatch(userToken(login.accessToken));
           localStorage.setItem("email", login.email);
           localStorage.setItem("token", login.accessToken);
           history.push("/home");
