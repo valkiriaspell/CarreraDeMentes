@@ -77,10 +77,23 @@ export function modifyHost(email, host){
     }
 }
 
+export function modifyHostById(id, host){
+    return async function(dispatch){
+        try{
+            const {data} = await axios.put(`http://localhost:3001/users/?id=${id}&host=${host}`)
+            dispatch({type: 'HOST', payload: data})
+            return data
+        }catch(e){
+            console.log(e)
+        }
+        
+    }
+}
+
 export function createRoom(user){
     return async function(dispatch){
         try{
-            const {data} = await axios.post('http://localhost:3001/gameRoom', {name: user.name, idUser: user.id, currentAvatar: user.currentAvatar})
+            const {data} = await axios.post('http://localhost:3001/gameRoom', {name: user.name, idUser: user.id, avatar: user?.avatars?.[0]?.imageUrl})
             console.log(data)
             dispatch({type: 'CREATE_ROOM', payload: data})
             return data
@@ -173,3 +186,4 @@ export function userToken(token){
         payload: token
     }
 }
+

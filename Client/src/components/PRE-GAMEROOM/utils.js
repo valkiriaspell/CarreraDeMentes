@@ -1,9 +1,9 @@
 import axios from "axios"
 
-export async function AddUserToPreRoom({idGameRoom, idUser}){
+export async function AddUserToPreRoom({idGameRoom, idUser, avatar}){
     console.log(idGameRoom, idUser)
     try{
-        const {data} = await axios.put('http://localhost:3001/gameRoom', {idUser, idGameRoom})
+        const {data} = await axios.put('http://localhost:3001/gameRoom', {idUser, idGameRoom, avatar})
         return data
     }catch(e) {
         console.log(e)

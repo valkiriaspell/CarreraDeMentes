@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import socketIOClient from 'socket.io-client';
-import { listUsersInPreRoom, loginUser, getReadyUser } from "../../redux/actions";
+import { listUsersInPreRoom, loginUser, getReadyUser, modifyHost, modifyHostById } from "../../redux/actions";
 import axios from "axios";
 import readyGreen from "../IMG/readyGreen2.png"
 import { changeReady, deleteRoom, AddUserToPreRoom } from "./utils";
@@ -30,7 +30,8 @@ function useChatSocketIo(idGameRoom) {
             await dispatch(loginUser(email))
             .then((data) => dispatch(AddUserToPreRoom({
                 idGameRoom,
-                idUser: data?.id
+                idUser: data?.id,
+                avatar: data?.avatars?.[0]?.imageUrl
             })))
             .then((idD) =>dispatch(listUsersInPreRoom(idD)))
             .then(() => console.log('listo'))
@@ -66,7 +67,9 @@ function useChatSocketIo(idGameRoom) {
             })
 
             socketIoRef.current.on("EXPEL_PLAYER", (id) =>{
-                user.id === id && history.push('/home')
+                console.log("expel", user, id)
+                user?.id === id && history.push('/home')
+                    dispatch(listUsersInPreRoom(idGameRoom))
             })
 
             //when host press start-game button, all players redirect url game-room, 
@@ -86,10 +89,11 @@ function useChatSocketIo(idGameRoom) {
 
             //remove player from room (DB) when player leaves the room and destroy the socket reference
             return () =>{
-                console.log(preRoomUsers?.users?.length)
+                user?.host && dispatch(modifyHost(email, false))
                 preRoomUsers?.users?.length === 1
                     ? deleteRoom({id: idGameRoom})
                     : axios.put('http://localhost:3001/gameRoom/delete', {idGameRoom, idUserDelet: user.id})
+                    .then(()=>dispatch(modifyHostById(preRoomUsers.users[0].id, true)))
                     .then(() =>{
                         socketIoRef?.current?.emmit("DISCONNECT")
                         socketIoRef?.current?.disconnect();
@@ -123,6 +127,7 @@ function useChatSocketIo(idGameRoom) {
 
     function expelPlayer(e){
         let id = e.target.id
+        console.log("delete id", id)
         socketIoRef.current.emit("EXPEL_PLAYER", id)
     }
     
