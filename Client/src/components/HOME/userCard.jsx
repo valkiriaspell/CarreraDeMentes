@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import "../STYLES/home.modules.css";
 import Nivel from "../IMG/level.png"
 import Monedas from "../IMG/coin.png"
@@ -8,25 +8,23 @@ import { loginUser } from '../../redux/actions';
 
 function UserCard({location}) {
   const {user} = useSelector(state => state);
-  const [monedas, setMonedas] = useState(0);
+  const dispatch = useDispatch()
+  const email = localStorage.getItem("email");
 
   //GET para saber el estado del pago, si fue aprobado agregar las monedas al usuario en la bd
   useEffect(() => {
     (async function fetchData(){
       if(location.search !== ''){
-        const respuesta = await axios.get(`http://localhost:3001/mercadopago/${location.search}`);
-        console.log(respuesta.data)
-
-        if(respuesta.data.status === 'approved'){
-          setMonedas(2500) //insertar el valor de la compra en el usuario de la bd
-        }
+        const respuesta = await axios.post(`http://localhost:3001/mercadopago${location.search}`, {email: email});
+        dispatch(loginUser(email))
+        alert(respuesta.data.mensaje)
       }  
     }())
   } , [location])
-  const dispatch = useDispatch()
-  const email = localStorage.getItem("email");
+
   useEffect(() =>{
       dispatch(loginUser(email))
+      console.log(user)
   }, [])
 
   return (

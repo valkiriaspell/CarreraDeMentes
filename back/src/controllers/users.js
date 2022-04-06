@@ -86,7 +86,7 @@ const getReadyUser = async (id) => {
 	try {
 		const readyFound = await Users.findOne({where: {id}});
 
-		let obj = {id: readyFound.id, host: readyFound.host};
+		let obj = {id: readyFound.id, ready: readyFound.ready};
 
 		return obj;
 	} catch (error) {
@@ -152,6 +152,20 @@ const modifyHost = async (email, host) => {
 	}
 };
 
+const bannerUser = async (email) => {
+	try {
+		const banneado = await Users.findOne({where: {email}});
+
+		const updateBanneado = await banneado.update(
+			{banner: !banneado.banner},
+			{where: {email}}
+		);
+		return updateBanneado;
+	} catch (error) {
+		console.log(`El usuario no pudo ser banneado: ${error}`);
+	}
+};
+
 module.exports = {
 	createUsers,
 	getUser,
@@ -162,4 +176,5 @@ module.exports = {
 	modifyHost,
 	getReadyUser,
 	putUserReady,
+	bannerUser,
 };
