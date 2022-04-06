@@ -132,6 +132,10 @@ border: none;
 
 /* ======= CHAT ======= */
 .containerChat {
+  overflow-y: scroll;
+  flex-direction: column-reverse;
+  display: flex;
+  align-items: flex-start;
   background-color: rgba(142, 142, 143, 0.29);
   border: solid 3px rgba(216, 221, 226, 0.4);
   border-radius: 0.4rem;

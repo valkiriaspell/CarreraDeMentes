@@ -5,7 +5,8 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { HiOutlineRefresh } from "react-icons/hi";
 import Search from "../IMG/search.png";
 import { useDispatch, useSelector } from "react-redux";
-import { AddUserToPreRoom, listAllRooms, listUsersInPreRoom } from "../../redux/actions";
+import { listAllRooms, listUsersInPreRoom } from "../../redux/actions";
+import { AddUserToPreRoom } from "../PRE-GAMEROOM/utils";
 
 
 function GameListRoom() {
