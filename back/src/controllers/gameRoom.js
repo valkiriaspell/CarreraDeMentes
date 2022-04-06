@@ -79,6 +79,7 @@ exports.createBDGameRoom = async ({
 		public_,
 		email, */
 	idUser,
+	avatar
 }) => {
 	try {
 		const data = await GameRoom.create({
@@ -89,7 +90,7 @@ exports.createBDGameRoom = async ({
 						email, */
 		});
 		await data.addUser(idUser);
-		const avatars = [{ imgageUrl: avatar }]
+		const avatars = [{ imageUrl: avatar }]
 		data.dataValues.users = [{ id: idUser, name, avatars }];
 
 		return [true, data.dataValues];
