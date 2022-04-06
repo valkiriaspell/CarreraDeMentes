@@ -151,10 +151,71 @@
 
   .adminQuestions{
     background-color: white;
-    color: rgb(37, 1, 30);
+    color: rgb(38, 2, 31);
     margin-top: 125px;  
     display: flex;
+    flex-direction: column;
   }
+  .adminQuestions button{
+      background: none;
+      border-style: none;
+  }
+  .barraSobreQuestions{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+  }
+  .questionTable{
+      
+      width: 100%;      
+      height: 440px;
+      margin: 0 auto;
+      display: block;
+      overflow-x: auto;
+      border-spacing: 0;
+      align-items: center;
+      
+    }
+
+    .titulos{
+        border-left-width: 10px;
+        border-right-width: 10px;
+        border-bottom-width: 3px;
+        border-top-width: 3px;
+        
+    }
+    .questionTable tbody {
+        white-space: nowrap;
+        
+    }
+    .questionTable th,
+    td {
+        padding: 5px 10px;
+        border-top-width: 0;     
+        
+    }
+   
+table, th, td {
+    border: 1px solid;    
+  }
+  table {
+      background-color: #d22b5200;
+  }
+
+.questionTable th {
+    position: sticky;
+    top: 0;
+    background: hsla(150, 50%, 50%, 0);
+    vertical-align: bottom;    
+}
+
+
+
+.questionTable tr:last-child td {
+    border-bottom-width: 0;
+}
+
+
   /* ADMIN USERS */
   .adminUsers{
       background-color: white;
