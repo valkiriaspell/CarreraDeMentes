@@ -16,7 +16,9 @@ import GameRoom from './components/GAMEROOM/gameRoom';
 import RecuperarContrasena from './components/INICIO/RECUPERARCONTRASENA/recuperarContrasena';
 import Footer from './components/FOOTER/footer';
 import loginAdmin from './components/ADMIN/login';
-import AdminHome from './components/ADMIN/adminHome';
+import AdminNav from './components/ADMIN/adminNav';
+import AdminUsers from './components/ADMIN/adminUsers';
+import AdminQuestions from './components/ADMIN/adminQuestions';
 
 initializeApp(config)
 
@@ -37,8 +39,12 @@ function App() {
         <Route path="/tienda" component={PlayStore} />
         <Route path="/añadirPregunta" component={FormAddQuestions} />
         <Route path="/partida" component={GameRoom} />
+
+        {/* ///////   Secciones de Administrador //////// */}
         <Route path="/administrador" component={loginAdmin} />
-        <Route path="/adminHome" component={AdminHome} />
+        <Route path="/adminHome" component={AdminNav} />        
+        <Route path="/adminHome/questions" component={AdminQuestions} />
+        <Route path="/adminHome/users" component={AdminUsers} />
     </div>
   );
 }
