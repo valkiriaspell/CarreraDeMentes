@@ -12,6 +12,7 @@ export const LIST_ROOMS = 'LIST_ROOMS'
 export const CHANGE_READY = 'CHANGE_READY'
 export const GET_QUESTIONS = 'GET_QUESTIONS'
 export const GET_READY_USER = 'GET_READY_USER'
+export const USER_TOKEN = 'USER_TOKEN'
 export const EDIT_ROOM = 'EDIT_ROOM'
 export const DELETE_ROOM = 'DELETE_ROOM'
 
@@ -163,5 +164,12 @@ export function getNewQuestions(){
         }catch(e) {
             console.log(e)
         }
+    }
+}
+
+export function userToken(token){
+    return {
+        type: USER_TOKEN,
+        payload: token
     }
 }
