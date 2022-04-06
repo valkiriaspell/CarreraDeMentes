@@ -25,6 +25,7 @@ io.on('connection', (socket) => {
 	socket.join(idGameRoom);
 	//crear ruta en rooms para conectar un usuario nuevo
     
+
     io.to(idGameRoom).emit('NEW_CONNECTION', email)
     
     socket.on('READY',(id)=>{
@@ -48,6 +49,12 @@ io.on('connection', (socket) => {
 		/* const {text, name, email} = data; */ //cual es el mensaje?  para que room? quien lo envia?
 		io.to(idGameRoom).emit('NEW_MESSAGE', {text, name, email});
 	});
+	socket.on('NEW_EVENT', (userState) => {
+		io.to(idGameRoom).emit('NEW_EVENT',userState)
+	});
+	socket.on('CONFIG_ROOM',(roomConfiguration)=>{
+		io.to(idGameRoom).emit('CONFIG_ROOM',roomConfiguration)
+	})
 });
 
 server.name = 'API';
