@@ -10,6 +10,7 @@ export const CREATE_ROOM = 'CREATE_ROOM'
 export const GET_AVATARS = 'GET_AVATARS'
 export const LIST_ROOMS = 'LIST_ROOMS'
 export const CHANGE_READY = 'CHANGE_READY'
+export const GET_QUESTIONS = 'GET_QUESTIONS'
 export const GET_READY_USER = 'GET_READY_USER'
 export const EDIT_ROOM = 'EDIT_ROOM'
 export const DELETE_ROOM = 'DELETE_ROOM'
@@ -137,6 +138,28 @@ export function editRoom({idRoom, public_, questions}){
         try{
             const {data} = await axios.put('http://localhost:3001/gameRoom', {idRoom, public_, questions})
             dispatch({type: 'EDIT_ROOM', payload: data})
+        }catch(e) {
+            console.log(e)
+        }
+    }
+}
+
+export function newQuestion(question){
+    return async function(){
+        try{
+            const data = await axios.post('http://localhost:3001/newQuestion',question)
+            
+        }catch(e) {
+            console.log(e)
+        }
+    }
+}
+
+export function getNewQuestions(){
+    return async function(dispatch){
+        try{
+            const data = await axios.get('http://localhost:3001/newQuestion')
+            dispatch({type: GET_QUESTIONS , payload: data})
         }catch(e) {
             console.log(e)
         }

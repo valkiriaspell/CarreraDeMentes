@@ -17,6 +17,7 @@ const createUsers = async ({
 	friendId,
 	host,
 	guest,
+	admin,
 }) => {
 	try {
 		const [newUser, bool] = await Users.findOrCreate({
@@ -32,6 +33,7 @@ const createUsers = async ({
 				friendId,
 				host,
 				guest,
+				admin,
 			},
 		});
 		bool && (await newUser.addAvatar(idAvatar));
@@ -86,12 +88,9 @@ const getReadyUser = async (id) => {
 	try {
 		const readyFound = await Users.findOne({where: {id}});
 
-
 		let obj = {id: readyFound.id, ready: readyFound.ready};
 
 		return obj;
-
-
 	} catch (error) {
 		return error;
 	}
@@ -154,6 +153,33 @@ const modifyHost = async (email, host) => {
 		console.log(error);
 	}
 };
+const modifyAdmin = async (email, admin) => {
+	try {
+		const userAdmin = await Users.findOne({where: {email}});
+
+		const userUpdated = await userAdmin.update(
+			{admin: admin},
+			{where: {email}}
+		);
+		return userUpdated;
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+const bannerUser = async (email) => {
+	try {
+		const banneado = await Users.findOne({where: {email}});
+
+		const updateBanneado = await banneado.update(
+			{banner: !banneado.banner},
+			{where: {email}}
+		);
+		return updateBanneado;
+	} catch (error) {
+		console.log(`El usuario no pudo ser banneado: ${error}`);
+	}
+};
 
 module.exports = {
 	createUsers,
@@ -165,4 +191,6 @@ module.exports = {
 	modifyHost,
 	getReadyUser,
 	putUserReady,
+	bannerUser,
+	modifyAdmin,
 };

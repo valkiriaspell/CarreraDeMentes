@@ -12,7 +12,7 @@
   height: 500px;
   margin: 3rem;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   flex-direction: column;
   border-radius: 0.4rem;
@@ -21,10 +21,10 @@
   background-color: rgba(216, 221, 226, 0.349);
   border: solid 3px rgba(216, 221, 226, 0.253);
   width: 250px;
-  margin: 0.5rem;
   border-radius: 2rem;
   display: flex;
   justify-content: space-between;
+  margin-top: 1rem;
 }
 .positionPlayers {
   color: rgba(230, 231, 232, 0.539);

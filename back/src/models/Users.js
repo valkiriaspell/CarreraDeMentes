@@ -12,10 +12,6 @@ module.exports = (sequelize) => {
 			type: DataTypes.STRING,
 			unique: true,
 			allowNull: false,
-			/* 			validate: {
-				isAlpha: true,
-				len: [2,12], 
-			} */
 		},
 		email: {
 			type: DataTypes.STRING,
@@ -86,6 +82,9 @@ module.exports = (sequelize) => {
 			type: DataTypes.STRING,
 			defaultValue: 'normal',
 		},
-
+		banner: {
+			type: DataTypes.BOOLEAN,
+			defaultValue: false,
+		},
 	});
 };

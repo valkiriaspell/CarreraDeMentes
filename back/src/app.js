@@ -5,7 +5,14 @@ const morgan = require('morgan');
 const routes = require('./routes/index.js');
 const session = require('express-session');
 const cors = require('cors');
+const mercadopago = require('mercadopago');
 require('./db.js');
+const { MP_TKN } = process.env;
+
+//Configuracion Mercado Pago
+mercadopago.configure({
+	access_token: MP_TKN,
+});
 
 /// conexion de sockets
 const server = express();

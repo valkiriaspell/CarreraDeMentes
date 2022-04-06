@@ -36,19 +36,8 @@ export default function LoginAdmin() {
         e.preventDefault();
     dispatch(loginUser(input.email))
     if (user.email) {
-        if (user.password === input.password) {
-            
-        } else {
-            console.log(user, "hola")
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Contraseña incorrecta",
-                confirmButtonText: "OK",
-                heightAuto: false,
-              });
-        }
-
+        console.log(user, "user")
+             
     } else {
         console.log(user, "hola")
         Swal.fire({

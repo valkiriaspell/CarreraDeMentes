@@ -102,7 +102,7 @@ function PreGameRoom({match}) {
         </div>
       </div>
     ) : (
-      <GameRoom />
+      <GameRoom preRoomUsers={preRoomUsers} />
     );
   } else {
     history.push("/login");
