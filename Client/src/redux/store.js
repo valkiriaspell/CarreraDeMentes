@@ -10,12 +10,12 @@ import preRoomUsers from "./reducer2/preRoomUsers";
 import user from "./reducer2/user";
 
 const reducer = combineReducers({
-    ava: avatars,
-    lis: listRooms,
-    pre: preRoomUsers,
-    us: user
-})
- */
+    avatars,
+    listRooms,
+    preRoomUsers,
+    user
+}) */
+
 
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
