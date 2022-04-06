@@ -8,6 +8,7 @@ import "../STYLES/login.modules.css"
 import { useSelector, useDispatch } from "react-redux";
 import { loginUser } from '../../redux/actions';
 import Swal from "sweetalert2";
+import { firebaseLogin } from '../../utils/Firebase';
 
 export default function LoginAdmin() {
 
@@ -32,22 +33,23 @@ export default function LoginAdmin() {
 
     }
     
-    function handleLogin(e) {
+    async function handleLogin(e) {
         e.preventDefault();
-    dispatch(loginUser(input.email))
-    if (user.email) {
-        console.log(user, "user")
-             
-    } else {
-        console.log(user, "hola")
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Usuario incorrecto",
-            confirmButtonText: "OK",
-            heightAuto: false,
-          });
-    }
+        const login = await firebaseLogin(input.email, input.password);
+        if(login?.accessToken){
+            dispatch(loginUser(input.email));
+            localStorage.setItem("email", login.email);
+            localStorage.setItem("token", login.accessToken);
+            history.push("/adminHome");
+        } else{
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Usuario incorrecto",
+                confirmButtonText: "OK",
+                heightAuto: false,
+            });
+        }
     }
 
 
