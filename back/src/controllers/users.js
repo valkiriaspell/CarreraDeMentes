@@ -17,6 +17,7 @@ const createUsers = async ({
 	friendId,
 	host,
 	guest,
+	admin
 }) => {
 	try {
 		const [newUser, bool] = await Users.findOrCreate({
@@ -32,6 +33,7 @@ const createUsers = async ({
 				friendId,
 				host,
 				guest,
+				admin
 			},
 		});
 		bool && (await newUser.addAvatar(idAvatar));

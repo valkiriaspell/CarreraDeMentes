@@ -7,10 +7,11 @@ const session = require('express-session');
 const cors = require('cors');
 const mercadopago = require('mercadopago');
 require('./db.js');
+const { MP_TKN } = process.env;
 
 //Configuracion Mercado Pago
 mercadopago.configure({
-	access_token: "TEST-7940442895738454-033013-316fbf92cbb44208d0f2464c77e0235b-838427933",
+	access_token: MP_TKN,
 });
 
 /// conexion de sockets
