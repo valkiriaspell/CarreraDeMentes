@@ -1,22 +1,25 @@
-const { GameRoom, Users, Question } = require('../db.js');
+const {GameRoom, Users, Question, Avatar} = require('../db.js');
 
 //buscar todas las salas
 exports.seachAllBDGameRoom = async (idRoom) => {
 	try {
 		if (idRoom !== undefined) {
-
 			const data = await GameRoom.findOne({
-				where: { id: idRoom },
+				where: {id: idRoom},
 				include: [
 					{
 						model: Users,
 						attributes: ['id', 'name', 'host'],
+						include: [Avatar],
+					},
+
+					{
+						model: Question,
 					},
 				],
 			});
 			return data.dataValues;
 		} else {
-
 			const data = await GameRoom.findAll({
 				include: [
 					{
@@ -25,14 +28,14 @@ exports.seachAllBDGameRoom = async (idRoom) => {
 					},
 				],
 			});
-			const rooms = data.map(room => {
+			const rooms = data.map((room) => {
 				return {
 					id: room.dataValues.id,
 					name: room.dataValues.name,
 					questionAmount: room.dataValues.questionAmount,
-					numberUsersInRoom: room.dataValues.users.length
-				}
-			})
+					numberUsersInRoom: room.dataValues.users.length,
+				};
+			});
 
 			return rooms;
 		}
@@ -69,7 +72,7 @@ exports.createBDGameRoom = async ({
 		public_,
 		email, */
 	idUser,
-	currentAvatar
+	currentAvatar,
 }) => {
 	try {
 		const data = await GameRoom.create({
@@ -80,7 +83,7 @@ exports.createBDGameRoom = async ({
 						email, */
 		});
 		await data.addUser(idUser);
-		data.dataValues.users = [{ id: idUser, name, currentAvatar }]
+		data.dataValues.users = [{id: idUser, name, currentAvatar}];
 
 		return [true, data.dataValues];
 	} catch (e) {
@@ -90,10 +93,10 @@ exports.createBDGameRoom = async ({
 };
 
 // actializamos y agregamos un nuevo usuario a la sala
-exports.updateAddBDGameRoom = async ({ idGameRoom, idUser }) => {
-	console.log('vamos mal', idGameRoom, idUser)
+exports.updateAddBDGameRoom = async ({idGameRoom, idUser}) => {
+	console.log('vamos mal', idGameRoom, idUser);
 	try {
-		console.log('id', idGameRoom, idUser)
+		console.log('id', idGameRoom, idUser);
 		const data = await GameRoom.findByPk(idGameRoom, {
 			include: [
 				{
@@ -102,10 +105,10 @@ exports.updateAddBDGameRoom = async ({ idGameRoom, idUser }) => {
 				},
 			],
 		});
-		console.log("esta es la data", data)
+		console.log('esta es la data', data);
 		if (!data) return [false, 'Sale no encontrada'];
 
-		const { users, usersAmount } = data;
+		const {users, usersAmount} = data;
 
 		if (users.length < usersAmount) {
 			await data.addUsers(idUser);
@@ -119,27 +122,22 @@ exports.updateAddBDGameRoom = async ({ idGameRoom, idUser }) => {
 	}
 };
 
-
-
 // Eliminar una sala por su id
-exports.deletByIdGameRoom = async ({ id }) => {
+exports.deletByIdGameRoom = async ({id}) => {
 	try {
-
-		const eliminado = await GameRoom.destroy({ where: { id } });
+		const eliminado = await GameRoom.destroy({where: {id}});
 		if (eliminado > 0) {
-
-			return [true, "Salas eliminada"]
+			return [true, 'Salas eliminada'];
 		} else {
-			return [false, "No se encotro la sala a eliminar"]
+			return [false, 'No se encotro la sala a eliminar'];
 		}
-
 	} catch (e) {
-		return e
+		return e;
 	}
-}
+};
 
 // Eliminar un usuario de la sala
-exports.updateDeleteBDGameRoom = async ({ idGameRoom, idUserDelet }) => {
+exports.updateDeleteBDGameRoom = async ({idGameRoom, idUserDelet}) => {
 	try {
 		const data = await GameRoom.findByPk(idGameRoom, {
 			include: [
@@ -152,7 +150,6 @@ exports.updateDeleteBDGameRoom = async ({ idGameRoom, idUserDelet }) => {
 
 		await data.removeUser(idUserDelet);
 		return [true, 'Usuario eliminado'];
-
 	} catch (e) {
 		console.log('Error al eliminar un usuario: ', e);
 		return e;
