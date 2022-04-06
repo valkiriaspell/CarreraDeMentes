@@ -138,6 +138,7 @@ export default function FormAddQuestions() {
             } else {
                 setErrorA("")
                 setMSG("Tu pregunta fue enviada para validación")
+                console.log(category)
                 dispatch(newQuestion({
                     question,
                     category,               
