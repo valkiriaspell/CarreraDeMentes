@@ -145,16 +145,13 @@ const modifyUser = async ({id, name, idAvatar}) => {
 
 const modifyHost = async (id, email, host) => {
 	try {
+		
 		if (email) {
-			const userHost = await Users.findOne({where: {email}});
-
-			const userUpdated = await userHost.update({host: host}, {where: {email}});
+			const userUpdated = await Users.update({host: host}, {where: {email}});
 			return userUpdated;
 		}
-		if (id) {
-			const userHost = await Users.findOne({where: {id}});
-
-			const userUpdated = await userHost.update({host: host}, {where: {id}});
+		if (id) {	
+			const userUpdated = await Users.update({host: host}, {where: {id}});
 			return userUpdated;
 		}
 	} catch (error) {
