@@ -144,7 +144,7 @@ function Game({ preRoomUsers }) {
   //  ============================
 
   useEffect(() => {
-    getUrl("http://localhost:3001/question").then((res) => {
+    getUrl("/question").then((res) => {
       setQuestions(res.data);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

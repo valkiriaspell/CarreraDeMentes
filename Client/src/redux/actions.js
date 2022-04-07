@@ -21,7 +21,7 @@ export const DELETE_ROOM = 'DELETE_ROOM'
 export function loginAsGuest(guest){
     return async function(dispatch){
         try{
-            const test = await axios.post('http://localhost:3001/users', guest)
+            const test = await axios.post('/users', guest)
             dispatch({type: 'LOGIN_USER_GUEST', payload: test.data})
             console.log(test.data)
             return test.data
@@ -34,7 +34,7 @@ export function loginAsGuest(guest){
 export function registerUser(user){
     return async function(dispatch){
         try{
-            const {data} = await axios.post('http://localhost:3001/users', user)
+            const {data} = await axios.post('/users', user)
             dispatch({type: 'NEW_USER', payload: data})
         }catch(e) {
             console.log(e)
@@ -45,7 +45,7 @@ export function registerUser(user){
 export function loginUser(email){
     return async function(dispatch){
         try{
-            const {data} = await axios.get(`http://localhost:3001/users?email=${email}`)
+            const {data} = await axios.get(`/users?email=${email}`)
             console.log(data)
             dispatch({type: 'LOGIN', payload: data})
             return data
@@ -57,7 +57,7 @@ export function loginUser(email){
 
 export const updateUser = (userData)=> async ()=>{
     try {
-        const result = await axios.put(`http://localhost:3001/users`, userData)  
+        const result = await axios.put(`/users`, userData)  
         console.log(result)
     } catch (error) {
         console.log(error)
@@ -67,7 +67,7 @@ export const updateUser = (userData)=> async ()=>{
 export function modifyHost(email, host){
     return async function(dispatch){
         try{
-            const {data} = await axios.put(`http://localhost:3001/users/?email=${email}&host=${host}`)
+            const {data} = await axios.put(`/users/?email=${email}&host=${host}`)
             dispatch({type: 'HOST', payload: data})
             return data
         }catch(e){
@@ -80,7 +80,7 @@ export function modifyHost(email, host){
 export function createRoom(user){
     return async function(dispatch){
         try{
-            const {data} = await axios.post('http://localhost:3001/gameRoom', {name: user.name, idUser: user.id, currentAvatar: user.currentAvatar})
+            const {data} = await axios.post('/gameRoom', {name: user.name, idUser: user.id, currentAvatar: user.currentAvatar})
             console.log(data)
             dispatch({type: 'CREATE_ROOM', payload: data})
             return data
@@ -92,7 +92,7 @@ export function createRoom(user){
 
 export const getAvatars = ()=> async (dispatch)=>{
     try {
-        const result = await axios.get(`http://localhost:3001/avatar`)
+        const result = await axios.get(`/avatar`)
         dispatch({type: GET_AVATARS, payload: result.data}) 
     } catch (error) {
         console.log(error)
@@ -103,7 +103,7 @@ export const getAvatars = ()=> async (dispatch)=>{
 export function listUsersInPreRoom(IdRoom){
     return async function(dispatch){
         try{
-            const {data} = await axios.get(`http://localhost:3001/gameRoom/?idRoom=${IdRoom}`)
+            const {data} = await axios.get(`/gameRoom/?idRoom=${IdRoom}`)
             console.log(data)
             dispatch({type: 'LIST_USERS_IN_PRE_ROOM', payload: data})
         }catch(e) {
@@ -115,7 +115,7 @@ export function listUsersInPreRoom(IdRoom){
 export function getReadyUser(id){
     return async function(dispatch){ // me traigo el id y ready(un bolean)
         try{ 
-            const {data} = await axios.get(`http://localhost:3001/users/ready/?id=${id}`)
+            const {data} = await axios.get(`/users/ready/?id=${id}`)
             dispatch({type: 'GET_READY_USER', payload: data})
         }catch(e) {
             console.log(e) 
@@ -126,7 +126,7 @@ export function getReadyUser(id){
 export function listAllRooms(){
     return async function(dispatch){
         try{
-            const {data} = await axios.get('http://localhost:3001/gameRoom')
+            const {data} = await axios.get('/gameRoom')
             dispatch({type: 'LIST_ROOMS', payload: data})
         }catch(e) {
             console.log(e)
@@ -137,7 +137,7 @@ export function listAllRooms(){
 export function editRoom({idRoom, public_, questions}){
     return async function(dispatch){
         try{
-            const {data} = await axios.put('http://localhost:3001/gameRoom', {idRoom, public_, questions})
+            const {data} = await axios.put('/gameRoom', {idRoom, public_, questions})
             dispatch({type: 'EDIT_ROOM', payload: data})
         }catch(e) {
             console.log(e)
@@ -148,7 +148,7 @@ export function editRoom({idRoom, public_, questions}){
 export function newQuestion(question){
     return async function(){
         try{
-            const data = await axios.post('http://localhost:3001/newQuestion',question)
+            const data = await axios.post('/newQuestion',question)
             
         }catch(e) {
             console.log(e)
@@ -159,7 +159,7 @@ export function newQuestion(question){
 export function getNewQuestions(){
     return async function(dispatch){
         try{
-            const {data} = await axios.get('http://localhost:3001/newQuestion')
+            const {data} = await axios.get('/newQuestion')
             dispatch({type: GET_QUESTIONS , payload: data})
         }catch(e) {
             console.log(e)

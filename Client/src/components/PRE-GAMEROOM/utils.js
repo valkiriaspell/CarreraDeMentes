@@ -3,7 +3,7 @@ import axios from "axios"
 export async function AddUserToPreRoom({idGameRoom, idUser}){
     console.log(idGameRoom, idUser)
     try{
-        const {data} = await axios.put('http://localhost:3001/gameRoom', {idUser, idGameRoom})
+        const {data} = await axios.put('/gameRoom', {idUser, idGameRoom})
         return data
     }catch(e) {
         console.log(e)
@@ -12,7 +12,7 @@ export async function AddUserToPreRoom({idGameRoom, idUser}){
 
 export async function changeReady(id, bool){
     try{
-        const {data} = await axios.put(`http://localhost:3001/users/ready/?id=${id}&bool=${bool}`)
+        const {data} = await axios.put(`/users/ready/?id=${id}&bool=${bool}`)
         console.log(data)
     }catch(e) {
         console.log(e)
@@ -21,7 +21,7 @@ export async function changeReady(id, bool){
 
 export async function deleteRoom({id}){
     try{
-        const {data} = await axios.delete(`http://localhost:3001/gameRoom/${id}`)
+        const {data} = await axios.delete(`/gameRoom/${id}`)
         console.log(data)
     }catch(e) {
         console.log(e)

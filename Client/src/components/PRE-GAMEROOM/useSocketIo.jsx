@@ -37,7 +37,7 @@ function useChatSocketIo(idGameRoom) {
         }
         !user?.host && newUserInRoom();
         /* console.log('idGameRoom: ', idGameRoom) */
-        socketIoRef.current = socketIOClient('http://localhost:3001',{query:{idGameRoom, email: user?.email} } );
+        socketIoRef.current = socketIOClient('',{query:{idGameRoom, email: user?.email} } );
             console.log("connect", user)
             socketIoRef.current.on("NEW_CONNECTION", async (email) =>{
                 email !== user.email &&
@@ -89,7 +89,7 @@ function useChatSocketIo(idGameRoom) {
                 console.log(preRoomUsers?.users?.length)
                 preRoomUsers?.users?.length === 1
                     ? deleteRoom({id: idGameRoom})
-                    : axios.put('http://localhost:3001/gameRoom/delete', {idGameRoom, idUserDelet: user.id})
+                    : axios.put('/gameRoom/delete', {idGameRoom, idUserDelet: user.id})
                     .then(() =>{
                         socketIoRef?.current?.emmit("DISCONNECT")
                         socketIoRef?.current?.disconnect();
@@ -129,7 +129,7 @@ function useChatSocketIo(idGameRoom) {
     async function handleSubmitConfig(e, roomConfiguration){
         e.preventDefault()
         try{
-            const {data} = await axios.put('http://localhost:3001/gameRoom', {
+            const {data} = await axios.put('/gameRoom', {
                 idRoom: idGameRoom, 
                 public_: roomConfiguration.open, 
                 questions: roomConfiguration.questions,

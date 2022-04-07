@@ -23,20 +23,22 @@ var io = require('socket.io')(app, {
 	},
 });
 //server.use(express.static('public'))
+const cors = require("cors");
+
 
 io.on('connection', (socket) => {
 	//que hago cuando recibo 'connect'?
-
+	
 	const {idGameRoom, email} = socket.handshake.query;
 	console.log('yo soy la room', idGameRoom)
 	socket.join(idGameRoom);
 	//crear ruta en rooms para conectar un usuario nuevo
     
-
+	
     io.to(idGameRoom).emit('NEW_CONNECTION', email)
     
     socket.on('READY',(id)=>{
-        io.to(idGameRoom).emit('READY',id)
+		io.to(idGameRoom).emit('READY',id)
     })
 	socket.on('START',()=>{
 		io.to(idGameRoom).emit('START')
@@ -44,7 +46,7 @@ io.on('connection', (socket) => {
 	socket.on('EXPEL_PLAYER',(id)=>{
 		io.to(idGameRoom).emit('EXPEL_PLAYER', id)
 	})
- 
+	
 	socket.on('DISCONNECT', () => {
 		//alguien se desconecta de la room
 		console.log('se desconecto');
@@ -66,12 +68,26 @@ io.on('connection', (socket) => {
 
 server.name = 'API';
 
+server.use(cors({
+    origin: "*",
+    credentials: true,
+    methods: ["GET", "POST", "OPTIONS", "PUT", "DELETE"],
+    allowedHeaders: [
+      "Origin",
+      "X-Requested-With",
+      "Content-Type",
+      "Accept",
+      "authorization",
+    ],
+  }));
+
+
 server.use(bodyParser.urlencoded({extended: true, limit: '50mb'}));
 server.use(bodyParser.json({limit: '50mb'}));
 //server.use(cookieParser());
 server.use(morgan('dev'));
 server.use((req, res, next) => {
-	res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // update to match the domain you will make the request from
+	res.header('Access-Control-Allow-Origin', '*'); // update to match the domain you will make the request from
 	res.header('Access-Control-Allow-Credentials', 'true');
 	res.header(
 		'Access-Control-Allow-Headers',
@@ -92,17 +108,7 @@ server.use((err, req, res, next) => {
 });
 
 //LOGIN
-server.use(
-	session({
-		name: 'sid',
-		secret: 'secret', // Debería estar en un archivo de environment
-		resave: false,
-		saveUninitialized: false,
-		cookie: {
-			maxAge: 1000 * 60 * 60 * 2, // Está en milisegundos --> 2hs
-		},
-	})
-);
+
 server.use(cookieParser('secret'));
 
 server.use('/', routes);
