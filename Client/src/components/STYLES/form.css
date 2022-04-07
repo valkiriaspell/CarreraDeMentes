@@ -1,0 +1,166 @@
+/* ====== Form ====== */
+
+.form {
+    font-size: 18px;
+    align-self: center;
+    align-content: center;  
+    display: flex;
+    padding-top: 50px;
+    text-align: left;
+    flex-direction: column;    
+    background: #0000003d;
+    width: 400px;
+    margin: auto;
+    justify-content: space-between;        
+    color: rgb(255, 255, 255);            
+    padding-left: 20px;        
+    padding-right: 20px;        
+    margin-top: 55px; 
+    border-style: solid;
+    border-color: white;
+}
+
+.formName{
+    border-bottom: solid;
+    border-width: 1px;
+    margin-bottom: 10px;
+    border-color: rgb(255, 255, 255);  
+}
+.formMail{
+    border-bottom: solid;
+    border-width: 1px;
+    margin-bottom: 10px;
+    border-color: rgb(255, 255, 255);  
+}
+.formAvatar{
+    border-bottom: solid;
+    border-width: 1px;
+    margin-bottom: 10px;
+    border-color: rgb(255, 255, 255);
+    margin-bottom: 30px;  
+}
+.formPass{
+    border-bottom: solid;
+    border-width: 1px;
+    margin-bottom: 10px;
+    border-color: rgb(255, 255, 255);    
+}
+
+/* ====== Form globales ====== */
+
+.form a {
+    text-decoration: none;     
+}
+
+.form input {
+    width: 80%;           
+    height: 30px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size:16px;      
+}
+
+.form select {
+    width: 80%;
+    padding: 5px;    
+    height: 30px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size:16px;      
+}
+
+/* ====== Submit ====== */
+.disabled{
+    color: rgb(0, 0, 0);
+    background-color: rgb(129, 129, 129);
+    cursor: not-allowed;
+    
+}
+
+.enabled{
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);    
+    cursor: pointer; 
+    border: none;
+    font-size: 8px;
+    
+}
+
+.FormSubmit input{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 50%;
+    font-size: 14px;
+    padding: 2px;       
+}
+
+.terminos {
+    height: 0px;
+    font-size: 10px;
+    overflow: hidden;
+}
+/* ====== Errors ====== */
+.danger {
+    color: red;        
+  }
+  
+  input.danger {
+    border: 2px solid red;
+  }
+.error {
+    color: rgb(253, 24, 24);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.924);    
+}
+/* ====== Buttons ====== */
+.volver {
+    display: flex;
+    align-items: center;
+    background-color: rgba(216, 221, 226, 0.4);
+    border-radius: 0.3rem;
+    color: rgba(221, 221, 221, 0.829);
+    border: none;
+    padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+    margin: 0.5em;     
+}
+.volver:hover {
+    background-color: rgba(154, 158, 161, 0.4);
+    cursor: pointer;
+  }
+.checkbox{
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;    
+    margin: none;
+    
+    
+}
+.checkbox label {
+    position: relative;
+    left: -40%;
+    
+}
+#check {        
+    margin: none;    
+    height: 12px;
+    margin-top: none;
+    margin-bottom: none;
+    position: relative;
+    left: -20%;
+    top: -5px;   
+}
+
+.checkbox button {
+    border-style: none;
+    background: rgba(20, 4, 4, 0.371);
+    color: white;
+    cursor: pointer;
+}
