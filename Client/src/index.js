@@ -7,9 +7,6 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "./redux/store";
 import axios from "axios";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 axios.defaults.baseURL = process.env.REACT_APP_API || "";
 
