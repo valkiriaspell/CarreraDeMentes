@@ -8,6 +8,7 @@ import "../STYLES/login.modules.css"
 import { useSelector, useDispatch } from "react-redux";
 import { loginUser } from '../../redux/actions';
 import Swal from "sweetalert2";
+import { firebaseLogin } from '../../utils/Firebase';
 
 export default function LoginAdmin() {
 
@@ -20,7 +21,6 @@ export default function LoginAdmin() {
         password: ''
     })
 
-
     ////////////---->   Store States  <----/////////////////
     const {user} = useSelector(state => state)
 
@@ -28,37 +28,34 @@ export default function LoginAdmin() {
     function handleOnChange(e) {
         setInput({ ...input, [e.target.name]: e.target.value });
       }
-    function validations() {
-
-    }
     
-    function handleLogin(e) {
+    async function handleLogin(e) {
         e.preventDefault();
-    dispatch(loginUser(input.email))
-    if (user.email) {
-        if (user.password === input.password) {
-            
-        } else {
-            console.log(user, "hola")
+        const login = await firebaseLogin(input.email, input.password);
+        if(login?.accessToken){
+            dispatch(loginUser(input.email));
+            if(user.admin === "superadmin" || user.admin === "admin") {
+                localStorage.setItem("email", login.email);
+                localStorage.setItem("token", login.accessToken);
+                history.push("/adminHome");
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Acceso Denegado",
+                    text: "No estás habilitado para esta sección ",
+                    confirmButtonText: "OK",
+                    heightAuto: false,
+                });
+            }          
+        } else{
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Contraseña incorrecta",
+                text: "Clave o usuario incorrecto",
                 confirmButtonText: "OK",
                 heightAuto: false,
-              });
+            });
         }
-
-    } else {
-        console.log(user, "hola")
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Usuario incorrecto",
-            confirmButtonText: "OK",
-            heightAuto: false,
-          });
-    }
     }
 
 

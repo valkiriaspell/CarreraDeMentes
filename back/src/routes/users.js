@@ -10,7 +10,8 @@ const {
 	createGuestUser,
 	getReadyUser,
 	bannerUser,
-	putUserReady
+	putUserReady,
+	modifyAdmin,
 } = require('../controllers/users');
 
 // escriban sus rutas acá
@@ -53,6 +54,16 @@ router.put('/ready', async (req, res) => {
 		res.status(500).send('Error al modificar usuario: ' + e);
 	}
 });
+router.put('/admin', async (req, res) => {
+	try {
+		const {email, admin} = req.body;
+
+		const userAdmin = await modifyAdmin(email, admin);
+		res.send(userAdmin);
+	} catch (e) {
+		res.status(500).send('Error al modificar admin: ' + e);
+	}
+});
 
 router.post('/', async (req, res) => {
 	console.log(req.body.guest);
@@ -85,9 +96,13 @@ router.delete('/', async (req, res) => {
 });
 router.put('/', async (req, res) => {
 	try {
-		const {email, host} = req.query;
+		const {id, email, host} = req.query;
 		if (email) {
 			const hostFound = await modifyHost(email, host);
+			res.send(hostFound);
+		}
+		if (id) {
+			const hostFound = await modifyHost(id, host);
 			res.send(hostFound);
 		} else {
 			const userUpdated = await modifyUser(req.body);
@@ -102,9 +117,8 @@ router.put('/', async (req, res) => {
 router.put('/banner', async (req, res) => {
 	try {
 		const {email} = req.query;
-			const userBanner = await bannerUser(email);
-			res.send(userBanner);
-		
+		const userBanner = await bannerUser(email);
+		res.send(userBanner);
 	} catch (error) {
 		res.status(500).send(`Error al bannear el usuario: ${error}`);
 	}

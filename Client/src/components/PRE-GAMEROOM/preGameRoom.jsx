@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Chat from "./chat";
 import EditRoom from "./editRoom";
 import useSocket from "./useSocketIo";
@@ -20,7 +20,7 @@ function PreGameRoom({match}) {
     const {preRoomUsers, user} = useSelector(state => state)
     const history = useHistory();
     const autenticado = localStorage.getItem('token')
-    /* console.log("match: ", match.params) */
+
     const {idUser} = match.params;
 /*     const email = localStorage.getItem("email");
     useEffect(() =>{
@@ -33,15 +33,15 @@ function PreGameRoom({match}) {
                     }))
                 })
                 .then((value) => dispatch(listUsersInPreRoom(value)))
-    }, [email]) */
-  const { sendReady, sendStartGame, game, expelPlayer } = useSocket(idUser);
+    }, [user]) */
+  const { sendReady, sendStartGame, game, expelPlayer, roomConfig } = useSocket(idUser);
 
   function countReady() {
     /* console.log('entre en count') */
     const arrayIds = preRoomUsers?.users?.map(user => user.id)
     let readys = 0;
     let imgReady = ""
-    for(let i = 0; i < arrayIds.length; i++){
+    for(let i = 0; i < arrayIds?.length; i++){
       imgReady = document.getElementById(arrayIds[i])
 /*       console.log(imgReady)
       console.log(readyGreen) */
@@ -70,7 +70,7 @@ function PreGameRoom({match}) {
         </div>
         <div>
           <div>
-            <EditRoom />
+            <EditRoom idUser={idUser}/>
           </div>
           <div>
             <Chat idUser={idUser} />
