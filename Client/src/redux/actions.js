@@ -15,6 +15,7 @@ export const GET_READY_USER = 'GET_READY_USER'
 export const USER_TOKEN = 'USER_TOKEN'
 export const EDIT_ROOM = 'EDIT_ROOM'
 export const DELETE_ROOM = 'DELETE_ROOM'
+export const REMOVE_USER = 'REMOVE_USER'
 
 
 
@@ -61,6 +62,12 @@ export const updateUser = (userData)=> async ()=>{
         console.log(result)
     } catch (error) {
         console.log(error)
+    }
+}
+
+export function removeUser(users){
+    return function(dispatch){
+        dispatch({type:'REMOVE_USER', payload: users})
     }
 }
 
