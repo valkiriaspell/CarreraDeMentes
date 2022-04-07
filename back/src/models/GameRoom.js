@@ -44,6 +44,11 @@ module.exports = (sequelize) => {
 			allowNull: false,
 			defaultValue: "Ninguna",
 		},
+
+		start: {
+			type: DataTypes.BOOLEAN,
+			defaultValue: false
+		}
 	},
 		{ timestamps: false });
 };

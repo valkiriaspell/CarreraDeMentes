@@ -2,60 +2,81 @@ const { GameRoom, Users, Question, Avatar } = require('../db.js');
 
 // 1110
 
-//buscar todas las salas
-exports.seachAllBDGameRoom = async ({ idRoom: id }) => {
-	try {
-		if (id !== undefined) {
-			const data = await GameRoom.findByPk(id, {
-				include: [
-					{
-						model: Users,
-						attributes: ['id', 'name', 'host'],
-						include: [Avatar],
-					},
 
-					{
-						model: Question,
-					},
-				],
-			});
-			return data.dataValues;
-		} else {
-			const data = await GameRoom.findAll({
-				where: { public_: true },
-				include: [
-					{
-						model: Users,
-						attributes: ['id'],
-
-					},
-				],
-				attributes: ["id", "name", "questionAmount", "usersAmount"]
-			});
-
-
-			const room = []
-			await data.forEach(({ dataValues }) => {
-				const { users, ...dt } = dataValues;
-				(users.length <= 5) && room.push({ ...dt, numberUsersInRoom: users.length })
-
-			});
-
-			return room.sort(orederMinMaxLongUsers);
-
-		}
-	} catch (e) {
-		console.log('error:', e);
-		return e;
-	}
-};
-
-// oredenar de menor a mayor por coins
+// oredenar de menor a mayor por cantidad de jugadores
 const orederMinMaxLongUsers = (a, b) => {
 	if (a.numberUsersInRoom > b.numberUsersInRoom) return 1;
 	if (b.numberUsersInRoom > a.numberUsersInRoom) return -1;
 	return 0;
 };
+
+// Consultar por una sala en espesifico
+const searchByPkGameRoom = async (id) => {
+	try {
+
+
+		const data = await GameRoom.findByPk(id, {
+			include: [
+				{
+					model: Users,
+					attributes: ['id', 'name', 'host'],
+					include: [Avatar],
+				},
+
+				{
+					model: Question,
+				},
+			],
+		});
+
+		if (!data) return [false, "no se encontro la Sala"]
+
+		return [true, data.dataValues];
+	} catch (e) {
+		return e
+	}
+}
+
+// Consultar todas las gameRoon que sean publicas y no esten iniciadas
+const searchAllGameRoom = async () => {
+	try {
+		const data = await GameRoom.findAll({
+			where: { public_: true },
+			include: [
+				{
+					model: Users,
+					attributes: ['id'],
+
+				},
+			],
+			attributes: ["id", "name", "questionAmount", "usersAmount", "start"]
+		});
+
+
+		const room = []
+		await data.forEach(({ dataValues }) => {
+			const { users, start, ...dt } = dataValues;
+			(users.length <= 5 && !start) && room.push({ ...dt, numberUsersInRoom: users.length })
+
+		});
+
+		return [true, room.sort(orederMinMaxLongUsers)];
+	} catch (e) {
+		return e
+	}
+}
+
+
+
+//buscar salas
+exports.seachAllBDGameRoom = async ({ idRoom: id }) => {
+	try {
+		return id ? await searchByPkGameRoom(id) : await searchAllGameRoom()
+	} catch (e) {
+		return e;
+	}
+};
+
 
 
 // Funcion para modificar la sala
@@ -101,11 +122,11 @@ exports.createBDGameRoom = async ({
 };
 
 // actializamos y agregamos un nuevo usuario a la sala
-exports.updateAddBDGameRoom = async ({ idGameRoom, idUser }) => {
+exports.updateAddBDGameRoom = async ({ idRoom, idUser }) => {
 
 	try {
 
-		const data = await GameRoom.findByPk(idGameRoom, {
+		const data = await GameRoom.findByPk(idRoom, {
 			include: [
 				{
 					model: Users,
@@ -114,7 +135,7 @@ exports.updateAddBDGameRoom = async ({ idGameRoom, idUser }) => {
 			],
 		});
 
-		if (!data) return [false, 'Sale no encontrada'];
+		if (!data) return [false, 'Sala no encontrada'];
 
 		const { users, usersAmount } = data;
 
@@ -131,7 +152,7 @@ exports.updateAddBDGameRoom = async ({ idGameRoom, idUser }) => {
 };
 
 // Eliminar una sala por su id
-exports.deletByIdGameRoom = async ({ id }) => {
+exports.deletByIdGameRoom = async ({ idRoom: id }) => {
 	try {
 		const eliminado = await GameRoom.destroy({ where: { id } });
 		if (eliminado > 0) {
@@ -145,9 +166,9 @@ exports.deletByIdGameRoom = async ({ id }) => {
 };
 
 // Eliminar un usuario de la sala
-exports.updateDeleteBDGameRoom = async ({ idGameRoom, idUserDelet }) => {
+exports.updateDeleteBDGameRoom = async ({ idRoom, idUserDelet }) => {
 	try {
-		const data = await GameRoom.findByPk(idGameRoom, {
+		const data = await GameRoom.findByPk(idRoom, {
 			include: [
 				{
 					model: Users,
@@ -156,6 +177,8 @@ exports.updateDeleteBDGameRoom = async ({ idGameRoom, idUserDelet }) => {
 			],
 		});
 
+		if (!data) return [false, "No se encontro la sala"]
+
 		await data.removeUser(idUserDelet);
 		return [true, 'Usuario eliminado'];
 	} catch (e) {
@@ -163,3 +186,33 @@ exports.updateDeleteBDGameRoom = async ({ idGameRoom, idUserDelet }) => {
 		return e;
 	}
 };
+
+// Funcion para iniciar una partida
+exports.startGameRoom = async ({ idRoom, start = true }) => {
+	try {
+		const data = await GameRoom.findByPk(idRoom, {
+			include: [{
+				model: Users,
+				attributes: ["id"]
+			}]
+		});
+
+		if (!data) return [false, "No esiste la sala para iniciar la partida"];
+
+		if (!start) {
+			await data.update({ start });
+			return [true, "La sala dejo de estar en juego"]
+
+		}
+
+		if ((data.dataValues.users.length && data.dataValues.users.length < 2) && start) return [false, "Tienen que ser minimo 2 jugadores para jugar"]
+
+		await data.update({ start });
+
+		return [true, "Sala iniciada"];
+
+
+	} catch (e) {
+		return e
+	}
+}
