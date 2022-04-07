@@ -33,19 +33,30 @@ exports.seachAllBDGameRoom = async ({ idRoom: id }) => {
 				attributes: ["id", "name", "questionAmount", "usersAmount"]
 			});
 
-			return await data.map(({ dataValues }) => {
+
+			const room = []
+			await data.forEach(({ dataValues }) => {
 				const { users, ...dt } = dataValues;
-				return {
-					...dt,
-					numberUsersInRoom: users.length,
-				};
+				(users.length <= 5) && room.push({ ...dt, numberUsersInRoom: users.length })
+
 			});
+
+			return room.sort(orederMinMaxLongUsers);
+
 		}
 	} catch (e) {
 		console.log('error:', e);
 		return e;
 	}
 };
+
+// oredenar de menor a mayor por coins
+const orederMinMaxLongUsers = (a, b) => {
+	if (a.numberUsersInRoom > b.numberUsersInRoom) return 1;
+	if (b.numberUsersInRoom > a.numberUsersInRoom) return -1;
+	return 0;
+};
+
 
 // Funcion para modificar la sala
 exports.updateGameRoomConfig = async ({ idRoom: id, public_, questions: questionAmount, category = "Ninguna", time }) => {
@@ -74,24 +85,13 @@ exports.updateGameRoomConfig = async ({ idRoom: id, public_, questions: question
 // Creamos una nueva sala
 exports.createBDGameRoom = async ({
 	name,
-	/* 	usersAmount,
-		questionAmout,
-		public_,
-		email, */
-	idUser,
+	idUser: id,
 	avatar
 }) => {
 	try {
-		const data = await GameRoom.create({
-			name,
-			/* 			usersAmount,
-						questionAmout,
-						public_,
-						email, */
-		});
-		await data.addUser(idUser);
-		const avatars = [{ imageUrl: avatar }]
-		data.dataValues.users = [{ id: idUser, name, avatars }];
+		const data = await GameRoom.create({ name });
+		await data.addUser(id);
+		data.dataValues.users = [{ id, name, avatars: [{ imageUrl: avatar }] }];
 
 		return [true, data.dataValues];
 	} catch (e) {
@@ -102,9 +102,9 @@ exports.createBDGameRoom = async ({
 
 // actializamos y agregamos un nuevo usuario a la sala
 exports.updateAddBDGameRoom = async ({ idGameRoom, idUser }) => {
-	console.log('vamos mal', idGameRoom, idUser);
+
 	try {
-		console.log('id', idGameRoom, idUser);
+
 		const data = await GameRoom.findByPk(idGameRoom, {
 			include: [
 				{
@@ -113,17 +113,17 @@ exports.updateAddBDGameRoom = async ({ idGameRoom, idUser }) => {
 				},
 			],
 		});
-		console.log('esta es la data', data);
+
 		if (!data) return [false, 'Sale no encontrada'];
 
 		const { users, usersAmount } = data;
 
-		if (users.length < usersAmount) {
+		if (users.length < 7) {
 			await data.addUsers(idUser);
-			return [true, idGameRoom];
-		} else if (users.length >= usersAmount) {
-			return [false, 'La sala ya esta llena'];
+			return [true, "Usuario agregado correctamente"];
 		}
+		return [false, 'La sala ya esta llena'];
+
 	} catch (e) {
 		console.log(e);
 		return e;
