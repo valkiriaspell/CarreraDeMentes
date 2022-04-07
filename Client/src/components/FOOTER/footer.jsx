@@ -7,7 +7,7 @@ export default function Footer() {
     return (
         <div className="footer">
             
-            <span>© 2022 Henry Trivia</span>
+            <span>© 2022 ZooPer Trivia</span>
             <Link to="/administrador"><span> Acceder como Administrador </span></Link>
         </div>
     )

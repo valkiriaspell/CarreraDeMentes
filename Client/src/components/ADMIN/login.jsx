@@ -21,7 +21,6 @@ export default function LoginAdmin() {
         password: ''
     })
 
-
     ////////////---->   Store States  <----/////////////////
     const {user} = useSelector(state => state)
 
@@ -29,23 +28,30 @@ export default function LoginAdmin() {
     function handleOnChange(e) {
         setInput({ ...input, [e.target.name]: e.target.value });
       }
-    function validations() {
-
-    }
     
     async function handleLogin(e) {
         e.preventDefault();
         const login = await firebaseLogin(input.email, input.password);
         if(login?.accessToken){
             dispatch(loginUser(input.email));
-            localStorage.setItem("email", login.email);
-            localStorage.setItem("token", login.accessToken);
-            history.push("/adminHome");
+            if(user.admin === "superadmin" || user.admin === "admin") {
+                localStorage.setItem("email", login.email);
+                localStorage.setItem("token", login.accessToken);
+                history.push("/adminHome");
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Acceso Denegado",
+                    text: "No estás habilitado para esta sección ",
+                    confirmButtonText: "OK",
+                    heightAuto: false,
+                });
+            }          
         } else{
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Usuario incorrecto",
+                text: "Clave o usuario incorrecto",
                 confirmButtonText: "OK",
                 heightAuto: false,
             });

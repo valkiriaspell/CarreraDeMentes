@@ -1,4 +1,4 @@
-const {DataTypes} = require('sequelize');
+const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 	sequelize.define('gameRoom', {
@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				len: [2,12], 
+				len: [2, 12],
 			}
 		},
 		usersAmount: {
@@ -35,6 +35,15 @@ module.exports = (sequelize) => {
 			type: DataTypes.BOOLEAN,
 			defaultValue: true
 		},
+		time: {
+			type: DataTypes.INTEGER,
+			defaultValue: 0,
+		},
+		category: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			defaultValue: "Ninguna",
+		},
 	},
-    { timestamps: false });
+		{ timestamps: false });
 };
