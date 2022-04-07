@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { newQuestion } from '../../../redux/actions';
 import { Link, useHistory } from 'react-router-dom'
-import "../../STYLES/form.css"
+
 
 export default function FormAddQuestions() {
     const dispatch = useDispatch();
