@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import TimerGame from "./timeGame";
-import Loading from "../IMG/loading.gif";
+import Animals from "../IMG/game.gif";
 import Swal from "sweetalert2";
 
 // let arrayQuestions = [
@@ -146,9 +146,6 @@ function Game({ preRoomUsers }) {
   useEffect(() => {
     getUrl("http://localhost:3001/question").then((res) => {
       setQuestions(res.data);
-      setTimeout(() => {
-        setActive(false);
-      }, 3000);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setQuestions]);
@@ -214,7 +211,10 @@ function Game({ preRoomUsers }) {
     <div>
       {active === true ? (
         <div className="loadingGif">
-          <img src={Loading} alt="Loading" width={300} />
+          <img src={Animals} alt="Animals" width={300} />
+          <button className="buttonStart" onClick={startGame}>
+              START
+            </button>
         </div>
       ) : (
         <div className="containerGame">
@@ -243,9 +243,6 @@ function Game({ preRoomUsers }) {
                   );
                 })}
             </div>
-            <button className="buttonStart" onClick={startGame}>
-              START
-            </button>
           </div>
         </div>
       )}
