@@ -38,7 +38,7 @@ function useChatSocketIo(idRoom) {
         }
         !user?.host && newUserInRoom();
         /* console.log('idRoom: ', idRoom) */
-        socketIoRef.current = socketIOClient('http://localhost:3001',{query:{idRoom, email: user?.email} } );
+        socketIoRef.current = socketIOClient('http://localhost:3001',{query:{idGameRoom: idRoom, email: user?.email} } );
             console.log("connect", user)
             socketIoRef.current.on("NEW_CONNECTION", async (email) =>{
                 email !== user.email &&
