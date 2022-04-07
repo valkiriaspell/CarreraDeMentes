@@ -10,7 +10,7 @@ const { SUPERADMIN_NAME, SUPERADMIN_EMAIL, SUPERADMIN_PASS, SUPERADMIN_ADMIN } =
 conn.sync({ force: false }).then(() => {
 	app.listen(process.env.PORT, async () => {	
 		getAvatars();
-		addCoins();		
+		// addCoins();		
 		createUsers({
 			name: SUPERADMIN_NAME,
 			email: SUPERADMIN_EMAIL,
