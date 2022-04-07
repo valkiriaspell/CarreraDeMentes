@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom'
 import { getAvatars, updateUser } from '../../redux/actions';
 import Avatars from '../AVATARS/avatars.jsx';
-import "../STYLES/form.css"
+
 
 
 export default function EditProfile() {
