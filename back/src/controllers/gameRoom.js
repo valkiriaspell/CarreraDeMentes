@@ -36,6 +36,7 @@ exports.seachAllBDGameRoom = async (idRoom) => {
 					name: room.dataValues.name,
 					questionAmount: room.dataValues.questionAmount,
 					numberUsersInRoom: room.dataValues.users.length,
+					public_: room.dataValues.public_
 				};
 			});
 
