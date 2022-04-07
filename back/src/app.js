@@ -23,7 +23,7 @@ var io = require('socket.io')(app, {
 	},
 });
 //server.use(express.static('public'))
-const cors = require("cors");
+
 
 
 io.on('connection', (socket) => {
