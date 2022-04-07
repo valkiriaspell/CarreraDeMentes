@@ -37,13 +37,18 @@ module.exports = (sequelize) => {
 		},
 		time: {
 			type: DataTypes.INTEGER,
-			defaultValue: 0,
+			defaultValue: 25,
 		},
 		category: {
 			type: DataTypes.STRING,
 			allowNull: false,
 			defaultValue: "Ninguna",
 		},
+
+		start: {
+			type: DataTypes.BOOLEAN,
+			defaultValue: false
+		}
 	},
 		{ timestamps: false });
 };
