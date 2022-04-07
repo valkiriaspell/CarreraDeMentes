@@ -96,9 +96,13 @@ router.delete('/', async (req, res) => {
 });
 router.put('/', async (req, res) => {
 	try {
-		const {email, host} = req.query;
+		const {id, email, host} = req.query;
 		if (email) {
-			const hostFound = await modifyHost(email, host);
+			const hostFound = await modifyHost(null, email, host);
+			res.send(hostFound);
+		}
+		else if (id) {
+			const hostFound = await modifyHost(id, null, host);
 			res.send(hostFound);
 		} else {
 			const userUpdated = await modifyUser(req.body);

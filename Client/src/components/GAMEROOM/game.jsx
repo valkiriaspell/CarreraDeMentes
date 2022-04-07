@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import TimerGame from "./timeGame";
+import Animals from "../IMG/game.gif";
+import Swal from "sweetalert2";
 
 // let arrayQuestions = [
 //   {
@@ -68,19 +70,35 @@ async function getUrl(url) {
 }
 
 function randomQuestions(array) {
-  var m = array.length,
-    t,
-    i;
+  var m1 = Math.floor((Math.random() * array.length) % array.length);
 
-  while (m) {
-    i = Math.floor(Math.random() * m--);
-
-    t = array[m];
-    array[m] = array[i];
-    array[i] = t;
+  var m2 = Math.floor((Math.random() * array.length) % array.length);
+  while (m2 === m1) {
+    m2 = Math.floor((Math.random() * array.length) % array.length);
   }
-  return array;
+
+  var m3 = Math.floor((Math.random() * array.length) % array.length);
+  while (m3 === m1 || m3 === m2) {
+    m3 = Math.floor((Math.random() * array.length) % array.length);
+  }
+
+  var m4 = Math.floor((Math.random() * array.length) % array.length);
+  while (m4 === m1 || m4 === m2 || m4 === m3) {
+    m4 = Math.floor((Math.random() * array.length) % array.length);
+  }
+
+  var attacks = [array[m1], array[m2], array[m3], array[m4]];
+
+  return attacks;
 }
+
+const config = [
+  {
+    count: 10,
+    category: "Musica",
+    time: 20,
+  },
+];
 
 function Game({ preRoomUsers }) {
   // ======= QUESTIONS =======
@@ -93,36 +111,28 @@ function Game({ preRoomUsers }) {
   let [false3, setF3] = useState("");
   let [image, setImage] = useState("");
   let [category, setCat] = useState("");
-
-  const config = [
-    {
-      count: 10,
-      category: "Musica",
-    },
-  ];
-
-  function sliceQuestions(array) {
-    let data = randomQuestions(array);
-    return data.slice(0, config[0].count);
-  }
+  let [respuestas, setRespuestas] = useState([]);
+  let [answerUser, setAnswerUser] = useState("");
+  let [points, setPoints] = useState(0);
 
   // ======= TIMER =======
-  const [seconds, setSeconds] = useState(30);
+  const [seconds, setSeconds] = useState(config[0].time);
   const [percentage, setPercentage] = useState(100);
+  const [active, setActive] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
-      setPercentage(percentage - 33.3);
-    }, 10000);
-  }, [setPercentage, percentage]);
+      let resta = Math.floor(percentage / seconds);
+      setPercentage(percentage - resta);
+    }, 1000);
+  }, [setPercentage, percentage, seconds]);
 
-  // if (percentage <= 0) {
-  //   setPercentage(100);
-  // }
-  if (seconds <= 0) {
-    setSeconds(30);
+  if (percentage <= 0) {
+    setPercentage(100);
   }
-
+  if (seconds <= 0) {
+    setSeconds(config[0].time);
+  }
   useEffect(() => {
     let intervalo = null;
     intervalo = setInterval(() => {
@@ -131,15 +141,18 @@ function Game({ preRoomUsers }) {
 
     return () => clearInterval(intervalo);
   }, [question]);
+  //  ============================
 
   useEffect(() => {
     getUrl("http://localhost:3001/question").then((res) => {
-      let data = sliceQuestions(res.data);
-      setQuestions(data);
+      setQuestions(res.data);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setQuestions]);
 
+ 
+
+  let secondsGame = config[0].time + "000";
   const startGame = () => {
     setQ(questions[0].question);
     setA(questions[0].answer);
@@ -157,36 +170,82 @@ function Game({ preRoomUsers }) {
         setF3(q.false3);
         setCat(q.category);
         setImage(q.image);
-        setSeconds(30);
-        setPercentage(100);
-      }, 30000 * index)
+        setSeconds(config[0].time);
+        setRespuestas(
+          randomQuestions([
+            { data: q.answer },
+            { data: q.false1 },
+            { data: q.false2 },
+            { data: q.false3 },
+          ])
+        );
+      }, secondsGame * index)
     );
   };
 
+  function handlePoints(q) {
+    setAnswerUser(q);
+    if (answerUser !== "") {
+      if (answerUser === answer) {
+        const pointsTotal = points + seconds;
+        setPoints(pointsTotal);
+        Swal.fire({
+          position: "top",
+          icon: "success",
+          title: "Acertaste",
+          heightAuto: false,
+          showConfirmButton: false,
+          width: 300,
+          timer: 1500,
+        });
+        console.log(points);
+      } else {
+        console.log("Fallaste");
+        console.log(points);
+      }
+      setAnswerUser("");
+    }
+  }
 
   return (
-    <div className="containerGame">
-      <div className="contentNav">
-        <TimerGame seconds={seconds} percentage={percentage} />
-        <h3>{category}</h3>
-      </div>
-      <div className="question">
-        <span>{question}</span>
-      </div>
-      <div className="imageQuestion">
-        <img src={image} alt="Imagen" />
-      </div>
-      <div>
-        <div className="contentQuestions">
-          <button>{answer}</button>
-          <button>{false2}</button>
-          <button>{false3}</button>
-          <button>{false1}</button>
+    <div>
+      {active === true ? (
+        <div className="loadingGif">
+          <img src={Animals} alt="Animals" width={300} />
+          <button className="buttonStart" onClick={startGame}>
+              START
+            </button>
         </div>
-        <button className="buttonStart" onClick={startGame}>
-          START
-        </button>
-      </div>
+      ) : (
+        <div className="containerGame">
+          <div className="contentNav">
+            <TimerGame seconds={seconds} percentage={percentage} />
+            <h3>{category}</h3>
+          </div>
+          <div className="question">
+            <span>{question}</span>
+          </div>
+          <div className="imageQuestion">
+            <img src={image} alt="Imagen" />
+          </div>
+          <div>
+            <div className="contentQuestions">
+              {respuestas &&
+                respuestas.map((q, index) => {
+                  return (
+                    <form key={index}>
+                      <input
+                        onClick={() => handlePoints(q.data)}
+                        type="button"
+                        value={q.data}
+                      />
+                    </form>
+                  );
+                })}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
