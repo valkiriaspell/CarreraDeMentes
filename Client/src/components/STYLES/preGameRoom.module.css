@@ -1,0 +1,193 @@
+.container {
+  width: 700px;
+  height: 730px;
+  border: solid 3px rgba(216, 221, 226, 0.4);
+  border-radius: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  color: rgba(221, 221, 221, 0.829);
+}
+
+.navPreGameRoom {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+  width: 700px;
+}
+.navPreGameRoom button {
+  color: rgba(255, 255, 255, 0.769);
+  border-radius: 0.3rem;
+  background-color: rgba(132, 134, 136, 0.4);
+  padding: 0.3rem;
+  border: none;
+  display: flex;
+  align-items: center;
+  border: solid 2px rgba(216, 221, 226, 0.4);
+  padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+}
+.navPreGameRoom button:hover {
+  cursor: pointer;
+  background-color: rgba(154, 158, 161, 0.4);
+}
+.navPreGameRoom h3 {
+  margin-left: -4rem;
+}
+
+.containerPlayers {
+  border: solid 3px rgba(216, 221, 226, 0.4);
+  width: 280px;
+  height: 400px;
+  margin: 1rem;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  border-radius: 0.4rem;
+}
+.coronaHost img{
+  height: 30px;
+  
+}
+.allPlayers img{
+  height: 25px;
+  
+}
+.containerPlayers li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;  
+  padding: 0.7rem;
+  list-style: none;
+  margin: 1rem;
+  background-color: rgba(117, 121, 125, 0.4);
+  width: 12rem;
+  border-radius: 2rem;
+}
+/* ======= BOTON READY ======= */
+.readyButton {
+  border-radius:10px;
+outline:none;
+background: none;
+border: none;
+}
+
+/* ======= BOTONES INVITAR E INICIAR ======= */
+.buttonsPreGameRoom button {
+  color: rgba(255, 255, 255, 0.769);
+  border-radius: 0.3rem;
+  background-color: rgba(132, 134, 136, 0.4);
+  padding: 0.3rem;
+  border: none;
+  margin: 0.2rem;
+}
+.buttonsPreGameRoom button:hover {
+  cursor: pointer;
+  background-color: rgba(219, 224, 228, 0.4);
+}
+
+/* ======= EDITAR SALA ======= */
+.containerEditRoom {
+  margin: 1rem;
+  width: 350px;
+  height: 270px;
+  border: solid 3px rgba(216, 221, 226, 0.4);
+  border-radius: 0.4rem;
+}
+.formEditRoom {
+  margin: 0.5rem;
+}
+.contentEditRoom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  padding: 0.5rem;
+}
+/* ======= SELECTORES ======= */
+.contentEditRoom select {
+  border-radius: 0.3rem;
+  background-color: rgba(216, 221, 226, 0.4);
+  color: rgba(37, 36, 36, 0.626);
+  border: none;
+}
+
+/* ======= BOTÓN CAMBIOS ======= */
+.buttonSubmitChanges {
+  margin-top: 1rem;
+}
+.buttonSubmitChanges button {
+  border-radius: 0.3rem;
+  background-color: rgba(216, 221, 226, 0.4);
+  color: rgba(221, 221, 221, 0.829);
+  border: none;
+}
+.buttonSubmitChanges button:hover {
+  cursor: pointer;
+  background-color: rgba(154, 158, 161, 0.4);
+}
+
+/* ======= CHAT ======= */
+.containerChat {
+  overflow-y: scroll;
+  flex-direction: column-reverse;
+  display: flex;
+  align-items: flex-start;
+  background-color: rgba(142, 142, 143, 0.29);
+  border: solid 3px rgba(216, 221, 226, 0.4);
+  border-radius: 0.4rem;
+  height: 200px;
+  width: 370px;
+}
+.containerSendMessages {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.containerSendMessages input {
+  border-radius: 0.3rem;
+  background-color: rgba(216, 221, 226, 0.4);
+  color: rgba(255, 255, 255, 0.84);
+  padding: 0.3rem;
+  border: none;
+  margin-right: 0.5rem;
+}
+.containerSendMessages input::placeholder {
+  color: rgba(255, 255, 255, 0.769);
+}
+.containerSendMessages button {
+  color: rgba(255, 255, 255, 0.769);
+  border-radius: 0.3rem;
+  background-color: rgba(216, 221, 226, 0.4);
+  padding: 0.3rem;
+  border: none;
+}
+.containerSendMessages button:hover {
+  cursor: pointer;
+  background-color: rgba(154, 158, 161, 0.4);
+}
+
+/* ===== MEDIA QUERIES =====*/
+@media screen and (max-width: 500px) {
+  .containerPlayers {
+    display: none;
+  }
+  .container {
+    margin: 1rem;
+    width: 360px;
+    height: 740px;
+  }
+  .navPreGameRoom h3 {
+    margin-left: -1rem;
+  }
+  .containerEditRoom {
+    width: 325px;
+    height: 280px;
+  }
+  .containerChat {
+    margin: 1rem;
+    width: 320px;
+  }
+}

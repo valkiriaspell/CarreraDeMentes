@@ -1,0 +1,119 @@
+/* ===== FORM REGISTRO =====*/
+.containerSingUp {
+  background-color: rgba(216, 221, 226, 0.068);
+  border: solid 3px rgba(216, 221, 226, 0.253);
+  max-width: 500px;
+  min-height: 620px;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contentSingUp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(216, 221, 226, 0.212);
+  margin-top: 6rem;
+  width: 350px;
+  height: 420px;
+  border-radius: 0.4rem;
+}
+
+/* ===== BOTÓN VOLVER =====*/
+.volverSingUp {
+  position: relative;
+  top: -125px;
+  width: 450px;
+  display: flex;
+  justify-content: start;
+}
+
+/* ===== FORM =====*/
+.contentSingUp form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 200px;
+  margin-top: 4rem;
+}
+.userImg {
+  top: -125px;
+  position: relative;
+  margin: auto;
+  background-color: rgba(185, 193, 202, 0.58);
+  border-radius: 50%;
+}
+
+/* ===== INPUTS =====*/
+.contentSingUp input {
+  background-color: rgba(216, 221, 226, 0);
+  display: flex;
+  align-items: center;
+  border: none;
+  margin: 0.5rem;
+  width: 200px;
+  color: rgba(221, 221, 221, 0.829);
+  border-bottom: solid 3px rgba(216, 221, 226, 0.4);
+  font-size: 15px;
+}
+.cotainerInput {
+  display: flex;
+  align-items: center;
+  top: -85px;
+  position: relative;
+}
+.contentSingUp input::placeholder {
+  color: rgba(221, 221, 221, 0.829);
+}
+.contentSingUp input:focus {
+  outline: none;
+  resize: none;
+}
+
+/* ===== SELECTOR DE AVATAR =====*/
+.avatarsRegister {
+  margin-top: 15px;
+  top: -120px;
+  position: relative;
+  height: 100px;
+  width: 250px;
+}
+
+.avatarsRegister img {
+  height: 100px;
+}
+
+.registerButton {
+  text-decoration: none;
+  color: rgba(221, 221, 221, 0.829);
+  width: 7rem;
+  border-radius: 2rem;
+  font-weight: bold;
+  padding: 0.2rem;
+  background-color: rgba(216, 221, 226, 0.521);
+  border: none;
+  position: relative;
+  top: -30px;
+}
+.registerButton:hover {
+  background-color: rgba(165, 166, 167, 0.521);
+  color: rgba(221, 221, 221, 0.829);
+}
+
+/* ===== MEDIA QUERIES =====*/
+@media screen and (max-width: 500px) {
+  .containerSingUp {
+    margin: 1rem;
+  }
+  .contentSingUp {
+    width: 300px;
+  }
+  .volverSingUp {
+    width: 320px;
+  }
+}
