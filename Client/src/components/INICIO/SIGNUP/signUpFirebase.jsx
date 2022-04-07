@@ -9,7 +9,7 @@ import User from "../../IMG/person.png";
 import Email from "../../IMG/email.png";
 import Contraseña from "../../IMG/unlock.png";
 import { useDispatch } from "react-redux";
-import { getAvatars, registerUser } from "../../../redux/actions";
+import { addCoins, getAvatars, registerUser } from "../../../redux/actions";
 import Avatars from "../../AVATARS/avatars";
 import Swal from "sweetalert2";
 
@@ -27,7 +27,8 @@ function SignUpFirebase() {
   const [error, setError] = useState({});
 
   useEffect(() => {
-    dispatch(getAvatars()) 
+    dispatch(getAvatars())
+    dispatch(addCoins()) 
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
 

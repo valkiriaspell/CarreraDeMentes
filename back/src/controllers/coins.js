@@ -1,7 +1,7 @@
 const { Coins } = require("../db");
 
 // Agregar un coins
-const addCoins = async ({ coins, url }) => {
+exports.addCoins = async ({ coins, url }) => {
     try {
 
         await Coins.create({ coins, url });
@@ -93,7 +93,3 @@ const orederMinMaxRanting = (a, b) => {
     if (b.coins > a.coins) return -1;
     return 0;
 };
-
-module.exports = {
-    addCoins
-}

@@ -18,6 +18,7 @@ export const DELETE_ROOM = 'DELETE_ROOM'
 
 
 
+
 export function loginAsGuest(guest){
     return async function(dispatch){
         try{
@@ -59,6 +60,14 @@ export const updateUser = (userData)=> async ()=>{
     try {
         const result = await axios.put(`/users`, userData)  
         console.log(result)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const addCoins = ()=> async ()=>{
+    try {
+        const result = await axios.post(`/coins`)          
     } catch (error) {
         console.log(error)
     }
