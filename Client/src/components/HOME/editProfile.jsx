@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { updateUser } from '../../redux/actions';
 import { Link, useHistory } from 'react-router-dom'
 import { getAvatars, updateUser } from '../../redux/actions';
-import Avatars from '../AVATARS/avatars';
+import Avatars from '../AVATARS/avatars.jsx';
 import "../STYLES/form.css"
 
 
