@@ -5,7 +5,8 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { HiOutlineRefresh } from "react-icons/hi";
 import Search from "../IMG/search.png";
 import { useDispatch, useSelector } from "react-redux";
-import { AddUserToPreRoom, listAllRooms, listUsersInPreRoom } from "../../redux/actions";
+import { listAllRooms, listUsersInPreRoom } from "../../redux/actions";
+import { AddUserToPreRoom } from "../PRE-GAMEROOM/utils";
 
 
 function GameListRoom() {
@@ -28,14 +29,14 @@ function GameListRoom() {
   }; */
   useEffect(() =>{
     dispatch(listAllRooms())
-  })
+  }, [])
 
   const refreshGames = () => {
     dispatch(listAllRooms())
   };
 const history = useHistory()
   function handleJoinRoom(game){
-    dispatch(AddUserToPreRoom({idGameRoom: game.id, idUser: user.id}))
+    AddUserToPreRoom({idGameRoom: game.id, idUser: user.id})
     .then(()=> dispatch(listUsersInPreRoom(game.id)))
     .then(() => {
       console.log(user?.host)

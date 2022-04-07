@@ -2,28 +2,34 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import socketIOClient from 'socket.io-client';
-import { AddUserToPreRoom, listUsersInPreRoom, deleteUserFromRoom, setReady, loginUser, getReadyUser } from "../../redux/actions";
-import s from '../STYLES/preGameRoom.module.css'
+import { listUsersInPreRoom, loginUser, getReadyUser } from "../../redux/actions";
 import axios from "axios";
 import readyGreen from "../IMG/readyGreen2.png"
-import readyDark from "../IMG/readyDark.png"
+import { changeReady, deleteRoom, AddUserToPreRoom } from "./utils";
 
 function useChatSocketIo(idGameRoom) {
     const history = useHistory();
     const dispatch = useDispatch();
-    const {user} = useSelector(state => state);
+    const {user, preRoomUsers} = useSelector(state => state);
     
-    const [messages, setMessages] = useState({});
     const socketIoRef = useRef();
-    const [game, setGame] = useState(false)
     const email = localStorage.getItem("email");
+    const [messages, setMessages] = useState({});
+    const [game, setGame] = useState(false)
+    const [roomConfiguration, setRoomConfiguration] = useState({
+        time: preRoomUsers.time,
+        category: preRoomUsers.category,
+        questions: preRoomUsers.questionAmount,
+        open: preRoomUsers.public_
+    })
 
     useEffect(() =>{
         //create web socket connection
-        const newUserInRoom = () =>{
-            !user?.name && dispatch(loginUser(email))
+        const newUserInRoom = async () =>{
+            console.log("principio", user)
+            await dispatch(loginUser(email))
             .then((data) => dispatch(AddUserToPreRoom({
-                idGameRoom, 
+                idGameRoom,
                 idUser: data?.id
             })))
             .then((idD) =>dispatch(listUsersInPreRoom(idD)))
@@ -31,20 +37,20 @@ function useChatSocketIo(idGameRoom) {
         }
         !user?.host && newUserInRoom();
         /* console.log('idGameRoom: ', idGameRoom) */
-        socketIoRef.current = socketIOClient('http://localhost:3001',{query:{idGameRoom, email: user.email} } );
-
-            socketIoRef.current.on("NEW_CONNECTION", (email) =>{
+        socketIoRef.current = socketIOClient('http://localhost:3001',{query:{idGameRoom, email: user?.email} } );
+            console.log("connect", user)
+            socketIoRef.current.on("NEW_CONNECTION", async (email) =>{
                 email !== user.email &&
                 dispatch(listUsersInPreRoom(idGameRoom));
             })
             
             //received a new message, differentiating which are from current user and add to message list
             socketIoRef.current.on("NEW_MESSAGE", message =>{
-                console.log(user) //no quitar
-                console.log(user.email, message.email)
+                /* console.log(user) //no quitar
+                console.log(user.email, message.email) */
                 const incomingMessage = { // no recibo el message.id
                     ...message,
-                    writtenByCurrentUser: message.email === user.email
+                    writtenByCurrentUser: message.email === email
                 }
                 setMessages(incomingMessage)
             })
@@ -67,21 +73,33 @@ function useChatSocketIo(idGameRoom) {
             socketIoRef.current.on("START", () =>{
                 setGame(true)
             })
+            
+            socketIoRef.current.on("CONFIG_ROOM", (roomConfiguration) =>{
+                
+                setRoomConfiguration(roomConfiguration)
+            })
+
+/*             socketIoRef.current.on("NEW_EVENT", (UsersPoint) =>{
+                dispatch(changePoint(UsersPoint))
+            }) */
            
 
             //remove player from room (DB) when player leaves the room and destroy the socket reference
             return () =>{
-                axios.put('http://localhost:3001/gameRoom/delete', {idGameRoom, idUserDelet: user.id})
-                .then(() =>{
-                    socketIoRef.current.emmit("DISCONNECT")
-                    socketIoRef.current.disconnect();
-                })
+                console.log(preRoomUsers?.users?.length)
+                preRoomUsers?.users?.length === 1
+                    ? deleteRoom({id: idGameRoom})
+                    : axios.put('http://localhost:3001/gameRoom/delete', {idGameRoom, idUserDelet: user.id})
+                    .then(() =>{
+                        socketIoRef?.current?.emmit("DISCONNECT")
+                        socketIoRef?.current?.disconnect();
+                    })
             }
     }, [])
 
     //send a message to all players in chat
     function sendMessage(message){
-        console.log("hola") //no quitar
+        console.log("hola", user) //no quitar
         socketIoRef.current.emit("NEW_MESSAGE", {
             text: message, 
             name: user?.name,
@@ -89,14 +107,6 @@ function useChatSocketIo(idGameRoom) {
         })
     }
 
-    async function changeReady(id, bool){
-        try{
-            const {data} = await axios.put(`http://localhost:3001/users/ready/?id=${id}&bool=${bool}`)
-            console.log(data)
-        }catch(e) {
-            console.log(e)
-        }
-    }
     //when someone press ready, find de element with yours id,
     //and change the ready prop, if it is true change to false
     async function sendReady(){
@@ -115,8 +125,37 @@ function useChatSocketIo(idGameRoom) {
         let id = e.target.id
         socketIoRef.current.emit("EXPEL_PLAYER", id)
     }
+    
+    async function handleSubmitConfig(e, roomConfiguration){
+        e.preventDefault()
+        try{
+            const {data} = await axios.put('http://localhost:3001/gameRoom', {
+                idRoom: idGameRoom, 
+                public_: roomConfiguration.open, 
+                questions: roomConfiguration.questions,
+                category: roomConfiguration.category,
+                time: roomConfiguration.time})
+                console.log(data)
+        } catch(e){
+            console.log(e)
+        }
+        socketIoRef.current.emit("CONFIG_ROOM", roomConfiguration)
+    }
 
-    return { messages, sendMessage, sendReady, sendStartGame, game, expelPlayer}
+/*     function positions(e){
+        dispatch(changePoint(UsersPoint))
+        socketIoRef.current.emit("NEW_EVENT", UsersPoint)
+    } */
+
+    return { messages, 
+            sendMessage, 
+            sendReady, 
+            sendStartGame, 
+            game, 
+            expelPlayer, 
+            handleSubmitConfig, 
+            roomConfiguration, 
+            setRoomConfiguration}
 }
 
 export default useChatSocketIo;
