@@ -6,7 +6,7 @@ const { SUPERADMIN_NAME, SUPERADMIN_EMAIL, SUPERADMIN_PASS, SUPERADMIN_ADMIN } =
 
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
-	app.listen(process.env.PORT || 3001, async () => {
+	app.listen(process.env.PORT, async () => {
 		// if (process.env.PORT){
 			await axios.get('/avatar');
 			await axios.get('/coins/multiplesCoins');	
