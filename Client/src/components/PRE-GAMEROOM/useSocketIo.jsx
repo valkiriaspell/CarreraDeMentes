@@ -63,13 +63,13 @@ function useChatSocketIo(idGameRoom) {
 
             
             socketIoRef.current.on("DISCONNECT", () =>{
-                dispatch(listUsersInPreRoom(idGameRoom));
+                dispatch(listUsersInPreRoom(idGameRoom))
             })
 
             socketIoRef.current.on("EXPEL_PLAYER", (id) =>{
                 console.log("expel", user, id)
                 user?.id === id && history.push('/home')
-                    dispatch(listUsersInPreRoom(idGameRoom))
+                /* window.location.reload(); */
             })
 
             //when host press start-game button, all players redirect url game-room, 
@@ -134,7 +134,7 @@ function useChatSocketIo(idGameRoom) {
     async function handleSubmitConfig(e, roomConfiguration){
         e.preventDefault()
         try{
-            const {data} = await axios.put('http://localhost:3001/gameRoom', {
+            const {data} = await axios.put('http://localhost:3001/gameRoom/config', {
                 idRoom: idGameRoom, 
                 public_: roomConfiguration.open, 
                 questions: roomConfiguration.questions,

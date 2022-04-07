@@ -10,8 +10,10 @@ import ListPlayers from "./listPlayers";
 import { Link } from "react-router-dom";
 import style from "../STYLES/form.css"
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import { FaLink } from "react-icons/fa";
 import { AiFillSound } from "react-icons/ai";
 import readyGreen from "../IMG/readyGreen2.png"
+import { getUrl } from "./utils";
 
 function PreGameRoom({match}) {
 
@@ -36,7 +38,6 @@ function PreGameRoom({match}) {
 
     return readys
   }
-  
 
   if (autenticado) {
     return game === false ? (
@@ -63,7 +64,7 @@ function PreGameRoom({match}) {
           </div>
 
           <div className={s.buttonsPreGameRoom}>
-
+          <button className={s.buttonLink} onClick={getUrl} ><FaLink/></button>
             {
               user?.host === true 
                 ? (

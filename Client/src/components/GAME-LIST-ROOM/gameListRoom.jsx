@@ -27,9 +27,12 @@ function GameListRoom() {
 /*       console.log(listGames); */
 /*     }
   }; */
-  useEffect(() =>{
+
+
+  useEffect(() => {
     dispatch(listAllRooms())
-  }, [])
+    setInterval(()=> dispatch(listAllRooms()), 4000);
+  }, []);
 
   const refreshGames = () => {
     dispatch(listAllRooms())
@@ -76,7 +79,7 @@ const history = useHistory()
               <span>{game.name}</span>
               <span>{game.numberUsersInRoom}</span>
               <span>{game.questionAmount}</span>
-                <button className="unirseGameList" onClick={() => handleJoinRoom(game)} >Unirse</button>
+              <button className="unirseGameList" onClick={() => handleJoinRoom(game)} >Unirse</button>
             </div>
           );
         })
