@@ -108,7 +108,7 @@ router.put("/starRoot", async (req, res) => {
 // Rutas delete
 
 // Ruta para eliminar una sala
-router.delete("/:id", async (req, res) => {
+router.delete("/:idRoom", async (req, res) => {
     try {
         const [bool, msj] = await deletByIdGameRoom(req.params)
         if (bool) {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import s from '../STYLES/preGameRoom.module.css'
 import corona from "../IMG/corona.png"
@@ -31,7 +31,7 @@ const ListPlayers = ({ expelPlayer }) => {
                                         </div>
                                         }
                                         <div>{us.name}</div>
-
+                                        <img src={us?.avatars?.[0]?.imageUrl} alt="Avatar" width={30} />
                                         <div className={s.readyButton} >
                                         {
                                             us.ready 
@@ -41,6 +41,7 @@ const ListPlayers = ({ expelPlayer }) => {
                                         </div>
                                         {user?.id !== us?.id &&
                                             <button
+                                            id={us.id}
                                             onClick={handleExpectPlayer}
                                             key={`${us.id}3`}
                                             >
@@ -61,6 +62,7 @@ const ListPlayers = ({ expelPlayer }) => {
                                         </div>
                                     }
                                     <div key={`${us.id}7`}>{us.name}</div>
+                                    <img src={us?.avatars?.[0]?.imageUrl} alt="Avatar" width={30} />
                                     {
                                         us.ready 
                                             ? <img key={us.id} id={us.id} src={readyGreen} alt="ready"/>

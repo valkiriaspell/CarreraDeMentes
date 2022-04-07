@@ -74,7 +74,9 @@ const EditRoom = ({idUser}) =>{
                                 <option value={true} >Pública</option>
                                 <option value={false} >Privada</option>
                             </select>
-                            : <div>{roomConfiguration.open}</div>
+                            : roomConfiguration?.open === true
+                                ? <div>Pública</div>
+                                : <div>Privada</div>
                     }
                 </div>
                 {

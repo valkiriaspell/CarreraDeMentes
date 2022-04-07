@@ -33,12 +33,12 @@ const Chat = ({idUser}) =>{
                         listMessages?.map((message) => {
                             return (
                                         message.writtenByCurrentUser
-                                            ? <p key={`${message.name}${message?.text}`} 
+                                            ? <p key={`${Math.random()}${message.name}${message?.text}`} 
                                                 style={{textAlign: "justify"}} 
                                                 >
                                                     {`Yo: ${message?.text}`}
                                                 </p>
-                                            : <p key={`${message.name}${message?.text}`} 
+                                            : <p key={`${Math.random()}${message.name}${message?.text}`} 
                                                 style={{textAlign: "justify", wordBreak: "break-word"}} 
                                                 >
                                                     {`${message?.name}: ${message?.text}`}
@@ -47,7 +47,6 @@ const Chat = ({idUser}) =>{
                         })
                     }
                 </div>
-                
             </div>
                 <div className={styles.containerSendMessages}>
                     <input type="text" placeholder="Escribe un mensaje..." value={newMessage} onChange={handleMessage}/>

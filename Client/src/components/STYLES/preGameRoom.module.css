@@ -87,6 +87,13 @@ border: none;
   cursor: pointer;
   background-color: rgba(219, 224, 228, 0.4);
 }
+.buttonLink{
+  padding: .4rem .7rem;
+  background-color: rgba(132, 134, 136, 0.4);
+  border-radius: 0.3rem;
+  margin: 0.2rem;
+  cursor: pointer;
+}
 
 /* ======= EDITAR SALA ======= */
 .containerEditRoom {
