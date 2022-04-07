@@ -44,15 +44,15 @@
       "not dead",
       "not op_mini all"
     ],
-    "browser": {
-      "fs": false,
-      "path": false,
-      "os": false
-    },
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }
