@@ -151,6 +151,7 @@ const modifyHost = async (id, email, host) => {
 			return userUpdated;
 		}
 		if (id) {	
+console.log('llego')
 			const userUpdated = await Users.update({host: host}, {where: {id}});
 			return userUpdated;
 		}
