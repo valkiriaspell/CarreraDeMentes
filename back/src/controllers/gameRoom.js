@@ -3,11 +3,10 @@ const { GameRoom, Users, Question, Avatar } = require('../db.js');
 // 1110
 
 //buscar todas las salas
-exports.seachAllBDGameRoom = async (idRoom) => {
+exports.seachAllBDGameRoom = async ({ idRoom: id }) => {
 	try {
-		if (idRoom !== undefined) {
-			const data = await GameRoom.findOne({
-				where: { id: idRoom },
+		if (id !== undefined) {
+			const data = await GameRoom.findByPk(id, {
 				include: [
 					{
 						model: Users,
@@ -23,24 +22,24 @@ exports.seachAllBDGameRoom = async (idRoom) => {
 			return data.dataValues;
 		} else {
 			const data = await GameRoom.findAll({
+				where: { public_: true },
 				include: [
 					{
 						model: Users,
 						attributes: ['id'],
+
 					},
 				],
-			});
-			const rooms = data.map((room) => {
-				return {
-					id: room.dataValues.id,
-					name: room.dataValues.name,
-					questionAmount: room.dataValues.questionAmount,
-					numberUsersInRoom: room.dataValues.users.length,
-					public_: room.dataValues.public_
-				};
+				attributes: ["id", "name", "questionAmount", "usersAmount"]
 			});
 
-			return rooms;
+			return await data.map(({ dataValues }) => {
+				const { users, ...dt } = dataValues;
+				return {
+					...dt,
+					numberUsersInRoom: users.length,
+				};
+			});
 		}
 	} catch (e) {
 		console.log('error:', e);
@@ -58,7 +57,7 @@ exports.updateGameRoomConfig = async ({ idRoom: id, public_, questions: question
 
 		if (category === "") category = "Ninguna";
 
-		const data = await dataGameRoom.update({
+		await dataGameRoom.update({
 			public_,
 			category,
 			questionAmount,
