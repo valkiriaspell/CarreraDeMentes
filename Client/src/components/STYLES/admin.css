@@ -148,23 +148,45 @@
   }
 
   /* ADMIN QUESTIONS */
-
-  .adminQuestions{
-    background-color: white;
-    color: rgb(38, 2, 31);
+  .containerAdmin{
     margin-top: 125px;  
     display: flex;
     flex-direction: column;
+    color: white;
   }
-  .adminQuestions button{
-      background: none;
-      border-style: none;
+  .adminQuestions{
+    background-color: white;
+    color: rgb(38, 2, 31);
+    margin-top: 5px;  
+    display: flex;
+    flex-direction: column;    
+  }  
+
+  .botonesBarra{ 
+      display: flex;
+      align-items: center;
+      background-color: rgba(47, 51, 71, 0.422);
+      border-radius: 0.3rem;  
+      border: none;
+      padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+      margin: 0.5em;
+      color: white;     
   }
+  .botonesBarra:hover {
+      background-color: rgba(154, 158, 161, 0.4);
+      cursor: pointer;    
+  }
+ 
   .barraSobreQuestions{
       display: flex;
       flex-direction: row;
       justify-content: space-between;
   }
+
+  .barraSobreQuestions h6{
+    margin: 10px;
+  }
+
   .questionTable{
       
       width: 100%;      
