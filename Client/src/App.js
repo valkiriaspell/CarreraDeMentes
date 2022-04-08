@@ -19,6 +19,7 @@ import loginAdmin from './components/ADMIN/login';
 import AdminNav from './components/ADMIN/adminNav';
 import AdminUsers from './components/ADMIN/adminUsers';
 import AdminQuestions from './components/ADMIN/adminQuestions';
+import CurrentQuestions from './components/ADMIN/currentQuestions';
 
 initializeApp(config)
 
@@ -44,6 +45,7 @@ function App() {
         <Route path="/administrador" component={loginAdmin} />
         <Route path="/adminHome" component={AdminNav} />        
         <Route path="/adminHome/questions" component={AdminQuestions} />
+        <Route path="/adminHome/currentQuestions" component={CurrentQuestions} />
         <Route path="/adminHome/users" component={AdminUsers} />
     </div>
   );
