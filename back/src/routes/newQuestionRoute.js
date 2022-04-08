@@ -40,7 +40,6 @@ router.delete('/', async function (req, res) {
 router.put('/', async function (req, res) {
     const { id } = req.query
     try {
-        console.log(id, "id en back")
         const updateQuestion = await aceptedNewQuestion(id)
         res.status(200).json(updateQuestion)
 

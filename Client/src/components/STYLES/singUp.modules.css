@@ -11,22 +11,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .contentSingUp {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: rgba(216, 221, 226, 0.212);
-  margin-top: 6rem;
+  margin-top: 4rem;
   width: 350px;
   height: 420px;
   border-radius: 0.4rem;
 }
 
+.logoSingUp img{
+  top: 20px;
+  position: relative;
+}
+
 /* ===== BOTÓN VOLVER =====*/
 .volverSingUp {
   position: relative;
-  top: -125px;
+  top: -155px;
   width: 450px;
   display: flex;
   justify-content: start;
@@ -115,5 +121,10 @@
   }
   .volverSingUp {
     width: 320px;
+  }
+  .logoSingUp img{
+    top: 40px;
+    width: 190px;
+    margin-bottom: 1rem;
   }
 }

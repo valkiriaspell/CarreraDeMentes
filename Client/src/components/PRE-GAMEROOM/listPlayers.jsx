@@ -74,24 +74,43 @@ const ListPlayers = ({ expelPlayer }) => {
             })
           : preRoomUsers?.users?.map((us) => {
               return (
-                <li key={`${us.id}6`}>
-                  {us.host === true && (
-                    <div key={`${user.id}4`} className={s.coronaHost}>
-                      <img src={corona} alt="corona" />
-                    </div>
-                  )}
-                  <div key={`${us.id}7`}>{us.name}</div>
-                  <img
-                    src={us?.avatars?.[0]?.imageUrl}
-                    alt="Avatar"
-                    width={30}
-                  />
-                  {us.ready ? (
-                    <img key={us.id} id={us.id} src={readyGreen} alt="ready" />
-                  ) : (
-                    <img key={us.id} id={us.id} src={readyDark} alt="ready" />
-                  )}
-                </li>
+                <div className={s.contentPlayer}>
+                  <div className={s.contentAvatar}>
+                    <img src={us?.avatars?.[0]?.imageUrl} alt="Avatar" />
+                  </div>
+                  <div>
+                    <li key={`${us.id}6`}>
+                      {us.host === true && (
+                        <div key={`${user.id}4`} className={s.coronaHost}>
+                          <img src={corona} alt="corona" />
+                        </div>
+                      )}
+                      <div
+                        style={{ marginLeft: "0.3rem", marginRight: "0.5rem" }}
+                        key={`${us.id}7`}
+                      >
+                        {us.name}
+                      </div>
+                      <div className={s.readyButton}>
+                        {us.ready ? (
+                          <img
+                            key={us.id}
+                            id={us.id}
+                            src={readyGreen}
+                            alt="ready"
+                          />
+                        ) : (
+                          <img
+                            key={us.id}
+                            id={us.id}
+                            src={readyDark}
+                            alt="ready"
+                          />
+                        )}
+                      </div>
+                    </li>
+                  </div>
+                </div>
               );
             })}
       </ul>
