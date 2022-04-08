@@ -27,16 +27,16 @@ export default function LoginAdmin() {
 ////////////---->   On change Inputs  <----/////////////////
     function handleOnChange(e) {
         setInput({ ...input, [e.target.name]: e.target.value });
+        dispatch(loginUser(input.email));
       }
     
     async function handleLogin(e) {
         e.preventDefault();
         const login = await firebaseLogin(input.email, input.password);
         if(login?.accessToken){
-            dispatch(loginUser(input.email));
+            localStorage.setItem("email", login.email);
+            localStorage.setItem("token", login.accessToken);
             if(user.admin === "superadmin" || user.admin === "admin") {
-                localStorage.setItem("email", login.email);
-                localStorage.setItem("token", login.accessToken);
                 history.push("/adminHome");
             } else {
                 Swal.fire({
