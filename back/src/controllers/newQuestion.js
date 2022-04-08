@@ -44,21 +44,30 @@ const deleteNewQuestion = async (id) => {
 
 const aceptedNewQuestion = async (id) => {
     try {
+        const listQuestions = await Question.findAll()
         const toAcept = await NewQuestion.findOne({
             where: {
                 id: id
             }
         })
-        console.log(toAcept, "pregunta encontrada")
-        await Question.create({
-            question: toAcept.question, 
-            answer: toAcept.answer,
-            false1: toAcept.false1,
-            false2: toAcept.false2,
-            false3: toAcept.false3,
-            category: toAcept.category,
-            image: toAcept.image
-        })
+        toAcept.dataValues.id = listQuestions.length + 1
+        listQuestions.push(toAcept)
+        
+        listQuestions.forEach(async (q) => {
+			const { id } = q.dataValues;
+			await Question.findOrCreate({
+				where: { id },
+				defaults: {           
+                    question: q.dataValues.question, 
+                    answer: q.dataValues.answer,
+                    false1: q.dataValues.false1,
+                    false2: q.dataValues.false2,
+                    false3: q.dataValues.false3,
+                    category: q.dataValues.category,
+                    image: q.dataValues.image 
+                }
+			})
+		});
         if (toAcept){
             await NewQuestion.destroy({
             where: {
@@ -71,8 +80,6 @@ const aceptedNewQuestion = async (id) => {
         console.log(`La pregunta no pudo ser aceptada: ${error}`)
     }
 }
-
-
 
 module.exports = {
     createNewQuestion, 
