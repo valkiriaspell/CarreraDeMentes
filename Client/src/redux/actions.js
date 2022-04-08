@@ -180,6 +180,24 @@ export function getNewQuestions(){
     }
 }
 
+export function handleQuestion(id,condition){
+    const body = {id: id}
+    console.log(body.id, "id en action")
+    return async function(){
+        try{
+        if (condition === "accept")
+        {
+            const {data} = await axios.put('http://localhost:3001/newQuestion', body)
+        } else {
+            const {data} = await axios.delete('http://localhost:3001/newQuestion', body)
+        }
+            
+    } catch(e) {
+            console.log(e)
+        }
+    }
+}
+
 export function userToken(token){
     return {
         type: USER_TOKEN,

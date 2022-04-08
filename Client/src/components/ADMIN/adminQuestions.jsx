@@ -1,84 +1,155 @@
 import React, { useEffect, useState } from 'react';
 import { CgDarkMode } from "react-icons/cg";
 import { useDispatch, useSelector } from 'react-redux';
-import { getNewQuestions } from '../../redux/actions';
-
+import { getNewQuestions, handleQuestion } from '../../redux/actions';
+import "../STYLES/admin.css"
+import Swal from "sweetalert2";
+import { GrRefresh, GrUpdate } from "react-icons/gr";
+import { useHistory } from 'react-router-dom';
 
 
 export default function AdminQuestions() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
     const [preguntasID, setPreguntas] = useState([])
 
-    
-    useEffect(() =>{
-        dispatch(getNewQuestions())        
+
+    useEffect(() => {
+        dispatch(getNewQuestions())
         console.log("nuevasP", newQuestions)
     }, [])
-    
-    const {newQuestions} = useSelector(state => state)
 
+    const { newQuestions } = useSelector(state => state)
+
+    ///////////---->>> Functions  <<<----///////////
     function darkTheme(e) {
         e.preventDefault()
         let [tablaPreguntas] = document.getElementsByClassName("adminQuestions")
-        let background = "background-color"             
-        if(tablaPreguntas.classList.contains('dark')){
-            tablaPreguntas.style.background='rgb(38, 2, 31)'
+        if (tablaPreguntas.classList.contains('dark')) {
+            console.log(tablaPreguntas.classList)
+            tablaPreguntas.style.background = 'rgb(38, 2, 31)'
             tablaPreguntas.classList.remove('dark')
-            tablaPreguntas.style.color='white'
-        }else{
+            tablaPreguntas.style.color = 'white'
+        } else {
             tablaPreguntas.classList.add('dark')
-            tablaPreguntas.style.background='white'
-            tablaPreguntas.style.color='rgb(38, 2, 31)'
-        }  
+            tablaPreguntas.style.background = 'white'
+            tablaPreguntas.style.color = 'rgb(38, 2, 31)'
+        }
     }
 
-    
-    
-
-    function handleChecks (e) {
-        if(!preguntasID.includes(e.target.value)) {
-            setPreguntas([...preguntasID,e.target.value])
+    function handleChecks(e) {
+        if (!preguntasID.includes(e.target.value)) {
+            setPreguntas([...preguntasID, e.target.value])
         } else {
-            let newPreguntas = preguntasID.filter( p => p !== e.target.value)
+            let newPreguntas = preguntasID.filter(p => p !== e.target.value)
             setPreguntas(newPreguntas)
         }
-        
+    }
+
+    function acceptQuestions() {
+        console.log(preguntasID, "preguntas ids")
+        Swal.fire({
+            title: `Estas preguntas serán agregadas a la base de datos de ZooPer Trivia`,
+            icon: "warning",
+            showDenyButton: true,
+            backdrop: `
+                    rgba(0,0,123,0.4)
+                    left top
+                    no-repeat
+                  `,
+            confirmButtonText: "Aceptar",
+            denyButtonText: "Cancelar",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const accept = "accept"
+                preguntasID.forEach(p => dispatch(handleQuestion(p, accept)))
+                Swal.fire({
+                    title: 'Preguntas enviadas',
+                    confirmButtonText: "Ok"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.location.reload(true)
+                    }
+
+                })
+            }
+        })
+    }
+
+    function rejectQuestions() {
+        console.log(preguntasID, "preguntas ids")
+        Swal.fire({
+            title: `Estas preguntas serán eliminadas de forma permanente`,
+            icon: "warning",
+            showDenyButton: true,
+            backdrop: `
+                    rgba(0,0,123,0.4)
+                    left top
+                    no-repeat
+                  `,
+            confirmButtonText: "Aceptar",
+            denyButtonText: "Cancelar",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const reject = "reject"
+                preguntasID.forEach(p => dispatch(handleQuestion(p, reject)))
+                Swal.fire({
+                    title: 'Preguntas eliminadas',
+                    confirmButtonText: "Ok"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.location.reload(true)
+                    }
+
+                })
+            }
+        })
+    }
+    function refresh() {
+        document.location.reload(true)
     }
 
     return (
-        <div className='adminQuestions'>
+        <div className='containerAdmin'>
             <div className='barraSobreQuestions'>
-                    <h6>Preguntas seleccionadas: {preguntasID.length}</h6>                    
-                    <button onClick={(e) => darkTheme(e)}><CgDarkMode/></button>
+                <h6>Preguntas seleccionadas: {preguntasID.length}</h6>
+                <button className='botonesBarra' onClick={() => acceptQuestions()}>Aceptar</button>
+                <button className='botonesBarra' onClick={() => rejectQuestions()}>Rechazar</button>
+                <button className='botonesBarra' onClick={(e) => refresh(e)}><GrUpdate color="white"/></button>
+                <button className='botonesBarra' onClick={(e) => darkTheme(e)}><CgDarkMode /></button>
             </div>
-            <table className='questionTable'>
-                <tbody>                    
-                     <tr className='titulos'>
-                <th>Seleccionar</th>
-                <th>ID</th>
-                <th>Autor</th>
-                <th>Categoría</th>
-                <th>Pregunta</th>
-                <th>Respuesta Correcta</th>
-                <th>Res. Falsa 1</th>
-                <th>Res. Falsa 2</th>
-                <th>Res. Falsa 3</th>
-            </tr>
-            {newQuestions?.map(q => 
-                <tr>
-                    <th><input type="checkbox" id="check" value={q.id} onClick={(e) => handleChecks(e)} /></th>
-                    <th>{q.id}</th>
-                    <th>{q.email}</th>
-                    <th>{q.category}</th>
-                    <th>{q.question}</th>
-                    <th>{q.answer}</th>
-                    <th>{q.false1}</th>
-                    <th>{q.false2}</th>
-                    <th>{q.false3}</th>
-                </tr>)}
-            </tbody>
-            </table>
+            <div className='adminQuestions'>
+                <table className='questionTable'>
+                    <tbody>
+                        <tr className='titulos'>
+                            <th>Seleccionar</th>
+                            <th>ID</th>
+                            <th>Autor</th>
+                            <th>Categoría</th>
+                            <th>Pregunta</th>
+                            <th>Respuesta Correcta</th>
+                            <th>Res. Falsa 1</th>
+                            <th>Res. Falsa 2</th>
+                            <th>Res. Falsa 3</th>
+                            <th>Imagen</th>
+                        </tr>
+                        {newQuestions?.map(q =>
+                            <tr key={q.id}>
+                                <th><input type="checkbox" id="check" value={q.id} onClick={(e) => handleChecks(e)} /></th>
+                                <th>{q.id}</th>
+                                <th>{q.email}</th>
+                                <th>{q.category}</th>
+                                <th>{q.question}</th>
+                                <th>{q.answer}</th>
+                                <th>{q.false1}</th>
+                                <th>{q.false2}</th>
+                                <th>{q.false3}</th>
+                                <th><a href={q.image} target="_blank">Ver Imagen</a></th>
+                            </tr>)}
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }
