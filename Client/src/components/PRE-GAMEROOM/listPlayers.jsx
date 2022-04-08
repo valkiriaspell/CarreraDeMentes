@@ -25,13 +25,13 @@ const ListPlayers = ({ expelPlayer }) => {
                         preRoomUsers?.users?.map(us => {
                             return (
                                     <li key={`${us.id}2`}>
+                                        <img src={us?.avatars?.[0]?.imageUrl} alt="Avatar" width={30} />
                                         {user?.id === us?.id &&
                                         <div key={`${user.id}4`} className={s.coronaHost}>
                                             <img src={corona} alt="corona" />
                                         </div>
                                         }
                                         <div>{us.name}</div>
-                                        <img src={us?.avatars?.[0]?.imageUrl} alt="Avatar" width={30} />
                                         <div className={s.readyButton} >
                                         {
                                             us.ready 

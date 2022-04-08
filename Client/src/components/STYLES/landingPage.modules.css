@@ -1,3 +1,9 @@
+.landinpage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  margin-top: 2rem; 
+}
 .containerLanding {
   border: solid 3px rgba(216, 221, 226, 0.4);
   background-color: rgba(113, 115, 117, 0.084);
@@ -6,7 +12,7 @@
   margin-left: auto;
   margin-right: auto;
   border-radius: 0.4rem;
-  margin-top: 10rem;
+  margin-top: 1rem;
 }
 
 .logoLanging {
