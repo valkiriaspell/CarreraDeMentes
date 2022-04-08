@@ -58,9 +58,9 @@ const insertarCoinsUsuario = async (req, res) => {
             const referencia = productos.find(producto => producto.id === external_reference) //producto que compro el usuario
             const usuario = await Users.findOne({where: {email}}) //usuario que compro el producto
             await usuario.update({coins: usuario.coins + referencia.coins}, {where: {email}})
-            res.json({mensaje: `Se agregaron ${referencia.coins} coins a tu cuenta. Ahora tienes ${usuario.coins} coins`});
+            res.json({icon: 'success', mensaje: `Se agregaron ${referencia.coins} coins a tu cuenta. Ahora tienes ${usuario.coins} coins`});
         } else{
-            res.json({mensaje: 'Hubo un error con tu pago, intente nuevamente'});
+            res.json({icon: 'error', mensaje: 'Hubo un error con tu pago, intente nuevamente'});
         }       
     } catch (error) {
         console.log(error)

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { firebaseCerrarSesion } from '../../utils/Firebase';
 import '../STYLES/home.modules.css';
