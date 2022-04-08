@@ -84,7 +84,31 @@ function getRandomInt(max) {
 	return Math.floor(Math.random() * (max - 1)) + 1;
 }
 
+// Actualizar una pregunta en la DB
+async function updateQuestions (id, question, answer, false1, false2, false3, category, image) {
+	try {
+		const findQuestion = await Question.findOne({
+			where: {
+				id: id
+			}})
+		const modifyQuestion = await findQuestion.update({
+			question: question,
+			answer: answer,
+			false1: false1,
+			false2: false2,
+			false3: false3,
+			category: category,
+			image: image
+		})
+		return modifyQuestion
+
+	} catch (error) {
+		console.log(`Error en la función para actualizar la pregunta en la DB: ${error}`)
+	}
+}
+
 module.exports = {
 	data,
 	getQuestions,
+	updateQuestions
 };
