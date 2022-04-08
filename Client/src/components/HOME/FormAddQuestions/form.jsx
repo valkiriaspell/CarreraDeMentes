@@ -88,17 +88,21 @@ export default function FormAddQuestions() {
                     setErrorA("")
                 }
                 break;
-            case e.target.name === "image":
-                if (true) {
+            case e.target.name === "image": 
+            if (!/\.(jpg|png|gif)$/.test(e.target.value)) {
                     setImg(e.target.value);
-                    setErrorImage("")
+                    setErrorImage("No es un URL válido")
+                } else {
+                    setImg(e.target.value);
+                    setErrorImage("") 
                 }
+
                 break;
             default:
                 console.log("default");
         }
-        console.log(errorAnswer, errorQuestion, errorImage)
-        !question || !answer || !false1 || !false2 || !false3 || !image ? setErrorTotal("Completar formulario") : setErrorTotal("")
+        
+        
     }
 
     function conditions(e) {
@@ -110,7 +114,7 @@ export default function FormAddQuestions() {
             terminos.classList.remove('desplegado')
         }else{
             terminos.classList.add('desplegado')
-            terminos.style.height='60px'
+            terminos.style.height='80px'
         }  
     }
 
@@ -120,9 +124,14 @@ export default function FormAddQuestions() {
     function handleCategory(e) {
         setCategory(e.target.value)
     }
+
+   
     //////////  ---->    on Submit   <------ //////////////
     const onSubmit = (e) => {
         e.preventDefault()
+        //////////////// ---->    NO EMPTY ANSWERS   <------ /////////////
+        !question || !answer || !false1 || !false2 || !false3 || !image ? setErrorTotal("Completar formulario") : setErrorTotal("")
+        
         //////////////// ---->    NO REPEATED ANSWERS   <------ /////////////
         let fourAnswers = [answer, false1, false2, false3]
         if (fourAnswers) {
@@ -137,11 +146,10 @@ export default function FormAddQuestions() {
             }
             if (uniqueAnswers.length < 4) {
                 setErrorA("No puede haber respuestas iguales")
-                console.log(uniqueAnswers, "entro a error de length menor")
+                
             } else {
                 setErrorA("")
-                setMSG("Tu pregunta fue enviada para validación")
-                console.log(category)
+                setMSG("Tu pregunta fue enviada para validación")                
                 dispatch(newQuestion({
                     question,
                     category,               
@@ -157,6 +165,8 @@ export default function FormAddQuestions() {
                 setF1("")
                 setF2("")
                 setF3("")
+                setImg("")
+                setTimeout(() => {setMSG("")}, 2300);
             }
         }
     }
@@ -220,6 +230,8 @@ export default function FormAddQuestions() {
                             <input className={errorImage !== "" ? 'danger' : "inputEmail"} name="image" type="text" value={image} onChange={(e) => validation(e)} />
                             {errorImage ? <p className='error'>{errorImage}</p> : null}
                         </div>
+                        
+                        {image ? <div className='vistaImagen'><img height={150} src={image}/> </div> : null}
                     </div>
                     {errorAnswer ? <p className='error'>{errorAnswer}</p> : null}
                     {errorTotal ? <p className='error'>{errorTotal}</p> : null}
