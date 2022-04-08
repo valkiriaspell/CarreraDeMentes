@@ -1,4 +1,5 @@
 const { Coins } = require("../db");
+const coinsInicial = require('../Coins.json')
 
 // Agregar un coins
 exports.addCoins = async ({ coins, url }) => {
@@ -39,6 +40,23 @@ exports.addInitServerMultCoins = async (array) => {
 
     } catch (e) {
 
+    }
+}
+
+exports.coinsInicialDeploy = async () => {
+    try {
+        const dataCoins = JSON.parse(JSON.stringify(coinsInicial));
+    
+        dataCoins.forEach(async (obj) => {
+            await Coins.findOrCreate({
+                where: { coins: obj.coins },
+                defaults: { ...obj }
+            });
+        })
+        return [true, "Creados: " + array.length]
+
+    } catch (error) {
+        console.log('error de coins inicial', error)
     }
 }
 
