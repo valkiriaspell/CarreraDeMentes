@@ -1,10 +1,10 @@
 import React from 'react';
-import {NavLink, useHistory} from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useLocation } from 'react-router-dom'
 import "../STYLES/admin.css"
 import "../STYLES/home.modules.css"
 import { FaPowerOff } from "react-icons/fa";
-import {firebaseCerrarSesion} from '../../utils/Firebase';
+import { firebaseCerrarSesion } from '../../utils/Firebase';
 
 export default function AdminNav() {
 
@@ -13,11 +13,11 @@ export default function AdminNav() {
     const history = useHistory();
 
     async function handleSignOut(e) {
-		e.preventDefault();
-		await firebaseCerrarSesion();
-		localStorage.clear();
-		history.push('/');
-	}
+        e.preventDefault();
+        await firebaseCerrarSesion();
+        localStorage.clear();
+        history.push('/');
+    }
 
     const location = useLocation();
 
@@ -31,7 +31,7 @@ export default function AdminNav() {
             <div className="navAdmin">
                 <div className='barraSaludo'>
                     <><button onClick={(e) => handleSignOut(e)} > <FaPowerOff /> </button></>
-                    <><h6>¡Hola {email === "triviamastergrupo7@gmail.com"? "Super Admin" : "Admin"}!</h6></>
+                    <><h6>¡Hola {email === "triviamastergrupo7@gmail.com" ? "Super Admin" : "Admin"}!</h6></>
                 </div>
                 <NavLink exact to="/adminHome/questions" className={splitLocation[2] === "questions" ? "linkSelected" : "btn draw-border"}   > Lista de Preguntas </NavLink>
                 {email === "triviamastergrupo7@gmail.com" ?

@@ -15,6 +15,7 @@ export const GET_READY_USER = 'GET_READY_USER'
 export const USER_TOKEN = 'USER_TOKEN'
 export const EDIT_ROOM = 'EDIT_ROOM'
 export const DELETE_ROOM = 'DELETE_ROOM'
+export const ALL_USERS = 'ALL_USERS'
 
 
 
@@ -55,6 +56,18 @@ export function loginUser(email){
     }
 }
 
+export function allUsers(){
+    return async function(dispatch){
+        try{
+            const {data} = await axios.get(`http://localhost:3001/users`)
+            dispatch({type: 'ALL_USERS', payload: data}) 
+            return data
+        }catch(e) {
+            console.log(e)
+        }
+    }
+}
+
 export const updateUser = (userData)=> async ()=>{
     try {
         const result = await axios.put(`http://localhost:3001/users`, userData)  
@@ -77,10 +90,23 @@ export function modifyHost(email, host){
     }
 }
 
+export function modifyHostById(id, host){
+    return async function(dispatch){
+        try{
+            const {data} = await axios.put(`http://localhost:3001/users/?id=${id}&host=${host}`)
+            dispatch({type: 'HOST', payload: data})
+            return data
+        }catch(e){
+            console.log(e)
+        }
+        
+    }
+}
+
 export function createRoom(user){
     return async function(dispatch){
         try{
-            const {data} = await axios.post('http://localhost:3001/gameRoom', {name: user.name, idUser: user.id, currentAvatar: user.currentAvatar})
+            const {data} = await axios.post('http://localhost:3001/gameRoom', {name: user.name, idUser: user.id, avatar: user?.avatars?.[0]?.imageUrl})
             console.log(data)
             dispatch({type: 'CREATE_ROOM', payload: data})
             return data
@@ -167,9 +193,30 @@ export function getNewQuestions(){
     }
 }
 
+export function handleQuestion(id,condition){
+    
+    return async function(){
+        try{
+            if (condition === "accept")
+            {
+                console.log(id,"id en action", condition, "condicion")
+                const {data} = await axios.put(`http://localhost:3001/newQuestion/?id=${id}`)
+
+            } else {  
+            
+            const {data} = await axios.delete(`http://localhost:3001/newQuestion/?id=${id}`)
+        }
+            
+    } catch(e) {
+            console.log(e)
+        }
+    }
+}
+
 export function userToken(token){
     return {
         type: USER_TOKEN,
         payload: token
     }
 }
+
