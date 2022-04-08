@@ -2,22 +2,14 @@
 
 body {
   background: hsla(228, 52%, 19%, 1);
-  background: linear-gradient(
-    135deg,
-    hsla(228, 52%, 19%, 1) 14%,
-    hsla(348, 84%, 55%, 1) 100%
-  );
-  background: -moz-linear-gradient(
-    135deg,
-    hsla(228, 52%, 19%, 1) 14%,
-    hsla(348, 84%, 55%, 1) 100%
-  );
-  background: -webkit-linear-gradient(
-    135deg,
-    hsla(228, 52%, 19%, 1) 14%,
-    hsla(348, 84%, 55%, 1) 100%
-  );
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#18224B", endColorstr="#ED2D53", GradientType=1 );
+
+background: linear-gradient(315deg, hsla(228, 52%, 19%, 1) 28%, hsla(348, 84%, 55%, 1) 83%);
+
+background: -moz-linear-gradient(315deg, hsla(228, 52%, 19%, 1) 28%, hsla(348, 84%, 55%, 1) 83%);
+
+background: -webkit-linear-gradient(315deg, hsla(228, 52%, 19%, 1) 28%, hsla(348, 84%, 55%, 1) 83%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#18224B", endColorstr="#ED2D53", GradientType=1 );
   height: 120vh;
   margin: 0;
   font-family: "IBM Plex Sans Thai Looped", sans-serif;
