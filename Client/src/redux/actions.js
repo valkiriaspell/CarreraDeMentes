@@ -15,6 +15,7 @@ export const GET_READY_USER = 'GET_READY_USER'
 export const USER_TOKEN = 'USER_TOKEN'
 export const EDIT_ROOM = 'EDIT_ROOM'
 export const DELETE_ROOM = 'DELETE_ROOM'
+export const ALL_USERS = 'ALL_USERS'
 
 
 
@@ -48,6 +49,18 @@ export function loginUser(email){
             const {data} = await axios.get(`http://localhost:3001/users?email=${email}`)
             console.log(data)
             dispatch({type: 'LOGIN', payload: data})
+            return data
+        }catch(e) {
+            console.log(e)
+        }
+    }
+}
+
+export function allUsers(){
+    return async function(dispatch){
+        try{
+            const {data} = await axios.get(`http://localhost:3001/users`)
+            dispatch({type: 'ALL_USERS', payload: data}) 
             return data
         }catch(e) {
             console.log(e)
