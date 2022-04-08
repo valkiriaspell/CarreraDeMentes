@@ -160,7 +160,7 @@ function Game({ preRoomUsers }) {
     setF2(questions[0].false2);
     setF3(questions[0].false3);
     setCat(questions[0].category);
-    console.log("entre")
+    setActive(false)
 
     questions?.map((q, index) =>
       setTimeout(() => {
