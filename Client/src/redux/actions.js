@@ -15,9 +15,13 @@ export const GET_READY_USER = 'GET_READY_USER'
 export const USER_TOKEN = 'USER_TOKEN'
 export const EDIT_ROOM = 'EDIT_ROOM'
 export const DELETE_ROOM = 'DELETE_ROOM'
+<<<<<<< HEAD
 export const REMOVE_USER = 'REMOVE_USER'
 export const FAST_CHANGE_HOST_ROOM = 'FAST_CHANGE_HOST_ROOM'
 export const HOST_BY_ID = 'HOST_BY_ID'
+=======
+export const ALL_USERS = 'ALL_USERS'
+>>>>>>> dev
 
 
 
@@ -51,6 +55,18 @@ export function loginUser(email){
             const {data} = await axios.get(`http://localhost:3001/users?email=${email}`)
             console.log(data)
             dispatch({type: 'LOGIN', payload: data})
+            return data
+        }catch(e) {
+            console.log(e)
+        }
+    }
+}
+
+export function allUsers(){
+    return async function(dispatch){
+        try{
+            const {data} = await axios.get(`http://localhost:3001/users`)
+            dispatch({type: 'ALL_USERS', payload: data}) 
             return data
         }catch(e) {
             console.log(e)
@@ -191,6 +207,26 @@ export function getNewQuestions(){
             const {data} = await axios.get('http://localhost:3001/newQuestion')
             dispatch({type: GET_QUESTIONS , payload: data})
         }catch(e) {
+            console.log(e)
+        }
+    }
+}
+
+export function handleQuestion(id,condition){
+    
+    return async function(){
+        try{
+            if (condition === "accept")
+            {
+                console.log(id,"id en action", condition, "condicion")
+                const {data} = await axios.put(`http://localhost:3001/newQuestion/?id=${id}`)
+
+            } else {  
+            
+            const {data} = await axios.delete(`http://localhost:3001/newQuestion/?id=${id}`)
+        }
+            
+    } catch(e) {
             console.log(e)
         }
     }

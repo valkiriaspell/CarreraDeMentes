@@ -45,8 +45,11 @@ const deleteNewQuestion = async (id) => {
 const aceptedNewQuestion = async (id) => {
     try {
         const toAcept = await NewQuestion.findOne({
-            where: id
+            where: {
+                id: id
+            }
         })
+        console.log(toAcept, "pregunta encontrada")
         await Question.create({
             question: toAcept.question, 
             answer: toAcept.answer,
@@ -56,10 +59,12 @@ const aceptedNewQuestion = async (id) => {
             category: toAcept.category,
             image: toAcept.image
         })
-        await NewQuestion.destroy({
+        if (toAcept){
+            await NewQuestion.destroy({
             where: {
                 id: id
         }})
+    }
         return toAcept
 
     }  catch(error){
