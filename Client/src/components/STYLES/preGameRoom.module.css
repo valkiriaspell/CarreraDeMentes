@@ -1,6 +1,6 @@
 .container {
   width: 700px;
-  height: 730px;
+  min-height: 730px;
   border: solid 3px rgba(216, 221, 226, 0.4);
   border-radius: 0.4rem;
   display: flex;
@@ -51,6 +51,8 @@
   height: 30px;
   
 }
+
+
 .allPlayers img{
   height: 25px;
   

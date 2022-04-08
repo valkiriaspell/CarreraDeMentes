@@ -49,7 +49,9 @@ function PreGameRoom({match}) {
               Volver
             </button>
           </Link>
-          <h3>Logo</h3>
+          <div className="logo">
+                <img width="200px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Fzooper-logo.png?alt=media&token=d211e20b-1313-420f-91a8-aa791a6aae3c"></img>
+            </div>
           <AiFillSound style={{ width: "30px" }} />
         </div>
         <div>
