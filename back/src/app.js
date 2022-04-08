@@ -45,11 +45,11 @@ io.on('connection', (socket) => {
 		io.to(idGameRoom).emit('EXPEL_PLAYER', {id, arrayRemoveUser})
 	})
  
-	socket.on('DISCONNECT', () => {
+	socket.on('DISCONNECT', (id) => {
 		//alguien se desconecta de la room
 		console.log('se desconecto');
 		//crear ruta en rooms para desconectar un usuario
-		io.to(idGameRoom).emit('DISCONNECT');
+		io.to(idGameRoom).emit('DISCONNECT', id);
 	});
 	socket.on('NEW_MESSAGE', ({text, name, email}) => {
 		//alguien envia un nuevo mensaje

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import socketIOClient from 'socket.io-client';
-import { listUsersInPreRoom, loginUser, getReadyUser, modifyHost, modifyHostById, removeUser } from "../../redux/actions";
+import { listUsersInPreRoom, loginUser, getReadyUser, modifyHost, modifyHostById, removeUser, fastChangeHostRoom } from "../../redux/actions";
 import axios from "axios";
 import readyGreen from "../IMG/readyGreen2.png"
 import { changeReady, deleteRoom, AddUserToPreRoom } from "./utils";
@@ -27,7 +27,7 @@ function useChatSocketIo(idRoom) {
         //create web socket connection
         /* const {preRoomUsers} = useSelector(state => state); */
         const newUserInRoom = () =>{
-            console.log("principio", user)
+            /* console.log("principio", user) */
             dispatch(loginUser(email))
             .then((data) => dispatch(AddUserToPreRoom({
                 idRoom,
@@ -40,7 +40,7 @@ function useChatSocketIo(idRoom) {
         !user?.host && newUserInRoom();
 
         socketIoRef.current = socketIOClient('http://localhost:3001',{query:{idGameRoom: idRoom, email: user?.email} } );
-            console.log("connect", user)
+            /* console.log("connect", user) */
             socketIoRef.current.on("NEW_CONNECTION", async (email) =>{
                 email !== user.email &&
                 dispatch(listUsersInPreRoom(idRoom));
@@ -60,12 +60,17 @@ function useChatSocketIo(idRoom) {
                 dispatch(getReadyUser(id))
             })
             
-            socketIoRef.current.on("DISCONNECT", () =>{
-                dispatch(listUsersInPreRoom(idRoom))
+            socketIoRef.current.on("DISCONNECT", (id) =>{
+                console.log('id host', id)
+                preRoomUsers?.users?.[0] === id 
+                    ? history.push('/home')
+/*                     ? preRoomUsers?.users?.[1] === user.id &&
+                        dispatch(modifyHost(email, true)) */
+                /* dispatch(fastChangeHostRoom(id)) */
+                    : dispatch(listUsersInPreRoom(idRoom))
             })
 
             socketIoRef.current.on("EXPEL_PLAYER", ({id, arrayRemoveUser}) =>{
-                console.log('aca llegaa', arrayRemoveUser)
                 user?.id === id 
                     ? history.push('/home')
                     : dispatch(removeUser(arrayRemoveUser))
@@ -87,18 +92,34 @@ function useChatSocketIo(idRoom) {
            
 
             //remove player from room (DB) when player leaves the room and destroy the socket reference
-            return () =>{
-                dispatch(modifyHost(email, false))
-                preRoomUsers?.users?.length === 1
-                    ? deleteRoom({idRoom: idRoom})
-                    : axios.put('http://localhost:3001/gameRoom/delete', {idRoom: idRoom, idUserDelet: user.id})
-                    .then(()=>dispatch(modifyHostById((!preRoomUsers.users[0].host ? preRoomUsers.users[0].id : preRoomUsers.users[1].id), true))) 
-                    .then(() =>{
-                        socketIoRef?.current?.emmit("DISCONNECT")
-                        socketIoRef?.current?.disconnect();
+            return async () =>{
+
+                /* let data = await dispatch(listUsersInPreRoom(idRoom))
+                if(!user.id){
+                    user.id = data.users[0].id */
+                    /* data.users.length === 1 */
+                
+                    preRoomUsers?.users?.length === 1
+                    ? dispatch(modifyHost(email, false)) && deleteRoom({idRoom: idRoom}) && socketIoRef?.current?.emmit("DISCONNECT", preRoomUsers?.users?.[0].id)
+                    : await deleteUser()
+                    .then(()=>{
+                        console.log('estoy aca')
+                        dispatch(modifyHost(email, false)) 
+                        /* preRoomUsers.users.find(user => user.host === true) */
+                        /* dispatch(modifyHostById((!preRoomUsers.users[0].host ? preRoomUsers.users[0].id : preRoomUsers.users[1].id), true)) */
                     })
+                    socketIoRef?.current?.emmit("DISCONNECT", user?.id)
+                    socketIoRef?.current?.disconnect();
             }
     }, [])
+
+async function deleteUser(){
+    try{
+        await axios.put('http://localhost:3001/gameRoom/delete', {idRoom, idUserDelet: user.id})
+    }catch(e){
+        console.log(e)
+    }
+}
 
     //send a message to all players in chat
     function sendMessage(message){
@@ -126,11 +147,8 @@ function useChatSocketIo(idRoom) {
 
     async function expelPlayer(e){
         let id = e.target.id
-        console.log("delete id", id)
         try{
             const userRemove = await axios.put('http://localhost:3001/gameRoom/delete', {idRoom, idUserDelet: id})
-            console.log(userRemove)
-            console.log('aca empieza', preRoomUsers)
             const arrayRemoveUser = preRoomUsers?.users?.filter(user=> user?.id !== id)
             socketIoRef.current.emit("EXPEL_PLAYER", {id, arrayRemoveUser})
         }catch(e){

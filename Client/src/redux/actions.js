@@ -16,6 +16,8 @@ export const USER_TOKEN = 'USER_TOKEN'
 export const EDIT_ROOM = 'EDIT_ROOM'
 export const DELETE_ROOM = 'DELETE_ROOM'
 export const REMOVE_USER = 'REMOVE_USER'
+export const FAST_CHANGE_HOST_ROOM = 'FAST_CHANGE_HOST_ROOM'
+export const HOST_BY_ID = 'HOST_BY_ID'
 
 
 
@@ -71,6 +73,12 @@ export function removeUser(users){
     }
 }
 
+export function fastChangeHostRoom(email){
+    return function(dispatch){
+        dispatch({type:'FAST_CHANGE_HOST_ROOM', payload: email})
+    }
+}
+
 export function modifyHost(email, host){
     return async function(dispatch){
         try{
@@ -88,7 +96,7 @@ export function modifyHostById(id, host){
     return async function(dispatch){
         try{
             const {data} = await axios.put(`http://localhost:3001/users/?id=${id}&host=${host}`)
-            dispatch({type: 'HOST', payload: data})
+            dispatch({type: 'HOST_BY_ID', payload: data})
             return data
         }catch(e){
             console.log(e)
@@ -126,6 +134,7 @@ export function listUsersInPreRoom(IdRoom){
             const {data} = await axios.get(`http://localhost:3001/gameRoom/?idRoom=${IdRoom}`)
             console.log(data)
             dispatch({type: 'LIST_USERS_IN_PRE_ROOM', payload: data})
+            return data
         }catch(e) {
             console.log(e)
         }
