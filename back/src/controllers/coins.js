@@ -43,20 +43,20 @@ exports.addInitServerMultCoins = async (array) => {
     }
 }
 
-exports.coinsInicialDeploy = async () => {
+const coinsInicialDeploy = async () => {
     try {
         const dataCoins = JSON.parse(JSON.stringify(coinsInicial));
     
-        dataCoins.forEach(async (obj) => {
+        dataCoins.map(obj => {
             await Coins.findOrCreate({
                 where: { coins: obj.coins },
                 defaults: { ...obj }
-            });
-        })
-        return [true, "Creados: " + array.length]
+            })
+        }) 
+        return [true, "Creados: " + dataCoins.length]
 
     } catch (error) {
-        console.log('error de coins inicial', error)
+        console.log(error)
     }
 }
 
@@ -111,3 +111,7 @@ const orederMinMaxRanting = (a, b) => {
     if (b.coins > a.coins) return -1;
     return 0;
 };
+
+module.exports = {
+    coinsInicialDeploy
+}
