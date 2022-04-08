@@ -11,8 +11,7 @@ conn.sync({ force: false }).then(() => {
 		await axios.get('http://localhost:3001/coins/multiplesCoins');
 		createUsers({
 			name: SUPERADMIN_NAME,
-			email: SUPERADMIN_EMAIL,
-			password: SUPERADMIN_PASS,
+			email: SUPERADMIN_EMAIL,			
 			idAvatar: '1',
 			admin: SUPERADMIN_ADMIN,
 		});
