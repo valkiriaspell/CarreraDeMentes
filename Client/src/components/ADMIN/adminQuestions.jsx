@@ -17,10 +17,10 @@ export default function AdminQuestions() {
 
     useEffect(() => {
         dispatch(getNewQuestions())
-        console.log("nuevasP", newQuestions)
     }, [])
-
+    
     const { newQuestions } = useSelector(state => state)
+    console.log("nuevasP", newQuestions)
 
     ///////////---->>> Functions  <<<----///////////
     function darkTheme(e) {

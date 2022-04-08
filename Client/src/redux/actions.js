@@ -181,15 +181,17 @@ export function getNewQuestions(){
 }
 
 export function handleQuestion(id,condition){
-    const body = {id: id}
-    console.log(body.id, "id en action")
+    
     return async function(){
         try{
-        if (condition === "accept")
-        {
-            const {data} = await axios.put('http://localhost:3001/newQuestion', body)
-        } else {
-            const {data} = await axios.delete('http://localhost:3001/newQuestion', body)
+            if (condition === "accept")
+            {
+                console.log(id,"id en action", condition, "condicion")
+                const {data} = await axios.put(`http://localhost:3001/newQuestion/?id=${id}`)
+
+            } else {  
+            
+            const {data} = await axios.delete(`http://localhost:3001/newQuestion/?id=${id}`)
         }
             
     } catch(e) {
