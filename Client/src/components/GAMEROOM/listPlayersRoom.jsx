@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Avatar from "../IMG/avatar.png";
+// import Avatar from "../IMG/avatar.png";
 
 let listPlayers = [
   {
@@ -40,10 +40,10 @@ let listPlayers = [
   },
 ];
 
-function ListPlayersRoom({ preRoomUsers, points }) {
+function ListPlayersRoom({ preRoomUsers }) {
 
-  // console.log(preRoomUsers);
-  // console.log(points);
+  console.log(preRoomUsers);
+ 
 
   const [players, setPlayers] = useState([]);
 
@@ -65,9 +65,9 @@ function ListPlayersRoom({ preRoomUsers, points }) {
               </div>
               <div className="infoPlayer">
                 <span style={{ fontWeight: "bold" }}>{p.name}</span>
-                <span>Puntos: {points}</span>
+                <span>Puntos: {p.points} </span>
               </div>
-              <img src={Avatar} alt="Avatar" width={50} />
+              <img src={p?.avatars?.[0]?.imageUrl} alt="Avatar" width={50} />
             </div>
           );
         })}
