@@ -48,10 +48,62 @@ export default function AdminUsers() {
     }
 
     function bannUser () {
+        Swal.fire({
+            title: `Estos usuarios no podrán acceder a sus cuentas por 72 hs.¿Dese continuar?`,
+            icon: "warning",
+            showDenyButton: true,
+            backdrop: `
+                    rgba(0,0,123,0.4)
+                    left top
+                    no-repeat
+                  `,
+            confirmButtonText: "Si",
+            denyButtonText: "Cancelar",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // const accept = "accept"
+                // preguntasID.forEach(p => dispatch(handleQuestion(p, accept)))
+                Swal.fire({
+                    title: 'La función aún no está lista',
+                    confirmButtonText: "Ok"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.location.reload(true)
+                    }
 
+                })
+            }
+        })
     }
 
     function createAdmin () {
+        Swal.fire({
+            title: `Estos usuarios tendrán permiso de 'Administrador'`,
+            icon: "warning",
+            showDenyButton: true,
+            backdrop: `
+                    rgba(0,0,123,0.4)
+                    left top
+                    no-repeat
+                  `,
+            confirmButtonText: "Aceptar",
+            denyButtonText: "Cancelar",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // const accept = "accept"
+                // preguntasID.forEach(p => dispatch(handleQuestion(p, accept)))
+                Swal.fire({
+                    title: 'La función aún no está lista',
+                    confirmButtonText: "Ok"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.location.reload(true)
+                    }
+
+                })
+            }
+        })
+    
 
     }
 
@@ -73,6 +125,7 @@ export default function AdminUsers() {
                             <th>Nombre</th>
                             <th>Nivel</th>
                             <th>Monedas</th>                           
+                            <th>Categoria</th>                           
                         </tr>
                         {totalUsers?.map(q =>
                             <tr key={q.id}>
@@ -81,6 +134,7 @@ export default function AdminUsers() {
                                 <th>{q.name}</th>
                                 <th>{q.level}</th>                            
                                 <th>{q.coins}</th>                                                            
+                                <th>{q.admin}</th>                                                            
                             </tr>)}
                     </tbody>
                 </table>
