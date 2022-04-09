@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import s from '../STYLES/preGameRoom.module.css'
 import corona from "../IMG/corona.png"
+
 import readyDark from "../IMG/readyDark.png"
 import readyGreen from "../IMG/readyGreen2.png"
 
@@ -24,13 +25,18 @@ const ListPlayers = ({ expelPlayer }) => {
                         ?
                         preRoomUsers?.users?.map(us => {
                             return (
-                                    <li key={`${us.id}2`}>
+                                    <li key={`${us.id}2`} >
+                                        <div className={s.contentAvatar}>
+                                          <img src={us?.avatars?.[0]?.imageUrl} alt="Avatar" />
+                                        </div>
                                         {user?.id === us?.id &&
                                         <div key={`${user.id}4`} className={s.coronaHost}>
                                             <img src={corona} alt="corona" />
                                         </div>
                                         }
-                                        <div>{us.name}</div>
+                                        <div style={{ marginLeft: "0.3rem", marginRight: "0.5rem" }}>
+                                            {us.name}
+                                        </div>
 
                                         <div className={s.readyButton} >
                                         {
@@ -44,8 +50,9 @@ const ListPlayers = ({ expelPlayer }) => {
                                             id={us.id}
                                             onClick={handleExpectPlayer}
                                             key={`${us.id}3`}
+                                            className={s.buttonExpulsar}
                                             >
-                                                x 
+                                                x{/* <img src={Delete} alt="Delete" width={25} /> */}
                                             </button>
                                         }
                                     </li>
@@ -54,14 +61,19 @@ const ListPlayers = ({ expelPlayer }) => {
                         :
                         preRoomUsers?.users?.map(us => {
                             return (
-                                <li key={`${us.id}6`}>
+                                <li key={`${us.id}6`} >
+                                    <div className={s.contentAvatar}>
+                                        <img src={us?.avatars?.[0]?.imageUrl} alt="Avatar1" />
+                                    </div>
                                     {
                                         us.host === true && 
                                         <div key={`${user.id}4`} className={s.coronaHost}>
                                             <img src={corona} alt="corona" />
                                         </div>
                                     }
-                                    <div key={`${us.id}7`}>{us.name}</div>
+                                    <div key={`${us.id}7`} style={{ marginLeft: "0.3rem", marginRight: "0.5rem" }}>
+                                        {us.name}
+                                    </div>
                                     {
                                         us.ready 
                                             ? <img key={us.id} id={us.id} src={readyGreen} alt="ready"/>

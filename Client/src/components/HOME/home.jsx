@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
-import { firebaseCerrarSesion } from '../../utils/Firebase';
+import React, { useEffect } from 'react';
+import {NavLink, useHistory} from 'react-router-dom';
+import {firebaseCerrarSesion} from '../../utils/Firebase';
 import '../STYLES/home.modules.css';
 import { FaPowerOff } from 'react-icons/fa';
 import UserCard from './userCard';
 import Instructions from './instructions';
-import { BsFacebook, BsLinkedin, BsTwitter, BsWhatsapp } from 'react-icons/bs';
-import { createRoom, modifyHost } from '../../redux/actions';
-import { useSelector, useDispatch } from 'react-redux';
+import {BsFacebook, BsLinkedin, BsTwitter, BsWhatsapp} from 'react-icons/bs';
+import {createRoom, loginUser, modifyHost} from '../../redux/actions';
+import {useSelector, useDispatch} from 'react-redux';
 
 function Home(props) {
 	const dispatch = useDispatch();
@@ -15,6 +15,9 @@ function Home(props) {
 	const autenticado = localStorage.getItem('token');
 	const { user } = useSelector((state) => state);
 	const email = localStorage.getItem('email');
+	useEffect(() =>{
+		!user?.name && dispatch(loginUser(email))
+	}, [])
 	async function handleSignOut(e) {
 		e.preventDefault();
 		await firebaseCerrarSesion();

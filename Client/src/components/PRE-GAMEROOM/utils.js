@@ -20,7 +20,7 @@ export async function changeReady(id, bool){
     }
 }
 
-export async function deleteRoom({idRoom}){
+export async function deleteRoom(idRoom){
     try{
         const {data} = await axios.delete(`http://localhost:3001/gameRoom/${idRoom}`)
         console.log(data)
