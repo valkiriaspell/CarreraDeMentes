@@ -62,12 +62,6 @@ const reducer = (state = initialState, action) => {
             ...state,
         }
 
-        case REMOVE_USER: 
-        
-        return {
-            ...state,
-        }
-
         case LIST_ROOMS: 
         return {
             ...state,

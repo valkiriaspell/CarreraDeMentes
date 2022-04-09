@@ -168,6 +168,7 @@ exports.deletByIdGameRoom = async ({ idRoom: id }) => {
 // Eliminar un usuario de la sala
 exports.updateDeleteBDGameRoom = async ({ idRoom, idUserDelet }) => {
 	try {
+		console.log('llegando', idRoom, idUserDelet)
 		const data = await GameRoom.findByPk(idRoom, {
 			include: [
 				{
@@ -180,6 +181,7 @@ exports.updateDeleteBDGameRoom = async ({ idRoom, idUserDelet }) => {
 		if (!data) return [false, "No se encontro la sala"]
 
 		await data.removeUser(idUserDelet);
+		console.log('jugador eliminado', data)
 		return [true, 'Usuario eliminado'];
 	} catch (e) {
 		console.log('Error al eliminar un usuario: ', e);
