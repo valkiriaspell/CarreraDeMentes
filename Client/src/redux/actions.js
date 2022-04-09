@@ -56,6 +56,23 @@ export function loginUser(email){
     }
 }
 
+export const bannUser = (email)=> async ()=>{
+    try {
+        console.log(email)
+        const result = await axios.put(`http://localhost:3001/users/banner?email=${email}`)          
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const createAdmin = (user)=> async ()=>{
+    try {
+        const result = await axios.put(`http://localhost:3001/users/admin`, user)         
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export function allUsers(){
     return async function(dispatch){
         try{

@@ -160,33 +160,48 @@
     margin-top: 5px;  
     display: flex;
     flex-direction: column;    
-  }  
-
+  }
+  
+   /* BUTTONS */
   .botonesBarra{ 
-      display: flex;
-      align-items: center;
-      background-color: rgba(47, 51, 71, 0.422);
-      border-radius: 0.3rem;  
-      border: none;
-      padding: 0.3rem 0.5rem 0.3rem 0.5rem;
-      margin: 0.5em;
-      color: white;     
+    display: flex;
+    align-items: center;
+    background-color: rgba(47, 51, 71, 0.422);
+    border-radius: 0.3rem;  
+    border: none;
+    padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+    margin: 0.5em;
+    color: white;     
   }
   .botonesBarra:hover {
-      background-color: rgba(154, 158, 161, 0.4);
-      cursor: pointer;    
+    background-color: rgba(154, 158, 161, 0.4);
+    cursor: pointer;    
   }
- 
+  
   .barraSobreQuestions{
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
-
+  
   .barraSobreQuestions h6{
     margin: 10px;
   }
 
+  #refresh {
+    color: white
+  }
+
+  .handleAdmin{
+    display: flex;
+    flex-direction: row ;    
+  }
+
+  .BuscadorUsers{
+    min-width: 170px;
+    margin: 7px;
+    font-size: 15px;
+  }
   .questionTable{
       
       width: 100%;      
