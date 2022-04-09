@@ -41,23 +41,23 @@ io.on('connection', (socket) => {
 	socket.on('START',()=>{
 		io.to(idGameRoom).emit('START')
 	})
-	socket.on('EXPEL_PLAYER',(id)=>{
-		io.to(idGameRoom).emit('EXPEL_PLAYER', id)
+	socket.on('EXPEL_PLAYER',({id, arrayRemoveUser})=>{
+		io.to(idGameRoom).emit('EXPEL_PLAYER', {id, arrayRemoveUser})
 	})
  
-	socket.on('DISCONNECT', () => {
+	socket.on('DISCONNECT', (id) => {
 		//alguien se desconecta de la room
 		console.log('se desconecto');
 		//crear ruta en rooms para desconectar un usuario
-		io.to(idGameRoom).emit('DISCONNECT');
+		io.to(idGameRoom).emit('DISCONNECT', id);
 	});
 	socket.on('NEW_MESSAGE', ({text, name, email}) => {
 		//alguien envia un nuevo mensaje
 		/* const {text, name, email} = data; */ //cual es el mensaje?  para que room? quien lo envia?
 		io.to(idGameRoom).emit('NEW_MESSAGE', {text, name, email});
 	});
-	socket.on('NEW_EVENT', (userState) => {
-		io.to(idGameRoom).emit('NEW_EVENT',userState)
+	socket.on('NEW_EVENT', ({id, pointsTotal, point}) => {
+		io.to(idGameRoom).emit('NEW_EVENT', {id, pointsTotal, point})
 	});
 	socket.on('CONFIG_ROOM',(roomConfiguration)=>{
 		io.to(idGameRoom).emit('CONFIG_ROOM',roomConfiguration)

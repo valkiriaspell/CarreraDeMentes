@@ -50,7 +50,7 @@ function PreGameRoom({match}) {
             </button>
           </Link>
           <div className="logo">
-                <img width="200px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Fzooper-logo.png?alt=media&token=d211e20b-1313-420f-91a8-aa791a6aae3c"></img>
+                <img width="200px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Fzooper-logo.png?alt=media&token=d211e20b-1313-420f-91a8-aa791a6aae3c" alt="Logo"></img>
             </div>
           <AiFillSound style={{ width: "30px" }} />
         </div>

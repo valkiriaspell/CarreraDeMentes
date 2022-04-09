@@ -15,7 +15,11 @@ export const GET_READY_USER = 'GET_READY_USER'
 export const USER_TOKEN = 'USER_TOKEN'
 export const EDIT_ROOM = 'EDIT_ROOM'
 export const DELETE_ROOM = 'DELETE_ROOM'
+export const REMOVE_USER = 'REMOVE_USER'
+export const FAST_CHANGE_HOST_ROOM = 'FAST_CHANGE_HOST_ROOM'
+export const HOST_BY_ID = 'HOST_BY_ID'
 export const ALL_USERS = 'ALL_USERS'
+export const UPDATE_POINTS = 'UPDATE_POINTS'
 
 
 
@@ -56,6 +60,23 @@ export function loginUser(email){
     }
 }
 
+export const bannUser = (email)=> async ()=>{
+    try {
+        console.log(email)
+        const result = await axios.put(`http://localhost:3001/users/banner?email=${email}`)          
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const createAdmin = (user)=> async ()=>{
+    try {
+        const result = await axios.put(`http://localhost:3001/users/admin`, user)         
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export function allUsers(){
     return async function(dispatch){
         try{
@@ -77,6 +98,18 @@ export const updateUser = (userData)=> async ()=>{
     }
 }
 
+export function removeUser(users){
+    return function(dispatch){
+        dispatch({type:'REMOVE_USER', payload: users})
+    }
+}
+
+export function fastChangeHostRoom(email){
+    return function(dispatch){
+        dispatch({type:'FAST_CHANGE_HOST_ROOM', payload: email})
+    }
+}
+
 export function modifyHost(email, host){
     return async function(dispatch){
         try{
@@ -94,7 +127,7 @@ export function modifyHostById(id, host){
     return async function(dispatch){
         try{
             const {data} = await axios.put(`http://localhost:3001/users/?id=${id}&host=${host}`)
-            dispatch({type: 'HOST', payload: data})
+            dispatch({type: 'HOST_BY_ID', payload: data})
             return data
         }catch(e){
             console.log(e)
@@ -132,6 +165,7 @@ export function listUsersInPreRoom(IdRoom){
             const {data} = await axios.get(`http://localhost:3001/gameRoom/?idRoom=${IdRoom}`)
             console.log(data)
             dispatch({type: 'LIST_USERS_IN_PRE_ROOM', payload: data})
+            return data
         }catch(e) {
             console.log(e)
         }
@@ -217,6 +251,14 @@ export function userToken(token){
     return {
         type: USER_TOKEN,
         payload: token
+    }
+}
+
+
+export function changePoint({id, pointsTotal, point}) {
+    return {
+        type: UPDATE_POINTS,
+        payload: {id, pointsTotal, point}
     }
 }
 

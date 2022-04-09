@@ -23,6 +23,7 @@ router.get('/', async (req, res) => {
 // Vincilamos las tablas correspondientes con preguntas random
 router.post('/allQuestions', async (req, res) => {
 	try {
+		console.log('queestions', req.body)
 		const { count, category, idRoom } = req.body;
 		const [bool, msj] = await getQuestions(count, category, idRoom);
 		if (bool) {

@@ -3,62 +3,8 @@ import axios from "axios";
 import TimerGame from "./timeGame";
 import Animals from "../IMG/game.gif";
 import Swal from "sweetalert2";
-
-// let arrayQuestions = [
-//   {
-//     id: 190,
-//     question: "¿Cuál es el río más largo del mundo?",
-//     answer: "Nilo",
-//     false1: "Estigio",
-//     false2: "Amazonas",
-//     false3: "Yangtze",
-//     category: "Ciencias",
-//     image: "https://miro.medium.com/max/12000/1*7_uKivvq6-GH_eT1e714jw.jpeg",
-//   },
-//   {
-//     id: 191,
-//     question: "¿Quién ganó cuatro mundiales consecutivos de Fórmula 1?",
-//     answer: "Sebastián Vettel",
-//     false1: "Lewis Hamilton",
-//     false2: "Max Verstappen",
-//     false3: "Fernando Alonso",
-//     category: "Deportes",
-//     image:
-//       "https://amaxofilia.com/wp-content/uploads/2020/05/quien-gana-y-quien-pierde-con-el-cambio-de-reglas-en-la-f1-1280x720.jpg",
-//   },
-//   {
-//     id: 192,
-//     question: "¿A qué estilo corresponde la Catedral de Notre Dame de París?",
-//     answer: "Gótico",
-//     false1: "Barroco",
-//     false2: "Románico",
-//     false3: "Renacentista",
-//     category: "Arte",
-//     image: "https://static.dw.com/image/48695376_101.jpg",
-//   },
-//   {
-//     id: 193,
-//     question: "¿Cuál era la moneda utilizada en España antes del euro?",
-//     answer: "Pezeta",
-//     false1: "Dolar",
-//     false2: "Yen",
-//     false3: "Libra",
-//     category: "Historia",
-//     image:
-//       "https://larepublica.pe/resizer/5HAyXhfwk5vNuKq115r71XyPIwA=/1250x735/top/smart/arc-anglerfish-arc2-prod-gruporepublica.s3.amazonaws.com/public/RRP3OVWVKNBBZI43H3645PUYDI.jpg",
-//   },
-//   {
-//     id: 194,
-//     question: "¿Qué es el tomate para los botánicos?",
-//     answer: "Fruta",
-//     false1: "Verdura",
-//     false2: "Tuberculo",
-//     false3: "Hortaliza",
-//     category: "Ciencias",
-//     image:
-//       "https://s3-us-west-1.amazonaws.com/contentlab.studiod/getty/246623d990be42b7a60270fc0e188750.jpg",
-//   },
-// ];
+import { useSelector } from "react-redux";
+import useChatSocketIo from "../PRE-GAMEROOM/useSocketIo";
 
 async function getUrl(url) {
   return await axios
@@ -100,7 +46,11 @@ const config = [
   },
 ];
 
-function Game({ preRoomUsers }) {
+function Game() {
+  const elementRef = React.useRef(null);
+  const { preRoomUsers, user } = useSelector((state) => state);
+  const { positions } = useChatSocketIo(preRoomUsers?.id);
+
   // ======= QUESTIONS =======
   const [questions, setQuestions] = useState([]);
 
@@ -116,7 +66,7 @@ function Game({ preRoomUsers }) {
   let [points, setPoints] = useState(0);
 
   // ======= TIMER =======
-  const [seconds, setSeconds] = useState(config[0].time);
+  const [seconds, setSeconds] = useState(preRoomUsers?.time);
   const [percentage, setPercentage] = useState(100);
   const [active, setActive] = useState(true);
 
@@ -131,7 +81,7 @@ function Game({ preRoomUsers }) {
     setPercentage(100);
   }
   if (seconds <= 0) {
-    setSeconds(config[0].time);
+    setSeconds(preRoomUsers?.time);
   }
   useEffect(() => {
     let intervalo = null;
@@ -144,23 +94,22 @@ function Game({ preRoomUsers }) {
   //  ============================
 
   useEffect(() => {
-    getUrl("http://localhost:3001/question").then((res) => {
-      setQuestions(res.data);
-    });
+    setQuestions(preRoomUsers.questions);
+    console.log("Questionsssss" + questions);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setQuestions]);
+  }, [preRoomUsers.questions]);
 
- 
-
-  let secondsGame = config[0].time + "000";
+  let secondsGame = preRoomUsers?.time + "000";
   const startGame = () => {
-    setQ(questions[0].question);
-    setA(questions[0].answer);
-    setF1(questions[0].false1);
-    setF2(questions[0].false2);
-    setF3(questions[0].false3);
-    setCat(questions[0].category);
-    setActive(false)
+    console.log(preRoomUsers.questions);
+    setQ(preRoomUsers.questions[0].question);
+    setA(preRoomUsers.questions[0].answer);
+    setF1(preRoomUsers.questions[0].false1);
+    setF2(preRoomUsers.questions[0].false2);
+    setF3(preRoomUsers.questions[0].false3);
+    setCat(preRoomUsers.questions[0].category);
+    setActive(false);
+    setAnswerUser("");
 
     questions?.map((q, index) =>
       setTimeout(() => {
@@ -171,7 +120,7 @@ function Game({ preRoomUsers }) {
         setF3(q.false3);
         setCat(q.category);
         setImage(q.image);
-        setSeconds(config[0].time);
+        setSeconds(preRoomUsers?.time);
         setRespuestas(
           randomQuestions([
             { data: q.answer },
@@ -188,34 +137,48 @@ function Game({ preRoomUsers }) {
     setAnswerUser(q);
     if (answerUser !== "") {
       if (answerUser === answer) {
-        const pointsTotal = points + seconds;
+        let point = seconds;
+        const pointsTotal = points + point;
         setPoints(pointsTotal);
-        Swal.fire({
-          position: "top",
-          icon: "success",
-          title: "Acertaste",
-          heightAuto: false,
-          showConfirmButton: false,
-          width: 300,
-          timer: 1500,
-        });
-        console.log(points);
+        positions(user.id, pointsTotal, point);
       } else {
         console.log("Fallaste");
-        console.log(points);
       }
       setAnswerUser("");
     }
   }
+
+  // if(questions.length === 0){
+  //   Swal.fire({
+  //     title: 'El Juego termino!',
+  //     icon: 'warning',
+  //     showCancelButton: true,
+  //     confirmButtonColor: '#3085d6',
+  //     cancelButtonColor: '#d33',
+  //     confirmButtonText: 'Volver a Jugar!'
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       Swal.fire(
+  //         'Volver al Home!',
+  //         'Your file has been deleted.',
+  //         'success'
+  //       )
+  //     }
+  //   })
+  // }
 
   return (
     <div>
       {active === true ? (
         <div className="loadingGif">
           <img src={Animals} alt="Animals" width={300} />
+          {
+            user.host === true ? 
           <button className="buttonStart" onClick={startGame}>
-              START
-            </button>
+            START
+          </button>
+          : <h6>{`Esperando a que ${preRoomUsers.name} inicie la partida...`}</h6>
+          }
         </div>
       ) : (
         <div className="containerGame">
@@ -236,6 +199,7 @@ function Game({ preRoomUsers }) {
                   return (
                     <form key={index}>
                       <input
+                        ref={elementRef}
                         onClick={() => handlePoints(q.data)}
                         type="button"
                         value={q.data}

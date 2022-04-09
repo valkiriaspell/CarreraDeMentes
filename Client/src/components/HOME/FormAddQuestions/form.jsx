@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { newQuestion } from '../../../redux/actions';
 import { Link, useHistory } from 'react-router-dom'
 import "../../STYLES/form.css"
+import Swal from 'sweetalert2';
 
 export default function FormAddQuestions() {
     const dispatch = useDispatch();
     const history = useHistory();
     const autenticado = localStorage.getItem('token')
-    const email = localStorage.getItem('email')    
+    const email = localStorage.getItem('email')  
+    const { user } = useSelector(state => state);  
 
     //////////  ---->    Local states data   <------ //////////////
     const [question, setQuestion] = useState('');
@@ -31,6 +33,19 @@ export default function FormAddQuestions() {
 
     //necesito traer las categorias de forma real porque el admin podria crear nuevas categorias eventualmente
     let falseCategories = ["Musica", "Deportes", "Cine", "Arte", "Ciencias", "Geografia", "Historia"]
+
+    // Alerta si es GUEST
+    if(user.guest){
+        Swal.fire({
+            icon: "error",
+            title:
+              "Debes tener una cuenta para crear preguntas",
+            showConfirmButton: false,
+            heightAuto: false,
+            timer: 3000,
+          });
+        history.push('/home')
+    }
 
 
     //////////////// ---->    VALIDATIONS    <------ /////////////
