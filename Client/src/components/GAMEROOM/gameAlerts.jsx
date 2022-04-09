@@ -1,17 +1,15 @@
 import React from "react";
 
+function ChatGameRoom() {
 
-function ChatGameRoom(){
-    
-
-
+ 
     return (
-        <div className="containerChatGame">
-           <span>Valki ha acertado!</span>
-           <span>Edu ha acertado!</span>
-           <span>Nacho ha acertado!</span>
-        </div>
-    )
+      <div className="containerChatGame">
+        <span>Valki ha acertado!</span>
+        <span>Edu ha acertado!</span>
+        <span>Nacho ha acertado!</span>
+      </div>
+    );
 }
 
 export default ChatGameRoom;
