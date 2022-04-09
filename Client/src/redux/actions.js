@@ -16,6 +16,7 @@ export const USER_TOKEN = 'USER_TOKEN'
 export const EDIT_ROOM = 'EDIT_ROOM'
 export const DELETE_ROOM = 'DELETE_ROOM'
 export const ALL_USERS = 'ALL_USERS'
+export const UPDATE_POINTS = 'UPDATE_POINTS'
 
 
 
@@ -234,6 +235,14 @@ export function userToken(token){
     return {
         type: USER_TOKEN,
         payload: token
+    }
+}
+
+
+export function changePoint({id, pointsTotal, point}) {
+    return {
+        type: UPDATE_POINTS,
+        payload: {id, pointsTotal, point}
     }
 }
 

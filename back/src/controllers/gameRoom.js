@@ -19,7 +19,7 @@ const searchByPkGameRoom = async (id) => {
 			include: [
 				{
 					model: Users,
-					attributes: ['id', 'name', 'host'],
+					attributes: ['id', 'name', 'host', 'points'],
 					include: [Avatar],
 				},
 
