@@ -140,10 +140,9 @@ function Game() {
         let point = seconds;
         const pointsTotal = points + point;
         setPoints(pointsTotal);
-        positions(user.id, pointsTotal, point)
+        positions(user.id, pointsTotal, point);
       } else {
-        elementRef.current.style.color = "rgba(230, 231, 232, 0.539)";
-        elementRef.current.style.backgroundColor = "rgba(238, 71, 71, 0.71)";
+        console.log("Fallaste");
       }
       setAnswerUser("");
     }
@@ -173,9 +172,13 @@ function Game() {
       {active === true ? (
         <div className="loadingGif">
           <img src={Animals} alt="Animals" width={300} />
+          {
+            user.host === true ? 
           <button className="buttonStart" onClick={startGame}>
             START
           </button>
+          : <h6>{`Esperando a que ${preRoomUsers.name} inicie la partida...`}</h6>
+          }
         </div>
       ) : (
         <div className="containerGame">
