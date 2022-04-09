@@ -11,7 +11,7 @@ function GameRoom({ preRoomUsers }) {
     <div className="containerGameRoom">
       <ListPlayersRoom preRoomUsers={preRoomUsers}  />
       <Game />
-      <ChatGameRoom />
+      <ChatGameRoom preRoomUsers={preRoomUsers}/>
     </div>
   );
 }

@@ -16,7 +16,19 @@
 .contentVolver {
   display: flex;
   justify-content: start;
+  align-items: center;
   width: 370px;
+  margin-top: -1rem;
+}
+.contentVolver button{
+  top: -25px;
+  position: relative;
+}
+.contentVolver img {
+  position: relative;
+  top: 80px;
+  right: 20px;
+  margin-bottom: 2rem;
 }
 .contentReContraseña {
   display: flex;
@@ -25,7 +37,7 @@
   background-color: rgba(216, 221, 226, 0.212);
   margin-top: 6rem;
   width: 300px;
-  height: 270px;
+  height: 210px;
   border-radius: 0.4rem;
 }
 .imgProfile {
@@ -73,5 +85,8 @@
   }
   .contentVolver {
     width: 320px;
+  }
+  .contentVolver img {
+    right: 40px;
   }
 }

@@ -103,6 +103,10 @@
     padding: 2px;       
 }
 
+.vistaImagen{
+    margin-bottom: 8px;
+}
+/* ====== Conditions ====== */
 .terminos {
     height: 0px;
     font-size: 10px;

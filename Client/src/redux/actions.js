@@ -19,6 +19,7 @@ export const REMOVE_USER = 'REMOVE_USER'
 export const FAST_CHANGE_HOST_ROOM = 'FAST_CHANGE_HOST_ROOM'
 export const HOST_BY_ID = 'HOST_BY_ID'
 export const ALL_USERS = 'ALL_USERS'
+export const UPDATE_POINTS = 'UPDATE_POINTS'
 
 
 
@@ -233,6 +234,14 @@ export function userToken(token){
     return {
         type: USER_TOKEN,
         payload: token
+    }
+}
+
+
+export function changePoint({id, pointsTotal, point}) {
+    return {
+        type: UPDATE_POINTS,
+        payload: {id, pointsTotal, point}
     }
 }
 
