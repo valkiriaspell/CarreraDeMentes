@@ -27,9 +27,9 @@ const EditRoom = ({idUser}) =>{
                         user.host === true
                             ?
                             <select name="time"  onChange={e => handleChange(e)}>
-                                <option value={15}>15</option>
-                                <option value={20}>20</option>
                                 <option value={25}>25</option>
+                                <option value={20}>20</option>
+                                <option value={15}>15</option>
                             </select>
                             : <div>{roomConfiguration.time}</div>
                     }
@@ -41,13 +41,13 @@ const EditRoom = ({idUser}) =>{
                             ?
                             <select name="category"  onChange={e => handleChange(e)}>
                                 <option value="">Ninguna</option>
-                                <option value="sports">Deportes</option>
-                                <option value="music">Música</option>
-                                <option value="history">Historia</option>
-                                <option value="science">Ciencia</option>
-                                <option value="art">Arte</option>
-                                <option value="movies">Cine</option>
-                                <option value="geography">Geografía</option>
+                                <option value="Deporte">Deporte</option>
+                                <option value="Musica">Musica</option>
+                                <option value="Historia">Historia</option>
+                                <option value="Ciencias">Ciencias</option>
+                                <option value="Arte">Arte</option>
+                                <option value="Cine">Cine</option>
+                                <option value="Geografia">Geografia</option>
                             </select>
                             : <div>{roomConfiguration.category}</div>
                     }

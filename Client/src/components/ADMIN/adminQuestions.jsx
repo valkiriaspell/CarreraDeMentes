@@ -13,13 +13,14 @@ export default function AdminQuestions() {
     const dispatch = useDispatch();
     const history = useHistory();
     const [preguntasID, setPreguntas] = useState([])
+    const [category, setCategory] = useState("")
 
 
     useEffect(() => {
         dispatch(getNewQuestions())
     }, [])
     
-    const { newQuestions } = useSelector(state => state)
+    let { newQuestions } = useSelector(state => state)
     console.log("nuevasP", newQuestions)
 
     ///////////---->>> Functions  <<<----///////////
@@ -110,13 +111,28 @@ export default function AdminQuestions() {
         document.location.reload(true)
     }
 
+    function handleCategory(e) {
+        setCategory(e.target.value)
+    }
+
+    if (category && category !== "") {
+        newQuestions = newQuestions.filter(d => d.category.toLowerCase().includes(category.toLowerCase()))
+    }
+
     return (
         <div className='containerAdmin'>
             <div className='barraSobreQuestions'>
                 <h6>Preguntas seleccionadas: {preguntasID.length}</h6>
                 <button className='botonesBarra' onClick={() => acceptQuestions()}>Aceptar</button>
                 <button className='botonesBarra' onClick={() => rejectQuestions()}>Rechazar</button>
-                <button className='botonesBarra' onClick={(e) => refresh(e)}><GrUpdate color="white"/></button>
+                <div><label>Filtrar por</label><select className="BuscadorUsers" onChange={(e) => handleCategory(e)} placeholder="Categoria" name="" id="">
+              <option value="">Categoria</option>
+              <option value="Historia">Historia</option>
+              <option value="Cine">Cine</option>
+              <option value="Deportes">Deportes</option>
+              <option value="Musica">Musica</option>
+            </select></div>
+                <button className='botonesBarra' id="refresh" onClick={(e) => refresh(e)}><GrUpdate /></button>
                 <button className='botonesBarra' onClick={(e) => darkTheme(e)}><CgDarkMode /></button>
             </div>
             <div className='adminQuestions'>
