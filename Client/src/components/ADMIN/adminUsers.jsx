@@ -3,21 +3,26 @@ import { CgDarkMode } from "react-icons/cg";
 import "../STYLES/admin.css"
 import Swal from "sweetalert2";
 import { GrRefresh, GrUpdate } from "react-icons/gr";
-import { allUsers } from '../../redux/actions';
+import { allUsers, bannUser, createAdmin } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
+import { RiGradienterLine } from "react-icons/ri";
+
+
 
 
 export default function AdminUsers() {
-    
+
     const dispatch = useDispatch();
-    const [selectedUsers, setUsers] = useState([])
+    const [selectedUser, setUser] = useState("")
+    const [action, setAction] = useState("crear")
+    const [search, setSearch] = useState("")
 
     useEffect(() => {
-    dispatch(allUsers())
+        dispatch(allUsers())
     }, [])
 
-    const { totalUsers } = useSelector(state => state)
-    
+    let { totalUsers } = useSelector(state => state)
+
 
     function refresh() {
         document.location.reload(true)
@@ -38,18 +43,14 @@ export default function AdminUsers() {
         }
     }
 
-    function handleChecks(e) {
-        if (!selectedUsers.includes(e.target.value)) {
-            setUsers([...selectedUsers, e.target.value])
-        } else {
-            let newUsers = selectedUsers.filter(p => p !== e.target.value)
-            setUsers(newUsers)
-        }
+    function handleCheck(e) {
+        setUser(e.target.value)
+        console.log(e.target.value)
     }
 
-    function bannUser () {
+    function bannUser() {
         Swal.fire({
-            title: `Estos usuarios no podrán acceder a sus cuentas por 72 hs.¿Dese continuar?`,
+            title: `Este usuario no podrá acceder a su cuenta por 72 hs.¿Desea continuar?`,
             icon: "warning",
             showDenyButton: true,
             backdrop: `
@@ -61,59 +62,105 @@ export default function AdminUsers() {
             denyButtonText: "Cancelar",
         }).then((result) => {
             if (result.isConfirmed) {
-                // const accept = "accept"
-                // preguntasID.forEach(p => dispatch(handleQuestion(p, accept)))
                 Swal.fire({
-                    title: 'La función aún no está lista',
+                    title: `El usuario cuyo mail es ${selectedUser} ha sido sancionado`,
                     confirmButtonText: "Ok"
                 }).then((result) => {
                     if (result.isConfirmed) {
+                        dispatch(bannUser(selectedUser));
                         document.location.reload(true)
                     }
-
                 })
             }
         })
     }
-
-    function createAdmin () {
-        Swal.fire({
-            title: `Estos usuarios tendrán permiso de 'Administrador'`,
-            icon: "warning",
-            showDenyButton: true,
-            backdrop: `
-                    rgba(0,0,123,0.4)
-                    left top
-                    no-repeat
-                  `,
-            confirmButtonText: "Aceptar",
-            denyButtonText: "Cancelar",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // const accept = "accept"
-                // preguntasID.forEach(p => dispatch(handleQuestion(p, accept)))
-                Swal.fire({
-                    title: 'La función aún no está lista',
-                    confirmButtonText: "Ok"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        document.location.reload(true)
-                    }
-
-                })
-            }
-        })
-    
-
+    function actions(e) {
+        setAction(e.target.value)
     }
+    function handleSearch(e) {
+        setSearch(e.target.value)
+    }
+
+    function handleAdmin(e) {
+        if (action === "crear") {
+            Swal.fire({
+                title: `Este usuario tendrá acceso como 'Administrador'`,
+                icon: "warning",
+                showDenyButton: true,
+                backdrop: `
+                rgba(0,0,123,0.4)
+                left top
+                no-repeat
+                `,
+                confirmButtonText: "Aceptar",
+                denyButtonText: "Cancelar",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    dispatch(createAdmin({ email: selectedUser, admin: "admin" }));
+                    Swal.fire({
+                        title: `El usuario cuyo mail es ${selectedUser} es ahora Administrador`,
+                        confirmButtonText: "Ok"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            document.location.reload(true)
+                        }
+
+                    })
+                }
+            })
+        } else {
+            Swal.fire({
+                title: `Este usuario dejará de ser 'Administrador'`,
+                icon: "warning",
+                showDenyButton: true,
+                backdrop: `
+                rgba(0,0,123,0.4)
+                left top
+                no-repeat
+                `,
+                confirmButtonText: "Aceptar",
+                denyButtonText: "Cancelar",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    dispatch(createAdmin({ email: selectedUser, admin: "normal" }))
+                    Swal.fire({
+                        title: `El usuario cuyo mail es ${selectedUser} ya no es Administrador`,
+                        confirmButtonText: "Ok"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            document.location.reload(true)
+                        }
+                    })
+                }
+            })
+        }
+    }
+
+    if (search && search !== "") {
+        totalUsers = totalUsers.filter(d => d.name.toLowerCase().includes(search.toLowerCase()))
+    }
+
 
     return (
         <div className='containerAdmin'>
             <div className='barraSobreQuestions'>
-                <h6>Usuarios seleccionados: {selectedUsers.length}</h6>
-                <button className='botonesBarra' onClick={() => createAdmin()}>Crear Admin</button>
+                <div className='handleAdmin'>
+                    <select className='botonesBarra' onChange={(e) => actions(e)}>
+                        <option key={1} value="crear">Crear Admin </option>
+                        <option key={2} value="deshacer">Deshacer Admin </option>
+                    </select>
+                    <button className='botonesBarra' value="go" onClick={(e) => handleAdmin(e)}><RiGradienterLine /></button>
+                </div>
                 <button className='botonesBarra' onClick={() => bannUser()}>Sancionar</button>
-                <button className='botonesBarra' onClick={(e) => refresh(e)}><GrUpdate color="white"/></button>
+
+                <input
+                    className="BuscadorUsers"
+                    type="text"
+                    placeholder="Buscar por nombre..."
+                    value={search}
+                    onChange={handleSearch}
+                />
+                <button className='botonesBarra' onClick={(e) => refresh(e)}><GrUpdate color="white" /></button>
                 <button className='botonesBarra' onClick={(e) => darkTheme(e)}><CgDarkMode /></button>
             </div>
             <div className='adminQuestions'>
@@ -124,17 +171,17 @@ export default function AdminUsers() {
                             <th>Email</th>
                             <th>Nombre</th>
                             <th>Nivel</th>
-                            <th>Monedas</th>                           
-                            <th>Categoria</th>                           
+                            <th>Monedas</th>
+                            <th>Categoria</th>
                         </tr>
                         {totalUsers?.map(q =>
-                            <tr key={q.id}>
-                                <th><input type="checkbox" id="check" value={q.id} onClick={(e) => handleChecks(e)} /></th>                                
+                            <tr key={q.email}>
+                                <th><input type="radio" id={q.email} name="radiob" value={q.email} onClick={(e) => handleCheck(e)} /></th>
                                 <th>{q.email}</th>
                                 <th>{q.name}</th>
-                                <th>{q.level}</th>                            
-                                <th>{q.coins}</th>                                                            
-                                <th>{q.admin}</th>                                                            
+                                <th>{q.level}</th>
+                                <th>{q.coins}</th>
+                                <th>{q.admin}</th>
                             </tr>)}
                     </tbody>
                 </table>
