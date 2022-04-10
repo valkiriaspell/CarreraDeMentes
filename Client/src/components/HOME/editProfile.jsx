@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { updateUser } from '../../redux/actions';
 import { Link, useHistory } from 'react-router-dom'
 import { getAvatars, updateUser } from '../../redux/actions';
-import Avatars from '../AVATARS/avatars.jsx';
-
+import Avatars from '../AVATARS/avatars';
+import "../STYLES/form.css"
+import Swal from 'sweetalert2';
 
 
 export default function EditProfile() {
@@ -28,7 +29,17 @@ export default function EditProfile() {
         dispatch(getAvatars())        
     }, [])
     
-    
+    if(user.guest){
+        Swal.fire({
+            icon: "error",
+            title:
+              "Debes tener una cuenta para editar tu perfil",
+            showConfirmButton: false,
+            heightAuto: false,
+            timer: 3000,
+          });
+        history.push('/home')
+    }
 
     
     //////////////// ---->    VALIDATIONS    <------ /////////////

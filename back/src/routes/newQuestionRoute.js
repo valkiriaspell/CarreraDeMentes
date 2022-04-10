@@ -27,7 +27,7 @@ router.get('/', async function (req, res) {
 })
 
 router.delete('/', async function (req, res) {
-    const { id } = req.body
+    const { id } = req.query
     try {
         const deleteQuestion = await deleteNewQuestion(id)
         res.status(200).json(deleteQuestion)
@@ -38,7 +38,7 @@ router.delete('/', async function (req, res) {
 })
 
 router.put('/', async function (req, res) {
-    const { id } = req.body
+    const { id } = req.query
     try {
         const updateQuestion = await aceptedNewQuestion(id)
         res.status(200).json(updateQuestion)

@@ -11,7 +11,7 @@ import Facebook from "../../IMG/facebook.png";
 import Contraseña from "../../IMG/unlock.png";
 import Email from "../../IMG/email.png";
 import Arrow from "../../IMG/arrow.png";
-import Perfil from "../../IMG/user.png";
+import Perfil from "../../IMG/users.png";
 import { useDispatch } from "react-redux";
 import { loginUser, registerUser, userToken } from "../../../redux/actions";
 import Swal from "sweetalert2";
@@ -156,6 +156,9 @@ function Login() {
 
   return (
     <div className="containerLogin">
+        <div className="logo">
+                <img width="220px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Fzooper-logo.png?alt=media&token=d211e20b-1313-420f-91a8-aa791a6aae3c" alt="Logo"></img>
+            </div>
       <div className="contentLogin">
         <form onSubmit={handleLogin}>
           <div className="imgUser">

@@ -86,5 +86,9 @@ module.exports = (sequelize) => {
 			type: DataTypes.BOOLEAN,
 			defaultValue: false,
 		},
+		points: {
+			type: DataTypes.INTEGER,
+			defaultValue: 0,
+		},
 	});
 };

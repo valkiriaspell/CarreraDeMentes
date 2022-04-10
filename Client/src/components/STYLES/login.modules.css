@@ -9,6 +9,7 @@
   margin-right: auto;
   border-radius: 0.4rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -19,7 +20,7 @@
   flex-direction: column;
   align-items: center;
   background-color: rgba(216, 221, 226, 0.212);
-  margin-top: 8rem;
+  margin-top: 2rem;
   width: 350px;
   height: 450px;
   border-radius: 0.4rem;
@@ -36,7 +37,7 @@
   text-decoration: none;
 }
 .imgUser {
-  top: -90px;
+  top: -85px;
   position: relative;
   margin: auto;
   background-color: rgba(185, 193, 202, 0.58);

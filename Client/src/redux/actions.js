@@ -10,23 +10,51 @@ export const CREATE_ROOM = 'CREATE_ROOM'
 export const GET_AVATARS = 'GET_AVATARS'
 export const LIST_ROOMS = 'LIST_ROOMS'
 export const CHANGE_READY = 'CHANGE_READY'
-export const GET_QUESTIONS = 'GET_QUESTIONS'
+export const GET_NEW_QUESTIONS = 'GET_NEW_QUESTIONS'
+export const GET_ALL_QUESTIONS = 'GET_ALL_QUESTIONS'
 export const GET_READY_USER = 'GET_READY_USER'
 export const USER_TOKEN = 'USER_TOKEN'
 export const EDIT_ROOM = 'EDIT_ROOM'
 export const DELETE_ROOM = 'DELETE_ROOM'
+export const REMOVE_USER = 'REMOVE_USER'
+export const FAST_CHANGE_HOST_ROOM = 'FAST_CHANGE_HOST_ROOM'
+export const HOST_BY_ID = 'HOST_BY_ID'
+export const ALL_USERS = 'ALL_USERS'
+export const UPDATE_POINTS = 'UPDATE_POINTS'
+export const FAST_REMOVE = 'FAST_REMOVE'
 
 
 
+export function getAllQuestions() {
+    return async function (dispatch) {
+        try {
+            const { data } = await axios.get(`http://localhost:3001/question`)
+            dispatch({ type: GET_ALL_QUESTIONS, payload: data })
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
 
-export function loginAsGuest(guest){
-    return async function(dispatch){
-        try{
-            const test = await axios.post('/users', guest)
-            dispatch({type: 'LOGIN_USER_GUEST', payload: test.data})
+
+export function modifyQuestion(dataQuestion) {
+    return async function () {
+        try {
+            const { data } = await axios.put(`http://localhost:3001/question`, dataQuestion)           
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
+
+export function loginAsGuest(guest) {
+    return async function (dispatch) {
+        try {
+            const test = await axios.post('http://localhost:3001/users', guest)
+            dispatch({ type: 'LOGIN_USER_GUEST', payload: test.data })
             console.log(test.data)
             return test.data
-        }catch(e) {
+        } catch (e) {
             console.log(e)
         }
     }
@@ -48,65 +76,111 @@ export function loginUser(email){
         try{
             const {data} = await axios.get(`/users?email=${email}`)
             console.log(data)
-            dispatch({type: 'LOGIN', payload: data})
+            dispatch({ type: 'LOGIN', payload: data })
             return data
-        }catch(e) {
+        } catch (e) {
             console.log(e)
         }
     }
 }
 
-export const updateUser = (userData)=> async ()=>{
+export const bannUser = (email) => async () => {
     try {
-        const result = await axios.put(`/users`, userData)  
+        console.log(email)
+        const result = await axios.put(`http://localhost:3001/users/banner?email=${email}`)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const createAdmin = (user) => async () => {
+    try {
+        const result = await axios.put(`http://localhost:3001/users/admin`, user)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export function allUsers() {
+    return async function (dispatch) {
+        try {
+            const { data } = await axios.get(`http://localhost:3001/users`)
+            dispatch({ type: 'ALL_USERS', payload: data })
+            return data
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
+
+export const updateUser = (userData) => async () => {
+    try {
+        const result = await axios.put(`http://localhost:3001/users`, userData)
         console.log(result)
     } catch (error) {
         console.log(error)
     }
 }
 
-export const addCoins = ()=> async ()=>{
-    try {
-        const result = await axios.post(`/coins`)          
-    } catch (error) {
-        console.log(error)
+export function removeUser(users) {
+    return function (dispatch) {
+        dispatch({ type: 'REMOVE_USER', payload: users })
     }
 }
 
-export function modifyHost(email, host){
-    return async function(dispatch){
-        try{
-            const {data} = await axios.put(`/users/?email=${email}&host=${host}`)
-            dispatch({type: 'HOST', payload: data})
+export function fastChangeHostRoom(email) {
+    return function (dispatch) {
+        dispatch({ type: 'FAST_CHANGE_HOST_ROOM', payload: email })
+    }
+}
+
+export function modifyHost(email, host) {
+    return async function (dispatch) {
+        try {
+            const { data } = await axios.put(`http://localhost:3001/users/?email=${email}&host=${host}`)
+            dispatch({ type: 'HOST', payload: data })
             return data
-        }catch(e){
+        } catch (e) {
             console.log(e)
         }
-        
+
     }
 }
 
-export function createRoom(user){
-    return async function(dispatch){
-        try{
-            const {data} = await axios.post('/gameRoom', {name: user.name, idUser: user.id, currentAvatar: user.currentAvatar})
+export function modifyHostById(id, host) {
+    return async function (dispatch) {
+        try {
+            const { data } = await axios.put(`http://localhost:3001/users/?id=${id}&host=${host}`)
+            dispatch({ type: 'HOST_BY_ID', payload: data })
+            return data
+        } catch (e) {
+            console.log(e)
+        }
+
+    }
+}
+
+export function createRoom(user) {
+    return async function (dispatch) {
+        try {
+            const { data } = await axios.post('http://localhost:3001/gameRoom', { name: user.name, idUser: user.id, avatar: user?.avatars?.[0]?.imageUrl })
             console.log(data)
-            dispatch({type: 'CREATE_ROOM', payload: data})
+            dispatch({ type: 'CREATE_ROOM', payload: data })
             return data
-        }catch(e) {
+        } catch (e) {
             console.log(e)
         }
     }
 }
 
-export const getAvatars = ()=> async (dispatch)=>{
+export const getAvatars = () => async (dispatch) => {
     try {
         const result = await axios.get(`/avatar`)
         dispatch({type: GET_AVATARS, payload: result.data}) 
     } catch (error) {
         console.log(error)
     }
-} 
+}
 
 //arreglar en back
 export function listUsersInPreRoom(IdRoom){
@@ -114,71 +188,107 @@ export function listUsersInPreRoom(IdRoom){
         try{
             const {data} = await axios.get(`/gameRoom/?idRoom=${IdRoom}`)
             console.log(data)
-            dispatch({type: 'LIST_USERS_IN_PRE_ROOM', payload: data})
-        }catch(e) {
+            dispatch({ type: 'LIST_USERS_IN_PRE_ROOM', payload: data })
+            return data
+        } catch (e) {
             console.log(e)
         }
     }
 }
 
-export function getReadyUser(id){
-    return async function(dispatch){ // me traigo el id y ready(un bolean)
-        try{ 
-            const {data} = await axios.get(`/users/ready/?id=${id}`)
-            dispatch({type: 'GET_READY_USER', payload: data})
-        }catch(e) {
-            console.log(e) 
-        }
-    }
-}
-
-export function listAllRooms(){
-    return async function(dispatch){
-        try{
-            const {data} = await axios.get('/gameRoom')
-            dispatch({type: 'LIST_ROOMS', payload: data})
-        }catch(e) {
+export function getReadyUser(id) {
+    return async function (dispatch) { // me traigo el id y ready(un bolean)
+        try {
+            const { data } = await axios.get(`http://localhost:3001/users/ready/?id=${id}`)
+            dispatch({ type: 'GET_READY_USER', payload: data })
+        } catch (e) {
             console.log(e)
         }
     }
 }
 
-export function editRoom({idRoom, public_, questions}){
-    return async function(dispatch){
-        try{
-            const {data} = await axios.put('/gameRoom', {idRoom, public_, questions})
-            dispatch({type: 'EDIT_ROOM', payload: data})
-        }catch(e) {
+export function listAllRooms() {
+    return async function (dispatch) {
+        try {
+            const { data } = await axios.get('http://localhost:3001/gameRoom')
+            dispatch({ type: 'LIST_ROOMS', payload: data })
+        } catch (e) {
             console.log(e)
         }
     }
 }
 
-export function newQuestion(question){
-    return async function(){
-        try{
-            const data = await axios.post('/newQuestion',question)
-            
-        }catch(e) {
+export function editRoom({ idRoom, public_, questions }) {
+    return async function (dispatch) {
+        try {
+            const { data } = await axios.put('http://localhost:3001/gameRoom', { idRoom, public_, questions })
+            dispatch({ type: 'EDIT_ROOM', payload: data })
+        } catch (e) {
             console.log(e)
         }
     }
 }
 
-export function getNewQuestions(){
-    return async function(dispatch){
-        try{
-            const {data} = await axios.get('/newQuestion')
-            dispatch({type: GET_QUESTIONS , payload: data})
-        }catch(e) {
+export function newQuestion(question) {
+    return async function () {
+        try {
+            const data = await axios.post('http://localhost:3001/newQuestion', question)
+
+        } catch (e) {
             console.log(e)
         }
     }
 }
 
-export function userToken(token){
+export function getNewQuestions() {
+    return async function (dispatch) {
+        try {
+            const { data } = await axios.get('http://localhost:3001/newQuestion')
+            dispatch({ type: GET_NEW_QUESTIONS, payload: data })
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
+
+export function handleQuestion(id, condition) {
+
+    return async function () {
+        try {
+            if (condition === "accept") {
+                console.log(id, "id en action", condition, "condicion")
+                const { data } = await axios.put(`http://localhost:3001/newQuestion/?id=${id}`)
+
+            } else {
+
+                const { data } = await axios.delete(`http://localhost:3001/newQuestion/?id=${id}`)
+            }
+
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
+
+export function userToken(token) {
     return {
         type: USER_TOKEN,
         payload: token
     }
 }
+
+export function fastRemove(id){
+    return {
+        type: FAST_REMOVE,
+        payload: id
+    }
+}
+
+
+export function changePoint({ id, pointsTotal, point }) {
+    return {
+        type: UPDATE_POINTS,
+        payload: { id, pointsTotal, point }
+    }
+}
+

@@ -5,6 +5,7 @@ import Monedas from "../IMG/coin.png"
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../redux/actions';
+import Swal from 'sweetalert2';
 
 function UserCard({location}) {
   const {user} = useSelector(state => state);
@@ -17,7 +18,14 @@ function UserCard({location}) {
       if(location.search !== ''){
         const respuesta = await axios.post(`/mercadopago${location.search}`, {email: email});
         dispatch(loginUser(email))
-        alert(respuesta.data.mensaje)
+        Swal.fire({
+          icon: `${respuesta.data.icon}`,
+          title:
+            `${respuesta.data.mensaje}`,
+          showConfirmButton: false,
+          heightAuto: false,
+          timer: 3000,
+        });
       }  
     }())
   } , [location])
