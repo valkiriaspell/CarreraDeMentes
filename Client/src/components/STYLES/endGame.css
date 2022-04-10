@@ -1,0 +1,36 @@
+.cointainerEG {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: visible;
+}
+
+.scoreTable {
+    margin: 70px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.479);
+    width: 650px;
+    height: 840px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    border-radius: 20px;
+}
+
+.scoreTable::before {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 140px;
+    background: linear-gradient(#015aa4, #fe146a);
+}
+.scoreTable::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background:rgb(0, 0, 0);
+    border-radius: 20px;
+}
