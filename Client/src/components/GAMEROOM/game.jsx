@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import TimerGame from "./timeGame";
 import Animals from "../IMG/game.gif";
-import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
 import useChatSocketIo from "../PRE-GAMEROOM/useSocketIo";
 

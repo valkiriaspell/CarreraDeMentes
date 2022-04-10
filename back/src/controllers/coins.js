@@ -1,4 +1,5 @@
 const { Coins } = require("../db");
+const coinsInicial = require('../Coins.json')
 
 // Agregar un coins
 exports.addCoins = async ({ coins, url }) => {
@@ -39,6 +40,23 @@ exports.addInitServerMultCoins = async (array) => {
 
     } catch (e) {
 
+    }
+}
+
+const coinsInicialDeploy = async () => {
+    try {
+        const dataCoins = JSON.parse(JSON.stringify(coinsInicial));
+    
+        dataCoins.map(obj => {
+            await Coins.findOrCreate({
+                where: { coins: obj.coins },
+                defaults: { ...obj }
+            })
+        }) 
+        return [true, "Creados: " + dataCoins.length]
+
+    } catch (error) {
+        console.log(error)
     }
 }
 
@@ -93,3 +111,7 @@ const orederMinMaxRanting = (a, b) => {
     if (b.coins > a.coins) return -1;
     return 0;
 };
+
+module.exports = {
+    coinsInicialDeploy
+}

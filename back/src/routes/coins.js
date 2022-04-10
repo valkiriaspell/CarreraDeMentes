@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 module.exports = router;
 const coinsJeson = require("../Coins.json");
-const { addCoins, addMultCoins, addInitServerMultCoins, getAllMinMaxCoins, updateCoins, deleteCoins } = require("../controllers/coins")
+
+const { addMultCoins, addInitServerMultCoins, getAllMinMaxCoins, updateCoins, deleteCoins, addCoins } = require("../controllers/coins")
 
 // Buscar todas los coins
 router.get("/", async (_req, res) => {
