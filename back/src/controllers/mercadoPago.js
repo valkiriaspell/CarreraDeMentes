@@ -19,9 +19,9 @@ const crearLinkPago = async (req, res) => {
             },
             external_reference : external_reference, //Referencia para saber cual es el monto del pedido a ingresar en la bd una vez aprobado el pago
             back_urls: {
-                "success": "'http://localhost:3000'/home", //Si todo sale bien volvemos acá
-                "failure": "'http://localhost:3000'/home", // Si hay algún error volvemos acá
-                "pending": "'http://localhost:3000'/home" // Si esta pendiente volvemos acá
+                "success": "http://localhost:3000/home", //Si todo sale bien volvemos acá
+                "failure": "http://localhost:3000/home", // Si hay algún error volvemos acá
+                "pending": "http://localhost:3000/home" // Si esta pendiente volvemos acá
             },
             payment_methods: {
                 "excluded_payment_types": [
