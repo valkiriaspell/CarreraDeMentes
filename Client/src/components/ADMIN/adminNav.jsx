@@ -34,7 +34,7 @@ export default function AdminNav() {
                     <><h6>¡Hola {email === "triviamastergrupo7@gmail.com" ? "Super Admin" : "Admin"}!</h6></>
                 </div>
                 <NavLink exact to="/adminHome/questions" className={splitLocation[2] === "questions" ? "linkSelected" : "btn draw-border"}   > Revisión de Preguntas </NavLink>
-                <NavLink exact to="/adminHome/currentQuestions" className={splitLocation[2] === "questions" ? "linkSelected" : "btn draw-border"}   > Lista de Preguntas </NavLink>
+                <NavLink exact to="/adminHome/currentQuestions" className={splitLocation[2] === "currentQuestions" ? "linkSelected" : "btn draw-border"}   > Lista de Preguntas </NavLink>
                 {email === "triviamastergrupo7@gmail.com" ?
                     <NavLink exact to='/adminHome/users' className={splitLocation[2] === "users" ? "linkSelected" : "btn draw-border"} > Lista de Usuarios </NavLink>
                     : null}

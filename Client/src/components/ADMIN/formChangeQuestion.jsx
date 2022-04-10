@@ -1,54 +1,37 @@
-import React, { useState } from 'react';
+
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { newQuestion } from '../../../redux/actions';
-import { Link, useHistory } from 'react-router-dom'
-import "../../STYLES/form.css"
-import Swal from 'sweetalert2';
+import { modifyQuestion } from '../../redux/actions';
 
-export default function FormAddQuestions() {
-    const dispatch = useDispatch();
-    const history = useHistory();
-    const autenticado = localStorage.getItem('token')
-    const email = localStorage.getItem('email')  
-    const { user } = useSelector(state => state);  
+export default function ChangeQuestion({selectedQuestion, setShowForm, refresh}) {
+    const dispatch = useDispatch();    
+    let allQuestions = useSelector(state => state.questions)
+    
+    const quest = allQuestions.find(q => q.id == selectedQuestion)
 
-    //////////  ---->    Local states data   <------ //////////////
-    const [question, setQuestion] = useState('');
-    const [category, setCategory] = useState('');
-    const [answer, setAnswer] = useState("");
-    const [false1, setF1] = useState("");
-    const [false2, setF2] = useState("");
-    const [false3, setF3] = useState("");
-    const [image, setImg] = useState("");
-    const [msg, setMSG] = useState("");
-    const [terminos, setTerminos] = useState(false);
+ 
 
-    //////////  ---->    Local states errors   <------ //////////////
+     //////////  ---->    Local states data   <------ //////////////
+     const [question, setQuestion] = useState(quest.question);
+     const [category, setCategory] = useState(quest.category);
+     const [answer, setAnswer] = useState(quest.answer);
+     const [false1, setF1] = useState(quest.false1);
+     const [false2, setF2] = useState(quest.false2);
+     const [false3, setF3] = useState(quest.false3);
+     const [image, setImg] = useState(quest.image);
+     const [msg, setMSG] = useState("");
+    
+
+     
+
+      //////////  ---->    Local states errors   <------ //////////////
     const [errorQuestion, setErrorQ] = useState("")
     const [errorAnswer, setErrorA] = useState("")
     const [errorImage, setErrorImage] = useState("")
     const [errorTotal, setErrorTotal] = useState("")
-
-    /////////  ---->    Store states    <------ //////////////
-
-    //necesito traer las categorias de forma real porque el admin podria crear nuevas categorias eventualmente
+    
     let falseCategories = ["Musica", "Deporte", "Cine", "Arte", "Ciencias", "Geografia", "Historia"]
-
-    // Alerta si es GUEST
-    if(user.guest){
-        Swal.fire({
-            icon: "error",
-            title:
-              "Debes tener una cuenta para crear preguntas",
-            showConfirmButton: false,
-            heightAuto: false,
-            timer: 3000,
-          });
-        history.push('/home')
-    }
-
-
-    //////////////// ---->    VALIDATIONS    <------ /////////////
+     //////////////// ---->    VALIDATIONS    <------ /////////////
 
     function validation(e) {
 
@@ -59,9 +42,9 @@ export default function FormAddQuestions() {
                     setQuestion(e.target.value);
                     setErrorQ("Colocar signos ¿? correctamente")
 
-                } else if (e.target.value.length > 60) {
+                } else if (e.target.value.length > 90) {
                     setQuestion(e.target.value);
-                    setErrorQ("Máximo 60 carácteres")
+                    setErrorQ("Máximo 90 carácteres")
                 } else {
                     setQuestion(e.target.value);
                     setErrorQ("")
@@ -116,33 +99,14 @@ export default function FormAddQuestions() {
             default:
                 console.log("default");
         }
-        
-        
     }
-
-    function conditions(e) {
-        e.preventDefault()
-        let [terminos] = document.getElementsByClassName("terminos")
-        console.log(terminos, "terminos")      
-        if(terminos.classList.contains('desplegado')){
-            terminos.style.height='0px'
-            terminos.classList.remove('desplegado')
-        }else{
-            terminos.classList.add('desplegado')
-            terminos.style.height='80px'
-        }  
-    }
-
-    function handleTerms() {
-        terminos ? setTerminos(false) : setTerminos(true)
-    }
+//////////////// ---->    FUNCTIONS   <------ /////////////
     function handleCategory(e) {
         setCategory(e.target.value)
     }
-
-   
-    //////////  ---->    on Submit   <------ //////////////
-    const onSubmit = (e) => {
+  
+     //////////  ---->    on Submit   <------ //////////////
+     const onSubmit = (e) => {
         e.preventDefault()
         //////////////// ---->    NO EMPTY ANSWERS   <------ /////////////
         !question || !answer || !false1 || !false2 || !false3 || !image ? setErrorTotal("Completar formulario") : setErrorTotal("")
@@ -164,31 +128,31 @@ export default function FormAddQuestions() {
                 
             } else {
                 setErrorA("")
-                setMSG("Tu pregunta fue enviada para validación")                
-                dispatch(newQuestion({
-                    question,
-                    category,               
-                    answer,
-                    false1,
-                    false2,            
-                    false3,            
-                    image,
-                    email
-                }))
-                setQuestion("")
-                setAnswer("")
-                setF1("")
-                setF2("")
-                setF3("")
-                setImg("")
-                setTimeout(() => {setMSG("")}, 2300);
+                setMSG("La pregunta fue modificada")                
+                dispatch(modifyQuestion({
+                    id: quest.id,
+			question,
+			answer,
+			false1,
+			false2,
+			false3,
+			category,
+			image
+		}))                
+                setTimeout(() => {
+                    setShowForm(false)
+                    refresh()
+                }, 3000);
             }
         }
     }
-
-    if (autenticado) {
-        return (
+       
+    
+    return (
+        <div>
             <div className='form'>
+            <button className='botonesBarra' id="refresh" onClick={(e) => refresh(e)}>Cancelar</button>
+            <span>Estás modificando la pregunta ID {selectedQuestion}</span>...
                 <form onSubmit={onSubmit}>
                     <h3>Crear nueva pregunta</h3>
                     <div className='formName'>
@@ -250,35 +214,14 @@ export default function FormAddQuestions() {
                     </div>
                     {errorAnswer ? <p className='error'>{errorAnswer}</p> : null}
                     {errorTotal ? <p className='error'>{errorTotal}</p> : null}
-                    <div className='FormSubmit' >
-
-                        <div className='checkbox'><input type="checkbox" id="check" value={terminos} onClick={() => handleTerms()} />
-                            <label>
-                                He leído y acepto las <button onClick={(e) => conditions(e)}>condiciones</button>
-                            </label>
-                        </div>
-                            <div className="terminos">
-                                <ul>
-                                    <li> Recomendamos verificar la veracidad de la respuesta enviada como "correcta".
-                                    </li>
-                                    <li> No se permiten palabras ofensivas.
-                                    </li>
-                                    <li> El incumplimiento de lo anterior podría incurrir en la sanción de su cuenta
-                                    </li>
-                                    </ul></div>
-                        <input disabled={!question || !terminos || errorQuestion || errorAnswer || errorImage || errorTotal} className={!question || !terminos || errorQuestion || errorAnswer || errorTotal || errorImage ?
+                    <div className='FormSubmit' >                       
+                            
+                        <input disabled={!question || errorQuestion || errorAnswer || errorImage || errorTotal} className={!question || errorQuestion || errorAnswer || errorTotal || errorImage ?
                             "disabled" : "enabled"} type="submit" value="Enviar pregunta" />
                     </div>
                     {msg ? <p>{msg}</p> : null}
                 </form>
-                <Link to="/home"><button className='volver' >← Volver atras </button></Link>
-
-            </div>
-        );
-    } else {
-        history.push('/')
-        return <div></div>
-    }
+        </div>
+        </div>
+    )
 }
-
-
