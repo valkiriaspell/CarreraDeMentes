@@ -49,7 +49,7 @@ const config = [
 function Game({ setShowEndGame }) {
   const elementRef = React.useRef(null);
   const { preRoomUsers, user } = useSelector((state) => state);
-  const { positions } = useChatSocketIo(preRoomUsers?.id);
+  const { positions, allStartGame, everybodyPlays } = useChatSocketIo(preRoomUsers?.id);
 
   // ======= QUESTIONS =======
   const [questions, setQuestions] = useState([]);
@@ -137,6 +137,10 @@ function Game({ setShowEndGame }) {
     }, finalGame);
   };
 
+  useEffect(()=>{
+    everybodyPlays && startGame()
+  }, [everybodyPlays])
+
   function handlePoints(q) {
     setAnswerUser(q);
     if (answerUser !== "") {
@@ -178,7 +182,7 @@ function Game({ setShowEndGame }) {
         <div className="loadingGif">
           <img src={Animals} alt="Animals" width={300} />
           {user.host === true ? (
-            <button className="buttonStart" onClick={startGame}>
+            <button className="buttonStart" onClick={allStartGame}>
               START
             </button>
           ) : (
