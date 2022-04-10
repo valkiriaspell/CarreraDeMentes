@@ -60,7 +60,7 @@
   .draw-border::before,
   .draw-border::after {
     border: 0 solid transparent;
-    box-sizing: border-box;
+    box-sizing: unset;
     content: '';
     pointer-events: none;
     position: absolute;
@@ -239,12 +239,16 @@ table, th, td {
       background-color: #d22b5200;
   }
 
-.questionTable th {
-    position: sticky;
-    top: 0;
-    background: hsla(150, 50%, 50%, 0);
-    vertical-align: bottom;    
+ th {    
+    top: 0;    
+    vertical-align: bottom;
+      
 }
+th:last-child,
+td:last-child {
+    border-right-width: 0;
+}
+
 
 
 

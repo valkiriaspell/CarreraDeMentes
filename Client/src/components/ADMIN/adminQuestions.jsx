@@ -26,7 +26,7 @@ export default function AdminQuestions() {
     ///////////---->>> Functions  <<<----///////////
     function darkTheme(e) {
         e.preventDefault()
-        let [tablaPreguntas] = document.getElementsByClassName("adminQuestions")
+        let [tablaPreguntas] = document.getElementsByClassName("questionTable")
         if (tablaPreguntas.classList.contains('dark')) {
             console.log(tablaPreguntas.classList)
             tablaPreguntas.style.background = 'rgb(38, 2, 31)'
@@ -128,8 +128,11 @@ export default function AdminQuestions() {
                 <div><label>Filtrar por</label><select className="BuscadorUsers" onChange={(e) => handleCategory(e)} placeholder="Categoria" name="" id="">
               <option value="">Categoria</option>
               <option value="Historia">Historia</option>
+              <option value="Geografia">Geografía</option>
+              <option value="Arte">Arte</option>
+              <option value="Ciencias">Ciencias</option>
               <option value="Cine">Cine</option>
-              <option value="Deportes">Deportes</option>
+              <option value="Deporte">Deporte</option>
               <option value="Musica">Musica</option>
             </select></div>
                 <button className='botonesBarra' id="refresh" onClick={(e) => refresh(e)}><GrUpdate /></button>
