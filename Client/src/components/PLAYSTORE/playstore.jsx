@@ -20,7 +20,7 @@ function PlayStore() {
 
     useEffect(() => {
         async function traerProductos(){
-            const algo = await axios.get('/coins')
+            const algo = await axios.get('http://localhost:3001/coins')
             setProductos(algo.data)
         }
         traerProductos()

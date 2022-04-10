@@ -2,7 +2,7 @@ const { Coins } = require("../db");
 const coinsInicial = require('../Coins.json')
 
 // Agregar un coins
-exports.addCoins = async ({ coins, url }) => {
+const addCoins = async ({ coins, url }) => {
     try {
 
         await Coins.create({ coins, url });
@@ -14,7 +14,7 @@ exports.addCoins = async ({ coins, url }) => {
     }
 }
 
-exports.addMultCoins = async (array) => {
+const addMultCoins = async (array) => {
     try {
 
         array.forEach(async (obj) => {
@@ -27,7 +27,7 @@ exports.addMultCoins = async (array) => {
     }
 }
 
-exports.addInitServerMultCoins = async (array) => {
+const addInitServerMultCoins = async (array) => {
     try {
 
         array.forEach(async (obj) => {
@@ -47,7 +47,7 @@ const coinsInicialDeploy = async () => {
     try {
         const dataCoins = JSON.parse(JSON.stringify(coinsInicial));
     
-        dataCoins.map(obj => {
+        dataCoins.map( async obj => {
             await Coins.findOrCreate({
                 where: { coins: obj.coins },
                 defaults: { ...obj }
@@ -61,7 +61,7 @@ const coinsInicialDeploy = async () => {
 }
 
 // Devolver todos los coins de menor a amayor
-exports.getAllMinMaxCoins = async () => {
+const getAllMinMaxCoins = async () => {
     try {
         const data = await Coins.findAll();
 
@@ -77,7 +77,7 @@ exports.getAllMinMaxCoins = async () => {
 }
 
 // Actualizar un coins
-exports.updateCoins = async ({ idCoins, newCoins }) => {
+const updateCoins = async ({ idCoins, newCoins }) => {
     try {
         const data = await Coins.findByPk(idCoins);
 
@@ -93,7 +93,7 @@ exports.updateCoins = async ({ idCoins, newCoins }) => {
 }
 
 // Eliminar un conis
-exports.deleteCoins = async ({ idCoins }) => {
+const deleteCoins = async ({ idCoins }) => {
     try {
         const data = await Coins.destroy({ where: { id: idCoins } });
 
@@ -113,5 +113,11 @@ const orederMinMaxRanting = (a, b) => {
 };
 
 module.exports = {
-    coinsInicialDeploy
+    addCoins,
+    addMultCoins,
+    addInitServerMultCoins,
+    coinsInicialDeploy,
+    getAllMinMaxCoins,
+    updateCoins,
+    deleteCoins
 }

@@ -161,25 +161,6 @@ function Game({ setShowEndGame }) {
     }
   }
 
-  // if(questions){
-  //   Swal.fire({
-  //     title: 'El Juego termino!',
-  //     icon: 'warning',
-  //     showCancelButton: true,
-  //     confirmButtonColor: '#3085d6',
-  //     cancelButtonColor: '#d33',
-  //     confirmButtonText: 'Volver a Jugar!'
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       Swal.fire(
-  //         'Volver al Home!',
-  //         'Your file has been deleted.',
-  //         'success'
-  //       )
-  //     }
-  //   })
-  // }
-
   return (
     <div>
       {

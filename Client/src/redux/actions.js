@@ -63,7 +63,7 @@ export function loginAsGuest(guest) {
 export function registerUser(user){
     return async function(dispatch){
         try{
-            const {data} = await axios.post('/users', user)
+            const {data} = await axios.post('http://localhost:3001/users', user)
             dispatch({type: 'NEW_USER', payload: data})
         }catch(e) {
             console.log(e)
@@ -74,7 +74,7 @@ export function registerUser(user){
 export function loginUser(email){
     return async function(dispatch){
         try{
-            const {data} = await axios.get(`/users?email=${email}`)
+            const {data} = await axios.get(`http://localhost:3001/users?email=${email}`)
             console.log(data)
             dispatch({ type: 'LOGIN', payload: data })
             return data
@@ -175,7 +175,7 @@ export function createRoom(user) {
 
 export const getAvatars = () => async (dispatch) => {
     try {
-        const result = await axios.get(`/avatar`)
+        const result = await axios.get(`http://localhost:3001/avatar`)
         dispatch({type: GET_AVATARS, payload: result.data}) 
     } catch (error) {
         console.log(error)
@@ -186,7 +186,7 @@ export const getAvatars = () => async (dispatch) => {
 export function listUsersInPreRoom(IdRoom){
     return async function(dispatch){
         try{
-            const {data} = await axios.get(`/gameRoom/?idRoom=${IdRoom}`)
+            const {data} = await axios.get(`http://localhost:3001/gameRoom/?idRoom=${IdRoom}`)
             console.log(data)
             dispatch({ type: 'LIST_USERS_IN_PRE_ROOM', payload: data })
             return data
