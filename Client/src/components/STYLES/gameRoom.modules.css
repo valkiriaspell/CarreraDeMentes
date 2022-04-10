@@ -140,7 +140,8 @@
   display: flex;
   align-items: flex-start;
   overflow-y: scroll;
-  flex-direction: column-reverse;
+  /* justify-content: end; */
+  flex-direction: column;
   border-radius: 0.4rem;
   padding-left: 1rem;
   color: rgb(29, 180, 29);

@@ -48,7 +48,7 @@ export default function AdminUsers() {
         console.log(e.target.value)
     }
 
-    function bannUser() {
+    function banearUser() {
         Swal.fire({
             title: `Este usuario no podrá acceder a su cuenta por 72 hs.¿Desea continuar?`,
             icon: "warning",
@@ -151,7 +151,7 @@ export default function AdminUsers() {
                     </select>
                     <button className='botonesBarra' value="go" onClick={(e) => handleAdmin(e)}><RiGradienterLine /></button>
                 </div>
-                <button className='botonesBarra' onClick={() => bannUser()}>Sancionar</button>
+                <button className='botonesBarra' onClick={() => banearUser()}>Sancionar</button>
 
                 <input
                     className="BuscadorUsers"

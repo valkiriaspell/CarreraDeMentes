@@ -26,6 +26,7 @@ function useChatSocketIo(idRoom) {
 
     useEffect(() =>{
         //create web socket connection
+        /* !email && history.push('/') */ //descomentar y probar
         const newUserInRoom = () =>{
             dispatch(loginUser(email))
             .then((data) => dispatch(AddUserToPreRoom({
@@ -103,7 +104,9 @@ function useChatSocketIo(idRoom) {
             return async () =>{
                 console.log('return')
                 //acomodar para cuando es solo uno
-                socketIoRef?.current?.emit("FAST_REMOVE", user?.id)
+                /* socketIoRef?.current?.emit("FAST_REMOVE", user?.id) */ // ya volvio a fallar no se por que
+                //cuando somos dos sale y elimina la sala, primero entra en el segundo camino,
+                //luego pasa al segundo
                 //si alguien se sale quitar el nomre de la lista rapido como hago con el de expulsar
                 const list = await dispatch(listUsersInPreRoom(idRoom))
                 console.log(list, 'que onda')

@@ -46,7 +46,7 @@ const config = [
   },
 ];
 
-function Game() {
+function Game({ setShowEndGame }) {
   const elementRef = React.useRef(null);
   const { preRoomUsers, user } = useSelector((state) => state);
   const { positions } = useChatSocketIo(preRoomUsers?.id);
@@ -100,6 +100,7 @@ function Game() {
   }, [preRoomUsers.questions]);
 
   let secondsGame = preRoomUsers?.time + "000";
+  let finalGame = preRoomUsers?.time * preRoomUsers?.questionAmount * 1000;
   const startGame = () => {
     console.log(preRoomUsers.questions);
     setQ(preRoomUsers.questions[0].question);
@@ -131,6 +132,9 @@ function Game() {
         );
       }, secondsGame * index)
     );
+    setTimeout(() => {
+      setShowEndGame(true)
+    }, finalGame);
   };
 
   function handlePoints(q) {
@@ -140,16 +144,15 @@ function Game() {
         let point = seconds;
         const pointsTotal = points + point;
         setPoints(pointsTotal);
-        positions(user.id, pointsTotal, point)
+        positions(user.id, pointsTotal, point, user.name);
       } else {
-        elementRef.current.style.color = "rgba(230, 231, 232, 0.539)";
-        elementRef.current.style.backgroundColor = "rgba(238, 71, 71, 0.71)";
+        console.log("Fallaste");
       }
       setAnswerUser("");
     }
   }
 
-  // if(questions.length === 0){
+  // if(questions){
   //   Swal.fire({
   //     title: 'El Juego termino!',
   //     icon: 'warning',
@@ -170,12 +173,17 @@ function Game() {
 
   return (
     <div>
-      {active === true ? (
+      {
+      active === true ? (
         <div className="loadingGif">
           <img src={Animals} alt="Animals" width={300} />
-          <button className="buttonStart" onClick={startGame}>
-            START
-          </button>
+          {user.host === true ? (
+            <button className="buttonStart" onClick={startGame}>
+              START
+            </button>
+          ) : (
+            <h6>{`Esperando a que ${preRoomUsers.name} inicie la partida...`}</h6>
+          )}
         </div>
       ) : (
         <div className="containerGame">
@@ -207,7 +215,8 @@ function Game() {
             </div>
           </div>
         </div>
-      )}
+      ) 
+    }
     </div>
   );
 }
