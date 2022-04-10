@@ -9,15 +9,15 @@ const { SUPERADMIN_NAME, SUPERADMIN_EMAIL, SUPERADMIN_ADMIN } = process.env;
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
 	app.listen(process.env.PORT, async () => {
-		getAvatars();	
-		addInitServerMultCoins();	
-		data();
-		createUsers({
-			name: SUPERADMIN_NAME,
-			email: SUPERADMIN_EMAIL,			
-			idAvatar: '1',
-			admin: SUPERADMIN_ADMIN,
-		});
+		// getAvatars();	
+		// addInitServerMultCoins();	
+		// data();
+		// createUsers({
+		// 	name: SUPERADMIN_NAME,
+		// 	email: SUPERADMIN_EMAIL,			
+		// 	idAvatar: '1',
+		// 	admin: SUPERADMIN_ADMIN,
+		// });
 		console.log('%s listening at PORT'); // eslint-disable-line no-console
 	});
 });
