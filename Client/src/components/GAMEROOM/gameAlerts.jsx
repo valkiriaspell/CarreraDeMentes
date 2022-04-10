@@ -26,7 +26,7 @@ function ChatGameRoom(){
                                 <p key={`${Math.random()}${success.name}}`} 
                                         style={{textAlign: "justify", wordBreak: "break-word"}} 
                                 >
-                                    {`${success?.name}: ${success?.point}`}
+                                    {`${success?.name} acierta + ${success?.point} pts!`}
                                 </p> 
                             )
                         })

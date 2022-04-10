@@ -19,6 +19,7 @@ const Chat = ({idUser}) =>{
     }
 
     function handleSendMessage(e){
+        e.preventDefault();
         sendMessage(newMessage);
         setNewMessage("");
     }
@@ -49,8 +50,16 @@ const Chat = ({idUser}) =>{
                 </div>
             </div>
                 <div className={styles.containerSendMessages}>
-                    <input type="text" placeholder="Escribe un mensaje..." value={newMessage} onChange={handleMessage}/>
+                    <form onSubmit={e => handleSendMessage(e)}>
+
+                    <input 
+                        type="text" 
+                        placeholder="Escribe un mensaje..." 
+                        value={newMessage} 
+                        onChange={handleMessage} 
+                        />
                     <button onClick={e => handleSendMessage(e)} >Enviar</button>
+                        </form>
                 </div>
         </div>
     )
