@@ -7,7 +7,7 @@ const { data } = require('./src/controllers/question.js');
 const { SUPERADMIN_NAME, SUPERADMIN_EMAIL, SUPERADMIN_ADMIN } = process.env;
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
 	app.listen(process.env.PORT, async () => {
 		getAvatars();	
 		coinsInicialDeploy();	
