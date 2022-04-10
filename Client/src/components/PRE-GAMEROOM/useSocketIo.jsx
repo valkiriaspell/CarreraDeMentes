@@ -125,7 +125,7 @@ function useChatSocketIo(idRoom) {
                         /* socketIoRef?.current?.emit("DISCONNECT", preRoomUsers?.users[0].id) */
                         socketIoRef?.current?.disconnect();
                     }else{
-                        if(user?.id){ 
+                        if(user?.id){
                             await axios.put('http://localhost:3001/gameRoom/delete', {idRoom, idUserDelet: user.id})
                             console.log('estoy aca')
                             socketIoRef?.current?.emit("DISCONNECT", user?.id)
