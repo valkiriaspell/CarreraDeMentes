@@ -57,7 +57,7 @@ function ListPlayersRoom({ preRoomUsers }) {
   return (
     <div className="containerListPlayerRoom">
       {preRoomUsers &&
-        preRoomUsers.users.map((p, index) => {
+        preRoomUsers.users?.map((p, index) => {
           return (
             <div className="contentListPlayerRoom" key={p.id}>
               <div className="positionPlayers">
