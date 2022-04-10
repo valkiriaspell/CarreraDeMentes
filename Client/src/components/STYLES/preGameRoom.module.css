@@ -1,5 +1,5 @@
 .container {
-  width: 700px;
+  width: 850px;
   min-height: 730px;
   border: solid 3px rgba(216, 221, 226, 0.4);
   border-radius: 0.4rem;
@@ -40,7 +40,7 @@
 /* ======= LISTA DE JUGADORES ======= */
 .containerPlayers {
   border: solid 3px rgba(216, 221, 226, 0.4);
-  width: 280px;
+  width: 350px;
   min-height: 600px;
   margin: 1rem;
   display: flex;
@@ -51,6 +51,9 @@
 }
 .coronaHost img {
   height: 30px;
+  position: relative;  
+  margin-left: 30px;
+  margin-right: -30px;
 }
 .allPlayers {
   display: flex;
@@ -89,13 +92,13 @@
 .containerPlayers li {
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: space-between;
   padding: 0.7rem;
   list-style: none;
   margin-top: 1rem;
   margin-right: 4rem;
   background-color: rgba(117, 121, 125, 0.4);
-  width: 12rem;
+  width: 16rem;
   border-radius: 2rem;
 }
 /* ======= BOTON READY ======= */

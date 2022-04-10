@@ -8,7 +8,7 @@ import s from "../STYLES/preGameRoom.module.css";
 import GameRoom from "../GAMEROOM/gameRoom";
 import ListPlayers from "./listPlayers";
 import { Link } from "react-router-dom";
-import style from "../STYLES/form.css"
+import "../STYLES/form.css"
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { FaLink } from "react-icons/fa";
 import { AiFillSound } from "react-icons/ai";
@@ -44,7 +44,7 @@ function PreGameRoom({match}) {
       <div className={s.container}>
         <div className={s.navPreGameRoom}>
           <Link style={{ textDecoration: "none" }} to="/home">
-            <button className={style.volver}>
+            <button className="volver">
               <AiOutlineArrowLeft style={{ marginRight: "0.4rem" }} />
               Volver
             </button>

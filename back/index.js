@@ -8,10 +8,10 @@ const { data } = require('./src/controllers/question.js');
 const { SUPERADMIN_NAME, SUPERADMIN_EMAIL, SUPERADMIN_PASS, SUPERADMIN_ADMIN } = process.env;
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: false}).then(() => {
 	app.listen(process.env.PORT || 3001, async () => {
 		getAvatars();	
-		addInitServerMultCoins();	
+		addInitServerMultCoins();
 		data();
 		createUsers({
 			name: SUPERADMIN_NAME,

@@ -34,7 +34,7 @@ const ListPlayers = ({ expelPlayer }) => {
                                             <img src={corona} alt="corona" />
                                         </div>
                                         }
-                                        <div style={{ marginLeft: "0.3rem", marginRight: "0.5rem" }}>
+                                        <div style={{ marginLeft: "1.8rem", marginRight: "0.5rem" }}>
                                             {us.name}
                                         </div>
 

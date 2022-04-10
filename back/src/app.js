@@ -26,17 +26,17 @@ var io = require('socket.io')(app, {
 
 io.on('connection', (socket) => {
 	//que hago cuando recibo 'connect'?
-
+	
 	const {idGameRoom, email} = socket.handshake.query;
 	console.log('yo soy la room', idGameRoom)
 	socket.join(idGameRoom);
 	//crear ruta en rooms para conectar un usuario nuevo
     
-
+	
     io.to(idGameRoom).emit('NEW_CONNECTION', email)
     
     socket.on('READY',(id)=>{
-        io.to(idGameRoom).emit('READY',id)
+		io.to(idGameRoom).emit('READY',id)
     })
 	socket.on('START',()=>{
 		io.to(idGameRoom).emit('START')
@@ -72,6 +72,20 @@ io.on('connection', (socket) => {
 
 server.name = 'API';
 
+server.use(cors({
+    origin: "*",
+    credentials: true,
+    methods: ["GET", "POST", "OPTIONS", "PUT", "DELETE"],
+    allowedHeaders: [
+      "Origin",
+      "X-Requested-With",
+      "Content-Type",
+      "Accept",
+      "authorization",
+    ],
+  }));
+
+
 server.use(bodyParser.urlencoded({extended: true, limit: '50mb'}));
 server.use(bodyParser.json({limit: '50mb'}));
 //server.use(cookieParser());
@@ -98,17 +112,7 @@ server.use((err, req, res, next) => {
 });
 
 //LOGIN
-server.use(
-	session({
-		name: 'sid',
-		secret: 'secret', // Debería estar en un archivo de environment
-		resave: false,
-		saveUninitialized: false,
-		cookie: {
-			maxAge: 1000 * 60 * 60 * 2, // Está en milisegundos --> 2hs
-		},
-	})
-);
+
 server.use(cookieParser('secret'));
 
 server.use('/', routes);
