@@ -1,0 +1,76 @@
+.cointainerEG {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.321);
+    transition: opacity 500ms;
+    color: white;    
+}
+
+.scoreTable {
+    display: flex;
+    flex-direction: column;    
+    margin: 30px;    
+    background: rgba(0, 0, 0, 0.312);
+    width: 650px;
+    height: 840px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    border-radius: 20px;
+    overflow: hidden;
+    color: white
+}
+.scoreTable::before {
+    content: "";
+    position: absolute;
+    width: 800px;
+    height: 900px;
+    background: linear-gradient(#015aa4, #fe146a);
+    color: white;
+    animation: animate 4s linear infinite;
+}
+.scoreTable::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background:rgba(0, 0, 0, 0.155);
+    border-radius: 20px;
+}
+.resultados{
+    font-size: 24px;
+   position: relative;
+   display: flex;
+   flex-direction: row; 
+   color: white;      
+}
+
+.resultados li{     
+    margin-bottom: 40px;
+    margin-left: 20px;
+    color: white;
+    list-style: none;
+}
+
+.interior {
+    padding: 20px;
+    padding-top: 70px;
+    margin: 12px;
+    position: inherit;
+    background-color: rgb(0, 0, 0);
+    width: 625px;
+    height: 840px;
+}
+
+@keyframes animate
+{
+    0%
+{
+    transform: rotate(0deg);
+}
+    100%
+    {
+    transform: rotate(360deg);  
+    }
+}

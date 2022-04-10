@@ -51,7 +51,8 @@ function Game({ setShowEndGame }) {
   const { preRoomUsers, user } = useSelector((state) => state);
   const { positions, allStartGame, everybodyPlays } = useChatSocketIo(preRoomUsers?.id);
 
-  // ======= QUESTIONS =======
+  // ======= QUESTIONS =======  //
+
   const [questions, setQuestions] = useState([]);
 
   let [question, setQ] = useState("Question");
@@ -89,18 +90,26 @@ function Game({ setShowEndGame }) {
       setSeconds((seconds) => seconds - 1);
     }, 1000);
 
-    return () => clearInterval(intervalo);
+    return () => clearInterval(intervalo);     
   }, [question]);
   //  ============================
-
   useEffect(() => {
     setQuestions(preRoomUsers.questions);
     console.log("Questionsssss" + questions);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preRoomUsers.questions]);
+  
+  //  ============================
+  let finalGame = preRoomUsers?.time * preRoomUsers?.questionAmount * 1000;
+  useEffect(() => {          
+      setTimeout(() => {
+        setShowEndGame(true)
+      }, finalGame) 
+    
+  }, []);
+
 
   let secondsGame = preRoomUsers?.time + "000";
-  let finalGame = preRoomUsers?.time * preRoomUsers?.questionAmount * 1000;
   const startGame = () => {
     console.log(preRoomUsers.questions);
     setQ(preRoomUsers.questions[0].question);
@@ -131,10 +140,7 @@ function Game({ setShowEndGame }) {
           ])
         );
       }, secondsGame * index)
-    );
-    setTimeout(() => {
-      setShowEndGame(true)
-    }, finalGame);
+    );    
   };
 
   useEffect(()=>{
