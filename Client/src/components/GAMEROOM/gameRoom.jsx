@@ -3,6 +3,7 @@ import "../STYLES/gameRoom.modules.css";
 import ChatGameRoom from "./gameAlerts";
 import Game from "./game";
 import ListPlayersRoom from "./listPlayersRoom";
+import EndGame from "./endGame";
 
 function GameRoom({ preRoomUsers }) {
   const [showEndGame, setShowEndGame] = useState(false)
@@ -12,12 +13,12 @@ function GameRoom({ preRoomUsers }) {
     <div className="containerGameRoom">
       { !showEndGame ?
         <>
-        <ListPlayersRoom showEndGame={showEndGame} preRoomUsers={preRoomUsers}  />
+        <ListPlayersRoom preRoomUsers={preRoomUsers}  />
         <Game setShowEndGame={setShowEndGame} showEndGame={showEndGame}/>
-        <ChatGameRoom showEndGame={showEndGame} preRoomUsers={preRoomUsers}/>
+        <ChatGameRoom preRoomUsers={preRoomUsers}/>
         </>
         : <div>
-          <h1>"Holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"</h1>
+          <EndGame/>
         </div>
       }
       </div>
