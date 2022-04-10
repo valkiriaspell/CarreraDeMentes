@@ -38,7 +38,7 @@ function useChatSocketIo(idRoom) {
         }
         !user?.host && newUserInRoom();
 
-        socketIoRef.current = socketIOClient('',{query:{idGameRoom: idRoom, email} } );
+        socketIoRef.current = socketIOClient('https://zoopertrivia.herokuapp.com/',{query:{idGameRoom: idRoom, email} } );
             socketIoRef.current.on("NEW_CONNECTION", async (email) =>{
                 email !== user.email &&
                 dispatch(listUsersInPreRoom(idRoom));
