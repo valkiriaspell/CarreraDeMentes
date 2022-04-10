@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
+    "start": "nodemon -L",
     "test": "mocha -w ./tests/**/*.spec.js"
   },
-  "author": "Ignacio Martinez",
+  "author": "Eduardo Abelardo, Ornella Irigo, Valkiria Salerno, Matias Beier, Ignacio Martinez, Marcos Davila, Matias Montini, Leandro Verón",
   "license": "ISC",
   "engines": {
     "node": ">=12.18.3",

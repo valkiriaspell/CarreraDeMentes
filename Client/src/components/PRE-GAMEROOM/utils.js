@@ -13,7 +13,7 @@ export async function AddUserToPreRoom({idRoom, idUser}){
 
 export async function changeReady(id, bool){
     try{
-        const {data} = await axios.put(`/users/ready/?id=${id}&bool=${bool}`)
+        const {data} = await axios.put(`http://localhost:3001/users/ready/?id=${id}&bool=${bool}`)
         console.log(data)
     }catch(e) {
         console.log(e)

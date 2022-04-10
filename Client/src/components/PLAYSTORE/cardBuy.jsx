@@ -14,7 +14,7 @@ function CardBuy({precio, referencia, img}) {
       email: email, //email del usuario
       external_reference: referencia //referencia del producto, asi sabemos que compro para luego agregar a sus monedas en la bd
     };
-    const crearPago = await axios.post('/mercadopago/create_preference', ordenCompra);
+    const crearPago = await axios.post('http://localhost:3001/mercadopago/create_preference', ordenCompra);
     window.open(crearPago.data.init_point, "_blank"); //abrir pestaña nueva
   }
 

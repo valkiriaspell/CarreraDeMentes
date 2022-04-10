@@ -47,7 +47,7 @@ const coinsInicialDeploy = async () => {
     try {
         const dataCoins = JSON.parse(JSON.stringify(coinsInicial));
     
-        dataCoins.map(obj => {
+        dataCoins.map( async obj => {
             await Coins.findOrCreate({
                 where: { coins: obj.coins },
                 defaults: { ...obj }
