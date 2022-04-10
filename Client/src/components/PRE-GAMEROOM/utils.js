@@ -28,6 +28,16 @@ export async function deleteRoom(idRoom){
         console.log(e)
     }
 }
+
+export async function startGame(idRoom, start){
+    try{
+        const {data} = await axios.put('http://localhost:3001/gameRoom/starRoot', {idRoom, start})
+        console.log(data)
+    }catch(e) {
+        console.log(e)
+    }
+}
+
 export function getUrl() {
     var aux = document.createElement("input");
     aux.setAttribute("value", window.location.href);

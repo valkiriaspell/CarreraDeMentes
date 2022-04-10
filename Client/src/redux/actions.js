@@ -20,6 +20,7 @@ export const FAST_CHANGE_HOST_ROOM = 'FAST_CHANGE_HOST_ROOM'
 export const HOST_BY_ID = 'HOST_BY_ID'
 export const ALL_USERS = 'ALL_USERS'
 export const UPDATE_POINTS = 'UPDATE_POINTS'
+export const FAST_REMOVE = 'FAST_REMOVE'
 
 
 
@@ -251,6 +252,13 @@ export function userToken(token){
     return {
         type: USER_TOKEN,
         payload: token
+    }
+}
+
+export function fastRemove(id){
+    return {
+        type: FAST_REMOVE,
+        payload: id
     }
 }
 

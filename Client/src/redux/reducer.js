@@ -1,4 +1,4 @@
-import { LOGIN_USER_GUEST, ALL_USERS, UPDATE_POINTS, HOST_BY_ID, REMOVE_USER, LIST_USERS_IN_PRE_ROOM, LIST_ROOMS, GET_READY_USER, NEW_USER, LOGIN, HOST, CREATE_ROOM, GET_AVATARS, GET_QUESTIONS, USER_TOKEN } from "./actions"
+import { LOGIN_USER_GUEST, FAST_REMOVE, ALL_USERS, UPDATE_POINTS, HOST_BY_ID, REMOVE_USER, LIST_USERS_IN_PRE_ROOM, LIST_ROOMS, GET_READY_USER, NEW_USER, LOGIN, HOST, CREATE_ROOM, GET_AVATARS, GET_QUESTIONS, USER_TOKEN } from "./actions"
 
 
 const initialState = {
@@ -60,6 +60,13 @@ const reducer = (state = initialState, action) => {
         state.preRoomUsers.users = action.payload
         return {
             ...state,
+        }
+
+        case FAST_REMOVE: 
+        const arr = state.preRoomUsers.users.filter(user => user.id !== action.payload)
+        return {
+            ...state,
+            preRoomUsers: arr
         }
 
         case LIST_ROOMS: 

@@ -56,11 +56,14 @@ io.on('connection', (socket) => {
 		/* const {text, name, email} = data; */ //cual es el mensaje?  para que room? quien lo envia?
 		io.to(idGameRoom).emit('NEW_MESSAGE', {text, name, email});
 	});
-	socket.on('NEW_EVENT', ({id, pointsTotal, point}) => {
-		io.to(idGameRoom).emit('NEW_EVENT', {id, pointsTotal, point})
+	socket.on('NEW_EVENT', ({id, pointsTotal, point, name}) => {
+		io.to(idGameRoom).emit('NEW_EVENT', {id, pointsTotal, point, name})
 	});
 	socket.on('CONFIG_ROOM',(roomConfiguration)=>{
 		io.to(idGameRoom).emit('CONFIG_ROOM',roomConfiguration)
+	})
+	socket.on('FAST_REMOVE',(id)=>{
+		io.to(idGameRoom).emit('FAST_REMOVE',id)
 	})
 });
 
