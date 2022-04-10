@@ -138,11 +138,16 @@
   height: 500px;
   margin: 3rem;
   display: flex;
-  justify-content: start;
-  align-items: center;
+  align-items: flex-start;
+  overflow-y: scroll;
+  /* justify-content: end; */
   flex-direction: column;
   border-radius: 0.4rem;
+  padding-left: 1rem;
+  color: rgb(29, 180, 29);
+  font-weight: bold;
 }
+
 .containerChatGame span  {
   display: flex;
   color: rgba(230, 231, 232, 0.539);
