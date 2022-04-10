@@ -38,7 +38,7 @@ function useChatSocketIo(idRoom) {
         }
         !user?.host && newUserInRoom();
 
-        socketIoRef.current = socketIOClient('http://localhost:3001',{query:{idGameRoom: idRoom, email} } );
+        socketIoRef.current = socketIOClient('',{query:{idGameRoom: idRoom, email} } );
             socketIoRef.current.on("NEW_CONNECTION", async (email) =>{
                 email !== user.email &&
                 dispatch(listUsersInPreRoom(idRoom));
@@ -126,7 +126,7 @@ function useChatSocketIo(idRoom) {
                         socketIoRef?.current?.disconnect();
                     }else{
                         if(user?.id){
-                            await axios.put('http://localhost:3001/gameRoom/delete', {idRoom, idUserDelet: user.id})
+                            await axios.put('/gameRoom/delete', {idRoom, idUserDelet: user.id})
                             console.log('estoy aca')
                             socketIoRef?.current?.emit("DISCONNECT", user?.id)
                             
@@ -165,7 +165,7 @@ function useChatSocketIo(idRoom) {
 
     async function sendStartGame(){
         try{
-            const questionAll = await axios.post("http://localhost:3001/question/allQuestions", {
+            const questionAll = await axios.post("/question/allQuestions", {
                 count: preRoomUsers?.questionAmount,
                 category: preRoomUsers?.category,
                 idRoom
@@ -187,7 +187,7 @@ function useChatSocketIo(idRoom) {
     async function handleSubmitConfig(e, roomConfiguration){
         e.preventDefault()
         try{
-            const {data} = await axios.put('http://localhost:3001/gameRoom/config', {
+            const {data} = await axios.put('/gameRoom/config', {
                 idRoom, 
                 public_: roomConfiguration.open, 
                 questions: roomConfiguration.questions,

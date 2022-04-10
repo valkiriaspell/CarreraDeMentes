@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 export async function AddUserToPreRoom({idRoom, idUser}){
     console.log(idRoom, idUser)
     try{
-        const {data} = await axios.put('http://localhost:3001/gameRoom', {idUser, idRoom})
+        const {data} = await axios.put('/gameRoom', {idUser, idRoom})
         return data
     }catch(e) {
         console.log(e)
@@ -22,7 +22,7 @@ export async function changeReady(id, bool){
 
 export async function deleteRoom(idRoom){
     try{
-        const {data} = await axios.delete(`http://localhost:3001/gameRoom/${idRoom}`)
+        const {data} = await axios.delete(`/gameRoom/${idRoom}`)
         console.log(data)
     }catch(e) {
         console.log(e)
@@ -31,7 +31,7 @@ export async function deleteRoom(idRoom){
 
 export async function startGame(idRoom, start){
     try{
-        const {data} = await axios.put('http://localhost:3001/gameRoom/starRoot', {idRoom, start})
+        const {data} = await axios.put('/gameRoom/starRoot', {idRoom, start})
         console.log(data)
     }catch(e) {
         console.log(e)
