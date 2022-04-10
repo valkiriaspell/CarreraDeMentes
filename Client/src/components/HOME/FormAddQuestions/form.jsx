@@ -55,7 +55,7 @@ export default function FormAddQuestions() {
         switch (true) {
 
             case e.target.name === "question":
-                if (!/^\¿.*?\?$/.test(e.target.value)) {
+                if (!e.target.value.includes("¿")) {
                     setQuestion(e.target.value);
                     setErrorQ("Colocar signos ¿? correctamente")
 
