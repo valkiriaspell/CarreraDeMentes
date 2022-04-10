@@ -121,7 +121,7 @@ function useChatSocketIo(idRoom) {
                     if(list?.users?.length === 1){
                         dispatch(modifyHost(email, false))
                         console.log('error de camino')
-                        deleteRoom(idRoom) 
+                        deleteRoom(idRoom)
                         /* socketIoRef?.current?.emit("DISCONNECT", preRoomUsers?.users[0].id) */
                         socketIoRef?.current?.disconnect();
                     }else{
