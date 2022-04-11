@@ -148,6 +148,7 @@ export default function AdminUsers() {
         <div className='containerAdmin'>
             <div className='barraSobreQuestions'>
                 <div className='handleAdmin'>
+                <h6>Usuarios: {totalUsers.length}</h6>
                     <select className='botonesBarra' onChange={(e) => actions(e)}>
                         <option key={1} value="crear">Crear Admin </option>
                         <option key={2} value="deshacer">Deshacer Admin </option>

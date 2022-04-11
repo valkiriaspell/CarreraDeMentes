@@ -109,6 +109,7 @@ export default function CurrentQuestions() {
                     <option value="Deporte">Deporte</option>
                     <option value="Musica">Musica</option>
                 </select></div>
+                <h6>Preguntas: {allQuestions.length}</h6>
                 <button className='botonesBarra' onClick={() => modifyQuestion()}>Modificar</button>
                 <button className='botonesBarra' id="refresh" onClick={(e) => refresh(e)}><GrUpdate /></button>
                 <button className='botonesBarra' onClick={(e) => darkTheme(e)}><CgDarkMode /></button>
