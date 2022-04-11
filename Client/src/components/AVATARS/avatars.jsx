@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch, useStore } from "react-redux";
-import { getAvatars } from "../../redux/actions";
+import React from "react";
+import { useSelector } from "react-redux";
 import "../STYLES/avatars.css"
 import Carousel from "react-elastic-carousel";
 import Item from "./item.js";
 
-function Avatars({setAvatar}){        
-    const [avatarSelected, setAvatarhere] = useState(false)  
-  
+function Avatars({setAvatar}){     
+    
     
     const {avatars} = useSelector(state => state);
     
