@@ -140,6 +140,8 @@ export default function AdminUsers() {
         totalUsers = totalUsers.filter(d => d.name.toLowerCase().includes(search.toLowerCase()))
     }
 
+    totalUsers = totalUsers.filter(d => d.admin !== "superadmin")
+
 
     return (
         <div className='containerAdmin'>
