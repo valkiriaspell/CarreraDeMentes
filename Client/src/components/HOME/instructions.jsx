@@ -1,6 +1,9 @@
 import React from "react";
 import "../STYLES/home.modules.css";
 import IMG from "../IMG/img.png";
+import invite from "../IMG/invite.gif";
+import config from "../IMG/configurar.gif";
+import response from "../IMG/responderPreguntas.gif";
 
 function Instructions() {
   return (
@@ -36,6 +39,7 @@ function Instructions() {
           <div className="carousel-item active">
             <img src={IMG} className="d-block w-100" alt="IMG" />
             <div className="carousel-caption d-none d-md-block">
+              <img src={invite} height={200} alt="invitar"/>
               <h5>Invita a tus amigos</h5>
               <p>
                 Comparte el link de la sala con tus amigos y diviértete.
@@ -45,6 +49,7 @@ function Instructions() {
           <div className="carousel-item">
             <img src={IMG} className="d-block w-100" alt="IMG" />
             <div className="carousel-caption d-none d-md-block">
+            <img src={config} height={200} alt="configurar"/>
               <h5>Configura una partida a tu gusto</h5>
               <p>
                 Personaliza la partida a tu gusto, cambiando la cantidad de preguntas, dificultad o categorías.
@@ -54,6 +59,7 @@ function Instructions() {
           <div className="carousel-item">
             <img src={IMG} className="d-block w-100" alt="IMG" />
             <div className="carousel-caption d-none d-md-block">
+            <img src={response} height={200} alt="responder"/>
               <h5>Responde preguntas</h5>
               <p>
                 Responde a preguntas aleatorias de diversas categorías, antes de que se te acabe el tiempo.
