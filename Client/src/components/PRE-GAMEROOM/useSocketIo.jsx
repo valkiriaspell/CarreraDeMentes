@@ -27,14 +27,14 @@ function useChatSocketIo(idRoom) {
 
     useEffect(() =>{
         //create web socket connection
-        /* !email && history.push('/') */ //descomentar y probar
-        const newUserInRoom = () =>{
-            dispatch(loginUser(email))
-            .then((data) => dispatch(AddUserToPreRoom({
+        const newUserInRoom = async () =>{
+            const data = await dispatch(loginUser(email))
+            !data?.id && history.push('/')
+            const idD = await dispatch(AddUserToPreRoom({
                 idRoom,
                 idUser: data?.id,
-            })))
-            .then((idD) =>dispatch(listUsersInPreRoom(idD)))
+            }))
+            await dispatch(listUsersInPreRoom(idD))
         }
         !user?.host && newUserInRoom();
 
@@ -112,7 +112,7 @@ function useChatSocketIo(idRoom) {
                 //acomodar para cuando es solo uno
                 /* socketIoRef?.current?.emit("FAST_REMOVE", user?.id) */ // ya volvio a fallar no se por que
                 //cuando somos dos sale y elimina la sala, primero entra en el segundo camino,
-                //luego pasa al segundo
+                //luego pasa al primero
                 //si alguien se sale quitar el nomre de la lista rapido como hago con el de expulsar
                 const list = await dispatch(listUsersInPreRoom(idRoom))
                 console.log(list, 'que onda')
@@ -121,7 +121,7 @@ function useChatSocketIo(idRoom) {
                     if(list?.users?.length === 1){
                         dispatch(modifyHost(email, false))
                         console.log('error de camino')
-                        deleteRoom(idRoom) 
+                        deleteRoom(idRoom)
                         /* socketIoRef?.current?.emit("DISCONNECT", preRoomUsers?.users[0].id) */
                         socketIoRef?.current?.disconnect();
                     }else{
