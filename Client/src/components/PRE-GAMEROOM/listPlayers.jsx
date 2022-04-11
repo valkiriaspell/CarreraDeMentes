@@ -34,7 +34,7 @@ const ListPlayers = ({ expelPlayer }) => {
                                             <img src={corona} alt="corona" />
                                         </div>
                                         }
-                                        <div style={{ marginLeft: "1.8rem", marginRight: "0.5rem" }}>
+                                        <div style={{ marginLeft: "6rem", marginRight: "0.5rem" }}>
                                             {us.name}
                                         </div>
 
@@ -52,7 +52,7 @@ const ListPlayers = ({ expelPlayer }) => {
                                             key={`${us.id}3`}
                                             className={s.buttonExpulsar}
                                             >
-                                                x{/* <img src={Delete} alt="Delete" width={25} /> */}
+                                                X
                                             </button>
                                         }
                                     </li>
@@ -71,7 +71,7 @@ const ListPlayers = ({ expelPlayer }) => {
                                             <img src={corona} alt="corona" />
                                         </div>
                                     }
-                                    <div key={`${us.id}7`} style={{ marginLeft: "0.3rem", marginRight: "0.5rem" }}>
+                                    <div key={`${us.id}7`} style={{ marginLeft: "1rem", marginRight: "0.5rem" }}>
                                         {us.name}
                                     </div>
                                     {
