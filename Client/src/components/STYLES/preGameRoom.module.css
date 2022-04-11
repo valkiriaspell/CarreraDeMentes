@@ -84,7 +84,13 @@
   color: rgba(255, 255, 255, 0.769);
   border-radius: 5px;
   border: none;
+  margin-right: -0.6rem;
+  border-radius: 5px;
+  position: relative;
+  right: 180px;
+  top: 10px;
 }
+
 .containerPlayers li {
   display: flex;
   flex-direction: row;

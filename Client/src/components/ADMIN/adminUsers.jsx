@@ -139,6 +139,9 @@ export default function AdminUsers() {
     if (search && search !== "") {
         totalUsers = totalUsers.filter(d => d.name.toLowerCase().includes(search.toLowerCase()))
     }
+    ////---> Que no aparezca el superadmin ni guests en la lista <---////
+    totalUsers = totalUsers.filter(d => d.admin !== "superadmin")
+    totalUsers = totalUsers.filter(d => d.guest !== true)
 
 
     return (
