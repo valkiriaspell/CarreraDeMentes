@@ -119,6 +119,16 @@ export default function AdminQuestions() {
         newQuestions = newQuestions.filter(d => d.category.toLowerCase().includes(category.toLowerCase()))
     }
 
+    newQuestions = newQuestions.sort( (a, b) => {
+        if (a.id > b.id) {
+          return 1;
+        }
+        if (a.id < b.id) {
+          return -1;
+        }        
+        return 0;
+      });
+
     return (
         <div className='containerAdmin'>
             <div className='barraSobreQuestions'>

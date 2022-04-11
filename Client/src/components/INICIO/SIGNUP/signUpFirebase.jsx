@@ -28,6 +28,7 @@ function SignUpFirebase() {
   const [avatar, setAvatar] = useState(1);
 
   const [error, setError] = useState({});
+  const [errorName, setErrorName] = useState("");
 
   useEffect(() => {
     dispatch(getAvatars());
@@ -63,8 +64,16 @@ function SignUpFirebase() {
   }
 
   function handleChange(e) {
-    setInput({ ...input, [e.target.name]: e.target.value });
+    if (e.target.name === "name" && e.target.value.length > 16) {
+      setInput({ ...input, [e.target.name]: e.target.value });
+      setErrorName("Máximo 16 caracteres")
+    } else {
+      setInput({ ...input, [e.target.name]: e.target.value });
+      setErrorName("")
+      }
+      setInput({ ...input, [e.target.name]: e.target.value });    
   }
+
 
   async function handleRegister(e) {
     e.preventDefault();
@@ -121,6 +130,8 @@ function SignUpFirebase() {
         </div>
 
         <form onSubmit={handleRegister}>
+            {errorName? <span>{errorName}</span>: null}
+            <br></br>
           <div className="userImg">
             <img src={Perfil} alt="User" width={60} />
           </div>
@@ -160,8 +171,7 @@ function SignUpFirebase() {
           <div className="avatarsRegister">
             <Avatars setAvatar={setAvatar} />
           </div>
-
-          <button className="registerButton" type="submit">
+          <button disabled={errorName} className="registerButton" type="submit">
             Registrarse
           </button>
         </form>

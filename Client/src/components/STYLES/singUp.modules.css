@@ -20,8 +20,9 @@
   background-color: rgba(216, 221, 226, 0.212);
   margin-top: 4rem;
   width: 350px;
-  height: 420px;
+  height: 450px;
   border-radius: 0.4rem;
+  margin-bottom: 10px;
 }
 
 .logoSingUp img{
