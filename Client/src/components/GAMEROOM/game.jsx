@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import useChatSocketIo from "../PRE-GAMEROOM/useSocketIo";
 import { findDOMNode } from "react-dom";
 import $ from "jquery";
+import { useHistory } from "react-router-dom";
 
 async function getUrl(url) {
   return await axios
@@ -47,8 +48,9 @@ const config = [
   },
 ];
 
-function Game({ setShowEndGame, userCoins, setUserCoins }) {
+function Game({ setShowEndGame, userCoins, setUserCoins, setGame }) {
   const elementRef = React.useRef(null);
+  const history = useHistory();
   const { preRoomUsers, user } = useSelector((state) => state);
   const { positions, allStartGame, everybodyPlays } = useChatSocketIo(
     preRoomUsers?.id
@@ -216,7 +218,13 @@ function Game({ setShowEndGame, userCoins, setUserCoins }) {
       }
     }
   };
-  console.log(userCoins);
+  
+ 
+   const handleGoHome = () => {
+     setGame(false)
+     history("/home")
+   }
+
   return (
     <div>
       {active === true ? (
@@ -235,7 +243,7 @@ function Game({ setShowEndGame, userCoins, setUserCoins }) {
       ) : (
         <div>
           <div className="containerHeader">
-            <button>Salir</button>
+            <button onClick={handleGoHome}>Salir</button>
             <img
               width="150px"
               src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Fzooper-logo.png?alt=media&token=d211e20b-1313-420f-91a8-aa791a6aae3c"
