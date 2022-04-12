@@ -71,6 +71,7 @@
  text-transform: uppercase;
  font-size: 14px;
  transition: .6s;
+ text-decoration: none;
  z-index: 1;
  font-family: inherit;
  color: #ffffff;
@@ -128,4 +129,19 @@
 color: rgb(255, 255, 255);
 font-size: 15px;
 padding: 0.4em 0.9em;
+}
+
+
+.green {
+    text-shadow: -1px -1px 0 #035611;     
+    border: 1px solid #013b09;
+    background-image: url('../IMG/fondo-boton-arena.png');
+    background-repeat: no-repeat;
+    font-size: 12px;
+    background-size: cover;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #492602, 0 4px 2px rgba(0, 0, 0, .5);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #492602, 0 4px 2px rgba(0, 0, 0, .5);
 }

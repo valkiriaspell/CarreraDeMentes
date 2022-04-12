@@ -40,14 +40,14 @@ function Home(props) {
 				<div className='nav'>
 					<div>
 						<NavLink className='buttonsNav' to={'/tienda'}>
-							<button>Tienda</button>
+							<button className="buttonSides green">Tienda</button>
 						</NavLink>
 						<NavLink className='buttonsNav' to={'/editProfile'}>
-							<button>Mi perfil</button>
+							<button className="buttonSides green">Mi perfil</button>
 						</NavLink>
 					</div>
 					<div className="logo">
-						<img width="200px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Fzooper-logo.png?alt=media&token=d211e20b-1313-420f-91a8-aa791a6aae3c"></img>
+						<img width="200px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4"></img>
 					</div>
 					<div className='infoUser'>
 						{/* COMPONENTE USERCARD */}
@@ -70,10 +70,10 @@ function Home(props) {
 							Crear partida
 						</button>
 						<NavLink to={'/partidasDisponibles'}>
-							<button className='button'>Partidas disponibles</button>
+							<button className='buttonSides brown'>Partidas disponibles</button>
 						</NavLink>
 						<NavLink to={'/añadirPregunta'}>
-							<button className='button'>Crear Preguntas</button>
+							<button className='buttonSides brown'>Crear Preguntas</button>
 						</NavLink>
 					</div>
 					<div>
