@@ -54,6 +54,10 @@ function Game({ setShowEndGame }) {
     preRoomUsers?.id
   );
 
+  // ======= COINS =======  //
+
+  const [userCoins, setUserCoins] = useState(user.coins);
+
   // ======= QUESTIONS =======  //
 
   const [questions, setQuestions] = useState([]);
@@ -184,23 +188,32 @@ function Game({ setShowEndGame }) {
     let buttons = document.querySelectorAll("#buttons");
     
      if (number === 1) {
-      for (let i = 0; i < buttons.length; i++) {
-        if (buttons[i].defaultValue === false1) {
-          $(buttons[i]).css("background", "rgba(251, 89, 89, 0.71)");
-          $(buttons[i]).css("color", "white");
-        } 
-      }
+       if(userCoins >= 100){
+          for (let i = 0; i < buttons.length; i++) {
+            if (buttons[i].defaultValue === false1) {
+              $(buttons[i]).css("background", "rgba(251, 89, 89, 0.71)");
+              $(buttons[i]).css("color", "white");
+            } 
+          }
+          setUserCoins((prevState) => prevState - 100);
+       } else{
+          alert('No tienes suficientes monedas');
+       }     
      } else {
-       for (let i = 0; i < buttons.length; i++) {
-         if (buttons[i].defaultValue === false2 || buttons[i].defaultValue === false3) {
-           $(buttons[i]).css("background", "rgba(251, 89, 89, 0.71)");
-           $(buttons[i]).css("color", "white");
-         } 
+       if(userCoins >= 200){
+          for (let i = 0; i < buttons.length; i++) {
+            if (buttons[i].defaultValue === false2 || buttons[i].defaultValue === false3) {
+              $(buttons[i]).css("background", "rgba(251, 89, 89, 0.71)");
+              $(buttons[i]).css("color", "white");
+            } 
+          }
+          setUserCoins((prevState) => prevState - 200);
+       } else{
+          alert('No tienes suficientes monedas');
        }
      }
   }
-  
-
+  console.log(userCoins)
   return (
     <div>
       {active === true ? (
@@ -249,7 +262,7 @@ function Game({ setShowEndGame }) {
             <div>
             <button onClick={() => powerDelete(1)}>Poder1</button>
             <button onClick={() => powerDelete(2)}>Poder2</button>
-            <button onClick={() => setPointsPower(2)}>Poder3</button>
+            <button onClick={() => userCoins >= 300 ? (setPointsPower(2), setUserCoins((prev) => prev - 300)) : alert('No tienes suficientes monedas')}>Poder3</button>
             </div>
           </div>
         </div>
