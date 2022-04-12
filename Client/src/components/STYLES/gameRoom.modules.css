@@ -45,6 +45,18 @@
   flex-direction: column;
 }
 
+/* ====== HEADER ====== */
+.containerHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+}
+
+
+
+
+
 /* ====== GAME ====== */
 .containerGame {
   background-color: rgba(216, 221, 226, 0.039);

@@ -47,16 +47,14 @@ const config = [
   },
 ];
 
-function Game({ setShowEndGame }) {
+function Game({ setShowEndGame, userCoins, setUserCoins }) {
   const elementRef = React.useRef(null);
   const { preRoomUsers, user } = useSelector((state) => state);
   const { positions, allStartGame, everybodyPlays } = useChatSocketIo(
     preRoomUsers?.id
   );
 
-  // ======= COINS =======  //
-
-  const [userCoins, setUserCoins] = useState(user.coins);
+  console.log(preRoomUsers);
 
   // ======= QUESTIONS =======  //
 
@@ -73,6 +71,7 @@ function Game({ setShowEndGame }) {
   let [answerUser, setAnswerUser] = useState("");
   let [points, setPoints] = useState(0);
   let [pointsPower, setPointsPower] = useState(1);
+  let [actualQuestion, setActualQuestion] = useState(0);
 
   // ======= TIMER =======
   const [seconds, setSeconds] = useState(preRoomUsers?.time);
@@ -182,38 +181,42 @@ function Game({ setShowEndGame }) {
     let buttons = document.querySelectorAll("#buttons");
     $(buttons).css("background", "rgba(254, 254, 254, 0.71)");
     $(buttons).css("color", "black");
-  }
+    setActualQuestion((prev) => prev + 1)
+  };
 
   const powerDelete = (number) => {
     let buttons = document.querySelectorAll("#buttons");
-    
-     if (number === 1) {
-       if(userCoins >= 100){
-          for (let i = 0; i < buttons.length; i++) {
-            if (buttons[i].defaultValue === false1) {
-              $(buttons[i]).css("background", "rgba(251, 89, 89, 0.71)");
-              $(buttons[i]).css("color", "white");
-            } 
+
+    if (number === 1) {
+      if (userCoins >= 100) {
+        for (let i = 0; i < buttons.length; i++) {
+          if (buttons[i].defaultValue === false1) {
+            $(buttons[i]).css("background", "rgba(251, 89, 89, 0.71)");
+            $(buttons[i]).css("color", "white");
           }
-          setUserCoins((prevState) => prevState - 100);
-       } else{
-          alert('No tienes suficientes monedas');
-       }     
-     } else {
-       if(userCoins >= 200){
-          for (let i = 0; i < buttons.length; i++) {
-            if (buttons[i].defaultValue === false2 || buttons[i].defaultValue === false3) {
-              $(buttons[i]).css("background", "rgba(251, 89, 89, 0.71)");
-              $(buttons[i]).css("color", "white");
-            } 
+        }
+        setUserCoins((prevState) => prevState - 100);
+      } else {
+        alert("No tienes suficientes monedas");
+      }
+    } else {
+      if (userCoins >= 200) {
+        for (let i = 0; i < buttons.length; i++) {
+          if (
+            buttons[i].defaultValue === false2 ||
+            buttons[i].defaultValue === false3
+          ) {
+            $(buttons[i]).css("background", "rgba(251, 89, 89, 0.71)");
+            $(buttons[i]).css("color", "white");
           }
-          setUserCoins((prevState) => prevState - 200);
-       } else{
-          alert('No tienes suficientes monedas');
-       }
-     }
-  }
-  console.log(userCoins)
+        }
+        setUserCoins((prevState) => prevState - 200);
+      } else {
+        alert("No tienes suficientes monedas");
+      }
+    }
+  };
+  console.log(userCoins);
   return (
     <div>
       {active === true ? (
@@ -230,39 +233,58 @@ function Game({ setShowEndGame }) {
           )}
         </div>
       ) : (
-        <div className="containerGame">
-          <div className="contentNav">
-            <TimerGame seconds={seconds} percentage={percentage} />
-            <h3>{category}</h3>
+        <div>
+          <div className="containerHeader">
+            <button>Salir</button>
+            <img
+              width="150px"
+              src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Fzooper-logo.png?alt=media&token=d211e20b-1313-420f-91a8-aa791a6aae3c"
+              alt="Logo"
+            ></img>
+            <span>{actualQuestion}/{preRoomUsers.questionAmount}</span>
           </div>
-          <div className="question">
-            <span>{question}</span>
-          </div>
-          <div className="imageQuestion">
-            <img src={image} alt="Imagen" />
-          </div>
-          <div>
-            <div className="contentQuestions">
-              {respuestas &&
-                respuestas.map((q, index) => {
-                  return (
-                    <form key={index}>
-                      <input
-                        ref={elementRef}
-                        disabled={answerUser.length > 0}
-                        id="buttons"
-                        onClick={() => handlePoints(q.data)}
-                        type="button"
-                        value={q.data}
-                      />
-                    </form>
-                  );
-                })}
+          <div className="containerGame">
+            <div className="contentNav">
+              <TimerGame seconds={seconds} percentage={percentage} />
+              <h3>{category}</h3>
+            </div>
+            <div className="question">
+              <span>{question}</span>
+            </div>
+            <div className="imageQuestion">
+              <img src={image} alt="Imagen" />
             </div>
             <div>
-            <button onClick={() => powerDelete(1)}>Poder1</button>
-            <button onClick={() => powerDelete(2)}>Poder2</button>
-            <button onClick={() => userCoins >= 300 ? (setPointsPower(2), setUserCoins((prev) => prev - 300)) : alert('No tienes suficientes monedas')}>Poder3</button>
+              <div className="contentQuestions">
+                {respuestas &&
+                  respuestas.map((q, index) => {
+                    return (
+                      <form key={index}>
+                        <input
+                          ref={elementRef}
+                          disabled={answerUser.length > 0}
+                          id="buttons"
+                          onClick={() => handlePoints(q.data)}
+                          type="button"
+                          value={q.data}
+                        />
+                      </form>
+                    );
+                  })}
+              </div>
+              <div>
+                <button onClick={() => powerDelete(1)}>Poder1</button>
+                <button onClick={() => powerDelete(2)}>Poder2</button>
+                <button
+                  onClick={() =>
+                    userCoins >= 300
+                      ? (setPointsPower(2), setUserCoins((prev) => prev - 300))
+                      : alert("No tienes suficientes monedas")
+                  }
+                >
+                  Poder3
+                </button>
+              </div>
             </div>
           </div>
         </div>
