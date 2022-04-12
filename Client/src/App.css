@@ -1,4 +1,7 @@
 .App {
+  background-image: url("./fondo-selva.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   text-align: center;
 }
 

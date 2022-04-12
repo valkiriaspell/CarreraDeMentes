@@ -1,0 +1,131 @@
+/* /////boton marron////// */
+
+.push_button {
+	position: relative;
+	width:150px;
+	height:40px;
+	text-align:center;
+	color:#FFF;
+	text-decoration:none;
+	line-height:43px;
+	font-family:'Oswald', Helvetica;
+	display: block;
+	margin: 30px;  
+    
+}
+.push_button:before {
+	background: rgb(103, 61, 2);	
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:8px;	
+	position: absolute;
+	content: "";
+	left: -6px; right: -6px;
+	top: -6px; bottom: -10px;
+	z-index: -1;
+}
+
+.push_button:active {
+    box-shadow:0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset;
+	top:5px;
+}
+.push_button:active:before{
+    top: -11px;
+	bottom: -5px;
+	content: "";
+}
+
+.brownm {
+    text-shadow:-1px -1px 0 #5c3e03;
+	background: #966a31;
+	border:1px solid #573300;
+	
+    background-image: url('../IMG/fondo-boton-arena.png');
+    background-repeat: no-repeat;
+    background-size: cover;	
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;	
+	
+	-moz-box-shadow:0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #492602, 0 4px 2px rgba(0, 0, 0, .5);
+	box-shadow:0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #492602, 0 4px 2px rgba(0, 0, 0, .5);
+}
+
+.brownm:hover {
+	background: #966a31b6;    
+	background-image:-webkit-linear-gradient(top, #966a31, #573300);
+	background-image:-moz-linear-gradient(top, #966a31, #573300);
+	background-image:-ms-linear-gradient(top, #966a31, #573300);
+	background-image:-o-linear-gradient(top, #966a31, #573300);
+	background-image:linear-gradient(top, #966a31, #573300);
+    
+}
+
+/* /////boton compuertas////// */
+.buttonSides {
+ padding: 0.5em 1em;
+ border: 2px solid #000000;
+ position: relative;
+ overflow: hidden;
+ text-align: center;
+ text-transform: uppercase;
+ font-size: 14px;
+ transition: .6s;
+ z-index: 1;
+ font-family: inherit;
+ color: #ffffff;
+ font-family:'Oswald', Helvetica;
+ margin-bottom: 10px;
+}
+
+.buttonSides:before {
+    content: "";
+    width: 0;
+    height: 450%; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);    
+    background: #5c3e03;  
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+
+}
+
+.buttonSides:active {
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset;
+    top: 5px;
+}
+
+.buttonSides:active:before {
+    top: -11px;
+    bottom: -5px;
+    content: "";
+}
+
+.brown {
+    text-shadow: -1px -1px 0 #5c3e03;     
+    border: 1px solid #573300;
+    background-image: url('../IMG/fondo-boton-arena.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #492602, 0 4px 2px rgba(0, 0, 0, .5);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #492602, 0 4px 2px rgba(0, 0, 0, .5);
+}
+
+.buttonSides:hover::before {
+    width: 105%;    
+    background-image: url('../IMG/fondo-boton-arena.png');
+    
+
+}
+
+.buttonSides:hover {
+color: rgb(255, 255, 255);
+font-size: 15px;
+padding: 0.4em 0.9em;
+}

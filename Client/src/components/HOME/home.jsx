@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import {NavLink, useHistory} from 'react-router-dom';
 import {firebaseCerrarSesion} from '../../utils/Firebase';
 import '../STYLES/home.modules.css';
+import '../STYLES/buttons.css';
 import { FaPowerOff } from 'react-icons/fa';
 import UserCard from './userCard';
 import Instructions from './instructions';
@@ -65,8 +66,8 @@ function Home(props) {
 				</div>
 				<div className='content'>
 					<div className='contentButtons'>
-						<button className='button' onClick={handleCreateRoom}>
-							Iniciar partida
+						<button className='buttonSides brown' onClick={handleCreateRoom}>
+							Crear partida
 						</button>
 						<NavLink to={'/partidasDisponibles'}>
 							<button className='button'>Partidas disponibles</button>

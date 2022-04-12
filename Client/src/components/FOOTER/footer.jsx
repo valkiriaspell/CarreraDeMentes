@@ -16,6 +16,9 @@ export default function Footer() {
         <div className="footer">
             
             <span>© 2022 ZooPer Trivia</span>
+
+            <NavLink to="/about" ><span> Quienes Somos </span></NavLink>
+            
         {splitLocation[1] !== "home" ?
             <NavLink to="/administrador" disabled={splitLocation[1] === "home"} ><span> Acceder como Administrador </span></NavLink>
             :
