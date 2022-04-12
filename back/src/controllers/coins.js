@@ -1,123 +1,118 @@
-const { Coins } = require("../db");
-const coinsInicial = require('../Coins.json')
+const {Coins} = require('../db');
+const coinsJson = require('../Coins.json');
 
 // Agregar un coins
-const addCoins = async ({ coins, url }) => {
-    try {
+const addCoins = async ({coins, url}) => {
+	try {
+		await Coins.create({coins, url});
 
-        await Coins.create({ coins, url });
-
-        return [true, "coins agragado a la base de datos"];
-
-    } catch (e) {
-        return [false, { error: "Error al guardar los coins: " + e }];
-    }
-}
+		return [true, 'coins agregadas a la base de datos'];
+	} catch (e) {
+		return [false, {error: 'Error al guardar los coins: ' + e}];
+	}
+};
 
 const addMultCoins = async (array) => {
-    try {
+	try {
+		array.forEach(async (obj) => {
+			await Coins.create(obj);
+		});
+		return [true, 'Creados: ' + array.length];
+	} catch (e) {
+		return [false, {error: 'Error al guardar las coins: ' + e}];
+	}
+};
 
-        array.forEach(async (obj) => {
-            await Coins.create(obj);
-        })
-        return [true, "Creados: " + array.length]
+const addInitServerMultCoins = async () => {
+	try {
+		const data = await JSON.parse(JSON.stringify(coinsJson));
 
-    } catch (e) {
-
-    }
-}
-
-const addInitServerMultCoins = async (array) => {
-    try {
-
-        array.forEach(async (obj) => {
-            await Coins.findOrCreate({
-                where: { coins: obj.coins },
-                defaults: { ...obj }
-            });
-        })
-        return [true, "Creados: " + array.length]
-
-    } catch (e) {
-
-    }
-}
+		data.forEach(async (obj) => {
+			await Coins.findOrCreate({
+				where: {coins: obj.coins},
+				defaults: {...obj},
+			});
+		});
+		return [true, 'Creados: ' + data.length];
+	} catch (error) {
+		return [false, {error: 'Error al guardar los coins: ' + e}];
+	}
+};
 
 const coinsInicialDeploy = async () => {
-    try {
-        const dataCoins = JSON.parse(JSON.stringify(coinsInicial));
-    
-        dataCoins.map( async obj => {
-            await Coins.findOrCreate({
-                where: { coins: obj.coins },
-                defaults: { ...obj }
-            })
-        }) 
-        return [true, "Creados: " + dataCoins.length]
+	try {
+		const dataCoins = JSON.parse(JSON.stringify(coinsJson));
 
-    } catch (error) {
-        console.log(error)
-    }
-}
+		dataCoins.map(async (obj) => {
+			await Coins.findOrCreate({
+				where: {coins: obj.coins},
+				defaults: {...obj},
+			});
+		});
+		return [true, 'Creados: ' + dataCoins.length];
+	} catch (error) {
+		return [false, {error: 'Error al guardar los coins: ' + e}];
+	}
+};
 
 // Devolver todos los coins de menor a amayor
 const getAllMinMaxCoins = async () => {
-    try {
-        const data = await Coins.findAll();
+	try {
+		const data = await Coins.findAll();
 
-        if (!data.length) return [false, "No se encontro coins en la base de datos"];
+		if (!data.length)
+			return [false, 'No se encontro coins en la base de datos'];
 
-        const orederMaxMin = await data.sort(orederMinMaxRanting);
+		const orederMaxMin = await data.sort(orederMinMaxRanting);
 
-        return [true, orederMaxMin];
-
-    } catch (e) {
-        return e;
-    }
-}
+		return [true, orederMaxMin];
+	} catch (error) {
+		return [false, {error: 'Error al guardar los coins: ' + e}];
+	}
+};
 
 // Actualizar un coins
-const updateCoins = async ({ idCoins, newCoins }) => {
-    try {
-        const data = await Coins.findByPk(idCoins);
+const updateCoins = async ({idCoins, newCoins}) => {
+	try {
+		const data = await Coins.findByPk(idCoins);
 
-        if (!data) return [false, "No se encontro el coins a modificar"];
+		if (!data) return [false, 'No se encontro el coins a modificar'];
 
-        await data.update({ coins: newCoins });
+		await data.update({coins: newCoins});
 
-        return [true, "Se actualizo con exito el coins"];
-
-    } catch (e) {
-        return e;
-    }
-}
+		return [true, 'Se actualizo con exito el coins'];
+	} catch (error) {
+		return [false, {error: 'Error al guardar los coins: ' + e}];
+	}
+};
 
 // Eliminar un conis
-const deleteCoins = async ({ idCoins }) => {
-    try {
-        const data = await Coins.destroy({ where: { id: idCoins } });
+const deleteCoins = async ({idCoins}) => {
+	try {
+		const data = await Coins.destroy({where: {id: idCoins}});
 
-        return data > 1 ? [true, "Eliminado con exito"] : [false, "No se encontro el coins para aliminar"]
-    } catch (e) {
-        console.log(e)
-        return e
-    }
-}
-
+		return data > 1
+			? [true, 'Eliminado con exito']
+			: [false, 'No se encontraron coins para eliminar'];
+	} catch (error) {
+		console.log(e);
+		return [false, {error: 'Error al eliminar las coins: ' + e}];
+	}
+};
 
 // oredenar de menor a mayor por coins
 const orederMinMaxRanting = (a, b) => {
-    if (a.coins > b.coins) return 1;
-    if (b.coins > a.coins) return -1;
-    return 0;
+	if (a.coins > b.coins) return 1;
+	if (b.coins > a.coins) return -1;
+	return 0;
 };
 
 module.exports = {
-    addCoins,
-    addMultCoins,
-    addInitServerMultCoins,
-    coinsInicialDeploy,
-    getAllMinMaxCoins,
-    updateCoins,
-    deleteCoins
-}
+	addCoins,
+	addMultCoins,
+	addInitServerMultCoins,
+	coinsInicialDeploy,
+	getAllMinMaxCoins,
+	updateCoins,
+	deleteCoins,
+};
