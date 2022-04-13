@@ -3,18 +3,18 @@ import axios from "axios";
 import "../STYLES/endGame.css";
 import { useSelector } from "react-redux";
 
-export default function EndGame({ userCoins, user }) {
+export default function EndGame() {
 
-  const { preRoomUsers } = useSelector((state) => state);
+  const { preRoomUsers, user } = useSelector((state) => state);
     
   useEffect(() => {
-    const getCoins = async () => {
-      await axios.post("http://localhost:3001/mercadopago", {
-        coinsFinal: userCoins,
-        email: user.email,
-      });
-    };
-    getCoins();
+    const getExperiencie = async () => {
+      console.log(user);
+      console.log(preRoomUsers);
+     const boolean = preRoomUsers?.users[0].id === user?.id ? true : false
+      await axios.put(`http://localhost:3001/users/experience?id=${user.id}&winner=${boolean}`);
+    }
+    getExperiencie();
   }, []);
 
   return (
