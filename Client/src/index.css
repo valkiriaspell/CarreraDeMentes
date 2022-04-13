@@ -10,8 +10,8 @@ background: -moz-linear-gradient(315deg, rgb(0, 73, 10) 28%, rgb(118, 237, 44) 8
 
 background: -webkit-linear-gradient(315deg, rgb(0, 73, 10) 28%, rgb(118, 237, 44) 83%);
 
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#18224B", endColorstr="#ED2D53", GradientType=1 );
-  height: 120vh;
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#18224B", endColorstr="#ED2D53", GradientType=1 );
+  min-height: 100vh;
   margin: 0;
   font-family: "IBM Plex Sans Thai Looped", sans-serif;
   font-family: "Lato", sans-serif;

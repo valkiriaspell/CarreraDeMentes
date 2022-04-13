@@ -4,6 +4,7 @@ import Nivel from "../IMG/level.png"
 import Monedas from "../IMG/coin.png"
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { loginUser } from '../../redux/actions';
 import Swal from 'sweetalert2';
 
@@ -11,6 +12,7 @@ function UserCard({location}) {
   const {user} = useSelector(state => state);
   const dispatch = useDispatch()
   const email = localStorage.getItem("email");
+  const history = useHistory()
 
   //GET para saber el estado del pago, si fue aprobado agregar las monedas al usuario en la bd
   useEffect(() => {
@@ -26,6 +28,7 @@ function UserCard({location}) {
           heightAuto: false,
           timer: 3000,
         });
+        history.push('/home')
       }  
     }())
   } , [location])

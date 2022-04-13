@@ -2,7 +2,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center; 
-  margin-top: 2rem; 
+  background-image: url("../IMG/fondo.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 .containerLanding {
   border: solid 3px rgba(216, 221, 226, 0.4);
