@@ -12,6 +12,7 @@ const {
 	bannerUser,
 	putUserReady,
 	modifyAdmin,
+	experience,
 } = require('../controllers/users');
 
 // escriban sus rutas acá
@@ -100,8 +101,7 @@ router.put('/', async (req, res) => {
 		if (email) {
 			const hostFound = await modifyHost(null, email, host);
 			res.send(hostFound);
-		}
-		else if (id) {
+		} else if (id) {
 			const hostFound = await modifyHost(id, null, host);
 			res.send(hostFound);
 		} else {
@@ -121,5 +121,14 @@ router.put('/banner', async (req, res) => {
 		res.send(userBanner);
 	} catch (error) {
 		res.status(500).send(`Error al bannear el usuario: ${error}`);
+	}
+});
+router.put('/experience', async (req, res) => {
+	try {
+		const {id, winner} = req.query;
+		const userExperience = await experience(id, winner);
+		res.send(userExperience);
+	} catch (error) {
+		res.status(500).send(`Error al sumar experiencia al usuario: ${error}`);
 	}
 });
