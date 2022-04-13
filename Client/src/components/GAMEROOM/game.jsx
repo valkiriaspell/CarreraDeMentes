@@ -7,6 +7,7 @@ import useChatSocketIo from "../PRE-GAMEROOM/useSocketIo";
 import $ from "jquery";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 function randomQuestions(array) {
   var m1 = Math.floor((Math.random() * array.length) % array.length);
@@ -55,6 +56,14 @@ function Game({ setShowEndGame, userCoins, setUserCoins, setGame }) {
   let [pointsPower, setPointsPower] = useState(1);
   let [actualQuestion, setActualQuestion] = useState(0);
 
+  const getCoins = async (coins) => {
+    await axios.post("http://localhost:3001/mercadopago", {
+      coinsFinal: coins,
+      email: user.email,
+    });
+    console.log(coins);
+  };
+
   // ======= TIMER =======
   const [seconds, setSeconds] = useState(preRoomUsers?.time);
   const [percentage, setPercentage] = useState(100);
@@ -79,9 +88,18 @@ function Game({ setShowEndGame, userCoins, setUserCoins, setGame }) {
       setSeconds((seconds) => seconds - 1);
     }, 1000);
 
-    return () => clearInterval(intervalo);
+    return () =>  clearInterval(intervalo)
   }, [question]);
   //  ============================
+
+  useEffect(() => {
+    let testCoinst = userCoins
+    return () => getCoins(testCoinst)
+  },[userCoins])
+
+
+
+
   useEffect(() => {
     setQuestions(preRoomUsers.questions);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -210,6 +228,7 @@ function Game({ setShowEndGame, userCoins, setUserCoins, setGame }) {
       }
     }
   };
+  
 
   const handleGoHome = () => {
     setGame(false);
