@@ -38,12 +38,12 @@ function Home(props) {
 		return (
 			<div className='container'>
 				<div className='nav'>
-					<div>
-						<NavLink className='buttonsNav' to={'/tienda'}>
-							<button className="buttonSides green">Tienda</button>
+					<div style={{marginTop: "0.6rem"}} >
+						<NavLink style={{margin:"0.5rem"}} to={'/tienda'}>
+							<button style={{fontSize:"11px"}} className="buttonSides brown">Tienda</button>
 						</NavLink>
-						<NavLink className='buttonsNav' to={'/editProfile'}>
-							<button className="buttonSides green">Mi perfil</button>
+						<NavLink style={{margin:"0.5rem"}} to={'/editProfile'}>
+							<button style={{fontSize:"11px"}} className="buttonSides brown">Mi perfil</button>
 						</NavLink>
 					</div>
 					<div className="logo">

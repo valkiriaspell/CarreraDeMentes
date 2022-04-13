@@ -58,7 +58,7 @@ const Chat = ({idUser}) =>{
                         value={newMessage} 
                         onChange={handleMessage} 
                         />
-                    <button onClick={e => handleSendMessage(e)} >Enviar</button>
+                    <button className="buttonSides lowgreen" onClick={e => handleSendMessage(e)} >Enviar</button>
                         </form>
                 </div>
         </div>

@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@200&family=Lato:wght@100&family=Open+Sans:wght@300&family=Raleway:wght@100;400&display=swap");
 
 body {
-  
+  /* background-image: url("./components/IMG/fondo-landing.webp");
+  background-size: cover;
+  background-attachment: fixed; */
   background: rgb(0, 73, 10);
 
 background: linear-gradient(315deg, rgb(0, 73, 10) 28%, rgb(118, 237, 44) 83%);
