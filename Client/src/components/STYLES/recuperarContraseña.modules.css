@@ -24,6 +24,9 @@
   top: -25px;
   position: relative;
 }
+.contentVolver button:hover{
+  cursor: url("../IMG/pata.png"), auto;
+}
 .contentVolver img {
   position: relative;
   top: 80px;
@@ -75,8 +78,9 @@
 }
 .contentReContraseña button:hover {
   background-color: rgba(165, 166, 167, 0.521);
-  cursor: pointer;
+  cursor: url("../IMG/pata.png"), auto;
 }
+
 
 /* ===== MEDIA QUERIES =====*/
 @media screen and (max-width: 500px) {

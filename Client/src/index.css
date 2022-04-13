@@ -19,6 +19,13 @@ background: -webkit-linear-gradient(315deg, rgb(0, 73, 10) 28%, rgb(118, 237, 44
   font-family: "Raleway", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  cursor: url("./components/IMG/cursor.png"), auto;
+}
+a {
+  cursor: url("./components/IMG/pata.png"), auto;
+}
+button:hover {
+  cursor: url("./components/IMG/pata.png"), auto;
 }
 
 code {

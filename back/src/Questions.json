@@ -6,167 +6,167 @@
         "false1": "Aerosmith",
         "false2": "ZZ Top",
         "false3": "Pink Floyd",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica1.jpg?alt=media&token=c24c1b19-e4e3-4145-80f0-a5dda1d1d548"        
     },
     {
         "id": 2,
-        "question": "¿Cual es el nombre completo de 'Shakira'?",
+        "question": "¿Cuál es el nombre completo de 'Shakira'?",
         "answer": "Shakira Isabel Mebarak Ripoll",
         "false1": "Sahara Isabel Mebarak Ripoll",
         "false2": "Isabel Mebarak Ripoll",
         "false3": "Isaura Mebarak Shakira Ripoll",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica2.jpg?alt=media&token=7900e1df-b3c2-4305-968c-92e1dbce62f6"
     },
     {
         "id": 3,
-        "question": "¿Que significan las siglas 'EP' que a menudo usan para referirse al primer album de una banda?",
+        "question": "¿Que significan las siglas 'EP' que a menudo usan para referirse al primer álbum de una banda?",
         "answer": "Extended Play",
         "false1": "Enhaced Practice",
         "false2": "Enhaced Prototype",
         "false3": "Extended Prototype",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica3.jpg?alt=media&token=0331ae61-9f7c-475a-a2a7-4c766630e949"
     },
     {
         "id": 4,
-        "question": "¿Cual de los siguientes no es un integrante de Guns n' Roses?",	       
+        "question": "¿Cuál de los siguientes no es un integrante de Guns n' Roses?",	       
         "answer": "Dave Grohl",
         "false1": "Axl Rose",
         "false2": "Dizzy Reed",
         "false3": "Slash",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica4.jpg?alt=media&token=bbc9923b-b47d-41b4-a9e3-f43eb5fdef66"
     },
     {
         "id": 5,
-        "question": "¿Cual de estas cantantes ha logrado alcanzar el registro de 'silbido', el registro vocal más alto de la voz humana?",
+        "question": "¿Cuál de estas cantantes ha logrado alcanzar el registro de 'silbido', el registro vocal más alto de la voz humana?",
         "answer": "Todas",
         "false1": "Ariana Grande",
         "false2": "Mariah Carey",
         "false3": "Sarah Brightman",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica5.jpg?alt=media&token=c0216fe3-9a7f-40c7-9075-ff7657806eda"
     },
     {
         "id": 6,
-        "question": "¿Cual fue el album mas vendido del año 2010 según la Federación Internacional de la Industria Discográfica?",
+        "question": "¿Cuál fue el álbum más vendido del año 2010, según la Federación Internacional de la Industria Discográfica?",
         "answer": "'Recovery' de Eminem",
         "false1": "'I Dreamed a Dream' de Susan Boyle",
         "false2": "'Viva la Vida or Death and All His Friends' de Coldplay",
         "false3": "'21' de Adele",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica6.jpg?alt=media&token=7338a107-683c-4e06-9258-c7bcf45af691"
     },
     {
         "id": 7,
-        "question": "¿La famosa banda británica 'The Beatles' fue formada en que ciudad?",
+        "question": "¿En qué ciudad se formó la famosa banda británica 'The Beatles'?",
         "answer": "Liverpool",
         "false1": "Londres",
         "false2": "Manchester",
         "false3": "Sheffield",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica7.jpeg?alt=media&token=134301b7-4748-4bc9-b852-f52f5b1dcb16"
     },
     {
         "id": 8,
-        "question": "¿Cual de los siguientes no es un género Musical?",
+        "question": "¿Cuál de los siguientes no es un género Musical?",
         "answer": "Merengue",
         "false1": "Punk Rock",
         "false2": "Country",
         "false3": "Rhythm and Blues",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica8.jpg?alt=media&token=268c0ff2-7719-40cc-9d9c-eb116f4c3ec9"
     },
     {
         "id": 9,
-        "question": "¿Como continúa la famosa canción de Queen luego de: 'We are the champions, my friends...'?",
+        "question": "¿Cómo continúa la famosa canción de Queen luego de: 'We are the champions, my friends...'?",
         "answer": "And we'll keep on fighting till the end",
         "false1": "Cause we are the champions of the World",
         "false2": "And everything that goes with it",
         "false3": "And we mean to go on and on",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica9.jpg?alt=media&token=d6d7edf2-29f4-48eb-bf63-85cc0c7d1bff"
     },
     {
         "id": 10,
-        "question": "¿Cual de los siguientes no es un instrumento?",
+        "question": "¿Cuál de los siguientes opciones no es un instrumento?",
         "answer": "Latón",
         "false1": "Estilófono",
         "false2": "Címbalo",
         "false3": "Hidraulófono",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica10.png?alt=media&token=23171a5d-60f5-4b77-8c1c-c73614791e81"
     },
     {
         "id": 11,
-        "question": "¿Cual de las siguientes es la danza tradicional de Camerún?",
+        "question": "¿Cuál de las siguientes opciones es la danza tradicional de Camerún?",
         "answer": "Bikutsi",
         "false1": "Kabuki",
         "false2": "Chechotka",
         "false3": "Cueca",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica11.jpg?alt=media&token=fb547f2f-8f2f-4420-b9c2-ed446fafc532"
     },
     {
         "id": 12,
-        "question": "¿Cual de las siguientes es la danza tradicional de Rusia?",
+        "question": "¿Cuál de las siguientes opciones es la danza tradicional de Rusia?",
         "answer": "Chechotka",
         "false1": "Kabuki",
         "false2": "Morris",
         "false3": "Cueca",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica12.jpg?alt=media&token=b0406c9d-66d1-4470-966e-b4b9e88fc6f3"
     },
     {
         "id": 13,
-        "question": "¿Durante que siglo se originó el genero 'Blues'?",
+        "question": "¿Durante qué siglo se originó el género 'Blues'?",
         "answer": "Siglo XIX",
         "false1": "Siglo XV",
         "false2": "Siglo XVIII",
         "false3": "Siglo XX",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica13.jpg?alt=media&token=ba93bf3b-f4c2-4688-911a-783f0f9bd319"
     },
     {
         "id": 14,
-        "question": "¿En que pais nació la danza conocida como 'Polca'?",
+        "question": "¿En qué país nació la danza conocida como 'Polca'?",
         "answer": "República Checa",
         "false1": "Polonia",
         "false2": "Suecia",
         "false3": "Holanda",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica14.jpg?alt=media&token=90b38405-238b-460b-895c-86cc14e022bf"
     },
     {
         "id": 15,
-        "question": "¿Cual de los siguientes tiene mas premios Grammy ganados hasta el año 2022?",
+        "question": "¿Cuál de los siguientes tiene más premios Grammy ganados hasta el año 2022?",
         "answer": "Georg Solti",
         "false1": "Quincy Jones",
         "false2": "Beyoncé",
         "false3": "Lady Gaga",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica15.jpg?alt=media&token=1bcc7fa9-bbf1-45d7-83ae-fe6035592705"
     },
     {
         "id": 16,
-        "question": "¿Cual fue la canción escrita por Michael Jackson que contó con las voces de mas de 18 celebridades?",
+        "question": "¿Cuál fue la canción escrita por Michael Jackson que contó con las voces de más de 18 celebridades?",
         "answer": "We are the world",
         "false1": "Billie Jean",
         "false2": "Thriller",
         "false3": "Wanna Be Startin' Somethin'",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica16.jpg?alt=media&token=dcf9a577-1a71-41c9-90a2-8305eb4463f7"
     },
     {
         "id": 17,
-        "question": "¿Phil Collins le dió vida a muchas canciones de cierta pelicula de Disney, cual fue?",
+        "question": "¿Phil Collins le dió vida a muchas canciones de cierta película de Disney, cual fue?",
         "answer": "Tarzan",
         "false1": "La Bella y La Bestia",
         "false2": "Toy Story",
         "false3": "El Rey León",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica17.jpg?alt=media&token=9d534238-ac7f-4d13-b0ab-aec22b9117fe"
     },
     {
@@ -176,7 +176,7 @@
         "false1": "Freddie Mercury",
         "false2": "Bob Dylan",
         "false3": "David Bowie",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica18.jpg?alt=media&token=3930fa51-cfe9-4338-9b73-44797c115bfa"
     },
     {
@@ -186,7 +186,7 @@
         "false1": "David Bowie",
         "false2": "Mick Jagger",
         "false3": "Freddie Mercury",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica19.jpg?alt=media&token=0a3990cb-9436-4ee9-952f-56ce88747837"
     },
     {
@@ -196,7 +196,7 @@
         "false1": "The Doors",
         "false2": "Nirvana",
         "false3": "Sex Pistols",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica20.jpg?alt=media&token=ca84e6d0-78d3-40c5-90c0-35857dfcc99f"
     },
     {
@@ -206,7 +206,7 @@
         "false1": "Cuba",
         "false2": "Estados Unidos",
         "false3": "Colombia",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica21.jpg?alt=media&token=cb692104-bd11-4ba6-94f1-456fd6a04ed9"
     },
     {
@@ -216,7 +216,7 @@
         "false1": "Bob Marley",
         "false2": "Bon Jovi",
         "false3": "Adam Levine",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica22.jpg?alt=media&token=661d51df-bc2c-4475-915d-776796efbaf6"
     },
     {
@@ -226,7 +226,7 @@
         "false1": "Michelle Jackson",
         "false2": "Denise Mars Jackson",
         "false3": "Jessica Diana Jackson",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica23.jpg?alt=media&token=0f32d96a-114e-4d9d-ab40-d0184ad8bda1"
     },
     {
@@ -236,17 +236,17 @@
         "false1": "Chayanne",
         "false2": "Luis Miguel",
         "false3": "Ricardo Arjona",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica24.jpg?alt=media&token=d778c7b1-4b48-4d8e-9606-64c4709ee79a"
     },
     {
         "id": 25,
-        "question": "¿Que cantantes grabaron la canción 'Señorita' por primera vez?",
+        "question": "¿Qué cantantes grabaron la canción 'Señorita' por primera vez?",
         "answer": "Camila cabello y Shawn mendes",
         "false1": "Camila cabello y Alejandro Sanz",
         "false2": "Selena Gomez y Shawn mendes",
         "false3": "Selena Gomez y Alejandro Sanz",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica25.jpeg?alt=media&token=b64c074f-4887-4344-ae94-94d76550ead5"
     },
     {
@@ -256,7 +256,7 @@
         "false1": "5",
         "false2": "3",
         "false3": "6",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica26.jpg?alt=media&token=40044684-9bd0-49bb-b092-52f449527fb2"
     },
     {
@@ -266,7 +266,7 @@
         "false1": "Polaco",
         "false2": "Francés",
         "false3": "Ruso",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica27.jpg?alt=media&token=0417f86b-2b0f-487d-83f5-89c9d1f5ef76"
     },
     {
@@ -276,7 +276,7 @@
         "false1": "Beethoven",
         "false2": "Vivaldi",
         "false3": "Chaikovski",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica28.jpg?alt=media&token=543ab49b-0f36-45f2-8bf9-403fd1323a9f"
     },
     {
@@ -286,7 +286,7 @@
         "false1": "Mariah Carey",
         "false2": "Sara Brightman",
         "false3": "Celine Dion",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica29.jpg?alt=media&token=e3bfd09a-cb3d-406b-9cfe-ba5906053b25"
     },
     {
@@ -296,7 +296,7 @@
         "false1": "Suecia",
         "false2": "Inglaterra",
         "false3": "Francia",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica30.jpg?alt=media&token=c1ec55d7-8156-4628-bd3b-4e1837cc5a43"
     },
     {
@@ -306,7 +306,7 @@
         "false1": "Las bodas de figaro",
         "false2": "La novena sinfonía",
         "false3": "Para Elisa",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica31.jpg?alt=media&token=cf0019cc-cc93-4908-ad2d-30a4a9794032"
     },
     {
@@ -316,7 +316,7 @@
         "false1": "5",
         "false2": "4",
         "false3": "Varía según la guitarra",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica32.jpg?alt=media&token=1fc6d8a1-f358-4ce7-a38a-0d4fc44a91f1"
     },
     {
@@ -326,7 +326,7 @@
         "false1": "El piano",
         "false2": "La Guitarra",
         "false3": "La batería",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica33.jpg?alt=media&token=5b4f999c-dec1-43d7-a318-a77bba95c759"
     },
     {
@@ -336,7 +336,7 @@
         "false1": "Los artistas malditos",
         "false2": "La nota de los 27",
         "false3": "El hall de los 27 eternos",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica34.jpg?alt=media&token=fbde035a-a631-413a-88ed-c6aff90a3a94"
     },
     {
@@ -346,17 +346,17 @@
         "false1": "Antonio Vivaldi",
         "false2": "Niccolò Paganini",
         "false3": "Claudio Giovanni Antonio Monteverdi",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica35.jpg?alt=media&token=f74355fd-ef57-4c67-840d-2638f3e1a057"
     },
     {
         "id": 36,
         "question": "¿Qué famoso músico compuso la pieza Para Elisa?",
-        "answer": "Mozart",
-        "false1": "Beethoven",
+        "answer": "Beethoven",
+        "false1": "Mozart",
         "false2": "Bach",
         "false3": "Chaikovski",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica36.jpeg?alt=media&token=e26ad31a-6596-4cdc-9651-17cfe8f77719"
     },
     {
@@ -366,7 +366,7 @@
         "false1": "Serú Giran",
         "false2": "Sui Generis",
         "false3": "Almendra",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica37.webp?alt=media&token=e08ee9d2-0b58-4b2e-984d-14263e279f1a"
     },
     {
@@ -376,17 +376,17 @@
         "false1": "Serú Girán",
         "false2": "La Máquina de Hacer Pájaros",
         "false3": "Sui Generis",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica38.jpg?alt=media&token=f9377d9f-322b-4575-83b7-e1232a621826"
     },
     {
         "id": 39,
-        "question": "¿Que banda es autora de la canción 'Sympathy For The Devil?'",
+        "question": "¿Qué banda es autora de la canción 'Sympathy For The Devil?'",
         "answer": "The Rolling Stones",
         "false1": "Guns N' Roses",
         "false2": "Sex Pistols",
         "false3": "The Doors",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica39.jpg?alt=media&token=66d6e402-6b4a-45f6-a5d9-598ba3f9fe1a"
     },
     {
@@ -396,17 +396,17 @@
         "false1": "The Rolling Stones",
         "false2": "The Beatles",
         "false3": "ZZ Top",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica40.jpg?alt=media&token=e8dfccab-5bff-4277-8acc-c98a9d1d354d"
     },
     {
         "id": 41,
-        "question": "¿De qué famosa cantante ya fallecida es la canción Back to black?",
-        "answer": "Amy winehouse",
+        "question": "¿De qué famosa cantante ya fallecida es la canción Back to Black?",
+        "answer": "Amy Winehouse",
         "false1": "Whitney Houston",
         "false2": "Mariah Carey",
         "false3": "Janet Jackson",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica41.jpg?alt=media&token=5480559c-8ded-4d5a-8940-717c17252778"
     },
     {
@@ -415,8 +415,8 @@
         "answer": "A capella",
         "false1": "A cordel",
         "false2": "Asónica",
-        "false3": "Lirica",
-        "category": "Musica",
+        "false3": "Lírica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica42.jpg?alt=media&token=016ae66a-ef33-450f-9ae1-51e2000cf45a"
     },
     {
@@ -426,7 +426,7 @@
         "false1": "A capella",
         "false2": "Sing Along",
         "false3": "Karaoke",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica43.jpg?alt=media&token=78293f21-ff90-4226-ad39-2544bae13e53"
     },
     {
@@ -436,7 +436,7 @@
         "false1": "Guns N' Roses",
         "false2": "Linkin Park",
         "false3": "30 seconds to mars",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica44.jpg?alt=media&token=441992fe-adbc-4117-846e-96e58683e77b"
     },
     {
@@ -446,17 +446,17 @@
         "false1": "Estados Unidos",
         "false2": "Escocia",
         "false3": "Francia",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica45.jpg?alt=media&token=fb64b659-9ffd-471e-a4d6-ea06774f352c"
     },
     {
         "id": 46,
         "question": "¿Qué instrumento tocaba el compositor italiano Niccolò Paganini?",
-        "answer": "Violin",
+        "answer": "Violín",
         "false1": "Piano",
         "false2": "Arpa",
         "false3": "Todas son correctas",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica46.jpeg?alt=media&token=de8936d6-e9b1-4115-a256-06382e2de329"
     },
     {
@@ -466,7 +466,7 @@
         "false1": "Alemania",
         "false2": "Suiza",
         "false3": "Francia",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica47.jpg?alt=media&token=6986c31a-6267-4704-a9eb-a82d91ec1b8a"
     },
     {
@@ -476,17 +476,17 @@
         "false1": "Sex Pistols",
         "false2": "Aerosmith",
         "false3": "Guns N' Roses",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica48.jpg?alt=media&token=38345011-3d2e-4416-b674-d0681961f7d2"
     },
     {
         "id": 49,
-        "question": "¿Como se llama la famosa canción de la pelicula 'Titanic' interpretada por Celine Dion?",
+        "question": "¿Cómo se llama la famosa canción de la película 'Titanic' interpretada por Celine Dion?",
         "answer": "My heart will go on",
         "false1": "I will always love you",
         "false2": "My heart goes with you",
         "false3": "I will follow you",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica49.jpg?alt=media&token=777c70c7-a5aa-4685-815d-d56b90fc27ee"
     },
     {
@@ -496,7 +496,7 @@
         "false1": "Beyonce",
         "false2": "Madonna",
         "false3": "Katy Perry",
-        "category": "Musica",
+        "category": "Música",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Musica%2Fmusica50.jpg?alt=media&token=ddb596f0-c51e-429a-9c6a-d52a0706ea61"
     },
     {
@@ -505,7 +505,7 @@
         "answer": "1930 en Uruguay",
         "false1": "1934 en Brasil",
         "false2": "1930 en Alemania",
-        "false3": "1938 en Mexico",
+        "false3": "1938 en México",
         "category": "Deporte",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Deporte%2Fdeporte1.jpg?alt=media&token=0965da5c-5af1-4df5-9bab-67a1283a76b7"
     },
@@ -531,17 +531,17 @@
     },
     {
         "id": 54,
-        "question": "¿Qué selección ganó la primera Copa del Mundo (1930)?",
+        "question": "¿Qué selección ganó la primera Copa del Mundo en 1930?",
         "answer": "Uruguay",
         "false1": "Brasil",
-        "false2": "Mexico",
+        "false2": "México",
         "false3": "Argentina",
         "category": "Deporte",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Deporte%2Fdeporte4.jpg?alt=media&token=1381cab5-4d5c-403c-a624-5e34a7a2f9eb"
     },
     {
         "id": 55,
-        "question": "¿En qué Copa del Mundo Diego Maradona dió origen a la famosa frase 'Mano de Dios'?",
+        "question": "¿En qué Copa del Mundo Diego Maradona dio origen a la famosa frase 'Mano de Dios'?",
         "answer": "México 1986",
         "false1": "Brasil 1982",
         "false2": "Argentina 1976",
@@ -571,11 +571,11 @@
     },
     {
         "id": 58,
-        "question": "¿Cuántos Balones de Oro ganó Leonel Messi?",
-        "answer": "seis",
-        "false1": "siete",
-        "false2": "cinco",
-        "false3": "cuatro",
+        "question": "¿Cuántos Balones de Oro ganó Lionel Messi?",
+        "answer": "7",
+        "false1": "8",
+        "false2": "6",
+        "false3": "5",
         "category": "Deporte",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Deporte%2Fdeporte9.jpg?alt=media&token=97ad8652-b525-4ce2-8799-822d748b0bbc"
     },
@@ -611,7 +611,7 @@
     },
     {
         "id": 62,
-        "question": "¿Que es el Chessboxing?",
+        "question": "¿Qué es el Chessboxing?",
         "answer": "Una mezcla de ajedrez y boxeo",
         "false1": "Un tipo de queso",
         "false2": "Una batalla de ajedrez",
@@ -621,11 +621,11 @@
     },
     {
         "id": 63,
-        "question": "¿La Copa del Mundo de 2026 se ha definido con tres países diferentes como sede. ¿Cuales?",
+        "question": "La Copa del Mundo de 2026 se ha definido con tres países diferentes como sede, ¿cuáles son?",
         "answer": "Estados Unidos, Canadá y México",
-        "false1": "Argentina, Brasil y Mexico",
+        "false1": "Argentina, Brasil y México",
         "false2": "Uruguay, Chile y Brasil",
-        "false3": "Canadá, Mexico y Colombia",
+        "false3": "Canadá, México y Colombia",
         "category": "Deporte",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Deporte%2Fdeporte13.jpg?alt=media&token=b7ba9233-7a0a-40e6-9d4b-b77fa13243b3"
     },
@@ -651,9 +651,9 @@
     },
     {
         "id": 66,
-        "question": "¿En qué país se inventó el voleibol?",
+        "question": "¿En qué país se inventó el voleyball?",
         "answer": "Estados Unidos",
-        "false1": "Canada",
+        "false1": "Canadá",
         "false2": "Inglaterra",
         "false3": "Portugal",
         "category": "Deporte",
@@ -661,7 +661,7 @@
     },
     {
         "id": 67,
-        "question": "¿Qué famoso equipo se conoce como los reds?",
+        "question": "¿Qué famoso equipo se conoce como The Reds?",
         "answer": "Liverpool",
         "false1": "Manchester United",
         "false2": "Arsenal",
@@ -691,8 +691,8 @@
     },
     {
         "id": 70,
-        "question": "¿Cómo se llama la zona de hierba sobre la cual se ubica el hoyo en golf?",
-        "answer": "El Green",
+        "question": "¿Cómo se llama la zona de hierba, sobre la cual se ubica el hoyo en el Golf?",
+        "answer": "El green",
         "false1": "El tee de salida",
         "false2": "La calle",
         "false3": "El áspero",
@@ -742,10 +742,10 @@
     {
         "id": 75,
         "question": "¿Cuál es la última cinta que puedes conseguir en las artes marciales?",
-        "answer": "cinturón negro",
-        "false1": "cinturón blanco",
-        "false2": "cinturón rojo",
-        "false3": "cinturón amarillo",
+        "answer": "Cinturón negro",
+        "false1": "Cinturón blanco",
+        "false2": "Cinturón rojo",
+        "false3": "Cinturón amarillo",
         "category": "Deporte",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Deporte%2Fdeporte25.jpg?alt=media&token=e8c93272-f691-4a41-84d5-013b2331f9c0"
     },
@@ -787,11 +787,11 @@
         "false2": "90 minutos",
         "false3": "85 minutos",
         "category": "Deporte",
-        "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Deporte%2Fdeporte29.jpg?alt=media&token=f79e5e88-33dd-4630-8bf1-89d1ae61c270s"
+        "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Deporte%2Fdeporte29.jpg?alt=media&token=f79e5e88-33dd-4630-8bf1-89d1ae61c270"
     },
     {
         "id": 80,
-        "question": "¿Qué nadador de élite ganó cuatro medallas de oro y dos de plata en las Olimpiadas de Londres 2012?",
+        "question": "¿Qué nadador de élite ganó cuatro medallas de oro y dos de plata en las Olimpíadas de Londres 2012?",
         "answer": "Michael Phelps",
         "false1": "Ian Thorpe",
         "false2": "Alexander Popov",
@@ -811,7 +811,7 @@
     },
     {
         "id": 82,
-        "question": "¿Cuántos Grand Slam tiene obtenidos Roger Federer?",
+        "question": "¿Cuántos Grand Slam ha ganado Roger Federer?",
         "answer": "20 títulos",
         "false1": "23 títulos",
         "false2": "12 títulos",
@@ -835,7 +835,7 @@
         "answer": "Relevos",
         "false1": "Corta distancia",
         "false2": "Vallas",
-        "false3": "Larga Distancia",
+        "false3": "Larga distancia",
         "category": "Deporte",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Deporte%2Fdeporte34.jpg?alt=media&token=5d152dfb-fb35-491f-bf0d-806d1b4d9495"
     },
@@ -893,9 +893,9 @@
         "id": 90,
         "question": "¿Qué pieza de ajedrez puede hacer un movimiento en forma de L?",
         "answer": "El caballo",
-        "false1": "El Alfíl",
-        "false2": "El Rey",
-        "false3": "La Reina",
+        "false1": "El alfíl",
+        "false2": "El rey",
+        "false3": "La reina",
         "category": "Deporte",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Deporte%2Fdeporte40.jpeg?alt=media&token=e0e3d332-9d35-4f31-bf26-8034f1a97138"
     },
@@ -911,7 +911,7 @@
     },
     {
         "id": 92,
-        "question": "¿En qué olimpiadas ganó la tenista Serena Williams su primer oro olímpico en individuales?",
+        "question": "¿En qué olimpíadas ganó la tenista Serena Williams su primer oro olímpico en individuales?",
         "answer": "Londres 2012",
         "false1": "Pekín 2008",
         "false2": "Río de Janeiro 2016",
@@ -932,16 +932,16 @@
     {
         "id": 94,
         "question": "¿Qué 3 tipos de armas se utilizan en esgrima?",
-        "answer": "Espada, Florete y Sable",
-        "false1": "Alabarda, Espada y Florete",
-        "false2": "Espada, Corvo y Sica",
-        "false3": "Estoque, Sable y Florete",
+        "answer": "Espada, florete y sable",
+        "false1": "Alabarda, espada y florete",
+        "false2": "Espada, corvo y sica",
+        "false3": "Estoque, sable y florete",
         "category": "Deporte",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Deporte%2Fdeporte44.jpg?alt=media&token=7932b685-9bc3-4db5-9d34-df462752a400"
     },
     {
         "id": 95,
-        "question": "¿Cuántas veces Michael Jordan ganó campeonatos jugando en los Chicago Bulls?",
+        "question": "¿Cuántas campeonatos ganó Michael Jordan jugando en los Chicago Bulls?",
         "answer": "6 campeonatos",
         "false1": "4 campeonatos",
         "false2": "8 campeonatos",
@@ -961,7 +961,7 @@
     },
     {
         "id": 97,
-        "question": "¿Qué equipo de la NBA tiene la racha ganadora más larga?",
+        "question": "¿Qué equipo de la NBA tiene la racha más larga de victorias?",
         "answer": "LA Lakers",
         "false1": "Spurs",
         "false2": "Miami Heat",
@@ -971,7 +971,7 @@
     },
     {
         "id": 98,
-        "question": "¿Cual de las siguientes no es una longitud de categoria olimpica en natación?",
+        "question": "¿Cuál de las siguientes opciones no corresponde a una longitud de categoría olímpica en natación?",
         "answer": "300 metros",
         "false1": "400 metros",
         "false2": "100 metros",
@@ -1001,10 +1001,10 @@
     },
     {
         "id": 101,
-        "question": "¿Cuál es la película más taquilllera de la historia?",
-        "answer": "Avengers 'Endgame'",
+        "question": "¿Cuál es la película más taquillera de la historia?",
+        "answer": "Avatar",
         "false1": "Titanic",
-        "false2": "Avatar",
+        "false2": "Avengers 'Endgame'",
         "false3": "Actividad paranormal",
         "category": "Cine",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine1.jpg?alt=media&token=69d53782-c344-4e2e-a81b-44ccd54dc084"
@@ -1044,14 +1044,14 @@
         "question": "¿En qué película podemos encontrar a un payaso asesino llamado Pennywise?",
         "answer": "It",
         "false1": "Freakshow",
-        "false2": "La naranja mecanica",
+        "false2": "La naranja mecánica",
         "false3": "Jocker",
         "category": "Cine",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine5.jpg?alt=media&token=bfcca672-e985-492d-9a0e-8cbbdc1f2c22"
     },
     {
         "id": 106,
-        "question": "¿En que año se estrenó en el cine la pelicula 'El Rey León'?",
+        "question": "¿En qué año se estrenó en el cine la película 'El Rey León'?",
         "answer": "1994",
         "false1": "1998",
         "false2": "1990",
@@ -1083,9 +1083,9 @@
         "id": 109,
         "question": "¿Con qué película ganó Steven Spielberg su primer Oscar al mejor director?",
         "answer": "La lista de Schindler",
-        "false1": "E.T. el extraterrestre",
+        "false1": "E.T. El extraterrestre",
         "false2": "El color púrpura",
-        "false3": "Tiburon",
+        "false3": "Tiburón",
         "category": "Cine",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine9.jpg?alt=media&token=e2dae4a9-3993-4139-bf37-6a6b69ab8655"
     },
@@ -1111,7 +1111,7 @@
     },
     {
         "id": 112,
-        "question": "¿Qué cantante protagonizó El Guardaespaldas?",
+        "question": "¿Qué famosa cantante protagonizó El Guardaespaldas?",
         "answer": "Whitney Houston",
         "false1": "Jennifer López",
         "false2": "Madonna",
@@ -1121,11 +1121,11 @@
     },
     {
         "id": 113,
-        "question": " ¿Cuál era la primera regla en el Club de la Pelea de Brad Pitt y Edward Norton?",
+        "question": "¿Cuál era la primera regla en el Club de la pelea, de Brad Pitt y Edward Norton?",
         "answer": "Nunca hablar del Club de la pelea",
         "false1": "Ganar una pelea para seguir en el club",
-        "false2": "Tienes que ser invitado por un miembro",
-        "false3": "Nadie muere en el club de la pelea",
+        "false2": "Tener que ser invitado por un miembro",
+        "false3": "Nadie muere en el Club de la pelea",
         "category": "Cine",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine13.jpg?alt=media&token=1f7e6252-7e27-4beb-b017-d0c896d893f3"
     },
@@ -1255,13 +1255,13 @@
         "answer": "Gabriel Pasternak",
         "false1": "Bombita",
         "false2": "El recién casado Ariel",
-        "false3": "Nestor",
+        "false3": "Néstor",
         "category": "Cine",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine26.jpg?alt=media&token=afe5cedb-bd3c-429a-8f91-91cb2543217d"
     },
     {
         "id": 127,
-        "question": "¿Quién es el director del Laberinto del Fauno?",
+        "question": "¿Quién es el director de El laberinto del fauno?",
         "answer": "Guillermo del Toro",
         "false1": "Woody Allen",
         "false2": "Steven Spielberg",
@@ -1271,7 +1271,7 @@
     },
     {
         "id": 128,
-        "question": "En la pelicula 'El Viaje de Chihiro', ¿En qué se convierten los padres por comer en el pueblo abandonado?",
+        "question": "En la película 'El Viaje de Chihiro', ¿en qué se convierten los padres por comer en el pueblo abandonado?",
         "answer": "Cerdos",
         "false1": "Dragones",
         "false2": "Sapos",
@@ -1281,7 +1281,7 @@
     },
     {
         "id": 129,
-        "question": "En Charlie y La Fábrica de Chocolates (2005), ¿Quién de las niñas masticaba chicle sin parar?",
+        "question": "En Charlie y la fábrica de chocolate (2005), ¿cuál de las niñas masticaba chicle sin parar?",
         "answer": "Violet Beauregarde",
         "false1": "Karla Gloop",
         "false2": "Veruca Salt",
@@ -1301,8 +1301,8 @@
     },
     {
         "id": 131,
-        "question": "¿De qué pelicula es esta escena?",
-        "answer": "Viaje a la Luna",
+        "question": "¿De qué película es esta escena?",
+        "answer": "Viaje a la luna",
         "false1": "El tardio amanecer",
         "false2": "Luna de noche",
         "false3": "La otra cara de la luna",
@@ -1310,16 +1310,16 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine31.jpg?alt=media&token=92a33899-fed5-459e-b841-7788b133aa74"
     },
     {   "id": 132,
-        "question": "¿De qué pelicula es esta escena?",
+        "question": "¿De qué película es esta escena?",
         "answer": "El planeta de los simios",
-        "false1": "El dia despues de mañana",
+        "false1": "El día después de mañana",
         "false2": "2001",
         "false3": "Apocalipsis",
         "category": "Cine",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine32.jpg?alt=media&token=1512feed-feae-46f7-91a9-aa228c432375"
     },
     {   "id": 133,
-        "question": "¿De qué pelicula es esta escena?",
+        "question": "¿De qué película es esta escena?",
         "answer": "Esperando la carroza",
         "false1": "Un novio para mi mujer",
         "false2": "El secreto de sus ojos",
@@ -1328,7 +1328,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine33.jpg?alt=media&token=2214630c-008d-439c-9ab9-2dc9be3782ec"
     },
     {   "id": 134,
-        "question": "¿De qué pelicula es esta escena?",
+        "question": "¿De qué película es esta escena?",
         "answer": "Zoolander",
         "false1": "Loco por Mary",
         "false2": "Una noche en el museo",
@@ -1337,16 +1337,16 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine34.jpg?alt=media&token=328c06e7-ac95-4083-b2cb-68d7b0277e18"
     },
     {   "id": 135,
-        "question": "¿De qué pelicula es esta escena?",
+        "question": "¿De qué película es esta escena?",
         "answer": "Bajos instintos",
         "false1": "Casino",
-        "false2": "Rapida y mortal",
-        "false3": "Gatubela",
+        "false2": "Rápida y mortal",
+        "false3": "Gatúbela",
         "category": "Cine",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine35.jpg?alt=media&token=f10bb112-78a6-40fe-8281-4aaba72a39ba"
     },
     {   "id": 136,
-        "question": "¿De qué pelicula es esta escena?",
+        "question": "¿De qué película es esta escena?",
         "answer": "Matilda",
         "false1": "Escuela de Rock",
         "false2": "Oliver Twist",
@@ -1355,17 +1355,17 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine36.jpg?alt=media&token=1c8964bd-1e53-4cc7-8b2c-2a6f20209767"
     },
     {   "id": 137,
-        "question": "¿De qué pelicula es esta escena?",
+        "question": "¿De qué película es esta escena?",
         "answer": "Pulp Fiction",
         "false1": "Kill Bill",
-        "false2": "Los 8 mas odiados",
+        "false2": "Los 8 más odiados",
         "false3": "Grease",
         "category": "Cine",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine37.jpg?alt=media&token=54d040ce-e2e0-4dd3-aac8-2b1ca1dc72eb"
     },
     {   "id": 138,
-        "question": "¿De qué pelicula es esta escena?",
-        "answer": "Mujer Bonita",
+        "question": "¿De qué película es esta escena?",
+        "answer": "Mujer bonita",
         "false1": "La boda de mi mejor amigo",
         "false2": "La gran estafa",
         "false3": "Comer, rezar, amar",
@@ -1373,7 +1373,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine38.jpg?alt=media&token=7b02a76f-7982-499f-931b-484251504066"
     },
     {   "id": 139,
-        "question": "¿De qué pelicula es esta escena?",
+        "question": "¿De qué película es esta escena?",
         "answer": "La novicia rebelde",
         "false1": "Mary Poppins",
         "false2": "Diario de una princesa",
@@ -1382,7 +1382,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine39.jpeg?alt=media&token=9bba2bd8-9a90-498e-b153-de367bc308b5"
     },
     {   "id": 140,
-        "question": "¿De qué pelicula es esta escena?",
+        "question": "¿De qué película es esta escena?",
         "answer": "Alien",
         "false1": "Gravedad",
         "false2": "Vida inteligente",
@@ -1391,7 +1391,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine40.jpg?alt=media&token=59c377c3-e0ed-43bf-957e-a01bc9ea5ec4"
     },
     {   "id": 141,
-        "question": "¿Quien es este actor?",
+        "question": "¿Quién es este actor?",
         "answer": "Keanu Reeves",
         "false1": "Oscar Isaac",
         "false2": "Daniel Day-Lewis",
@@ -1400,7 +1400,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine41.jpg?alt=media&token=a072b28c-62b6-4819-b306-e037aef64cde"
     },
     {   "id": 142,
-        "question": "¿Quien es este actor?",
+        "question": "¿Quién es este actor?",
         "answer": "Morgan Freeman",
         "false1": "Denzel Washington",
         "false2": "Will Smith",
@@ -1409,7 +1409,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine42.jpg?alt=media&token=e63a9b82-2563-43c0-81a8-bf3422d55598"
     },
     {   "id": 143,
-        "question": "¿Quien es este actor?",
+        "question": "¿Quién es esta actriz?",
         "answer": "Jessica Chastain",
         "false1": "Bryce Dallas Howard",
         "false2": "Amy Adams",
@@ -1418,7 +1418,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine43.png?alt=media&token=d8a9a2ad-36c9-462e-b144-7774eff7cf7c"
     },
     {   "id": 144,
-        "question": "¿Quien es este actor?",
+        "question": "¿Quién es esta actriz?",
         "answer": "Jennifer Connelly",
         "false1": "Demi Moore",
         "false2": "Christina Ricci",
@@ -1427,7 +1427,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine44.jpg?alt=media&token=8aa04fba-b2f3-4bc3-ba6b-d6584fe84863"
     },
     {   "id": 145,
-        "question": "¿Quien es este actor?",
+        "question": "¿Quién es esta atriz?",
         "answer": "Emma Mackey",
         "false1": "Margot Robbie",
         "false2": "Isla Fisher",
@@ -1436,7 +1436,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine45.jpg?alt=media&token=4284235d-0429-4097-82ad-c086e5407aff"
     },
     {   "id": 146,
-        "question": "¿Quien es este actor?",
+        "question": "¿Quién es esta actriz?",
         "answer": "Salma Hayek",
         "false1": "Penelope Cruz",
         "false2": "Eva Mendez",
@@ -1445,7 +1445,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine46.jpg?alt=media&token=7ef2ac15-c984-4d3d-85c4-7f67261e5b7b"
     },
     {   "id": 147,
-        "question": "¿Quien es este actor?",
+        "question": "¿Quién es esta atriz?",
         "answer": "Nicole Kidman",
         "false1": "Kate Winslet",
         "false2": "Reese Witherspoon",
@@ -1454,7 +1454,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Cine%2Fcine47.jpg?alt=media&token=22013fdc-e413-4954-b1b5-7dc5939d4e37"
     },
     {   "id": 148,
-        "question": "¿Quien es este actor?",
+        "question": "¿Quién es este actor?",
         "answer": "Johnny Deep",
         "false1": "Vin Diesel",
         "false2": "Robert Downey Jr.",
@@ -1517,8 +1517,8 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Historia%2Fhistoria4.jpg?alt=media&token=11516653-c0d9-454e-9b3b-8b1691f1f62e"
     },
     {   "id": 155,
-        "question": "La Guerra Fría fue entre Estados Unidos y ¿que otra potencia mundial?",
-        "answer": "La Unión Sovietica",
+        "question": "La Guerra Fría fue entre Estados Unidos y ¿qué otra potencia mundial?",
+        "answer": "La Unión Soviética",
         "false1": "China",
         "false2": "Japón",
         "false3": "Alemania",
@@ -1526,7 +1526,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Historia%2Fhistoria5.jpg?alt=media&token=709b5928-b680-4461-a863-a8adf36f6f99"
     },
     {   "id": 156,
-        "question": "¿Cuál fue el escándalo que forzó al presidente de los Estados Unidos Richard Nixon a renunciar al cargo?",
+        "question": "¿Cuál fue el escándalo que forzó al presidente de los Estados Unidos Richard Nixon a renunciar a su cargo?",
         "answer": "Escándalo de Watergate",
         "false1": "Escándalo de Lewinsky",
         "false2": "Controversia de Whitewater",
@@ -1544,7 +1544,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Historia%2Fhistoria7.jpg?alt=media&token=463c2923-bb50-4914-8ce8-ac36567232ea"
     },
     {   "id": 158,
-        "question": "Aparte de Hiroshima ¿cuál otra ciudad japonesa fue atacada por las bombas atómicas en 1945?",
+        "question": "Aparte de Hiroshima, ¿qué otra ciudad japonesa fue atacada por las bombas atómicas en 1945?",
         "answer": "Nagasaki",
         "false1": "Tokio",
         "false2": "Osaka",
@@ -1563,7 +1563,7 @@
     },
 
      {   "id": 160,
-        "question": "¿Quién asesino a Abraham Lincoln?",
+        "question": "¿Quién asesinó a Abraham Lincoln?",
         "answer": "John Wilkes Booth",
         "false1": "James Earl Ray",
         "false2": "Leon Czolgosz",
@@ -1573,18 +1573,18 @@
     },
      {   "id": 161,
         "question": "¿De qué partido político era líder Adolf Hitler?",
-        "answer": "Partido nacionalsocialista obrero",
-        "false1": "Union nacional Republicana",
-        "false2": "USR Union Superior Republicana",
-        "false3": "Partido socialcomunista",
+        "answer": "Partido Nacionalsocialista Obrero",
+        "false1": "Unión Nacional Republicana",
+        "false2": "Unión Superior Republicana",
+        "false3": "Partido Social Comunista",
         "category": "Historia",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Historia%2Fhistoria11.jpg?alt=media&token=cb1a417c-8f90-4e1d-a215-2960df1a4294"
     },
      {   "id": 162,
         "question": "¿Qué documento fue aprobado por el rey Juan de Inglaterra en 1215?",
-        "answer": "Carta magna",
-        "false1": "Ley del alojamiento",
-        "false2": "La ley del sello",
+        "answer": "Carta Magna",
+        "false1": "Ley del Alojamiento",
+        "false2": "Ley del Sello",
         "false3": "El pacto de Mayflower",
         "category": "Historia",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Historia%2Fhistoria12.jpg?alt=media&token=26f927d5-4909-44e4-acbc-fe3bd8f26ca5"
@@ -1635,11 +1635,11 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Historia%2Fhistoria17.jpg?alt=media&token=97a653d2-22a0-4a35-b150-e856c1421999"
     },
     {   "id": 168,
-        "question": "'Ojo por ojo, diente por diente' ¿Esta frase está en cual de estas leyes?",
+        "question": "'Ojo por ojo, diente por diente', ¿esta frase está presente en cuál de estas leyes?",
         "answer": "El código de Hammurabi",
         "false1": "Ley Inglesa",
         "false2": "Los diez mandamientos",
-        "false3": "La primera constitución de los EEUU",
+        "false3": "La primera Constitución de los EEUU",
         "category": "Historia",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Historia%2Fhistoria18.jpg?alt=media&token=72b3cbd4-2dc8-43ba-995f-ed0dd634731c"
     },
@@ -1653,7 +1653,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Historia%2Fhistoria19.jpg?alt=media&token=63966423-3839-4bf7-93e2-711aa4edbc21"
     },
     {   "id": 170,
-        "question": "¿En dónde se oficiaron las primeras olimpiadas modernas de 1896?",
+        "question": "¿En dónde se oficiaron las primeras olimpíadas modernas de 1896?",
         "answer": "Grecia",
         "false1": "Francia",
         "false2": "Alemania",
@@ -1707,7 +1707,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Historia%2Fhistoria25.jpg?alt=media&token=00ff96a4-dbc8-4fd8-943f-eadced684d35"
     },
     {   "id": 176,
-        "question": "¿Quién fue el creador de la obra de arte conocida como 'Última cena'?",
+        "question": "¿Quién fue el creador de la obra de arte conocida como 'La última cena'?",
         "answer": "Leonardo Da Vinci",
         "false1": "Pablo Picasso",
         "false2": "Miguel Angel",
@@ -1752,7 +1752,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Historia%2Fhistoria30.jpg?alt=media&token=422f2630-7275-40f1-927e-ce0cd4b9ab76"
     },
     {   "id": 181,
-        "question": "¿A qué suceso histórico hace referencia esta imágen?",
+        "question": "¿A qué suceso histórico hace referencia esta imagen?",
         "answer": "Caída del Muro de Berlín",
         "false1": "Revolución de los Claveles",
         "false2": "Disturbio de Los Angeles",
@@ -1761,7 +1761,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Historia%2Fhistoria31.jpg?alt=media&token=0960ff3b-8c71-4299-903e-de2f4afb0f36"
     },
     {   "id": 182,
-        "question": "¿Quién es el autor de la Odisea?",
+        "question": "¿Quién es el autor de La Odisea?",
         "answer": "Homero",
         "false1": "Edgar Allan Poe",
         "false2": "Oscar Wilde",
@@ -1770,7 +1770,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Historia%2Fhistoria32.jpg?alt=media&token=24878e10-7059-468a-b948-255fc4f12958"
     },
     {   "id": 183,
-        "question": "¿En qué periodo histórico de la civilización occidental vivieron los caballeros templarios?",
+        "question": "¿En qué período histórico de la civilización occidental vivieron los caballeros templarios?",
         "answer": "Edad Media",
         "false1": "Edad Antigua",
         "false2": "Edad Moderna",
@@ -1779,7 +1779,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Historia%2Fhistoria33.jpg?alt=media&token=c76002ee-1188-443a-b49f-8ce4f3f726ac"
     },
     {   "id": 184,
-        "question": "¿A qué suceso histórico hace referencia esta imágen?",
+        "question": "¿A qué suceso histórico hace referencia esta imagen?",
         "answer": "Desembarco de Normandía",
         "false1": "La batalla de Iwo Jima",
         "false2": "Operación Plunder",
@@ -1906,10 +1906,10 @@
     },
     {   "id": 198,
         "question": "¿Cómo se conoce popularmente la crisis económica de 1929?",
-        "answer": "Crack del 29",
-        "false1": "La gran caída",
-        "false2": "Crisis del 29",
-        "false3": "Derrota del 29",
+        "answer": "La Gran Depresión",
+        "false1": "La Gran Caída",
+        "false2": "La Crisis del Año",
+        "false3": "La Derrota del 29",
         "category": "Historia",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Historia%2Fhistoria48.jpg?alt=media&token=c8884bc6-34db-416d-9f26-c9858912f1cd"
     },
@@ -1995,7 +1995,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Ciencias%2Fciencias7.jpg?alt=media&token=c625eb2b-55c4-427d-aeda-5238695fcf6a"
     },
     {   "id": 208,
-        "question": "¿Cómo se llama el proceso mediante el cual se generan moléculas orgánicas a partir de sustancias inorgánicas usando como fuente de energía solar?",
+        "question": "¿Cómo se llama el proceso mediante el cual se generan moléculas orgánicas a partir de sustancias inorgánicas, usando como fuente de energía solar?",
         "answer": "Fotosíntesis",
         "false1": "Catabolismo",
         "false2": "Anabolismo",
@@ -2157,7 +2157,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Ciencias%2Fciencias25.jpg?alt=media&token=5914c56d-8b30-4d17-b7ac-300caf54770d"
     },
     {   "id": 226,
-        "question": "¿Cómo se llama a la condición de una persona que tiene diferente color de ojos?",
+        "question": "¿Qué afección posee una persona que tiene diferente color de ojos?",
         "answer": "Heterocromía",
         "false1": "Homosocromía",
         "false2": "Homocromía",
@@ -2338,7 +2338,7 @@
     },
     {   "id": 246,
         "question": "¿Cómo se llaman los alimentos producidos mediante ingeniería genética?",
-        "answer": "Trasgénicos",
+        "answer": "Transgénicos",
         "false1": "Orgánicos",
         "false2": "Modificados",
         "false3": "Biológicos",
@@ -2368,7 +2368,7 @@
         "answer": "Metamórfica",
         "false1": "Ignea",
         "false2": "Sedimentaria",
-        "false3": "Magmáticas",
+        "false3": "Magmática",
         "category": "Ciencias",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Ciencias%2Fciencias49.jpg?alt=media&token=80278258-7e36-48c1-a0ea-8c19ee984ad3"
     },
@@ -2388,7 +2388,7 @@
         "false1": "Sidney",
         "false2": "Melbourne",
         "false3": "Perth",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-1.jpg?alt=media&token=58439af7-d70e-474a-b77e-791370452ab6"
     },
     {
@@ -2398,7 +2398,7 @@
         "false1": "San Petersburgo",
         "false2": "Ekaterinburgo",
         "false3": "Nizhny Novgorod",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-2.png?alt=media&token=c467513a-ffb3-4e06-a8d7-1428df7c4759"
     },
     {
@@ -2408,17 +2408,17 @@
         "false1": "Las Vegas",
         "false2": "Reno",
         "false3": "Henderson",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-3.jpg?alt=media&token=c4924377-41ce-4109-bc4d-f907efe3f48a"
     },
     {
         "id": 254,
-        "question": "¿Dónde es la sede del fast food Panda Express?",
+        "question": "¿Dónde está la sede del fast food Panda Express?",
         "answer": "Rosemead, California",
         "false1": "Los Angeles, California",
         "false2": "Miami",
         "false3": "Boston",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-4.jpg?alt=media&token=d786bf64-136c-43d1-90c4-c8ccb2fde29a"
     },
     {
@@ -2428,7 +2428,7 @@
         "false1": "Rusia",
         "false2": "Nicaragua",
         "false3": "Noruega",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-05.jpg?alt=media&token=b5199535-7a34-411d-a0b7-38b8c5fe3cb9"
     },
     {
@@ -2438,7 +2438,7 @@
         "false1": "Argentina",
         "false2": "Estados Unidos",
         "false3": "Alemania",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-06.jpg?alt=media&token=c89427e3-742d-4be7-ba54-d925718b3412"
     },
     {
@@ -2446,20 +2446,20 @@
         "question": "¿Cuál es el nombre de la región rocosa que se extiende por la mayor parte del este de Canadá?",
         "answer": "Canadian Shield",
         "false1": "Los Andes",
-        "false2": "Valle de las chimeneas de hada",
+        "false2": "Valle de las Chimeneas de Hada",
         "false3": "Bahía de Ha Long",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-7.jpg?alt=media&token=7a51eeb1-f8bc-41fe-a17f-7c62f6377e85"
     },
     
     {
         "id": 258,
-        "question": "¿Cuál es la capital de Canada?",
+        "question": "¿Cuál es la capital de Canadá?",
         "answer": "Ottawa",
         "false1": "Toronto",
         "false2": "Vancouver",
         "false3": "Montreal",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-08.png?alt=media&token=a10a3d91-cbe0-49dc-a891-1f1f2eb0aabb"
     },
     
@@ -2470,7 +2470,7 @@
         "false1": "Brasil",
         "false2": "Argentina",
         "false3": "Cuba",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-09.png?alt=media&token=80946865-7b26-45f4-a157-16154c4f0591"
     },
     {
@@ -2479,8 +2479,8 @@
         "answer": "Noruega",
         "false1": "Alemania",
         "false2": "Austria",
-        "false3": "Belgica",
-        "category": "Geografia",
+        "false3": "Bélgica",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-10.jpg?alt=media&token=9bb5738b-120d-4f26-a52c-9aa67f275288"
     },
     {
@@ -2490,17 +2490,17 @@
         "false1": "Tucson",
         "false2": "Scottdale",
         "false3": "Sedona",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-11.jpg?alt=media&token=54b90ca3-140b-40b6-b0c1-f8fbf82e0ea1"
     },
     {
         "id": 262,
-        "question": "¿Cual es la capital de Austria?",
+        "question": "¿Cuál es la capital de Austria?",
         "answer": "Viena",
         "false1": "Innsbruk",
         "false2": "Graz",
         "false3": "Linz",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-12.jpg?alt=media&token=981fb218-01d2-4e72-9e2a-09f9da6cb3ea"
     },
     {
@@ -2510,7 +2510,7 @@
         "false1": "Italia",
         "false2": "Marruecos",
         "false3": "España",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-13.jpg?alt=media&token=94b43adf-367b-4e3c-bef9-6581a76d4c5f"
     },
     {
@@ -2520,17 +2520,17 @@
         "false1": "Riad",
         "false2": "Tabuk",
         "false3": "Yidda",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-14.jpg?alt=media&token=09eb44bf-3c27-48ea-b0f5-dd725802ecb7"
     },
     {
         "id": 265,
-        "question": "¿Cuantos condados hay en la Republica de Irlanda?",
+        "question": "¿Cuántos condados hay en la República de Irlanda?",
         "answer": "26",
         "false1": "20",
         "false2": "33",
         "false3": "29",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-15.jpg?alt=media&token=cfd6a4ab-f2c0-4a33-bdaa-bb65d0349e69"
     },
     {
@@ -2540,7 +2540,7 @@
         "false1": "Bombay",
         "false2": "Jaipur",
         "false3": "Calcuta",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-16.jpg?alt=media&token=70a17dd4-30ea-412a-93ef-d907fe445a0e"
     },
     {
@@ -2550,7 +2550,7 @@
         "false1": "Concepcion",
         "false2": "Punta Arenas",
         "false3": "Valdivia",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-17.jpg?alt=media&token=b2e8d0eb-fc10-4ead-9f3e-8c412c211be7"
     },
     {
@@ -2559,38 +2559,38 @@
         "answer": "Rojo",
         "false1": "Verde",
         "false2": "Azul",
-        "false3": "No tiene ningun circulo",
-        "category": "Geografia",
+        "false3": "No tiene ningun círculo",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-18.jpg?alt=media&token=611d0d0d-485d-4022-824c-70cf5c128acb"
     },
     {
         "id": 269,
-        "question": "¿Cuál de los dos países siguientes conecta el paso montañoso de Khyber?",
+        "question": "¿Cuál de los siguientes dos países conecta el paso montañoso de Khyber?",
         "answer": "Afganistán y Pakistán",
         "false1": "Mongolia, Rusia",
         "false2": "Suriname, Congo",
-        "false3": "Guatemala, Panama",
-        "category": "Geografia",
+        "false3": "Guatemala, Panamá",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-19.jpg?alt=media&token=1008d86e-2705-493c-88f3-83ff19749184"
     },
     {
         "id": 270,
-        "question": "Las siguientes provincias españolas están situadas en la zona norte de España excepto:",
+        "question": "Las siguientes provincias españolas están situadas en la zona norte de España, excepto:",
         "answer": "Murcia",
         "false1": "La Coruña",
         "false2": "León",
         "false3": "La Rioja",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-20.jpg?alt=media&token=788c9e31-3560-496d-9a74-31a7183c31e1"
     },
     {
         "id": 271,
-        "question": "¿Cual de estos paises no tiene salida al mar?",
+        "question": "¿Cuál de estos países no tiene salida al mar?",
         "answer": "Bolivia",
         "false1": "Ecuador",
         "false2": "Peru",
-        "false3": "Mexico",
-        "category": "Geografia",
+        "false3": "México",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-21.jpeg?alt=media&token=e5a81448-4502-4aca-90ac-d714df0efef4"
     },
     {
@@ -2600,17 +2600,17 @@
         "false1": "New York",
         "false2": "Los Angeles",
         "false3": "Miami",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-22.png?alt=media&token=70401ea1-8744-4afa-a196-b3b3f8a1320f"
     },
     {
         "id": 273,
-        "question": "Todos los siguientes países tienen reclamos oficiales de territorio en la Antártida, EXCEPTO:",
+        "question": "Todos los siguientes países tienen reclamos oficiales de territorio en la Antártida, excepto:",
         "answer": "Estados Unidos",
         "false1": "Argentina",
         "false2": "Reino Unido",
         "false3": "Australia",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-23.jpg?alt=media&token=1e56fe08-81fb-4848-a9d7-6e0fca8b0fe1"
     },
     {
@@ -2620,7 +2620,7 @@
         "false1": "Nigeria",
         "false2": "Senegal",
         "false3": "Kenia",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-24.jpg?alt=media&token=02ba4879-3d36-49cb-927f-5398b6fd9160"
     },
     {
@@ -2628,9 +2628,9 @@
         "question": "¿Qué evento llevó a Liechenstein a agregar una corona a su bandera?",
         "answer": "Los Juegos Olímpicos de 1936",
         "false1": "Mundial de Futbol de 1930",
-        "false2": "Primer Gran Premio de Formula 1",
+        "false2": "Primer Gran Premio de Fórmula 1",
         "false3": "Viaje del hombre a la Luna",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-25.png?alt=media&token=4091d152-59fd-4399-84b8-111b52dd5c19"
     },
     {
@@ -2640,7 +2640,7 @@
         "false1": "Lago Titicaca",
         "false2": "Lago Yuriria",
         "false3": "Lago Chapala",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-26.jpg?alt=media&token=f0b2c89d-4e6b-4dbe-a33a-247471eb764a"
     },
     {
@@ -2650,7 +2650,7 @@
         "false1": "Boston",
         "false2": "Washington",
         "false3": "Seattle",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-27.jpg?alt=media&token=f2cbe308-dbb5-4d35-aaad-f8de2d8dda15"
     },
     {
@@ -2659,18 +2659,18 @@
         "answer": "Indonesia",
         "false1": "India",
         "false2": "Pakistán",
-        "false3": "Turkia",
-        "category": "Geografia",
+        "false3": "Turkía",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-28.jpg?alt=media&token=21125db1-ad0d-47c9-bef7-d1a221cc5e27"
     },
     {
         "id": 279,
         "question": "¿Cuándo celebra Finlandia su día de la independencia?",
-        "answer": "6 de Diciembre",
-        "false1": "7 de Enero",
-        "false2": "24 de Junio",
-        "false3": "16 de Octubre",
-        "category": "Geografia",
+        "answer": "6 de diciembre",
+        "false1": "7 de enero",
+        "false2": "24 de junio",
+        "false3": "16 de octubre",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-29.jpg?alt=media&token=ba970518-7ebd-49af-8b99-d772805e3f3d"
     },
     {
@@ -2680,7 +2680,7 @@
         "false1": "Maria",
         "false2": "Polka",
         "false3": "Queue",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-30.jpg?alt=media&token=c710cdcb-7a85-446d-8b77-292645223ae1"
     },
     {
@@ -2690,7 +2690,7 @@
         "false1": "Barcelona",
         "false2": "Bilbao",
         "false3": "Sevilla",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-31.jpg?alt=media&token=37763d5b-3567-44bd-9b80-48a365d35cbc"
     },
     {
@@ -2700,17 +2700,17 @@
         "false1": "Uruguay",
         "false2": "Suiza",
         "false3": "Kazkazaquistán",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-32.jpg?alt=media&token=e8c5963b-c027-4c38-a268-ae1de6173d58"
     },
     {
         "id": 283,
-        "question": "¿Cuál es la capital de Paises Bajos?",
+        "question": "¿Cuál es la capital de Países Bajos?",
         "answer": "Amsterdam",
-        "false1": "Berlin",
+        "false1": "Berlín",
         "false2": "Rio de Janeiro",
         "false3": "Tokio",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-33.jpg?alt=media&token=dd848047-869e-41a9-9551-3f055b138f3a"
     },
     {
@@ -2720,7 +2720,7 @@
         "false1": "Brasil",
         "false2": "Estados Unidos",
         "false3": "China",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-34.jpg?alt=media&token=b048d2db-c2e6-41d1-a19d-347b48239063"
     },
     {
@@ -2730,7 +2730,7 @@
         "false1": "Trinidad",
         "false2": "Panama",
         "false3": "Santo Domingo",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-35.jpg?alt=media&token=66836a0a-ea6a-4c31-89f1-9e33f713770d"
     },
     {
@@ -2740,7 +2740,7 @@
         "false1": "4",
         "false2": "56",
         "false3": "15",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-36.jpg?alt=media&token=13783364-0a59-49d4-8c12-069b84dfda6b"
     },
     {
@@ -2750,17 +2750,17 @@
         "false1": "Ucrania",
         "false2": "Polonia",
         "false3": "Finlandia",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-37.jpg?alt=media&token=ca066270-13e7-420b-8771-29e5fd7a5a49"
     },
     {
         "id": 288,
-        "question": "¿Cuál es el idioma nacional oficial de Pakistán?",
+        "question": "¿Cuál es el idioma nacional de Pakistán?",
         "answer": "Urdu",
         "false1": "Inglés",
         "false2": "Ruso",
         "false3": "Hindi",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-38.png?alt=media&token=e1ecb08f-f358-4f45-89bd-06f785feb474"
     },
     {
@@ -2770,27 +2770,27 @@
         "false1": "Rusia y Mongolia",
         "false2": "China y India",
         "false3": "Brasil y Argentina",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-39.jpg?alt=media&token=d374de4d-876e-4c96-9537-7e63ba2fb982"
     },
     {
         "id": 290,
-        "question": "¿Cuál de estas ciudades estadounidenses tiene menos de 1 millon de habitantes?",
+        "question": "¿Cuál de estas ciudades estadounidenses tiene menos de 1 millón de habitantes?",
         "answer": "San Francisco",
         "false1": "Nueva York",
         "false2": "Los Angeles",
         "false3": "Chicago",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-40.jpg?alt=media&token=7673a462-1da4-4552-ab78-66430ca87104"
     },
     {
         "id": 291,
-        "question": "¿Cuál de estos paises tiene costas en el Oceano Pacifico y el Oceano Atlantico a menos de 100km de distancia?",
+        "question": "¿Cuál de estos países tiene costas en el Océano Pacífico y el Océano Atlántico a menos de 100 km de distancia?",
         "answer": "Panamá",
-        "false1": "Mexico",
+        "false1": "México",
         "false2": "Costa Rica",
         "false3": "Nicaragua",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2Fgeo-41.jpeg?alt=media&token=cc3c2675-bc3e-4572-ac8f-e0f4c34fa2ad"
     },
     {
@@ -2800,47 +2800,47 @@
         "false1": "Tigre",
         "false2": "Gato",
         "false3": "Mono",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-42.jpeg?alt=media&token=cebd2130-05ac-4534-96e3-b96cf162a5cc"
     },
     {
         "id": 293,
-        "question": "El prefijo Sino se usa para referirse a qué nacionalidad?",
+        "question": "¿ A qué nacionalidad hace referencia el prefijo 'sino'?",
         "answer": "Chino",
-        "false1": "Japones",
+        "false1": "Japonés",
         "false2": "Australiano",
         "false3": "Guatemalteco",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-43.png?alt=media&token=05c66413-4ba2-4512-b5f2-5ffd7bb25654"
     },
     {
         "id": 294,
-        "question": "¿Cuál de estos paises NO limita con China?",
+        "question": "¿Cuál de estos países NO limita con China?",
         "answer": "Corea del Sur",
         "false1": "Vietnam",
         "false2": "India",
         "false3": "Pakistán",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-44.jpg?alt=media&token=dc182754-d60c-4268-a6af-de3695eb52d3"
     },
     {
         "id": 295,
-        "question": "¿A que continente pertenece Antártida?",
-        "answer": "Continente Antartico",
-        "false1": "America del Sur",
-        "false2": "Oceania",
+        "question": "¿A qué continente pertenece La Antártida?",
+        "answer": "Continente Antártico",
+        "false1": "América del Sur",
+        "false2": "Oceanía",
         "false3": "Ninguno de los anteriores",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-45.jpg?alt=media&token=79c90077-be7e-44c9-87be-5a2fafacd3b9"
     },
     {
         "id": 296,
         "question": "¿En qué país de África occidental se encuentra la ciudad histórica Tombuctú?",
         "answer": "Mali",
-        "false1": "Sudafrica",
+        "false1": "Sudáfrica",
         "false2": "Nigeria",
         "false3": "Kenia",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-46.jpg?alt=media&token=fe12466a-c63e-4b1d-a25d-87070187ae1d"
     },
     {
@@ -2850,27 +2850,27 @@
         "false1": "Cáceres",
         "false2": "Zamora",
         "false3": "Valencia",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-47.png?alt=media&token=3f05017e-381d-4249-8adf-5fdb9dca4411"
     },
     {
         "id": 298,
-        "question": "¿Cuál es el quinto país más grande por área?",
+        "question": "¿Cuál es el quinto país más grande respecto a la superficie que ocupa?",
         "answer": "Brasil",
         "false1": "Rusia",
         "false2": "India",
-        "false3": "Mexico",
-        "category": "Geografia",
+        "false3": "México",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-48.png?alt=media&token=0900a2bb-17ee-4ff4-856f-d19bf85e7cd1"
     },
     {
         "id": 299,
-        "question": "¿Cuál es la ciudad capital de Nueva Zelanda?",
+        "question": "¿Cuál es la capital de Nueva Zelanda?",
         "answer": "Wellington",
         "false1": "Auckland",
         "false2": "Queenstown",
         "false3": "Nelson",
-        "category": "Geografia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-49.png?alt=media&token=97df01ed-303d-4124-95c7-6488e13aabfe"
     },
     {
@@ -2879,8 +2879,8 @@
         "answer": "Atlanta, Georgia USA",
         "false1": "Sao Paulo, Brasil",
         "false2": "Amsterdam, Países Bajos",
-        "false3": "Paris, Francia",
-        "category": "Geografia",
+        "false3": "París, Francia",
+        "category": "Geografía",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Geografia%2FGeo-50.jpg?alt=media&token=0717456e-e97e-4b0a-bd59-8a7c82089c63"
     },
     {   "id": 301,
@@ -2905,8 +2905,8 @@
         "question": "¿Cuál es la única construcción religiosa en España que tiene 19 naves?",
         "answer": "La Sagrada Familia",
         "false1": "La Mezquita de Córdoba",
-        "false2": "La catedral de Santiago de Compostela",
-        "false3": "La puerta del sol",
+        "false2": "La Catedral de Santiago de Compostela",
+        "false3": "La Puerta del Sol",
         "category": "Arte",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Arte%2Farte3.jpg?alt=media&token=b67bc67d-3131-4932-a67d-0d9bfb15b3e6"
     },
@@ -2947,7 +2947,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Arte%2Farte7.jpg?alt=media&token=730735a7-370c-4234-b933-dc70e0893b94"
     },
     {   "id": 308,
-        "question": "¿Qué se conoce como el séptimo arte?",
+        "question": "¿A qué se conoce como el séptimo arte?",
         "answer": "Cine",
         "false1": "Danza",
         "false2": "Arquitectura",
@@ -2992,7 +2992,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Arte%2Farte12.jpg?alt=media&token=f12da3f2-af08-438f-9ef0-cac247ad3e29"
     },
     {   "id": 313,
-        "question": "¿Como se denominan estas columnas?",
+        "question": "¿Cómo se denominan estas columnas?",
         "answer": "Dóricas",
         "false1": "Jónicas",
         "false2": "Corintias",
@@ -3019,7 +3019,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Arte%2Farte15.jpg?alt=media&token=f059733f-a4ce-428f-909b-6cecf492a6f4"
     },
     {   "id": 316,
-        "question": "¿Quien pintó este cuadro?",
+        "question": "¿Quién pintó este cuadro?",
         "answer": "Dalí",
         "false1": "Magritte",
         "false2": "Picasso",
@@ -3028,7 +3028,7 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Arte%2Farte16.jpg?alt=media&token=9ea15cad-9661-4dfc-9d7d-301c11ecba60"
     },
     {   "id": 317,
-        "question": "¿Quien esculpió 'La Piedad'?",
+        "question": "¿Quién esculpió 'La Piedad'?",
         "answer": "Miguel Angel",
         "false1": "Bernini",
         "false2": "Donatello",
@@ -3049,7 +3049,7 @@
         "question": "¿Cúal de estas NO es una de las 7 maravillas del mundo antiguo?",
         "answer": "Partenon",
         "false1": "Templo de Artemisa",
-        "false2": "Gran Piramide de Guiza",
+        "false2": "Gran Pirámide de Guiza",
         "false3": "Faro de Alejandría",
         "category": "Arte",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Arte%2Farte19.jpg?alt=media&token=e77465b4-5057-4d87-b3dc-52efe690b044"
@@ -3077,7 +3077,7 @@
         "answer": "Julio Cortázar",
         "false1": "Eduardo Galeano",
         "false2": "Jorge Luis Borges",
-        "false3": "Ernesto Sabato",
+        "false3": "Ernesto Sábato",
         "category": "Arte",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Arte%2Farte22.jpg?alt=media&token=236c7f28-dd14-4a00-ab7c-bc259ffc9c69"
     },
@@ -3104,7 +3104,7 @@
         "answer": "Detective",
         "false1": "Médico",
         "false2": "Policía",
-        "false3": "Paul Verlaine",
+        "false3": "Poeta",
         "category": "Arte",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Arte%2Farte25.jpg?alt=media&token=b3672114-4384-4402-8039-eda200c3e351"
     },
@@ -3123,7 +3123,7 @@
         "id": 327,
         "question": "¿Qué odia Mafalda?",
         "answer": "La sopa",
-        "false1": "El Pájaro Loco",
+        "false1": "Al Pájaro Loco",
         "false2": "Los panqueques",
         "false3": "A Manolito",
         "category": "Arte",
@@ -3201,7 +3201,7 @@
     },
     {
         "id": 335,
-        "question": "¿Qué artista expuso un orinal con el título 'La fuente'?",
+        "question": "¿Qué artista expuso un orinal con el título 'La Fuente'?",
         "answer": "Marcel Duchamp",
         "false1": "Andy Warhol",
         "false2": "Pablo Picasso ",
@@ -3231,7 +3231,7 @@
     },
     {
         "id": 338,
-        "question": "¿Quién pintó el famoso cuadro de pop art ' Latas de sopa Campbell '?",
+        "question": "¿Quién pintó el famoso cuadro de pop art 'Latas de sopa Campbell'?",
         "answer": "Andy Warhol",
         "false1": "Kurt Schwitters",
         "false2": "Laurence Mills",
@@ -3241,7 +3241,7 @@
     },
     {
         "id": 339,
-        "question": "¿Cómo se llama el arte japones de la papiroflexia?",
+        "question": "¿Cómo se llama el arte japonés de la papiroflexia?",
         "answer": "Origami",
         "false1": "Ikebana",
         "false2": "Haiku",
@@ -3251,7 +3251,7 @@
     },
     {
         "id": 340,
-        "question": "¿Quén es el autor de 'El amor en los tiempos de cólera'?",
+        "question": "¿Quén es el autor de 'El amor en los tiempos del cólera'?",
         "answer": "Gabriel García Márquez",
         "false1": "Julio Verne",
         "false2": "Og Mandino",
@@ -3291,7 +3291,7 @@
     },
     {
         "id": 344,
-        "question": "¿Cuál era el nombre de la protagonista 'El maravilloso Mago de Oz'?",
+        "question": "¿Cuál era el nombre de la protagonista de 'El maravilloso Mago de Oz'?",
         "answer": "Dorothy",
         "false1": "Agatha",
         "false2": "Em",
@@ -3303,7 +3303,7 @@
         "id": 345,
         "question": "¿Dónde comenzó y terminó 'La vuelta al mundo en ochenta días'?",
         "answer": "Londres",
-        "false1": "Paris",
+        "false1": "París",
         "false2": "Amsterdam",
         "false3": "Roma",
         "category": "Arte",
@@ -3311,7 +3311,7 @@
     },
     {
         "id": 346,
-        "question": "¿Qué obra de Dante Alighieri cuenta con tres partes, 'Infierno', 'Purgatorio' y 'Paraiso'?",
+        "question": "¿Qué obra de Dante Alighieri cuenta con tres partes, 'Infierno', 'Purgatorio' y 'Paraíso'?",
         "answer": "Divina Comedia",
         "false1": "El Infierno",
         "false2": "Las 3 delicias",
@@ -3321,7 +3321,7 @@
     },
     {
         "id": 347,
-        "question": "¿Qué era Le Chat Noir, el establecimiento que anunciaban los carteles el famoso gato negro de París?",
+        "question": "¿Qué era Le Chat Noir, el establecimiento que anunciaban los carteles del famoso gato negro de París?",
         "answer": "Un cabaret",
         "false1": "Una biblioteca",
         "false2": "Un cine",
@@ -3334,7 +3334,7 @@
         "question": "¿Qué describe una prosopografía?",
         "answer": "El físico de una persona",
         "false1": "El carácter de una persona",
-        "false2": "El fisico y el carácter de una persona",
+        "false2": "El físico y el carácter de una persona",
         "false3": "Caricaturiza a una persona",
         "category": "Arte",
         "image": "https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/Arte%2Farte48.jpg?alt=media&token=728d32e4-363c-4115-b1e1-901777ac16ae"
