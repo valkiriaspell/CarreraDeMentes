@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { CgDarkMode } from "react-icons/cg";
 import "../STYLES/admin.css"
 import Swal from "sweetalert2";
-import { GrRefresh, GrUpdate } from "react-icons/gr";
+import { GrUpdate } from "react-icons/gr";
 import { allUsers, bannUser, createAdmin } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { RiGradienterLine } from "react-icons/ri";
