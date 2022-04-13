@@ -113,6 +113,16 @@ const reducer = (state = initialState, action) => {
         case UPDATE_POINTS:
             const points = state.preRoomUsers.users.findIndex(user => user.id === action.payload.id)
         state.preRoomUsers.users[points].points = action.payload.pointsTotal
+        state.preRoomUsers.users.sort(function (a, b) {
+            if (b.points > a.points) {
+              return 1;
+            }
+            if (b.points < a.points) {
+              return -1;
+            }
+            // a must be equal to b
+            return 0;
+          });
             return {
                 ...state,
             }

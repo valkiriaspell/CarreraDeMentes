@@ -20,7 +20,7 @@ function GameRoom({ preRoomUsers, setGame }) {
         <ChatGameRoom preRoomUsers={preRoomUsers}/>
         </>
         : <div>
-          <EndGame user={user} userCoins={userCoins}/>
+          <EndGame userCoins={userCoins}/>
         </div>
       }
       </div>

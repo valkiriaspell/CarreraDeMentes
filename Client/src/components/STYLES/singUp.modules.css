@@ -3,7 +3,7 @@
   background-color: rgba(216, 221, 226, 0.068);
   border: solid 3px rgba(216, 221, 226, 0.253);
   max-width: 500px;
-  min-height: 620px;
+  min-height: 630px;
   margin-top: 2rem;
   margin-left: auto;
   margin-right: auto;
@@ -37,6 +37,12 @@
   width: 450px;
   display: flex;
   justify-content: start;
+}
+.volverSingUp button {
+  margin-top: 0.5rem;
+}
+.volverSingUp button:hover {
+  cursor: url("../IMG/pata.png"), auto;
 }
 
 /* ===== FORM =====*/
@@ -110,6 +116,7 @@
 .registerButton:hover {
   background-color: rgba(165, 166, 167, 0.521);
   color: rgba(221, 221, 221, 0.829);
+  cursor: url("../IMG/pata.png"), auto;
 }
 
 /* ===== MEDIA QUERIES =====*/

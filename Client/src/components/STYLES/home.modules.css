@@ -25,7 +25,7 @@
   border: none;
 }
 .buttonsNav button:hover {
-  cursor: pointer;
+  cursor: url("../IMG/pata.png"), auto;
   background-color: rgba(154, 158, 161, 0.4);
 }
 .buttonCerrarSesión {
@@ -71,7 +71,7 @@
   border: none;
 }
 .button:hover {
-  cursor: pointer;
+  cursor: url("../IMG/pata.png"), auto;
   background-color: rgba(154, 158, 161, 0.4);
 }
 
@@ -82,6 +82,9 @@
   width: 500px;
   margin-top: 2rem;
   margin-bottom: 1rem;
+}
+.cards button:hover {
+  cursor: url("../IMG/pata.png"), auto;
 }
 
 /* ===== MEDIA QUERIES =====*/

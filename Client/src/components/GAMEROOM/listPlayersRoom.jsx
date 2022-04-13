@@ -1,15 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 
 
-function ListPlayersRoom({ preRoomUsers }) {
+function ListPlayersRoom() {
 
-  console.log(preRoomUsers);
- 
-  // useEffect(() => {
-  //   preRoomUsers.users.sort((a, b) => {
-  //     return b[0].points.localeCompare(a[0].points);
-  //   });
-  // }, [preRoomUsers.users[0].points]);
+  const { preRoomUsers } = useSelector((state) => state);
+
     return (
       <div className="containerListPlayerRoom">
         {preRoomUsers &&
