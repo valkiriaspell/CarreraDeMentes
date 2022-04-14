@@ -47,22 +47,23 @@ function Home(props) {
 						</NavLink>
 					</div>
 					<div className="logo">
-						<img width="200px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4"></img>
+						<img width="240px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4" alt='Logo'></img>
 					</div>
-					<div className='infoUser'>
+					<div>
 						{/* COMPONENTE USERCARD */}
 						<UserCard location={props.location} />
+					</div>
 						<div>
 							<NavLink className='buttonsNav' to={'/'}>
 								<button
-									className='buttonCerrarSesión'
+								style={{fontSize:"11px"}}
+									className='buttonSides brown'
 									onClick={(e) => handleSignOut(e)}
 								>
 									<FaPowerOff />
 								</button>
 							</NavLink>
 						</div>
-					</div>
 				</div>
 				<div className='content'>
 					<div className='contentButtons'>
