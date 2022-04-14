@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
 			}
 		}
 	} catch (e) {
-		res.status(500).send('Error: ' + e);
+		res.status(500).send('Error al devolver usuario/s: ' + e);
 	}
 });
 
@@ -42,9 +42,10 @@ router.get('/ready', async (req, res) => {
 
 		res.json(userReady);
 	} catch (e) {
-		res.status(500).send('Error: ' + e);
+		res.status(500).send('Error al devolver usuario listo: ' + e);
 	}
 });
+
 router.put('/ready', async (req, res) => {
 	try {
 		const {id, bool} = req.query;
@@ -52,7 +53,7 @@ router.put('/ready', async (req, res) => {
 		const userReady = await putUserReady(id, bool);
 		res.send(userReady);
 	} catch (e) {
-		res.status(500).send('Error al modificar usuario: ' + e);
+		res.status(500).send('Error al modificar usuario listo: ' + e);
 	}
 });
 router.put('/admin', async (req, res) => {
@@ -83,9 +84,10 @@ router.post('/', async (req, res) => {
 			}
 		}
 	} catch (e) {
-		res.status(500).send('Error: ' + e);
+		res.status(500).send('Error al crear un usuario como invitado o como usuario normal: ' + e);
 	}
 });
+
 router.delete('/', async (req, res) => {
 	try {
 		const {id} = req.query;
@@ -95,6 +97,7 @@ router.delete('/', async (req, res) => {
 		res.status(500).send('Error al eliminar usuario: ' + e);
 	}
 });
+
 router.put('/', async (req, res) => {
 	try {
 		const {id, email, host} = req.query;
@@ -123,6 +126,7 @@ router.put('/banner', async (req, res) => {
 		res.status(500).send(`Error al bannear el usuario: ${error}`);
 	}
 });
+
 router.put('/experience', async (req, res) => {
 	try {
 		const {id, winner} = req.query;
