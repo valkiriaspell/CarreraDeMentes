@@ -18,6 +18,8 @@ export default function Footer() {
             <span>© 2022 ZooPer Trivia</span>
 
             <NavLink to="/about" ><span> Quienes Somos </span></NavLink>
+
+            <NavLink to="/politica-de-privacidad" ><span> Política de Privacidad </span></NavLink>
             
         {splitLocation[1] !== "home" ?
             <NavLink to="/administrador" disabled={splitLocation[1] === "home"} ><span> Acceder como Administrador </span></NavLink>
