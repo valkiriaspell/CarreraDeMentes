@@ -45,29 +45,46 @@
   flex-direction: column;
 }
 
+/* ====== HEADER ====== */
+.containerHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+}
+.containerHeader button{
+  background-color: rgba(228, 226, 226, 0.24);
+  color: rgba(230, 231, 232, 0.539);
+  border: 2px solid rgba(230, 231, 232, 0.539);
+  border-radius: 5px;
+}
+.containerHeader img{
+  margin-left: -3rem;
+}
+
 /* ====== GAME ====== */
 .containerGame {
   background-color: rgba(216, 221, 226, 0.039);
   border: solid 3px rgba(216, 221, 226, 0.253);
   padding: 1rem;
   border-radius: 0.4rem;
-  margin-top: 2rem;
+  margin-bottom: 2rem;
   width: 430px;
-  height: 700px;
+  min-height: 700px;
 }
 
 /* ====== CATEGORIA ====== */
 .contentNav {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: space-between;
   height: 3rem;
   margin-left: -3rem;
-
 }
 .contentNav h3 {
   background-color: rgba(21, 108, 195, 0.311);
   border-radius: 2rem;
+  margin-left: -3rem;
   height: 2.5rem;
   width: 12rem;
   display: flex;
@@ -76,7 +93,6 @@
   color: rgba(230, 231, 232, 0.539);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }   
-
 
 /* ====== PREGUNTA ====== */
 .question {
@@ -113,10 +129,6 @@
   background-color: rgba(158, 157, 157, 0.356);
   color: rgba(230, 231, 232, 0.539);
 }
-.contentQuestions input:active {
-  background-color: rgba(12, 37, 221, 0.279);
-  color: rgba(230, 231, 232, 0.539);
-}
 .buttonStart {
   background-color: rgba(254, 254, 254, 0.71);
   border: none;
@@ -130,6 +142,24 @@
 }
 
 
+/* ===== POWERS AND COINS =====*/
+.containerPowers{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+.containerPowers button{
+  background-color: rgba(201, 198, 198, 0.18);
+  color: rgba(230, 231, 232, 0.539);
+  border: 2px solid rgba(230, 231, 232, 0.539);
+  border-radius: 5px;
+  padding: 0.4rem;
+  margin: 0.2rem;
+}
+
+
+
 /* ===== CHAT =====*/
 .containerChatGame {
   background-color: rgba(216, 221, 226, 0.039);
@@ -140,7 +170,6 @@
   display: flex;
   align-items: flex-start;
   overflow-y: scroll;
-  /* justify-content: end; */
   flex-direction: column;
   border-radius: 0.4rem;
   padding-left: 1rem;
@@ -172,6 +201,12 @@
     margin: 2rem;
     width: 350px;
   }
+  .containerHeader button{
+    margin-left: 1rem;
+  }
+  .contentNav h3 {
+    width: 10rem;
+  } 
   .question {
     width: 280px;
     height: 160px;

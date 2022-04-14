@@ -48,7 +48,7 @@ const crearLinkPago = async (req, res) => {
 // que referencia tiene para saber que monto agregar de monedas al usuario en la bd
 const insertarCoinsUsuario = async (req, res) => {
     const { status, external_reference } = req.query;
-    const { email } = req.body;
+    const { email, coinsFinal } = req.body;
     try {
         if(status === 'approved'){
             //CREAR FUNCION PARA AGREGAR COINS AL USUARIO
@@ -59,7 +59,12 @@ const insertarCoinsUsuario = async (req, res) => {
             const usuario = await Users.findOne({where: {email}}) //usuario que compro el producto
             await usuario.update({coins: usuario.coins + referencia.coins}, {where: {email}})
             res.json({icon: 'success', mensaje: `Se agregaron ${referencia.coins} coins a tu cuenta. Ahora tienes ${usuario.coins} coins`});
-        } else{
+    
+        } else if (coinsFinal){
+            const usuario = await Users.findOne({where: {email}})
+            await usuario.update({coins: coinsFinal}, {where: {email}})
+            res.send("Hola" + usuario.coins)
+        } else {
             res.json({icon: 'error', mensaje: 'Hubo un error con tu pago, intente nuevamente'});
         }       
     } catch (error) {

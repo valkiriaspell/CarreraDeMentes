@@ -33,13 +33,13 @@ function PreGameRoom({match}) {
       <div className={s.container}>
         <div className={s.navPreGameRoom}>
           <Link style={{ textDecoration: "none" }} to="/home">
-            <button className="volver">
+            <button className="buttonSides lowgreen">
               <AiOutlineArrowLeft style={{ marginRight: "0.4rem" }} />
               Volver
             </button>
           </Link>
           <div className="logo">
-                <img width="200px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Fzooper-logo.png?alt=media&token=d211e20b-1313-420f-91a8-aa791a6aae3c" alt="Logo"></img>
+                <img width="200px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4" alt="Logo"></img>
             </div>
           <AiFillSound style={{ width: "30px" }} />
         </div>
@@ -55,7 +55,7 @@ function PreGameRoom({match}) {
           </div>
 
           <div className={s.buttonsPreGameRoom}>
-          <button className={s.buttonLink} onClick={getUrl} ><FaLink/></button>
+          <button className="buttonSides lowgreen" onClick={getUrl} ><FaLink/></button>
             {
               user?.host === true 
                 ? (
@@ -66,14 +66,14 @@ function PreGameRoom({match}) {
                       : false
                   }
                   onClick={sendStartGame}
-                  className={s.button}
+                  className="buttonSides lowgreen"
                 >
                   Iniciar
                 </button>
                 ) 
-                : <button onClick={sendReady}>Listo</button>  
+                : <button className="buttonSides lowgreen" onClick={sendReady}>Listo</button>  
             }
-            <button>Invitar</button>
+            <button className="buttonSides lowgreen" >Invitar</button>
           </div>
         </div>
       </div>

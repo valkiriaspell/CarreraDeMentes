@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { CgDarkMode } from "react-icons/cg";
 import "../STYLES/admin.css"
 import Swal from "sweetalert2";
-import { GrRefresh, GrUpdate } from "react-icons/gr";
+import { GrUpdate } from "react-icons/gr";
 import { allUsers, bannUser, createAdmin } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { RiGradienterLine } from "react-icons/ri";
@@ -139,12 +139,16 @@ export default function AdminUsers() {
     if (search && search !== "") {
         totalUsers = totalUsers.filter(d => d.name.toLowerCase().includes(search.toLowerCase()))
     }
+    ////---> Que no aparezca el superadmin ni guests en la lista <---////
+    totalUsers = totalUsers.filter(d => d.admin !== "superadmin")
+    totalUsers = totalUsers.filter(d => d.guest !== true)
 
 
     return (
         <div className='containerAdmin'>
             <div className='barraSobreQuestions'>
                 <div className='handleAdmin'>
+                <h6>Usuarios: {totalUsers.length}</h6>
                     <select className='botonesBarra' onChange={(e) => actions(e)}>
                         <option key={1} value="crear">Crear Admin </option>
                         <option key={2} value="deshacer">Deshacer Admin </option>

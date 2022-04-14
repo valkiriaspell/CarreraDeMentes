@@ -2,24 +2,28 @@
   display: flex;
   flex-direction: column;
   justify-content: center; 
-  margin-top: 2rem; 
+  background-image: url("../IMG/fondo-landing.webp");
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
 }
-.containerLanding {
-  border: solid 3px rgba(216, 221, 226, 0.4);
-  background-color: rgba(113, 115, 117, 0.084);
+.containerLanding {  
   max-width: 530px;
-  min-height: 400px;
+  min-height: 80px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 0.4rem;
   margin-top: 1rem;
 }
 
+
+
 .logoLanging {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  
 }
 .logoLanging span {
     color: rgba(221, 221, 221, 0.829);
@@ -37,6 +41,7 @@
 }
 .link button:hover {
   background-color: rgba(124, 126, 129, 0.4);
+  cursor: url("../IMG/pata.png"), auto;
 }
 
 /* ===== MEDIA QUERIES =====*/

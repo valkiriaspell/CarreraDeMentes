@@ -148,13 +148,12 @@ const modifyUser = async ({id, name, idAvatar}) => {
 
 const modifyHost = async (id, email, host) => {
 	try {
-		
 		if (email) {
 			const userUpdated = await Users.update({host: host}, {where: {email}});
 			return userUpdated;
 		}
-		if (id) {	
-console.log('llego')
+		if (id) {
+			console.log('llego');
 			const userUpdated = await Users.update({host: host}, {where: {id}});
 			return userUpdated;
 		}
@@ -189,6 +188,46 @@ const bannerUser = async (email) => {
 		console.log(`El usuario no pudo ser banneado: ${error}`);
 	}
 };
+const experience = async (id, winner) => {
+	try {
+		if (winner === 'true') {
+			const userExperience = await Users.findOne({where: {id}});
+			let currentLevel = userExperience.level;
+			let levelUp = 500 * (1.5 * (currentLevel + 1));
+
+			if (userExperience.experiencePoints + 100 >= levelUp) {
+				currentLevel = currentLevel + 1;
+			}
+			console.log('este es el console log', levelUp);
+
+			const modifiedExperience = await userExperience.update({
+				experiencePoints: userExperience.experiencePoints + 100,
+				coins: userExperience.coins + 10,
+				wins: userExperience.wins + 1,
+				level: currentLevel,
+			});
+
+			return modifiedExperience;
+		} else {
+			const userExperience = await Users.findOne({where: {id}});
+
+			let currentLevel = userExperience.level;
+			let levelUp = 500 * (1.5 * (currentLevel + 1));
+			if (userExperience.experiencePoints + 50 >= levelUp) {
+				currentLevel = currentLevel + 1;
+			}
+
+			const modifiedExperience = await userExperience.update({
+				experiencePoints: userExperience.experiencePoints + 50,
+				coins: userExperience.coins + 5,
+				level: currentLevel,
+			});
+			return modifiedExperience;
+		}
+	} catch (error) {
+		console.log(error);
+	}
+};
 
 module.exports = {
 	createUsers,
@@ -202,4 +241,5 @@ module.exports = {
 	putUserReady,
 	bannerUser,
 	modifyAdmin,
+	experience,
 };

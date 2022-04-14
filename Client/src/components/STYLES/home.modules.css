@@ -1,12 +1,11 @@
 /* ====== CONTAINER ====== */
 .container {
-  border: solid 3px rgba(216, 221, 226, 0.4);
-  max-width: 800px;
-  max-height: 700px;
-  min-height: 380px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 6rem;
+  background-image: url("../IMG/fondo-selva.jpg");
+  background-size: cover; 
+  background-color: rgba(87, 158, 40, 0.543);
+  background-position: center;
+  
+  width: 100%;  
   border-radius: 0.4rem;
 }
 
@@ -25,7 +24,7 @@
   border: none;
 }
 .buttonsNav button:hover {
-  cursor: pointer;
+  cursor: url("../IMG/pata.png"), auto;
   background-color: rgba(154, 158, 161, 0.4);
 }
 .buttonCerrarSesión {
@@ -71,17 +70,20 @@
   border: none;
 }
 .button:hover {
-  cursor: pointer;
+  cursor: url("../IMG/pata.png"), auto;
   background-color: rgba(154, 158, 161, 0.4);
 }
 
 /* ====== CARDS ====== */
 .cards {
   border-radius: 0.5rem;
-  background-color: rgba(130, 157, 189, 0.233);
+  background-color: rgba(9, 6, 3, 0.326);
   width: 500px;
   margin-top: 2rem;
   margin-bottom: 1rem;
+}
+.cards button:hover {
+  cursor: url("../IMG/pata.png"), auto;
 }
 
 /* ===== MEDIA QUERIES =====*/

@@ -1,6 +1,10 @@
 import React from "react";
 import "../STYLES/home.modules.css";
 import IMG from "../IMG/img.png";
+import invite from "../IMG/invite.gif";
+import config from "../IMG/configurar.gif";
+import response from "../IMG/responderPreguntas.gif";
+import powers from "../IMG/powers.png";
 
 function Instructions() {
   return (
@@ -31,11 +35,18 @@ function Instructions() {
             data-bs-slide-to="2"
             aria-label="Slide 3"
           ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="3"
+            aria-label="Slide 4"
+          ></button>
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img src={IMG} className="d-block w-100" alt="IMG" />
             <div className="carousel-caption d-none d-md-block">
+              <img src={invite} height={200} alt="invitar"/>
               <h5>Invita a tus amigos</h5>
               <p>
                 Comparte el link de la sala con tus amigos y diviértete.
@@ -45,6 +56,7 @@ function Instructions() {
           <div className="carousel-item">
             <img src={IMG} className="d-block w-100" alt="IMG" />
             <div className="carousel-caption d-none d-md-block">
+            <img src={config} height={200} alt="configurar"/>
               <h5>Configura una partida a tu gusto</h5>
               <p>
                 Personaliza la partida a tu gusto, cambiando la cantidad de preguntas, dificultad o categorías.
@@ -54,9 +66,20 @@ function Instructions() {
           <div className="carousel-item">
             <img src={IMG} className="d-block w-100" alt="IMG" />
             <div className="carousel-caption d-none d-md-block">
+            <img src={response} height={190} alt="responder"/>
               <h5>Responde preguntas</h5>
               <p>
                 Responde a preguntas aleatorias de diversas categorías, antes de que se te acabe el tiempo.
+              </p>
+            </div>
+          </div>
+          <div className="carousel-item">
+            <img src={IMG} className="d-block w-100" alt="IMG" />
+            <div className="carousel-caption d-none d-md-block">
+            <img style={{marginBottom: "15px"}} src={powers} height={140} alt="poderes"/>
+              <h5>Utiliza tus Poderes! 🤩</h5>
+              <p>
+                Usá tus monedas para eliminar respuestas falsas, o multiplicar x2 los puntos ganados en esa pregunta!
               </p>
             </div>
           </div>
