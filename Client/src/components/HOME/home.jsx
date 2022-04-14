@@ -40,31 +40,19 @@ function Home(props) {
 				<div className='nav'>
 					<div style={{marginTop: "0.6rem"}} >
 						<NavLink style={{margin:"0.5rem"}} to={'/tienda'}>
-							<button style={{fontSize:"11px"}} className="buttonSides brown">Tienda</button>
+							<button  className="buttonSides brown">Tienda</button>
 						</NavLink>
 						<NavLink style={{margin:"0.5rem"}} to={'/editProfile'}>
-							<button style={{fontSize:"11px"}} className="buttonSides brown">Mi perfil</button>
+							<button className="buttonSides brown">Mi perfil</button>
 						</NavLink>
 					</div>
 					<div className="logo">
-						<img width="240px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4" alt='Logo'></img>
+						<img width="450px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4" alt='Logo'></img>
 					</div>
-
 					<div>
 						{/* COMPONENTE USERCARD */}
 						<UserCard location={props.location} />
 					</div>
-						<div>
-							<NavLink className='buttonsNav' to={'/'}>
-								<button
-								style={{fontSize:"11px"}}
-									className='buttonSides brown buttonCerrarSesión'
-									onClick={(e) => handleSignOut(e)}
-								>
-									<FaPowerOff />
-								</button>
-							</NavLink>
-						</div>
 				</div>
 
      {/* <-----------------------------  ESTO SE RENDERIZA EN SMARTPHONE     --------------------------------------> */}
@@ -112,6 +100,14 @@ function Home(props) {
 						<NavLink to={'/añadirPregunta'}>
 							<button className='buttonSides brown'>Crear Preguntas</button>
 						</NavLink>
+						<NavLink  to={'/'}>
+								<button
+								className='buttonSides brown'
+									onClick={(e) => handleSignOut(e)}
+								>
+									SALIR
+								</button>
+							</NavLink>
 					</div>
 					<div>
 						<Instructions />

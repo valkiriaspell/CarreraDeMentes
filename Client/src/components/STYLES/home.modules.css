@@ -1,11 +1,5 @@
 /* ====== CONTAINER ====== */
 .container {  
-  background-image: url("../IMG/fondo3.png");
-  background-size: cover; 
-  background-color: rgba(87, 158, 40, 0.543);
-  background-position: center;
-  margin-top: 6rem;
-  max-width: 900px;
   border-radius: 0.4rem;
 }
 
@@ -53,14 +47,19 @@
 /* ====== CONTENT ====== */
 .content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  margin-left: 9rem;
 }
 .contentButtons {
   display: flex;
   flex-direction: column;
-  margin-left: 2rem;
-  margin-top: 6rem;
+}
+.contentButtons button{
+  width: 14rem;
+  height: 3rem;
+  font-size: 1rem;
+  margin: 0.6rem;
 }
 .button {
   margin: 0.5rem;
@@ -78,13 +77,18 @@
 /* ====== CARDS ====== */
 .cards {
   border-radius: 0.5rem;
-  background-color: rgba(9, 6, 3, 0.326);
-  width: 500px;
+  width: 600px;
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
 .cards button:hover {
   cursor: url("../IMG/pata.png"), auto;
+}
+.containerCard {
+  margin-bottom: 3.7rem;
+}
+.carruselIndicación{
+  margin-bottom: 4rem;
 }
 
 /* ===== MEDIA QUERIES =====*/
@@ -101,10 +105,6 @@
   .nav {
     display: none;
   }
-  .container{
-    width: 400px;
-    margin-top: 3rem;
-  }
   .contentNav__smartphone {
     display: flex;
     justify-content: space-between;
@@ -113,29 +113,12 @@
   .infoUser {
     width: 12rem;
   }
-  .contentButtons {
-    margin-left: 6rem;
-    margin-bottom: 2rem;
-  }
-}
-@media screen and (max-width: 390px) {
-  .container{
-    width: 360px;
+  .content {
     margin-top: 3rem;
-  }
-  .contentButtons {
-    margin-left: 5rem;
+    margin-right: 9rem;
   }
 }
-@media screen and (max-width: 360px) {
-  .container{
-    width: 330px;
-    margin-top: 3rem;
-  }
-  .contentButtons {
-    margin-left: 4rem;
-  }
-}
+
 
 /* ===== SOCIAL ICONS =====*/
 
@@ -156,7 +139,7 @@
   text-align: center;
   padding: 0;
   list-style: none;
-  margin: 1em;
+  margin-top: 5rem;
 }
 
 .social-icons li {
