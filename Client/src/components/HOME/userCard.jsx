@@ -45,8 +45,8 @@ function UserCard({location}) {
         <span>{user?.name}</span>
       </div>
       <div className="nameUser">
-        <span><img src={Nivel} alt="Nivel" width={20} />{user?.level}</span>
-        <span><img src={Monedas} alt="Monedas" width={20}/>{user?.coins}</span>
+        <span><img src={Nivel} alt="Nivel" width={30} /> {user?.level}</span>
+        <span><img src={Monedas} alt="Monedas" width={30}/> {user?.coins}</span>
       </div>
     </div>
   );
