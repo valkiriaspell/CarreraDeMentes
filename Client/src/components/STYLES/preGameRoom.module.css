@@ -1,4 +1,9 @@
 .container {
+  /* background: rgb(215,255,185);
+  background: linear-gradient(180deg, rgba(215,255,185,0.9701047687861272) 0%, rgba(1,121,68,1) 49%, rgba(3,77,22,0.8371567919075145) 100%); */
+  background-image: url("../IMG/fondo-selva.jpg");
+  background-size: cover; 
+  background-position: center;  
   width: 850px;
   min-height: 730px;
   border: solid 3px rgba(216, 221, 226, 0.4);
@@ -9,7 +14,7 @@
   margin-right: auto;
   margin-top: 1.5rem;
   margin-bottom: 2rem;
-  color: rgba(221, 221, 221, 0.829);
+  color: rgba(1, 31, 9, 0.829);
 }
 
 .navPreGameRoom {
@@ -39,6 +44,7 @@
 
 /* ======= LISTA DE JUGADORES ======= */
 .containerPlayers {
+  background-color: rgba(0, 0, 0, 0.519);
   border: solid 3px rgba(216, 221, 226, 0.4);
   width: 350px;
   min-height: 600px;
@@ -52,10 +58,11 @@
 .coronaHost img {
   height: 30px;
   position: relative;  
-  margin-left: 30px;
-  margin-right: -30px;
+  margin-left: 25px;
+  margin-right: -120px;
 }
 .allPlayers {
+  
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -64,7 +71,7 @@
 .allPlayers img {
   height: 25px;
 }
-.contentPlayer{
+.contentPlayer{  
  display: flex;
  align-items: center;
 }
@@ -74,10 +81,10 @@
   margin: -0.8rem;
 }
 .buttonExpulsar{
-  width: 25px;
-  height: 25px;
-  right: 177px;
-  top: 12px;
+  font-size: 10px;
+  width: 20px;
+  height: 20px;  
+  top: 15px;
   font-weight: bold;
   position: relative;
   background-color: rgb(255, 0, 0);
@@ -87,8 +94,8 @@
   margin-right: -0.6rem;
   border-radius: 5px;
   position: relative;
-  right: 180px;
-  top: 10px;
+  right: 190px;
+  
 }
 
 .containerPlayers li {
@@ -100,9 +107,10 @@
   list-style: none;
   margin-top: 1rem;
   margin-right: 4rem;
-  background-color: rgba(117, 121, 125, 0.4);
+  background-color: rgba(5, 90, 35, 0.991);
   width: 16rem;
   border-radius: 2rem;
+  color: white;
 }
 /* ======= BOTON READY ======= */
 .readyButton {
@@ -137,11 +145,13 @@
 
 /* ======= EDITAR SALA ======= */
 .containerEditRoom {
+  background-color: rgba(0, 0, 0, 0.519);
   margin: 1rem;
   width: 350px;
   height: 270px;
   border: solid 3px rgba(216, 221, 226, 0.4);
   border-radius: 0.4rem;
+  color: white
 }
 .formEditRoom {
   margin: 0.5rem;
@@ -184,7 +194,7 @@
   flex-direction: column-reverse;
   display: flex;
   align-items: flex-start;
-  background-color: rgba(142, 142, 143, 0.29);
+  background-color: rgba(41, 41, 43, 0.29);
   border: solid 3px rgba(216, 221, 226, 0.4);
   border-radius: 0.4rem;
   height: 200px;
@@ -196,7 +206,7 @@
 }
 .containerSendMessages input {
   border-radius: 0.3rem;
-  background-color: rgba(216, 221, 226, 0.4);
+  background-color: rgba(39, 41, 42, 0.385);
   color: rgba(255, 255, 255, 0.84);
   padding: 0.3rem;
   border: none;

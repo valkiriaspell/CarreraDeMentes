@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {  useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Chat from "./chat";
@@ -23,34 +23,23 @@ function PreGameRoom({match}) {
 
     const {idUser} = match.params;
 
-  const { sendReady, sendStartGame, game, expelPlayer } = useSocket(idUser);
+  const { sendReady, sendStartGame, game, expelPlayer, setGame, messages, sendMessage, handleSubmitConfig, roomConfiguration, setRoomConfiguration, positions, allStartGame, everybodyPlays, points } = useSocket(idUser);
 
-  function countReady() {
+  
 
-    const arrayIds = preRoomUsers?.users?.map(user => user.id)
-    let readys = 0;
-    let imgReady = ""
-    for(let i = 0; i < arrayIds?.length; i++){
-      imgReady = document.getElementById(arrayIds[i])
-
-      if(imgReady?.src === readyGreen) readys++
-    }
-
-    return readys
-  }
 
   if (autenticado) {
     return game === false ? (
       <div className={s.container}>
         <div className={s.navPreGameRoom}>
           <Link style={{ textDecoration: "none" }} to="/home">
-            <button className="volver">
+            <button className="buttonSides lowgreen">
               <AiOutlineArrowLeft style={{ marginRight: "0.4rem" }} />
               Volver
             </button>
           </Link>
           <div className="logo">
-                <img width="200px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Fzooper-logo.png?alt=media&token=d211e20b-1313-420f-91a8-aa791a6aae3c" alt="Logo"></img>
+                <img width="200px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4" alt="Logo"></img>
             </div>
           <AiFillSound style={{ width: "30px" }} />
         </div>
@@ -59,14 +48,14 @@ function PreGameRoom({match}) {
         </div>
         <div>
           <div>
-            <EditRoom idUser={idUser}/>
+            <EditRoom idUser={idUser} handleSubmitConfig={handleSubmitConfig} roomConfiguration={roomConfiguration} setRoomConfiguration={setRoomConfiguration} />
           </div>
           <div>
-            <Chat idUser={idUser} />
+            <Chat idUser={idUser} messages={messages} sendMessage={sendMessage} />
           </div>
 
           <div className={s.buttonsPreGameRoom}>
-          <button className={s.buttonLink} onClick={getUrl} ><FaLink/></button>
+          <button className="buttonSides lowgreen" onClick={getUrl} ><FaLink/></button>
             {
               user?.host === true 
                 ? (
@@ -74,24 +63,22 @@ function PreGameRoom({match}) {
                   disabled={
                     preRoomUsers?.users?.length - 1 === 0
                       ? true
-                      : preRoomUsers?.users?.length - 1 === countReady()
-                        ? false
-                        : true
+                      : false
                   }
                   onClick={sendStartGame}
-                  className={s.button}
+                  className="buttonSides lowgreen"
                 >
                   Iniciar
                 </button>
                 ) 
-                : <button onClick={sendReady}>Listo</button>  
+                : <button className="buttonSides lowgreen" onClick={sendReady}>Listo</button>  
             }
-            <button>Invitar</button>
+            <button className="buttonSides lowgreen" >Invitar</button>
           </div>
         </div>
       </div>
     ) : (
-      <GameRoom preRoomUsers={preRoomUsers} />
+      <GameRoom preRoomUsers={preRoomUsers} setGame={setGame} positions={positions} allStartGame={allStartGame} everybodyPlays={everybodyPlays} points={points} />
     );
   } else {
     history.push("/login");

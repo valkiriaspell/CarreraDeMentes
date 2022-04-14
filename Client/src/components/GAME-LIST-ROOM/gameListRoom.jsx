@@ -42,7 +42,6 @@ const history = useHistory()
     AddUserToPreRoom({idRoom: game.id, idUser: user.id})
     .then(()=> dispatch(listUsersInPreRoom(game.id)))
     .then(() => {
-      console.log(user?.host)
       history.push(`/room/${game.id}`)})
   }
   return (

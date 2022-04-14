@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { CgDarkMode } from "react-icons/cg";
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllQuestions, getNewQuestions, handleQuestion } from '../../redux/actions';
+import { getAllQuestions } from '../../redux/actions';
 import "../STYLES/admin.css"
-import Swal from "sweetalert2";
 import { GrUpdate } from "react-icons/gr";
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import ChangeQuestion from './formChangeQuestion';
 
 
