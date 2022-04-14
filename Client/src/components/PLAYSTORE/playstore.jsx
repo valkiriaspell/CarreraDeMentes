@@ -5,6 +5,7 @@ import '../STYLES/playstore.css'
 import axios from 'axios'
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
+import UserCard from "../HOME/userCard";
 
 
 function PlayStore() {
@@ -42,7 +43,10 @@ function PlayStore() {
     if(autenticado){
         return (
             <div className="containerPlayStore">
+                <div className="contentNavPlayStore">
                 <button onClick={volverHome} className="btnVolverTienda" type="button">Volver</button>
+                <UserCard />
+                </div>
                 <h1>Comprar Monedas</h1>
                 <div className="containerCardsBuy">
                     {productos?.length > 0 && productos?.map(producto => (

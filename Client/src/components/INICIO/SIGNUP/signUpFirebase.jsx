@@ -116,7 +116,7 @@ function SignUpFirebase() {
       <div className="logoSingUp">
         <img
           width="220px"
-          src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Fzooper-logo.png?alt=media&token=d211e20b-1313-420f-91a8-aa791a6aae3c"
+          src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4"
           alt="Logo"
         ></img>
       </div>
@@ -140,7 +140,7 @@ function SignUpFirebase() {
             <input
               name="name"
               type="text"
-              placeholder="Name"
+              placeholder="Nombre"
               value={input.name}
               onChange={(e) => handleChange(e)}
               autoComplete="off"
