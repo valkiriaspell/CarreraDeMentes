@@ -6,8 +6,9 @@ import { FaPowerOff } from 'react-icons/fa';
 import UserCard from './userCard';
 import Instructions from './instructions';
 import {BsFacebook, BsLinkedin, BsTwitter, BsWhatsapp} from 'react-icons/bs';
-import {createRoom, loginUser, modifyHost} from '../../redux/actions';
+import {createRoom, loginUser} from '../../redux/actions';
 import {useSelector, useDispatch} from 'react-redux';
+import { modifyHost } from '../PRE-GAMEROOM/utils';
 
 function Home(props) {
 	const dispatch = useDispatch();
@@ -26,10 +27,9 @@ function Home(props) {
 	}
 
 	async function handleCreateRoom() {
-		const host = await dispatch(modifyHost(email, true));
-		console.log(host);
+		await modifyHost(email, true);
+		await dispatch(loginUser(email))
 		const idRoom = await dispatch(createRoom(user));
-
 		history.push(`/room/${idRoom?.id}`);
 	}
 

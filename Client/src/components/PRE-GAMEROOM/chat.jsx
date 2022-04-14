@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import useSocket from './useSocketIo'
 import styles from "../STYLES/preGameRoom.module.css"
 
-const Chat = ({idUser}) =>{
-    const {messages, sendMessage} = useSocket(idUser);
+const Chat = ({idUser, messages, sendMessage}) =>{
+    /* const {messages, sendMessage} = useSocket(idUser); */
     const [listMessages, setListMessages] = useState([])
     const [newMessage, setNewMessage] = useState("");
     const {preRoomUsers} = useSelector(state => state)

@@ -46,18 +46,21 @@ const createUsers = async ({
 
 const createGuestUser = async () => {
 	try {
-		guestUser++;
-
+		const allUsersGuest = await Users.findAll({
+			where:{
+				guest: true
+			}
+		})
 		const newUser = await Users.create({
-			name: `User${guestUser}`,
-			email: `UserGuest${guestUser}.user@gmail.com`,
+			name: `User${allUsersGuest.length + 101}`,
+			email: `UserGuest1${allUsersGuest.length + 101}.user@gmail.com`,
 			guest: true,
 		});
 
 		await newUser.addAvatar(1);
 
 		return await Users.findOne({
-			where: {name: `User${guestUser}`},
+			where: {name: `User${allUsersGuest.length + 101}`},
 			...includesAvatar,
 		});
 	} catch (error) {
