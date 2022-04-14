@@ -1,8 +1,9 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
 import { listUsersInPreRoom, loginUser } from "../../redux/actions"
 import { AddUserToPreRoom } from "./utils";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 function JoinWithLink({match}){
     const {idRoom} = match.params;
@@ -23,7 +24,15 @@ function JoinWithLink({match}){
             history.push(`/room/${idRoom}`)})
     }
     return (
+        <div>
+          <Link style={{ textDecoration: "none" }} to="/home">
+            <button >
+              <AiOutlineArrowLeft style={{ marginRight: "0.4rem" }} />
+              Volver
+            </button>
+          </Link>
         <button onClick={(e) => handleJoinRoom(e)} >Unirse</button>
+        </div>
     )
 }
 
