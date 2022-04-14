@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import useSocket from "../PRE-GAMEROOM/useSocketIo";
 
 
-function ChatGameRoom(){
+
+function ChatGameRoom({points}){
     
     const [listSuccess, setListSuccess] = useState([])
-    const {preRoomUsers} = useSelector(state=> state)
-    const {points} = useSocket(preRoomUsers?.id)
-    /* const [newSuccess, setNewSuccess] = useState("") */ // mati ya tiene un estado donde pone los nuevos puntos
 
     useEffect(() =>{
         console.log(points)

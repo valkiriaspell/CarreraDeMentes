@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {  useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Chat from "./chat";
@@ -23,21 +23,10 @@ function PreGameRoom({match}) {
 
     const {idUser} = match.params;
 
-  const { sendReady, sendStartGame, game, expelPlayer } = useSocket(idUser);
+  const { sendReady, sendStartGame, game, expelPlayer, setGame, messages, sendMessage, handleSubmitConfig, roomConfiguration, setRoomConfiguration, positions, allStartGame, everybodyPlays, points } = useSocket(idUser);
 
-  function countReady() {
+  
 
-    const arrayIds = preRoomUsers?.users?.map(user => user.id)
-    let readys = 0;
-    let imgReady = ""
-    for(let i = 0; i < arrayIds?.length; i++){
-      imgReady = document.getElementById(arrayIds[i])
-
-      if(imgReady?.src === readyGreen) readys++
-    }
-
-    return readys
-  }
 
   if (autenticado) {
     return game === false ? (
@@ -59,10 +48,10 @@ function PreGameRoom({match}) {
         </div>
         <div>
           <div>
-            <EditRoom idUser={idUser}/>
+            <EditRoom idUser={idUser} handleSubmitConfig={handleSubmitConfig} roomConfiguration={roomConfiguration} setRoomConfiguration={setRoomConfiguration} />
           </div>
           <div>
-            <Chat idUser={idUser} />
+            <Chat idUser={idUser} messages={messages} sendMessage={sendMessage} />
           </div>
 
           <div className={s.buttonsPreGameRoom}>
@@ -74,9 +63,7 @@ function PreGameRoom({match}) {
                   disabled={
                     preRoomUsers?.users?.length - 1 === 0
                       ? true
-                      : preRoomUsers?.users?.length - 1 === countReady()
-                        ? false
-                        : true
+                      : false
                   }
                   onClick={sendStartGame}
                   className="buttonSides lowgreen"
@@ -91,7 +78,7 @@ function PreGameRoom({match}) {
         </div>
       </div>
     ) : (
-      <GameRoom preRoomUsers={preRoomUsers} />
+      <GameRoom preRoomUsers={preRoomUsers} setGame={setGame} positions={positions} allStartGame={allStartGame} everybodyPlays={everybodyPlays} points={points} />
     );
   } else {
     history.push("/login");
