@@ -93,6 +93,7 @@ function useChatSocketIo(idRoom) {
             socketIoRef.current.on("START", async () =>{
                 console.log("empezar")
                 await startGame(idRoom, true)
+                await dispatch(listUsersInPreRoom(idRoom))
                 setGame(true)
             })
             
@@ -189,15 +190,16 @@ function useChatSocketIo(idRoom) {
             try{
                 const questionAll = await axios.post("http://localhost:3001/question/allQuestions", {
                     count: preRoomUsers?.questionAmount,
-                category: preRoomUsers?.category,
-                idRoom
-            })
+                    category: preRoomUsers?.category,
+                    idRoom
+                })
             console.log(questionAll)
             socketIoRef.current.emit("START")
-        }catch(e){
+            }catch(e){
+                console.log(e)
+            }
         }
     }
-      }
 
     function expelPlayer(e){
         let id = e.target.id

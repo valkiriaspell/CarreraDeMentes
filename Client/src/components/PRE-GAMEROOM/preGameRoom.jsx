@@ -23,7 +23,7 @@ function PreGameRoom({match}) {
 
     const {idUser} = match.params;
 
-  const { sendReady, sendStartGame, game, expelPlayer, setGame, messages, sendMessage, handleSubmitConfig, roomConfiguration, setRoomConfiguration } = useSocket(idUser);
+  const { sendReady, sendStartGame, game, expelPlayer, setGame, messages, sendMessage, handleSubmitConfig, roomConfiguration, setRoomConfiguration, positions, allStartGame, everybodyPlays, points } = useSocket(idUser);
 
   
 
@@ -78,7 +78,7 @@ function PreGameRoom({match}) {
         </div>
       </div>
     ) : (
-      <GameRoom preRoomUsers={preRoomUsers} setGame={setGame} />
+      <GameRoom preRoomUsers={preRoomUsers} setGame={setGame} positions={positions} allStartGame={allStartGame} everybodyPlays={everybodyPlays} points={points} />
     );
   } else {
     history.push("/login");

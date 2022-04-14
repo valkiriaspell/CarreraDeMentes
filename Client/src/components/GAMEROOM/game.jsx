@@ -3,7 +3,6 @@ import TimerGame from "./timeGame";
 import Animals from "../IMG/game.gif";
 import Coins from "../IMG/coin.png";
 import { useSelector } from "react-redux";
-import useChatSocketIo from "../PRE-GAMEROOM/useSocketIo";
 import $ from "jquery";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -32,12 +31,9 @@ function randomQuestions(array) {
   return attacks;
 }
 
-function Game({ setShowEndGame, userCoins, setUserCoins, setGame }) {
+function Game({ setShowEndGame, userCoins, setUserCoins, setGame, positions, allStartGame, everybodyPlays }) {
   const history = useHistory();
   const { preRoomUsers, user } = useSelector((state) => state);
-  const { positions, allStartGame, everybodyPlays } = useChatSocketIo(
-    preRoomUsers?.id
-  );
 
   // ======= QUESTIONS =======  //
 
@@ -101,6 +97,7 @@ function Game({ setShowEndGame, userCoins, setUserCoins, setGame }) {
 
 
   useEffect(() => {
+    console.log(preRoomUsers)
     setQuestions(preRoomUsers.questions);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preRoomUsers.questions]);
@@ -110,7 +107,7 @@ function Game({ setShowEndGame, userCoins, setUserCoins, setGame }) {
   useEffect(() => {
     setTimeout(() => {
       setShowEndGame(true);
-    }, 10000);
+    }, finalGame);
   }, []);
 
   let secondsGame = preRoomUsers?.time + "000";
