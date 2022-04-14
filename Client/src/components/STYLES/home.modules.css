@@ -1,7 +1,7 @@
 /* ====== CONTAINER ====== */
-.container {
-  background-image: url("../IMG/fondo-selva.jpg");
-  background-size: cover;
+.container {  
+  background-image: url("../IMG/fondo3.png");
+  background-size: cover; 
   background-color: rgba(87, 158, 40, 0.543);
   background-position: center;
   margin-top: 6rem;

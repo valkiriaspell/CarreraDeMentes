@@ -18,27 +18,27 @@ router.get('/', async (_req, res) => {
 
 		res.send(msj);
 	} catch (e) {
-		res.status(500).send('Error al buscar los coins: ' + e);
+		res.status(500).send('Error al buscar las coins: ' + e);
 	}
 });
 
-// Agregar nuevas coins
+// Agrega una nueva coin
 router.post('/', async (req, res) => {
 	try {
 		const [bool, msj] = await addCoins(req.body);
 		res.send(msj);
 	} catch (e) {
-		res.status(500).send('Error al agregar coins: ' + e);
+		res.status(500).send('Error al agregar una coin: ' + e);
 	}
 });
 
-// Agregar nuevas coins
+// Agregar multiples coins
 router.post('/multiplesCoins', async (req, res) => {
 	try {
 		const [bool, msj] = await addMultCoins(req.body);
 		res.send(msj);
 	} catch (e) {
-		res.status(500).send('Error al agregar coins: ' + e);
+		res.status(500).send('Error al agregar multiples coins: ' + e);
 	}
 });
 
@@ -48,7 +48,7 @@ router.get('/multiplesCoins', async (req, res) => {
 		const [bool, msj] = await addInitServerMultCoins();
 		res.send(msj);
 	} catch (e) {
-		res.status(500).send('Error al agregar coins: ' + e);
+		res.status(500).send('Error al agregar coins al iniciar el server: ' + e);
 	}
 });
 
@@ -59,11 +59,11 @@ router.put('/', async (req, res) => {
 
 		res.send(msj);
 	} catch (e) {
-		res.status(500).send('Error al actualizar: ' + e);
+		res.status(500).send('Error al actualizar coins: ' + e);
 	}
 });
 
-// Eliminar una coins
+// Eliminar una coin
 router.delete('/', async (req, res) => {
 	try {
 		const [bool, msj] = await deleteCoins(req.body);

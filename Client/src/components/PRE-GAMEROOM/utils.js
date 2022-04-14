@@ -11,9 +11,37 @@ export async function AddUserToPreRoom({idRoom, idUser}){
     }
 }
 
+export async function modifyHost(email, host) {
+    try {
+        const { data } = await axios.put(`http://localhost:3001/users/?email=${email}&host=${host}`)
+        console.log(data)
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+export async function modifyHostById(id, host) {
+    try {
+        const { data } = await axios.put(`http://localhost:3001/users/?id=${id}&host=${host}`)
+        console.log(data)
+    } catch (e) {
+        console.log(e)
+    }
+
+}
+
 export async function changeReady(id, bool){
     try{
         const {data} = await axios.put(`http://localhost:3001/users/ready/?id=${id}&bool=${bool}`)
+        console.log(data)
+    }catch(e) {
+        console.log(e)
+    }
+}
+
+export async function removeUserRoom(idRoom, idUserDelet){
+    try{
+        const {data} = await axios.put('http://localhost:3001/gameRoom/delete', {idRoom, idUserDelet})
         console.log(data)
     }catch(e) {
         console.log(e)
@@ -40,7 +68,8 @@ export async function startGame(idRoom, start){
 
 export function getUrl() {
     var aux = document.createElement("input");
-    aux.setAttribute("value", window.location.href);
+    const aux2 = window.location.href.split("/")
+    aux.setAttribute("value", `http://localhost:3000/invitationRoom/${aux2[aux2.length - 1]}`);
     document.body.appendChild(aux);
     aux.select();
     document.execCommand("copy");

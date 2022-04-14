@@ -3,14 +3,14 @@ const { GameRoom, Users, Question, Avatar } = require('../db.js');
 // 1110
 
 
-// oredenar de menor a mayor por cantidad de jugadores
+// Ordenar de menor a mayor por cantidad de jugadores
 const orederMinMaxLongUsers = (a, b) => {
 	if (a.numberUsersInRoom > b.numberUsersInRoom) return 1;
 	if (b.numberUsersInRoom > a.numberUsersInRoom) return -1;
 	return 0;
 };
 
-// Consultar por una sala en espesifico
+// Consultar por una sala en especifico
 const searchByPkGameRoom = async (id) => {
 	try {
 
@@ -29,15 +29,15 @@ const searchByPkGameRoom = async (id) => {
 			],
 		});
 
-		if (!data) return [false, "no se encontro la Sala"]
+		if (!data) return [false, "No se encontro la Sala"]
 
 		return [true, data.dataValues];
 	} catch (e) {
-		return e
+		return {error: 'Error al encontrar la sala por PK:' + e}
 	}
 }
 
-// Consultar todas las gameRoon que sean publicas y no esten iniciadas
+// Consultar todas las salas que sean publicas y no esten iniciadas
 const searchAllGameRoom = async () => {
 	try {
 		const data = await GameRoom.findAll({
@@ -62,18 +62,18 @@ const searchAllGameRoom = async () => {
 
 		return [true, room.sort(orederMinMaxLongUsers)];
 	} catch (e) {
-		return e
+		return {error: 'Error al encontrar salas publicas:' + e}
 	}
 }
 
 
 
-//buscar salas
+// Buscar salas
 exports.seachAllBDGameRoom = async ({ idRoom: id }) => {
 	try {
 		return id ? await searchByPkGameRoom(id) : await searchAllGameRoom()
 	} catch (e) {
-		return e;
+		return {error: 'Error al encontrar una sala buscada por Id:' + e}
 	}
 };
 
@@ -85,7 +85,7 @@ exports.updateGameRoomConfig = async ({ idRoom: id, public_, questions: question
 
 		const dataGameRoom = await GameRoom.findByPk(id);
 
-		if (!dataGameRoom) return [false, "No se a encontrado la sada"];
+		if (!dataGameRoom) return [false, "No se ha encontrado la sala para actualizarla"];
 
 		if (category === "") category = "Ninguna";
 
@@ -99,11 +99,11 @@ exports.updateGameRoomConfig = async ({ idRoom: id, public_, questions: question
 		return [true, "Sala actualizada correctamente"];
 
 	} catch (e) {
-		return e
+		return {error: 'Error al actualizar la sala:' + e}
 	}
 }
 
-// Creamos una nueva sala
+// Crear una nueva sala
 exports.createBDGameRoom = async ({
 	name,
 	idUser: id,
@@ -116,12 +116,11 @@ exports.createBDGameRoom = async ({
 
 		return [true, data.dataValues];
 	} catch (e) {
-		console.log('Error al crear la sala: ', e);
-		return e;
+		return {error: 'Error al crear la sala:' + e}
 	}
 };
 
-// actializamos y agregamos un nuevo usuario a la sala
+// Actualizamos y agregamos un nuevo usuario a la sala
 exports.updateAddBDGameRoom = async ({ idRoom, idUser }) => {
 
 	try {
@@ -146,8 +145,7 @@ exports.updateAddBDGameRoom = async ({ idRoom, idUser }) => {
 		return [false, 'La sala ya esta llena'];
 
 	} catch (e) {
-		console.log(e);
-		return e;
+		return {error: 'Error al agregar un usuario y actualizar la sala:' + e}
 	}
 };
 
@@ -156,12 +154,12 @@ exports.deletByIdGameRoom = async ({ idRoom: id }) => {
 	try {
 		const eliminado = await GameRoom.destroy({ where: { id } });
 		if (eliminado > 0) {
-			return [true, 'Salas eliminada'];
+			return [true, 'Sala eliminada'];
 		} else {
-			return [false, 'No se encotro la sala a eliminar'];
+			return [false, 'No se encontro la sala a eliminar'];
 		}
 	} catch (e) {
-		return e;
+		return {error: 'Error al eliminar la sala:' + e};
 	}
 };
 
@@ -184,8 +182,7 @@ exports.updateDeleteBDGameRoom = async ({ idRoom, idUserDelet }) => {
 		console.log('jugador eliminado', data)
 		return [true, 'Usuario eliminado'];
 	} catch (e) {
-		console.log('Error al eliminar un usuario: ', e);
-		return e;
+		return {error: 'Error al eliminar un usuario:' + e}
 	}
 };
 
@@ -199,7 +196,7 @@ exports.startGameRoom = async ({ idRoom, start = true }) => {
 			}]
 		});
 
-		if (!data) return [false, "No esiste la sala para iniciar la partida"];
+		if (!data) return [false, "No existe la sala para iniciar la partida"];
 
 		if (!start) {
 			await data.update({ start });
@@ -215,6 +212,6 @@ exports.startGameRoom = async ({ idRoom, start = true }) => {
 
 
 	} catch (e) {
-		return e
+		return {error: 'Error al intentar inicializar la sala para jugar:' + e}
 	}
 }
