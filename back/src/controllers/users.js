@@ -5,6 +5,7 @@ const msjError = (msj) => ({error: msj});
 
 let guestUser = 100;
 
+// Crea un usuario y lo guarda en la DB
 const createUsers = async ({
 	name,
 	email,
@@ -40,10 +41,11 @@ const createUsers = async ({
 
 		return await Users.findOne({where: {email}, ...includesAvatar});
 	} catch (error) {
-		return error;
+		return {Error: 'Error al crear un usuario:' + error};
 	}
 };
 
+// Crea un usuario invitado y lo guarda en la DB
 const createGuestUser = async () => {
 	try {
 		const allUsersGuest = await Users.findAll({
@@ -64,18 +66,21 @@ const createGuestUser = async () => {
 			...includesAvatar,
 		});
 	} catch (error) {
-		return error;
+		return {Error: 'Error al crear un usuario como invitado:' + error};
 	}
 };
 
+// Trae un usuario desde la DB
 const getUser = async (email) => {
 	try {
 		const userFound = await Users.findOne({where: {email}, ...includesAvatar});
 		return !userFound ? msjError('El email no existe') : userFound;
 	} catch (error) {
-		return error;
+		return {Error: 'Error al devolver un usuario:' + error};
 	}
 };
+
+// Trae todos los usuarios desde la DB
 const getUsers = async () => {
 	try {
 		const userFound = await Users.findAll(includesAvatar);
@@ -84,9 +89,11 @@ const getUsers = async () => {
 			? msjError('No hay ningun usuario en la base de dato')
 			: userFound;
 	} catch (error) {
-		return error;
+		return {Error: 'Error al devolver los usuarios:' + error};
 	}
 };
+
+// Busca el usuario que este listo para jugar
 const getReadyUser = async (id) => {
 	try {
 		const readyFound = await Users.findOne({where: {id}});
@@ -95,18 +102,22 @@ const getReadyUser = async (id) => {
 
 		return obj;
 	} catch (error) {
-		return error;
-	}
+		return {Error: 'Error al definir usuario como listo:' + error};
+	};
 };
+
+// Actualiza al usuario para que este listo
 const putUserReady = async (id, bool) => {
 	try {
 		const readyFound = await Users.findOne({where: {id}});
 		await readyFound.update({ready: bool}, {where: {id}});
 		return 'Usuario modificado con exito';
 	} catch (error) {
-		return error;
+		return {Error: 'Error al actualizar un usuario como listo:' + error};
 	}
 };
+
+// Elimina el usuario de la DB
 const deleteUser = async (id) => {
 	try {
 		const eliminado = await Users.destroy({where: {id}});
@@ -115,9 +126,11 @@ const deleteUser = async (id) => {
 			? 'Usuario eliminado correctamente'
 			: msjError('El usuario no existe');
 	} catch (e) {
-		return e;
+		return {Error: 'Error al eliminar un usuario:' + error};
 	}
 };
+
+// Modifica los datos del usuario
 const modifyUser = async ({id, name, idAvatar}) => {
 	try {
 		const userId = async () => await Users.findByPk(id, {...includesAvatar});
@@ -133,7 +146,7 @@ const modifyUser = async ({id, name, idAvatar}) => {
 
 		await user.removeAvatar(user.avatars[0].id);
 		await user.addAvatar(idAvatar);
-		//agregue validacion para cambio de nombre si es que me mandan un nombre, sino no... (valki)
+		
 		if (name !== '') {
 			await user.update({name}, {where: {id}});
 		}
@@ -142,10 +155,11 @@ const modifyUser = async ({id, name, idAvatar}) => {
 
 		return data;
 	} catch (e) {
-		return e;
+		return {Error: 'Error al modificar los datos del usuario:' + error};
 	}
 };
 
+// Setea al usuario como host
 const modifyHost = async (id, email, host) => {
 	try {
 		if (email) {
@@ -158,9 +172,11 @@ const modifyHost = async (id, email, host) => {
 			return userUpdated;
 		}
 	} catch (error) {
-		console.log(error);
+		return {Error: 'Error al setear un usuario como host:' + error};
 	}
 };
+
+// Setear al usuario como admin
 const modifyAdmin = async (email, admin) => {
 	try {
 		const userAdmin = await Users.findOne({where: {email}});
@@ -171,10 +187,11 @@ const modifyAdmin = async (email, admin) => {
 		);
 		return userUpdated;
 	} catch (error) {
-		console.log(error);
+		return {Error: 'Error al setear un usuario como admin:' + error}
 	}
 };
 
+// Bannear un usario
 const bannerUser = async (email) => {
 	try {
 		const banneado = await Users.findOne({where: {email}});
@@ -185,9 +202,11 @@ const bannerUser = async (email) => {
 		);
 		return updateBanneado;
 	} catch (error) {
-		console.log(`El usuario no pudo ser banneado: ${error}`);
+		return {Error: 'Error al bannear un usuario:' + error}
 	}
 };
+
+// Calcula el nivel del usuario y las coins ganadas en el juego segun los puntos de experiencia
 const experience = async (id, winner) => {
 	try {
 		if (winner === 'true') {
@@ -225,7 +244,7 @@ const experience = async (id, winner) => {
 			return modifiedExperience;
 		}
 	} catch (error) {
-		console.log(error);
+		return {Error: 'Error al calcular nivel de experiencia del usuario:' + error}
 	}
 };
 

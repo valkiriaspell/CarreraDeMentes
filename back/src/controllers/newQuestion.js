@@ -1,5 +1,6 @@
 const { Question, NewQuestion } = require("../db");
 
+// Crea una nueva pregunta en la DB
 const createNewQuestion = async (question, answer, false1, false2, false3, category, image, email) => {
     try {
         const info = await NewQuestion.create({
@@ -15,20 +16,22 @@ const createNewQuestion = async (question, answer, false1, false2, false3, categ
         return info
 
     } catch(error){
-        console.log(`La pregunta no pudo ser creada correctamente: ${error}`)
+        return {Error: 'Error al crear la pregunta:' + error}
     }
 }
 
+// Trae las nuevas preguntas desde la DB
 const getNewQuestion = async () => {
     try {
         const infoNewQueation = await NewQuestion.findAll()
         return infoNewQueation
 
     } catch(error){
-        console.log(`La pregunta solicitada no existe: ${error}`)
+        return {Error: 'Error al traer las preguntas desde la DB:' + error}
     }
 }
 
+// Elimina una pregunta en la DB
 const deleteNewQuestion = async (id) => {
     try {
         const removeNewQuestion = await NewQuestion.destroy({
@@ -38,10 +41,11 @@ const deleteNewQuestion = async (id) => {
         return removeNewQuestion
 
     } catch(error){
-        console.log(`La pregunta no pudo ser eliminada: ${error}`)
+        return {Error: 'Error al eliminar la pregunta:' + error}
     }
 }
 
+// Acepta la nueva pregunta y la envia al modelo de preguntas originales
 const aceptedNewQuestion = async (id) => {
     try {
         const listQuestions = await Question.findAll()
@@ -77,7 +81,7 @@ const aceptedNewQuestion = async (id) => {
         return toAcept
 
     }  catch(error){
-        console.log(`La pregunta no pudo ser aceptada: ${error}`)
+        return {Error: 'Error al aceptar la pregunta:' + error}
     }
 }
 

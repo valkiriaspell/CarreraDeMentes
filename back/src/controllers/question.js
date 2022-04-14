@@ -19,6 +19,7 @@ async function data() {
 		const allQuestions = await Question.findAll();
 		return allQuestions;
 	} catch (e) {
+		console.log(`Error al cargar las questions desde el JSON a la DB: ${e}`)
 		return e
 	}
 }
@@ -71,7 +72,7 @@ async function getQuestions(count, category, idRoom) {
 			where: { id: idRoom }
 		});
 
-		return [true, "Question agregadas correctamente"]
+		return [true, "Question agregada correctamente"]
 
 	} catch (e) {
 		console.log("Error en la funcion para agregar question: ", e)
