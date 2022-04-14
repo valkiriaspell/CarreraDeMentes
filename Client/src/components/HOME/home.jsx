@@ -2,12 +2,14 @@ import React, { useEffect } from 'react';
 import {NavLink, useHistory} from 'react-router-dom';
 import {firebaseCerrarSesion} from '../../utils/Firebase';
 import '../STYLES/home.modules.css';
+import '../STYLES/buttons.css';
 import { FaPowerOff } from 'react-icons/fa';
 import UserCard from './userCard';
 import Instructions from './instructions';
 import {BsFacebook, BsLinkedin, BsTwitter, BsWhatsapp} from 'react-icons/bs';
-import {createRoom, loginUser, modifyHost} from '../../redux/actions';
+import {createRoom, loginUser} from '../../redux/actions';
 import {useSelector, useDispatch} from 'react-redux';
+import { modifyHost } from '../PRE-GAMEROOM/utils';
 
 function Home(props) {
 	const dispatch = useDispatch();
@@ -26,10 +28,9 @@ function Home(props) {
 	}
 
 	async function handleCreateRoom() {
-		const host = await dispatch(modifyHost(email, true));
-		console.log(host);
+		await modifyHost(email, true);
+		await dispatch(loginUser(email))
 		const idRoom = await dispatch(createRoom(user));
-
 		history.push(`/room/${idRoom?.id}`);
 	}
 
@@ -37,42 +38,43 @@ function Home(props) {
 		return (
 			<div className='container'>
 				<div className='nav'>
-					<div>
-						<NavLink className='buttonsNav' to={'/tienda'}>
-							<button>Tienda</button>
+					<div style={{marginTop: "0.6rem"}} >
+						<NavLink style={{margin:"0.5rem"}} to={'/tienda'}>
+							<button style={{fontSize:"11px"}} className="buttonSides brown">Tienda</button>
 						</NavLink>
-						<NavLink className='buttonsNav' to={'/editProfile'}>
-							<button>Mi perfil</button>
+						<NavLink style={{margin:"0.5rem"}} to={'/editProfile'}>
+							<button style={{fontSize:"11px"}} className="buttonSides brown">Mi perfil</button>
 						</NavLink>
 					</div>
 					<div className="logo">
-						<img width="200px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Fzooper-logo.png?alt=media&token=d211e20b-1313-420f-91a8-aa791a6aae3c"></img>
+						<img width="240px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4" alt='Logo'></img>
 					</div>
-					<div className='infoUser'>
+					<div>
 						{/* COMPONENTE USERCARD */}
 						<UserCard location={props.location} />
+					</div>
 						<div>
 							<NavLink className='buttonsNav' to={'/'}>
 								<button
-									className='buttonCerrarSesión'
+								style={{fontSize:"11px"}}
+									className='buttonSides brown'
 									onClick={(e) => handleSignOut(e)}
 								>
 									<FaPowerOff />
 								</button>
 							</NavLink>
 						</div>
-					</div>
 				</div>
 				<div className='content'>
 					<div className='contentButtons'>
-						<button className='button' onClick={handleCreateRoom}>
-							Iniciar partida
+						<button className='buttonSides brown' onClick={handleCreateRoom}>
+							Crear partida
 						</button>
 						<NavLink to={'/partidasDisponibles'}>
-							<button className='button'>Partidas disponibles</button>
+							<button className='buttonSides brown'>Partidas disponibles</button>
 						</NavLink>
 						<NavLink to={'/añadirPregunta'}>
-							<button className='button'>Crear Preguntas</button>
+							<button className='buttonSides brown'>Crear Preguntas</button>
 						</NavLink>
 					</div>
 					<div>

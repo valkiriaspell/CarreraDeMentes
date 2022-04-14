@@ -6,7 +6,7 @@ import ListPlayersRoom from "./listPlayersRoom";
 import EndGame from "./endGame";
 import { useSelector } from "react-redux";
 
-function GameRoom({ preRoomUsers, setGame }) {
+function GameRoom({ preRoomUsers, setGame, positions, allStartGame, everybodyPlays, points }) {
   const { user } = useSelector((state) => state);
   const [showEndGame, setShowEndGame] = useState(false)
   const [userCoins, setUserCoins] = useState(user.coins);  
@@ -16,11 +16,11 @@ function GameRoom({ preRoomUsers, setGame }) {
       { !showEndGame ?
         <>
         <ListPlayersRoom preRoomUsers={preRoomUsers}  />
-        <Game setGame={setGame} userCoins={userCoins} setUserCoins={setUserCoins} setShowEndGame={setShowEndGame} showEndGame={showEndGame}/>
-        <ChatGameRoom preRoomUsers={preRoomUsers}/>
+        <Game setGame={setGame} userCoins={userCoins} setUserCoins={setUserCoins} setShowEndGame={setShowEndGame} showEndGame={showEndGame} positions={positions} allStartGame={allStartGame} everybodyPlays={everybodyPlays} />
+        <ChatGameRoom preRoomUsers={preRoomUsers} points={points} />
         </>
         : <div>
-          <EndGame user={user} userCoins={userCoins}/>
+          <EndGame userCoins={userCoins}/>
         </div>
       }
       </div>

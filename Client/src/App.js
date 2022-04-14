@@ -20,9 +20,10 @@ import AdminNav from './components/ADMIN/adminNav';
 import AdminUsers from './components/ADMIN/adminUsers';
 import AdminQuestions from './components/ADMIN/adminQuestions';
 import CurrentQuestions from './components/ADMIN/currentQuestions';
+import JoinWithLink from './components/PRE-GAMEROOM/joinWithLink';
+import Privacidad from './components/PRIVACIDAD/privacidad';
 
 initializeApp(config)
-
 
 function App() {
   return (
@@ -36,10 +37,12 @@ function App() {
         <Route path="/recuperarcontrasena" component={RecuperarContrasena} />
         <Route path="/editProfile" component={EditProfile} />
         <Route path="/room/:idUser" component={PreGameRoom} />
+        <Route path="/invitationRoom/:idRoom" component={JoinWithLink} />
         <Route path="/partidasDisponibles" component={GameListRoom} />
         <Route path="/tienda" component={PlayStore} />
         <Route path="/añadirPregunta" component={FormAddQuestions} />
         <Route path="/partida" component={GameRoom} />
+        <Route path="/politica-de-privacidad" component={Privacidad} />
 
         {/* ///////   Secciones de Administrador //////// */}
         <Route path="/administrador" component={loginAdmin} />

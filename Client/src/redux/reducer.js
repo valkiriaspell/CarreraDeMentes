@@ -1,4 +1,4 @@
-import { LOGIN_USER_GUEST, FAST_REMOVE, ALL_USERS, UPDATE_POINTS, HOST_BY_ID, REMOVE_USER, LIST_USERS_IN_PRE_ROOM, LIST_ROOMS, GET_READY_USER, NEW_USER, LOGIN, HOST, CREATE_ROOM, GET_AVATARS, GET_NEW_QUESTIONS, USER_TOKEN, GET_ALL_QUESTIONS } from "./actions"
+import { LOGIN_USER_GUEST, FAST_REMOVE, ALL_USERS, UPDATE_POINTS, REMOVE_USER, LIST_USERS_IN_PRE_ROOM, LIST_ROOMS, GET_READY_USER, NEW_USER, LOGIN, CREATE_ROOM, GET_AVATARS, GET_NEW_QUESTIONS, USER_TOKEN, GET_ALL_QUESTIONS } from "./actions"
 
 
 const initialState = {
@@ -34,12 +34,6 @@ const reducer = (state = initialState, action) => {
         }
 
         case LOGIN: 
-        return {
-            ...state,
-            user: action.payload
-        }
-
-        case HOST: 
         return {
             ...state,
             user: action.payload
@@ -83,13 +77,6 @@ const reducer = (state = initialState, action) => {
             ...state,
         }
 
-        case HOST_BY_ID: 
-        const newHost = state.preRoomUsers.users.findIndex(user => user.id === action.payload.id)
-        state.preRoomUsers.users[newHost].host = action.payload.host
-        return {
-            ...state,
-        }
-
         case GET_AVATARS: 
         return {
             ...state,
@@ -113,6 +100,16 @@ const reducer = (state = initialState, action) => {
         case UPDATE_POINTS:
             const points = state.preRoomUsers.users.findIndex(user => user.id === action.payload.id)
         state.preRoomUsers.users[points].points = action.payload.pointsTotal
+        state.preRoomUsers.users.sort(function (a, b) {
+            if (b.points > a.points) {
+              return 1;
+            }
+            if (b.points < a.points) {
+              return -1;
+            }
+            // a must be equal to b
+            return 0;
+          });
             return {
                 ...state,
             }

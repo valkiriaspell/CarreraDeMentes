@@ -1,0 +1,196 @@
+/* /////boton marron////// */
+@import url('https://fonts.googleapis.com/css2?family=Passion+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Skranji&display=swap');
+.push_button {
+	position: relative;
+	width:150px;
+	height:40px;
+	text-align:center;
+	color:#FFF;
+	text-decoration:none;
+	line-height:43px;
+	font-family: 'Passion One', cursive;
+	display: block;
+	margin: 30px;  
+    
+}
+.push_button:before {
+	background: rgb(103, 61, 2);	
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:8px;	
+	position: absolute;
+	content: "";
+	left: -6px; right: -6px;
+	top: -6px; bottom: -10px;
+	z-index: -1;
+    font-family: 'Passion One', cursive;
+}
+
+.push_button:active {
+    box-shadow:0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset;
+	top:5px;
+}
+.push_button:active:before{
+    top: -11px;
+	bottom: -5px;
+	content: "";
+}
+
+.brownm {
+    text-shadow:-1px -1px 0 #5c3e03;
+	background: #966a31;
+	border:1px solid #573300;
+	
+    background-image: url('../IMG/fondo-boton-arena.png');
+    background-repeat: no-repeat;
+    background-size: cover;	
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;	
+	
+	-moz-box-shadow:0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #492602, 0 4px 2px rgba(0, 0, 0, .5);
+	box-shadow:0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #492602, 0 4px 2px rgba(0, 0, 0, .5);
+    font-family: 'Passion One', cursive;
+}
+
+.brownm:hover {
+	background: #966a31b6;    
+	background-image:-webkit-linear-gradient(top, #966a31, #573300);
+	background-image:-moz-linear-gradient(top, #966a31, #573300);
+	background-image:-ms-linear-gradient(top, #966a31, #573300);
+	background-image:-o-linear-gradient(top, #966a31, #573300);
+	background-image:linear-gradient(top, #966a31, #573300);
+    
+}
+
+/* /////boton compuertas////// */
+.buttonSides {
+ padding: 0.5em 1em;
+ border: 2px solid #000000;
+ position: relative;
+ overflow: hidden;
+ text-align: center;
+ text-transform: uppercase;
+ font-size: 14px;
+ transition: .6s;
+ text-decoration: none;
+ z-index: 1;
+ font-family: inherit;
+ color: #ffffff;
+ font-family: 'Skranji', cursive;
+ margin-bottom: 10px;
+}
+
+.buttonSides:before {
+    content: "";
+    width: 0;
+    height: 650%; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);    
+    background: #5c3e03;  
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+    text-shadow: #492502de;
+
+}
+
+.buttonSides:active {
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset;
+    top: 5px;
+}
+
+.buttonSides:active:before {
+    top: -11px;
+    bottom: -5px;
+    content: "";
+}
+
+.brown {
+    text-shadow: -1px -1px 0 #5c3e03;     
+    border: 1px solid #573300;
+    background-image: url('../IMG/fondo-boton-arena.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: rgb(255, 223, 134);
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #492602, 0 4px 2px rgba(0, 0, 0, .5);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #492602, 0 4px 2px rgba(0, 0, 0, .5);
+}
+
+.green {
+    text-shadow: -1px -1px 0 #186500;     
+    border: 1px solid #012400;
+    background-image: url('../IMG/arena-green.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #492602, 0 4px 2px rgba(0, 0, 0, .5);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #492602, 0 4px 2px rgba(0, 0, 0, .5);
+}
+
+
+.orange {
+    text-shadow: -1px -1px 0 #fd9431;     
+    border: 1px solid #c25a05;
+    background-image: url('../IMG/arena-orange.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #492602, 0 4px 2px rgba(0, 0, 0, .5);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #492602, 0 4px 2px rgba(0, 0, 0, .5);
+}
+
+.lowgreen {
+    border: 1px solid #159205;
+    background-image: url('../IMG/arena-green.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 12px;
+    color: rgb(1, 19, 1);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #492602, 0 4px 2px rgba(0, 0, 0, .5);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #492602, 0 4px 2px rgba(0, 0, 0, .5);
+}
+
+.buttonSides:hover::before {
+    width: 105%;   
+    
+    background-image: url('../IMG/arena-green.png');
+    
+
+}
+
+.buttonSides:hover {
+
+
+padding: 0.4em 0.9em;
+border: #012400;
+}
+
+
+.green {
+    text-shadow: -1px -1px 0 #035611;     
+    border: 1px solid #013b09;
+    background-image: url('../IMG/fondo-boton-arena.png');
+    background-repeat: no-repeat;
+   
+    background-size: cover;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #492602, 0 4px 2px rgba(0, 0, 0, .5);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #492602, 0 4px 2px rgba(0, 0, 0, .5);
+}
