@@ -39,10 +39,13 @@ function GameListRoom() {
   };
 const history = useHistory()
   function handleJoinRoom(game){
-    AddUserToPreRoom({idRoom: game.id, idUser: user.id})
-    .then(()=> dispatch(listUsersInPreRoom(game.id)))
-    .then(() => {
-      history.push(`/room/${game.id}`)})
+    game.numberUsersInRoom === 6
+      ? alert('la sala esta llena') // mejorar alerta
+      : AddUserToPreRoom({idRoom: game.id, idUser: user.id})
+      .then(()=> dispatch(listUsersInPreRoom(game.id)))
+      .then(() => {
+        history.push(`/room/${game.id}`)})
+     
   }
   return (
     <div className="containerGameList">

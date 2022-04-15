@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import {  useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Chat from "./chat";
 import EditRoom from "./editRoom";
@@ -12,7 +12,6 @@ import "../STYLES/form.css"
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { FaLink } from "react-icons/fa";
 import { AiFillSound } from "react-icons/ai";
-import readyGreen from "../IMG/readyGreen2.png"
 import { getUrl } from "./utils";
 
 function PreGameRoom({match}) {
@@ -23,7 +22,9 @@ function PreGameRoom({match}) {
 
     const {idUser} = match.params;
 
-  const { sendReady, sendStartGame, game, expelPlayer, setGame, messages, sendMessage, handleSubmitConfig, roomConfiguration, setRoomConfiguration, positions, allStartGame, everybodyPlays, points } = useSocket(idUser);
+  const { sendReady, sendStartGame, game, expelPlayer, setGame, messages, sendMessage, handleSubmitConfig, 
+          roomConfiguration, setRoomConfiguration, positions, allStartGame, everybodyPlays, points 
+        } = useSocket(idUser);
 
   
 
@@ -48,7 +49,12 @@ function PreGameRoom({match}) {
         </div>
         <div>
           <div>
-            <EditRoom idUser={idUser} handleSubmitConfig={handleSubmitConfig} roomConfiguration={roomConfiguration} setRoomConfiguration={setRoomConfiguration} />
+            <EditRoom 
+              idUser={idUser} 
+              handleSubmitConfig={handleSubmitConfig} 
+              roomConfiguration={roomConfiguration} 
+              setRoomConfiguration={setRoomConfiguration} 
+            />
           </div>
           <div>
             <Chat idUser={idUser} messages={messages} sendMessage={sendMessage} />
@@ -78,7 +84,14 @@ function PreGameRoom({match}) {
         </div>
       </div>
     ) : (
-      <GameRoom preRoomUsers={preRoomUsers} setGame={setGame} positions={positions} allStartGame={allStartGame} everybodyPlays={everybodyPlays} points={points} />
+      <GameRoom 
+        preRoomUsers={preRoomUsers} 
+        setGame={setGame} 
+        positions={positions} 
+        allStartGame={allStartGame} 
+        everybodyPlays={everybodyPlays} 
+        points={points} 
+      />
     );
   } else {
     history.push("/login");

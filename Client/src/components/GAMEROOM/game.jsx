@@ -7,6 +7,7 @@ import $ from "jquery";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { startGameAlready } from "../PRE-GAMEROOM/utils";
 
 function randomQuestions(array) {
   var m1 = Math.floor((Math.random() * array.length) % array.length);
@@ -31,7 +32,7 @@ function randomQuestions(array) {
   return attacks;
 }
 
-function Game({ setShowEndGame, userCoins, setUserCoins, setGame, positions, allStartGame, everybodyPlays }) {
+function Game({ setShowEndGame, userCoins, setUserCoins, positions, allStartGame, everybodyPlays }) {
   const history = useHistory();
   const { preRoomUsers, user } = useSelector((state) => state);
 
@@ -107,6 +108,7 @@ function Game({ setShowEndGame, userCoins, setUserCoins, setGame, positions, all
   useEffect(() => {
     setTimeout(() => {
       setShowEndGame(true);
+      startGameAlready(preRoomUsers.id, false)
     }, 10000);
   }, []);
 
@@ -228,8 +230,7 @@ function Game({ setShowEndGame, userCoins, setUserCoins, setGame, positions, all
   
 
   const handleGoHome = () => {
-    setGame(false);
-    history("/home");
+    history.push("/home");
   };
 
   return (

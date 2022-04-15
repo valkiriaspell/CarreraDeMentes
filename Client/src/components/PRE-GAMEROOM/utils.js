@@ -57,7 +57,7 @@ export async function deleteRoom(idRoom){
     }
 }
 
-export async function startGame(idRoom, start){
+export async function startGameAlready(idRoom, start){
     try{
         const {data} = await axios.put('http://localhost:3001/gameRoom/starRoot', {idRoom, start})
         console.log(data)
