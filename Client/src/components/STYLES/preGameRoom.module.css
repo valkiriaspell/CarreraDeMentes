@@ -227,6 +227,26 @@
   background-color: rgba(154, 158, 161, 0.4);
 }
 
+/* ===== INVITATION ROOM =====*/
+.containerInvitation{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+}
+.containerButtons{
+  display: flex;
+  flex-direction: column;
+  background-color: blueviolet;
+  width: 20rem;
+  height: 20rem;
+  max-width: 50rem;
+  border-radius: .5rem;
+  border: 2rem;
+  border-color: rgb(64, 37, 100);
+}
+
 /* ===== MEDIA QUERIES =====*/
 @media screen and (max-width: 500px) {
   .containerPlayers {
