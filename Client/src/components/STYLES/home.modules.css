@@ -80,11 +80,14 @@
   width: 600px;
   margin-top: 2rem;
   margin-bottom: 1rem;
+  color: rgb(39, 12, 1);
+  font-family: 'Skranji', cursive;
 }
 .cards button:hover {
   cursor: url("../IMG/pata.png"), auto;
 }
 .containerCard {
+  color: rgb(39, 12, 1);
   margin-bottom: 3.7rem;
 }
 .carruselIndicación{

@@ -107,7 +107,7 @@ function Game({ setShowEndGame, userCoins, setUserCoins, setGame, positions, all
   useEffect(() => {
     setTimeout(() => {
       setShowEndGame(true);
-    }, finalGame);
+    }, 10000);
   }, []);
 
   let secondsGame = preRoomUsers?.time + "000";
