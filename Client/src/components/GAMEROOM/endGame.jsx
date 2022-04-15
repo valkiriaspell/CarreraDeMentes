@@ -5,8 +5,9 @@ import { useSelector } from "react-redux";
 import corona from "../IMG/king.png";
 import corona2 from "../IMG/king2.png";
 import corona3 from "../IMG/king3.png";
+import { NavLink } from "react-router-dom";
 
-export default function EndGame() {
+export default function EndGame({setGame}) {
   const { preRoomUsers, user } = useSelector((state) => state);
 
   useEffect(() => {
@@ -54,6 +55,10 @@ export default function EndGame() {
     }
   };
 
+  function handleContinue(){
+    setGame(false)
+  }
+
   return (
     <div className="containerEG">
       <div className="scoreTable">
@@ -98,6 +103,10 @@ export default function EndGame() {
           </div>
         </div>
       </div>
+      <NavLink to='/home'>
+        <button>Salir</button>
+      </NavLink>
+      <button onClick={handleContinue} >Continuar</button>
     </div>
   );
 }

@@ -7,6 +7,7 @@ import $ from "jquery";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { startGameAlready } from "../PRE-GAMEROOM/utils";
 
 function randomQuestions(array) {
   var m1 = Math.floor((Math.random() * array.length) % array.length);
@@ -107,6 +108,7 @@ function Game({ setShowEndGame, userCoins, setUserCoins, positions, allStartGame
   useEffect(() => {
     setTimeout(() => {
       setShowEndGame(true);
+      startGameAlready(preRoomUsers.id, false)
     }, 10000);
   }, []);
 

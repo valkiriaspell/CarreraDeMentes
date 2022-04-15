@@ -28,12 +28,12 @@ function JoinWithLink({match}){
         <div className={s.containerInvitation}>
           <div className={s.containerButtons} >
             <Link style={{ textDecoration: "none" }} to="/home">
-              <button className="buttonSides lowgreen" >
+              <button className="buttonSides lowgreen" style={{fontSize: "1.5rem"}} >
                 <AiOutlineArrowLeft style={{ marginRight: "0.4rem" }} />
                 Volver
               </button>
             </Link>
-            <button onClick={(e) => handleJoinRoom(e)} className='buttonSides brown'>
+            <button onClick={(e) => handleJoinRoom(e)} className='buttonSides brown' style={{fontSize: "1.5rem", width: "7.7rem"}}>
               Unirse
             </button>
           </div>

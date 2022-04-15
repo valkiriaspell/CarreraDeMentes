@@ -235,16 +235,18 @@
   height: 100vh;
   justify-content: center;
 }
+
 .containerButtons{
   display: flex;
   flex-direction: column;
-  background-color: blueviolet;
-  width: 20rem;
+  /* background-color: rgba(160, 114, 145, 0.664); */
+  width: 18rem;
   height: 20rem;
-  max-width: 50rem;
+/*   border: 5px rgb(49, 95, 49) solid; */
+  border: 5px rgb(10, 97, 90) solid;
   border-radius: .5rem;
-  border: 2rem;
-  border-color: rgb(64, 37, 100);
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 /* ===== MEDIA QUERIES =====*/

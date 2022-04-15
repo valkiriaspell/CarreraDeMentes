@@ -5,7 +5,7 @@ import socketIOClient from 'socket.io-client';
 import { listUsersInPreRoom, loginUser, getReadyUser, changePoint, removeUser, fastRemove } from "../../redux/actions";
 import axios from "axios";
 import readyGreen from "../IMG/readyGreen2.png"
-import { changeReady, deleteRoom, startGame, modifyHost, removeUserRoom } from "./utils";
+import { changeReady, deleteRoom, startGameAlready, modifyHost, removeUserRoom } from "./utils";
 
 function useChatSocketIo(idRoom) {
     const history = useHistory();
@@ -85,7 +85,7 @@ function useChatSocketIo(idRoom) {
             //when host press start-game button, all players redirect url game-room, 
             socketIoRef.current.on("START", async () =>{
                 console.log("empezar")
-                await startGame(idRoom, true)
+                await startGameAlready(idRoom, true)
                 await dispatch(listUsersInPreRoom(idRoom))
                 setGame(true)
             })
