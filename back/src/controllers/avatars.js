@@ -1,6 +1,7 @@
 const { GameRoom, Question, Users, Chat, Avatar } = require('../db.js');
 const avatars = require("../Avatars.json")
 
+// Carga los avatars a la DB y los devuelve
 const getAvatars = async () => {
     try {
         const infoAvatars = JSON.parse(JSON.stringify(avatars));
@@ -16,7 +17,7 @@ const getAvatars = async () => {
         return dbAvatar
 
     } catch (error) {
-        console.log('Avatar no encontrado: ' + error)
+        return {Error: 'Error al encontrar los avatars:' + error}
     }
 }
 

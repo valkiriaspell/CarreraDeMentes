@@ -15,12 +15,12 @@ router.get('/', async (req, res) => {
 		res.json(result);
 	} catch (error) {
 		console.log(error);
-		res.status(500).send("Error al cargar las question a la tabla: " + error);
+		res.status(500).send("Error al cargar las questions a la DB: " + error);
 	}
 });
 
 
-// Vincilamos las tablas correspondientes con preguntas random
+// Vinculamos las tablas correspondientes con preguntas random
 router.post('/allQuestions', async (req, res) => {
 	try {
 		console.log('queestions', req.body)
@@ -33,7 +33,7 @@ router.post('/allQuestions', async (req, res) => {
 		}
 	} catch (error) {
 		console.log(error);
-		res.status(500).send("Error al agragar las questions: " + error);
+		res.status(500).send("Error al agregar las questions a la GameRoom correspondiente: " + error);
 	}
 });
 
