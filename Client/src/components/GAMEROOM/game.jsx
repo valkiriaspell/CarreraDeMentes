@@ -31,7 +31,7 @@ function randomQuestions(array) {
   return attacks;
 }
 
-function Game({ setShowEndGame, userCoins, setUserCoins, setGame, positions, allStartGame, everybodyPlays }) {
+function Game({ setShowEndGame, userCoins, setUserCoins, positions, allStartGame, everybodyPlays }) {
   const history = useHistory();
   const { preRoomUsers, user } = useSelector((state) => state);
 
@@ -228,8 +228,7 @@ function Game({ setShowEndGame, userCoins, setUserCoins, setGame, positions, all
   
 
   const handleGoHome = () => {
-    setGame(false);
-    history("/home");
+    history.push("/home");
   };
 
   return (
