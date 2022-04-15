@@ -1,9 +1,10 @@
 .containerPlayStore {
   overflow-x: hidden;
   background-image: url("../IMG/fondo-landing.webp");
+  opacity: 0.8;
   background-size: cover;
   background-attachment: fixed;
-  min-height: 100vh;
+  height: 100vh;
 }
 .containerPlayStore h1 {
   color: #fff;
