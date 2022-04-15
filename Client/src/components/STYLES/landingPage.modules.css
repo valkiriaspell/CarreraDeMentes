@@ -25,11 +25,7 @@
   flex-direction: column;
   
 }
-.logoLanging span {
-    color: rgba(221, 221, 221, 0.829);
-    top: -30px;
-    position: relative;
-}
+
 
 .link button {
   border-radius: 0.3rem;

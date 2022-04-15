@@ -137,7 +137,7 @@
 }
 .volver:hover {
     background-color: rgba(154, 158, 161, 0.4);
-    cursor: pointer;
+    cursor: url("../IMG/pata.png"), auto;
   }
 .checkbox{
     display: flex;
@@ -168,3 +168,16 @@
     color: white;
     cursor: pointer;
 }
+
+/* ===== MEDIA QUERIES =====*/
+@media screen and (max-width: 400px) {
+    .form {
+      margin: 1rem;
+      width: 350px;
+    }
+  }
+@media screen and (max-width: 360px) {
+    .form {
+      width: 330px;
+    }
+  }

@@ -1,12 +1,5 @@
 /* ====== CONTAINER ====== */
-
 .container {  
-  background-image: url("../IMG/fondo3.png");
-  background-size: cover; 
-  background-color: rgba(87, 158, 40, 0.543);
-  background-position: center;
-  margin-top: 6rem;
-  max-width: 900px;  
   border-radius: 0.4rem;
 }
 
@@ -30,7 +23,7 @@
   display: flex;
   align-items: center;
   padding: 0.6rem;
-  background-color: rgba(37, 70, 15, 0.388);
+  background-color: rgba(10, 19, 4, 0.388);
   margin-top: 0.5rem;
   height: 5.5rem;
   width: 14rem;
@@ -54,14 +47,19 @@
 /* ====== CONTENT ====== */
 .content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  margin-left: 9rem;
 }
 .contentButtons {
   display: flex;
   flex-direction: column;
-  margin-left: 2rem;
-  margin-top: 6rem;
+}
+.contentButtons button{
+  width: 14rem;
+  height: 3rem;
+  font-size: 1rem;
+  margin: 0.6rem;
 }
 .button {
   margin: 0.5rem;
@@ -79,21 +77,48 @@
 /* ====== CARDS ====== */
 .cards {
   border-radius: 0.5rem;
-  background-color: rgba(9, 6, 3, 0.326);
-  width: 500px;
+  width: 600px;
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
 .cards button:hover {
   cursor: url("../IMG/pata.png"), auto;
 }
+.containerCard {
+  margin-bottom: 3.7rem;
+}
+.carruselIndicación{
+  margin-bottom: 4rem;
+}
 
 /* ===== MEDIA QUERIES =====*/
+@media screen and (min-width: 500px) {
+  .nav__smartphone {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .cards {
-      display: none;
-    }
+    display: none;
+  }
+  .nav {
+    display: none;
+  }
+  .contentNav__smartphone {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+  }
+  .infoUser {
+    width: 12rem;
+  }
+  .content {
+    margin-top: 3rem;
+    margin-right: 9rem;
+  }
 }
+
 
 /* ===== SOCIAL ICONS =====*/
 
@@ -114,9 +139,8 @@
   text-align: center;
   padding: 0;
   list-style: none;
-  margin: 1em;
+  margin-top: 5rem;
 }
-
 
 .social-icons li {
   text-align: -webkit-match-parent;
@@ -124,23 +148,22 @@
   margin: 0.25em;
   position: relative;
   font-size: 1.2em;
-  vertical-align: top;   
+  vertical-align: top;
   /* esto le da el tamaño a los icons */
 }
 
 .social-icons i {
   color: rgb(255, 223, 134);
   position: absolute;
-  top: 0.30em;
+  top: 0.3em;
   /* con top y left marco la distancia del icon hacia el box donde se encuentra */
   left: 0.65em;
   transition: all 265ms ease-out;
-  vertical-align: top; 
-  
+  vertical-align: top;
 }
 
 .social-icons a {
-  display: inline-block;  
+  display: inline-block;
 }
 
 .social-icons a:before {

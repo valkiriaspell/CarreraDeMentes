@@ -1,6 +1,6 @@
 import React from "react";
 import "../STYLES/home.modules.css";
-import IMG from "../IMG/img.png";
+import IMG from "../IMG/pergamino2.svg";
 import invite from "../IMG/invite.gif";
 import config from "../IMG/configurar.gif";
 import response from "../IMG/responderPreguntas.gif";
@@ -14,7 +14,7 @@ function Instructions() {
         className="carousel slide"
         data-bs-ride="carousel"
       >
-        <div className="carousel-indicators">
+        <div className="carousel-indicators carruselIndicación">
           <button
             type="button"
             data-bs-target="#carouselExampleCaptions"
@@ -44,8 +44,8 @@ function Instructions() {
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src={IMG} className="d-block w-100" alt="IMG" />
-            <div className="carousel-caption d-none d-md-block">
+            <img src={IMG}  className="d-block w-100 pergamino" alt="IMG" />
+            <div className="carousel-caption d-none d-md-block containerCard">
               <img src={invite} height={200} alt="invitar"/>
               <h5>Invita a tus amigos</h5>
               <p>
@@ -55,7 +55,7 @@ function Instructions() {
           </div>
           <div className="carousel-item">
             <img src={IMG} className="d-block w-100" alt="IMG" />
-            <div className="carousel-caption d-none d-md-block">
+            <div className="carousel-caption d-none d-md-block containerCard">
             <img src={config} height={200} alt="configurar"/>
               <h5>Configura una partida a tu gusto</h5>
               <p>
@@ -65,8 +65,8 @@ function Instructions() {
           </div>
           <div className="carousel-item">
             <img src={IMG} className="d-block w-100" alt="IMG" />
-            <div className="carousel-caption d-none d-md-block">
-            <img src={response} height={190} alt="responder"/>
+            <div className="carousel-caption d-none d-md-block containerCard">
+            <img src={response} height={180} alt="responder"/>
               <h5>Responde preguntas</h5>
               <p>
                 Responde a preguntas aleatorias de diversas categorías, antes de que se te acabe el tiempo.
@@ -75,7 +75,7 @@ function Instructions() {
           </div>
           <div className="carousel-item">
             <img src={IMG} className="d-block w-100" alt="IMG" />
-            <div className="carousel-caption d-none d-md-block">
+            <div className="carousel-caption d-none d-md-block containerCard">
             <img style={{marginBottom: "15px"}} src={powers} height={140} alt="poderes"/>
               <h5>Utiliza tus Poderes! 🤩</h5>
               <p>
