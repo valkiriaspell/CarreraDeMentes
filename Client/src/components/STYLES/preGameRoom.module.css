@@ -227,6 +227,28 @@
   background-color: rgba(154, 158, 161, 0.4);
 }
 
+/* ===== INVITATION ROOM =====*/
+.containerInvitation{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+}
+
+.containerButtons{
+  display: flex;
+  flex-direction: column;
+  /* background-color: rgba(160, 114, 145, 0.664); */
+  width: 18rem;
+  height: 20rem;
+/*   border: 5px rgb(49, 95, 49) solid; */
+  border: 5px rgb(10, 97, 90) solid;
+  border-radius: .5rem;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 /* ===== MEDIA QUERIES =====*/
 @media screen and (max-width: 500px) {
   .containerPlayers {

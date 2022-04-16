@@ -4,6 +4,8 @@ body {
   background-image: url("./components/IMG/fondo3.png");
   background-size: cover; 
   background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
   height: 100vh;
   margin: 0;
   font-family: "IBM Plex Sans Thai Looped", sans-serif;
