@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { newQuestion } from '../../../redux/actions';
 import { Link, useHistory } from 'react-router-dom'
+import DragDrop from './drag-drop';
 import "../../STYLES/form.css"
 import Swal from 'sweetalert2';
 
@@ -239,6 +240,7 @@ export default function FormAddQuestions() {
                             <input className={errorAnswer !== "" ? 'danger' : "inputEmail"} name="false3" type="text" value={false3} onChange={(e) => validation(e)} />
                         </div>
                     </div>
+                    <DragDrop/>
                     <div className='formMail'>
                         <label>URL de Imagen*</label>
                         <div>
