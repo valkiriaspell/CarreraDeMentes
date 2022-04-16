@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { newQuestion } from '../../../redux/actions';
+import { newQuestion, sendingMail } from '../../../redux/actions';
 import { Link, useHistory } from 'react-router-dom'
 import "../../STYLES/form.css"
 import Swal from 'sweetalert2';
@@ -11,7 +11,7 @@ export default function FormAddQuestions() {
     const autenticado = localStorage.getItem('token')
     const email = localStorage.getItem('email')  
     const { user } = useSelector(state => state);  
-
+    const textMail = "Gracias por enviarnos una nueva pregunta para el repertorio de ZooPer Trivia! Luego de pasar por revisión te avisaremos si fue aceptada. Saludos!"
     //////////  ---->    Local states data   <------ //////////////
     const [question, setQuestion] = useState('');
     const [category, setCategory] = useState('');
@@ -22,6 +22,7 @@ export default function FormAddQuestions() {
     const [image, setImg] = useState("");
     const [msg, setMSG] = useState("");
     const [terminos, setTerminos] = useState(false);
+   
 
     //////////  ---->    Local states errors   <------ //////////////
     const [errorQuestion, setErrorQ] = useState("")
@@ -174,7 +175,13 @@ export default function FormAddQuestions() {
                     false3,            
                     image,
                     email
+                }));
+                //////////////// ---->    NODEMAILER   <------ /////////////
+                dispatch(sendingMail({
+                    userMail: email,
+                    textMail: textMail
                 }))
+                //////////////// ---->    CLEANING FORM   <------ /////////////
                 setQuestion("")
                 setAnswer("")
                 setF1("")

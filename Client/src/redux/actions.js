@@ -203,7 +203,7 @@ export function editRoom({ idRoom, public_, questions }) {
 export function newQuestion(question) {
     return async function () {
         try {
-            const data = await axios.post('http://localhost:3001/newQuestion', question)
+            await axios.post('http://localhost:3001/newQuestion', question)
 
         } catch (e) {
             console.log(e)
@@ -228,11 +228,11 @@ export function handleQuestion(id, condition) {
         try {
             if (condition === "accept") {
                 console.log(id, "id en action", condition, "condicion")
-                const { data } = await axios.put(`http://localhost:3001/newQuestion/?id=${id}`)
+                await axios.put(`http://localhost:3001/newQuestion/?id=${id}`)
 
             } else {
 
-                const { data } = await axios.delete(`http://localhost:3001/newQuestion/?id=${id}`)
+                await axios.delete(`http://localhost:3001/newQuestion/?id=${id}`)
             }
 
         } catch (e) {
@@ -263,3 +263,13 @@ export function changePoint({ id, pointsTotal, point }) {
     }
 }
 
+export function sendingMail(data) {
+    return async function () {
+        try {
+            await axios.post('http://localhost:3001/send_mail', data)
+
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
