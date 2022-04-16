@@ -26,7 +26,7 @@ function useChatSocketIo(idRoom) {
     const [everybodyPlays, setEverybodyPlays] = useState(false);
 
     useEffect(() =>{
-
+        !user?.id && dispatch(loginUser(email))
         console.log(socketIoRef)
         socketIoRef.current = socketIOClient('http://localhost:3001',{query:{idGameRoom: idRoom, email} } );
         console.log(socketIoRef)
