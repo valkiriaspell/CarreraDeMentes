@@ -1,16 +1,16 @@
 import React,{useEffect,useState} from "react";
 import "../../STYLES/dragdrop.css"
+import Swal from 'sweetalert2';
+import {uploadFiles} from '../../../utils/Firebase'
 
-function DragDrop(){
+function DragDrop(props){
     const [image, setImage] = useState({});
     useEffect(() => {
         const dropArea= document.getElementById("drop-area")
-        console.log(dropArea)
         const [button]= dropArea.getElementsByClassName('button')
-        console.log(button)
         const input= dropArea.querySelector('#input-file')
-        console.log(input)
         let files;
+
         //cuando toco el boton
         button.addEventListener("click",(e)=>{
             e.preventDefault()
@@ -24,16 +24,13 @@ function DragDrop(){
         // se necesita para que funcione la dropzone
         dropArea.addEventListener('dragover',(e)=>{
             e.preventDefault()
-            console.log("encima")
         })
         // se necesita para que funcione la dropzone
         dropArea.addEventListener('dragLeave',(e)=>{
             e.preventDefault()
-            console.log("afuera")
         })
         //cuando tiro archivos a la dropzone
         dropArea.addEventListener('drop',(e)=>{
-            console.log('aca');
             e.preventDefault();
             files=e.dataTransfer.files;
             showFiles(files);
@@ -45,17 +42,22 @@ function DragDrop(){
     
     //veo si son muchos archivos o solo uno
     function showFiles(files){
-        console.log(files)
-        if(files.length=== 1){
+        if(files.length=== 1){            
             processFile(files[0]);
         }else{
-            console.log("solo se puede cargar un archivo por pregunta")
+            Swal.fire({
+                icon: "error",
+                title:
+                  "solo se puede cargar un archivo por pregunta",
+                showConfirmButton: true,
+                heightAuto: false,
+                timer: 3000,
+              });
         }
     }
     //funcion que muestra los archivos en lista
     function processFile(file){
         const fileType=file.type;
-        console.log(fileType)
         const extens=['image/jpeg','image/jpg','image/png']
         if(extens.includes(fileType)){
             const fileReader= new FileReader();
@@ -71,32 +73,24 @@ function DragDrop(){
             })
 
             fileReader.readAsDataURL(file);//carga el archivo y cae en el listener
-            upLoadFile(file,id)//envia el archivo al back
+            upLoadFile(file)//envia el archivo al back
         }else{
-            alert('fromato de archivo no permitido')
+            Swal.fire({
+                icon: "error",
+                title:
+                  "fromato de archivo no permitido",
+                showConfirmButton: true,
+                heightAuto: false,
+                timer: 3000,
+              });
         }
     }
 
-    async function upLoadFile(file,id){//envia el archivo al back
-        console.log(id)
+function upLoadFile(file){//envia el archivo al back
         const formData= new FormData()
-        formData.append('file',file)
-        try {
-            const response= await fetch('http://localhost:3000/upload',{
-                method:"POST",
-                body:formData
-            });
-            const responseText= await response.text
-            console.log(responseText)
-            const x= document.querySelector(`#${id} .status-text`)
-            console.log(x)
-            x.innerHTML='<span>cargado correctamente</span>'
-        } catch (error) {
-            const y=document.querySelector(`#${id} .status-text`)
-            console.log(y)
-            y.innerHTML='<span>no se pudo enviar el archivo</span>'        
-        }
 
+        formData.append('file',file) 
+        props.setImg(file)
     }
 
     return(
@@ -104,17 +98,17 @@ function DragDrop(){
             <div className="drop-area" id="drop-area">
                 <h2 style={{fontSize:"100%"}}>arrastra y suelta imagenes</h2>
                 <span>o</span>
-                <button className="button">selecciona uno o varios archivos</button>
+                <button className="button">selecciona una imagen</button>
                 <input type="file" id="input-file" hidden multiple></input>                    
             </div>
                 <div id="preview">
-                    {image.id?
+                    {props.img?
                     <div id={image.id} className="file-container" style={{display:"flex"}}>
                     <img src={image.URL} alt={image.name} width="50"/>
                     <div className="status">
                         <span>{image.name}</span>
                         <span className="status-text">
-                                Loading...
+                            cargado correctamente
                         </span>
                     </div>
                 </div>

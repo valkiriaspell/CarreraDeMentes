@@ -8,6 +8,7 @@ import {
   sendPasswordResetEmail,
   sendEmailVerification
 } from "firebase/auth";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import Swal from "sweetalert2";
 
 export const config = {
@@ -146,3 +147,28 @@ export async function firebaseVerificarUsuario(usuario){
     console.log(error)
   }
 }
+
+export  const uploadFiles =(file,category) => {
+  //
+  if (!file) return;
+  const storage=getStorage()
+  const sotrageRef = ref(storage, `${category}/${file.name}`);
+  const uploadTask = uploadBytesResumable(sotrageRef, file);
+
+ uploadTask.on(
+    "state_changed",
+    (snapshot) => {
+      const prog = Math.round(
+        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+      );
+    },
+    (error) => console.log(error),
+     () => {
+      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        console.log("File available at", downloadURL);
+        return downloadURL
+      });
+    }
+  );
+  return uploadTask;
+};
