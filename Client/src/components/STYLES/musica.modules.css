@@ -1,3 +1,10 @@
+.audioPlayer{
+    position: absolute;    
+    right: 2px;
+    top: 2px;    
+    
+}
+
 audio::-webkit-media-controls-panel {
     background-color: #c25a05;
     

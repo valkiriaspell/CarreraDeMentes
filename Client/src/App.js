@@ -16,7 +16,7 @@ import GameRoom from './components/GAMEROOM/gameRoom';
 import RecuperarContrasena from './components/INICIO/RECUPERARCONTRASENA/recuperarContrasena';
 import Footer from './components/FOOTER/footer';
 import loginAdmin from './components/ADMIN/login';
-import AdminNav from './components/ADMIN/adminNav';
+import AdminHome from './components/ADMIN/adminHome';
 import AdminUsers from './components/ADMIN/adminUsers';
 import AdminQuestions from './components/ADMIN/adminQuestions';
 import CurrentQuestions from './components/ADMIN/currentQuestions';
@@ -46,14 +46,14 @@ function App() {
 			<Route path='/partida' component={GameRoom} />
 			<Route path='/politica-de-privacidad' component={Privacidad} />
 
-			{/* ///////   Secciones de Administrador //////// */}
-			<Route path='/administrador' component={loginAdmin} />
-			<Route path='/adminHome' component={AdminNav} />
-			<Route path='/adminHome/questions' component={AdminQuestions} />
-			<Route path='/adminHome/currentQuestions' component={CurrentQuestions} />
-			<Route path='/adminHome/users' component={AdminUsers} />
-		</div>
-	);
+        {/* ///////   Secciones de Administrador //////// */}
+        <Route path="/administrador" component={loginAdmin} />
+        <Route path="/adminHome" component={AdminHome} />        
+        <Route path="/adminQuestions" component={AdminQuestions} />
+        <Route path="/adminCurrentQuestions" component={CurrentQuestions} />
+        <Route path="/adminUsers" component={AdminUsers} />
+    </div>
+  );
 }
 
 export default App;
