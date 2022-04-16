@@ -1,167 +1,182 @@
-.adminHome {
-    display: flex;    
-    color: white;
-    font-size: 18px;
+@import url('https://fonts.googleapis.com/css2?family=Passion+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Skranji&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@200&family=Lato:wght@100&family=Open+Sans:wght@300&family=Raleway:wght@100;400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@200&family=Lato:wght@100&family=Open+Sans:wght@300&family=Raleway:wght@100;400&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-/* MENU NAVEGACION */
-.navAdmin{
-  display: block;
-  position: fixed;
-  top: 0;           
-  color: white;  
-  width: 100%;  
-  background-color: #24232176;   
-  min-height: 120px;
-  padding-top: 12px;
-  }
+/* ADMIN HOME */
+.adminHome {
+  background: linear-gradient(to bottom, rgb(175, 226, 206), rgb(7, 122, 80));
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.adminHomeQuestions{
+  background: linear-gradient(to bottom, rgb(175, 226, 206), rgb(7, 122, 80));
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  height: 1800px;
+  width: 100%;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* HOME ADMIN */
+.cardContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.cardAdmin {
+  width: 330px;
+  height: 480px;
+  border: solid #1a4708 3px;
+  background: linear-gradient(to bottom, rgb(241, 215, 184), rgb(227, 152, 61));
+  border-radius: 8px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  margin: 30px;
+  text-align: center;
+  transition: all 0.25s;
+}
+
+.cardAdmin:hover{
+  transform: scale(1.08);
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.3);;
+}
+
+.cardAdmin img {
+  width: 250px;
+  border-radius: 8px;
+}
+
+.cardAdmin h4 {
+  padding: 0 1rem;
+  color: rgb(14, 35, 2);
+  font-size: 24px;
+  font-family: "Skranji";
+}
+
+.cardAdmin p {
+  padding: 0 1rem;
+  font-size: 20px;
+  color: black;
+  font-weight: 600;
+  font-size: 15px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.navHomeAdmin {
+  background-size: cover; 
+  background-position: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  top: 0; 
+}
+
+.navGeneral {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logoZooperTrivia {
+  margin-left: -100px;
+}
+
+/* ADMIN NAV GENERAL PARA LAS TRES RUTAS*/
+.adminNav {
+  background-size: cover; 
+  background-position: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  top: 0; 
+}
+
+.adminNav h2{
+  color: rgb(14, 59, 5);
+  font-size: 30px;
+  font-family: "Skranji";    
+}
+
+.questionsNav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0px;
+  text-align: center;
+  transition: all 0.25s;
+  color: rgb(13, 60, 3);
+  font-size: 20px;
+  font-family: 'Trebuchet MS'; 
+}
 
   @media screen and (max-width: 550px){
-    .navAdmin{
+    .navHomeAdmin{
       display: flex;
       flex-direction: column;      
       align-items: center;
       position: fixed;       
       width: 100%;
       min-height: 55px;  
-      
       }
   }
 
-  /* BARRA DE ADMIN */
-  .barraSaludo {
-      text-align: left;
-      display: flex;
-      flex-direction: row;
-  }
-
-  .barraSaludo button{
-      height: 30px;
-      color: white;
-      font-size: 18px;
-      border-style: none;
-      background: none;
-      position: relative;
-      top: -5px
-  }
- 
-  
-/* BOTONES DEL MENU */
-  .draw-border {
-    box-shadow: inset 0 0 0 3px #ffffffb7;
-    color: rgba(255, 81, 0, 0.75);
-    -webkit-transition: color 0.25s 0.0833333333s;
-    transition: color 0.25s 0.0833333333s;
-    margin-top: 50px;
-    position: relative;
-    text-decoration: none;    
-  }
-  
-  .draw-border::before,
-  .draw-border::after {
-    border: 0 solid transparent;
-    box-sizing: unset;
-    content: '';
-    pointer-events: none;
-    position: absolute;
-    width: 0rem;
-    height: 0;
-    bottom: 0;
-    right: 0;
-  }
-  
-  .draw-border::before {
-    border-bottom-width: 4px;
-    border-left-width: 4px;
-  }
-  
-  .draw-border::after {
-    border-top-width: 4px;
-    border-right-width: 4px;
-  }
-  
-  .draw-border:hover {
-    color: #d22b51;
-  }
-  
-  .draw-border:hover::before,
-  .draw-border:hover::after {
-    border-color: #d22b51;
-    -webkit-transition: border-color 0s, width 0.25s, height 0.25s;
-    transition: border-color 0s, width 0.25s, height 0.25s;    
-    width: 100%;
-    height: 100%;    
-  }
-  
-  .draw-border:hover::before {
-    -webkit-transition-delay: 0s, 0s, 0.25s;
-    transition-delay: 0s, 0s, 0.25s;
-  }
-  
-  .draw-border:hover::after {
-    -webkit-transition-delay: 0s, 0.25s, 0s;
-    transition-delay: 0s, 0.25s, 0s;
-  }
-  
-  .btn {
-    background: rgba(49, 18, 0, 0);
-    border: none;
-    cursor: pointer;
-    line-height: 1.5;    
-    padding: 0.45em 1em;
-    letter-spacing: 0.05rem;
-    margin: 0.5em;
-    width: 13rem;
-    color: #ffffff;
-  }
-  
-  .btn:focus {
-    outline: 2px dotted #080300;        
-  }
-  
-  .btn:hover {
-    background-color: #fffcfad0;
-    font: 700 1.0rem 'Roboto Slab', sans-serif;
-  }
-  .linkSelected {
-    color: #d22b51;
-    background-color: #fffcfad0;
-    border-color: #d22b51;
-    text-shadow: none;
-    border-style: solid;
-    box-shadow: inset 0 0 0 3px #ffffffb7;    
-    -webkit-transition: color 0.25s 0.0833333333s;
-    transition: color 0.25s 0.0833333333s;
-    
-    position: relative;
-    text-decoration: none;        
-    cursor: pointer;
-    line-height: 1.5;
-    font: 'Roboto Slab', sans-serif;    
-    padding: 0.55em 2em;
-    letter-spacing: 0.05rem;    
-    width: 13rem;    
-  }
-
-  @media screen and (max-width: 520px){
-  
-  }
-
   /* ADMIN QUESTIONS */
-  .containerAdmin{
-    margin-top: 125px;  
-    display: flex;
-    flex-direction: column;
-    color: white;
+  .adminQuestions {
+    margin-top: 0px;
+    margin-left: 2%;
+    margin-right: 2%;
   }
-  .adminQuestions{
-    background-color: white;
-    color: rgb(38, 2, 31);
-    margin-top: 5px;  
+
+  .nombreRuta-Imagen {
     display: flex;
-    flex-direction: column;    
+    justify-content: center;
+    align-items: center;
   }
-  
+
+  .nombreRuta-Imagen h1 {
+    color: rgb(3, 14, 1);
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .scroll {
+    width: 100%;      
+    height: 550px;
+    margin: 0 auto;
+    display: block;
+    overflow-x: auto;
+    border-spacing: 0;
+    align-items: center;
+  }
+
    /* BUTTONS */
   .botonesBarra{ 
     display: flex;
@@ -200,67 +215,143 @@
   .BuscadorUsers{
     min-width: 170px;
     margin: 7px;
-    font-size: 15px;
+    font-size: 17px;
   }
-  .questionTable{
-      
-      width: 100%;      
-      height: 440px;
-      margin: 0 auto;
-      display: block;
-      overflow-x: auto;
-      border-spacing: 0;
-      align-items: center;
-      
-    }
 
-    .titulos{
-        border-left-width: 10px;
-        border-right-width: 10px;
-        border-bottom-width: 3px;
-        border-top-width: 3px;
-        
-    }
-    .questionTable tbody {
-        white-space: nowrap;
-        
-    }
-    .questionTable th,
-    td {
-        padding: 5px 10px;
-        border-top-width: 0;     
-        
-    }
-   
-table, th, td {
-    border: 1px solid;    
-  }
+  /* ESTILO DE TABLAS */
   table {
-      background-color: #d22b5200;
+    width: 100%;  
+    text-align: center;
+    margin:0 auto;
+    border-collapse: collapse;
+    border: #080300 solid 1px;
+    overflow-x: auto;
+    border-spacing: 0;
+    align-items: center;
+    font-family: 'Trebuchet MS';
   }
 
- th {    
-    top: 0;    
-    vertical-align: bottom;
-      
-}
-th:last-child,
-td:last-child {
-    border-right-width: 0;
-}
+  th {
+    background-color: rgb(4, 39, 49);
+    border-bottom: #080300 solid 1px;
+    color: aliceblue;
+    padding: 3px; 
+  }
 
+  td {
+    background-color: rgb(229, 229, 229);
+    padding: 1px; 
+  }
 
+  tr:nth-child(even) td {
+    background-color: rgb(197, 197, 197);
+  }
 
-
-.questionTable tr:last-child td {
-    border-bottom-width: 0;
-}
-
+  tr:hover td{
+    background-color: rgb(116, 115, 116);
+    color:azure;
+  }
 
   /* ADMIN USERS */
   .adminUsers{
-      background-color: white;
+    background-color: white;
     color: rgb(37, 1, 30);
     margin-top: 125px;  
     display: flex;
   }
+
+/* ESTILOS DE BOTONES */
+/* .draw-border {
+  box-shadow: inset 0 0 0 3px #ffffffb7;
+  color: rgba(255, 81, 0, 0.75);
+  -webkit-transition: color 0.25s 0.0833333333s;
+  transition: color 0.25s 0.0833333333s;
+  margin-top: 50px;
+  position: relative;
+  text-decoration: none;    
+}
+
+.draw-border::before,
+.draw-border::after {
+  border: 0 solid transparent;
+  box-sizing: unset;
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  width: 0rem;
+  height: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.draw-border::before {
+  border-bottom-width: 4px;
+  border-left-width: 4px;
+}
+
+.draw-border::after {
+  border-top-width: 4px;
+  border-right-width: 4px;
+}
+
+.draw-border:hover {
+  color: #d22b51;
+}
+
+.draw-border:hover::before,
+.draw-border:hover::after {
+  border-color: #d22b51;
+  -webkit-transition: border-color 0s, width 0.25s, height 0.25s;
+  transition: border-color 0s, width 0.25s, height 0.25s;    
+  width: 100%;
+  height: 100%;    
+}
+
+.draw-border:hover::before {
+  -webkit-transition-delay: 0s, 0s, 0.25s;
+  transition-delay: 0s, 0s, 0.25s;
+}
+
+.draw-border:hover::after {
+  -webkit-transition-delay: 0s, 0.25s, 0s;
+  transition-delay: 0s, 0.25s, 0s;
+}
+
+.btn {
+  background: rgba(49, 18, 0, 0);
+  border: none;
+  cursor: pointer;
+  line-height: 1.5;    
+  padding: 0.45em 1em;
+  letter-spacing: 0.05rem;
+  margin: 0.5em;
+  width: 13rem;
+  color: #ffffff;
+}
+
+.btn:focus {
+  outline: 2px dotted #080300;        
+}
+
+.btn:hover {
+  background-color: #fffcfad0;
+  font: 700 1.0rem 'Roboto Slab', sans-serif;
+}
+.linkSelected {
+  color: #d22b51;
+  background-color: #fffcfad0;
+  border-color: #d22b51;
+  text-shadow: none;
+  border-style: solid;
+  box-shadow: inset 0 0 0 3px #ffffffb7;    
+  -webkit-transition: color 0.25s 0.0833333333s;
+  transition: color 0.25s 0.0833333333s;
+  position: relative;
+  text-decoration: none;        
+  cursor: pointer;
+  line-height: 1.5;
+  font: 'Roboto Slab', sans-serif;    
+  padding: 0.55em 2em;
+  letter-spacing: 0.05rem;    
+  width: 13rem;    
+} */

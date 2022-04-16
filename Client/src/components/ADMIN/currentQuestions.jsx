@@ -6,6 +6,8 @@ import "../STYLES/admin.css"
 import { GrUpdate } from "react-icons/gr";
 import { useHistory } from 'react-router-dom';
 import ChangeQuestion from './formChangeQuestion';
+import  AdminNav  from './adminNav'
+import admin02 from '../IMG/Admin2.png'
 
 
 export default function CurrentQuestions() {
@@ -89,8 +91,20 @@ export default function CurrentQuestions() {
 
     
        return (
-        <div className='containerAdmin'>
-            <div className='barraSobreQuestions'>
+                <div className='adminHomeQuestions'>
+                    <div className='questionsNav'>
+                        <img 
+                            width="220px" 
+                            src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4" 
+                            alt='Logo'>
+                        </img>
+                    <h2>Bienvenido/a a la sección para Modificar Preguntas</h2>
+                    <img width="100px" src={admin02} alt='Admin03'></img>
+                    < AdminNav />
+                </div>
+                <hr/>
+
+            <div className='navHomeAdmin'>
                 <input
                     className="BuscadorUsers"
                     type="text"
@@ -98,7 +112,9 @@ export default function CurrentQuestions() {
                     value={search}
                     onChange={handleSearch}
                 />
-                <div><label>Filtrar por</label><select className="BuscadorUsers" onChange={(e) => handleCategory(e)} placeholder="Categoria" name="" id="">
+                <div>
+                    {/* <label>Filtrar por</label> */}
+                    <select className="botonesBarra" onChange={(e) => handleCategory(e)} placeholder="Categoria" name="" id="">
                     <option value="">Categoria</option>
                     <option value="Historia">Historia</option>
                     <option value="Geografia">Geografía</option>
@@ -108,12 +124,15 @@ export default function CurrentQuestions() {
                     <option value="Deporte">Deporte</option>
                     <option value="Musica">Musica</option>
                 </select></div>
-                <h6>Preguntas: {allQuestions.length}</h6>
+                <h6 className='botonesBarra'>Total Preguntas: {allQuestions.length}</h6>
                 <button className='botonesBarra' onClick={() => modifyQuestion()}>Modificar</button>
                 <button className='botonesBarra' id="refresh" onClick={(e) => refresh(e)}><GrUpdate /></button>
-                <button className='botonesBarra' onClick={(e) => darkTheme(e)}><CgDarkMode /></button>
+                {/* <button className='botonesBarra' onClick={(e) => darkTheme(e)}><CgDarkMode /></button> */}
             </div>
+            <hr/>
+
             <div className='adminQuestions'>
+                <div className='scroll'>
                 <table className='questionTable'>
                     <tbody>
                         <tr className='titulos'>
@@ -129,25 +148,25 @@ export default function CurrentQuestions() {
                         </tr>
                         {allQuestions?.map(q =>
                             <tr key={q.id}>
-                                <th><input type="radio" id="check" name="radioq" value={q.id} onClick={(e) => handleCheck(e)} /></th>
-                                <th>{q.id}</th>
-                                <th>{q.category}</th>
-                                <th>{q.question}</th>
-                                <th>{q.answer}</th>
-                                <th>{q.false1}</th>
-                                <th>{q.false2}</th>
-                                <th>{q.false3}</th>
-                                <th><a href={q.image} target="_blank">Ver Imagen</a></th>
+                                <td><input type="radio" id="check" name="radioq" value={q.id} onClick={(e) => handleCheck(e)} /></td>
+                                <td>{q.id}</td>
+                                <td>{q.category}</td>
+                                <td>{q.question}</td>
+                                <td>{q.answer}</td>
+                                <td>{q.false1}</td>
+                                <td>{q.false2}</td>
+                                <td>{q.false3}</td>
+                                <td><a href={q.image} target="_blank">Ver Imagen</a></td>
                             </tr>)}
-                    </tbody>
+                        </tbody>
                 </table>
             </div>
+        </div>
             {showForm?
-            <div>
+            <div className='popUp'>
                 <ChangeQuestion refresh={refresh} selectedQuestion={selectedQuestion} setShowForm={setShowForm}></ChangeQuestion>
             </div>
-        : null }
-
-        </div>
+                : null }
+    </div>
     )
 }
