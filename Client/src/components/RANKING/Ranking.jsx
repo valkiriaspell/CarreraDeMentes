@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { allUsersLevel } from "../../redux/actions";
 import Style from "../STYLES/Ranking.module.css"
 import Ranking_Tabla from "./Ranking_Tabla";
+import Music from './components/MUSICA/musica';
 
 export default function Ranking(){
 
