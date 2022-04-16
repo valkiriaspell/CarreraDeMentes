@@ -6,6 +6,7 @@ import corona from "../IMG/king.png";
 import corona2 from "../IMG/king2.png";
 import corona3 from "../IMG/king3.png";
 import { NavLink } from "react-router-dom";
+import Music from "../MUSICA/musica";
 
 export default function EndGame({setGame}) {
   const { preRoomUsers, user } = useSelector((state) => state);
@@ -60,6 +61,8 @@ export default function EndGame({setGame}) {
   }
 
   return (
+    <div>
+    <Music/>
     <div className="containerEG">
       <div className="scoreTable">
         <div className="interior">
@@ -103,10 +106,13 @@ export default function EndGame({setGame}) {
           </div>
         </div>
       </div>
-      <NavLink to='/home'>
+      <div className="containerButtons">
+      <NavLink className="buttonEndgame" to='/home'>
         <button>Salir</button>
       </NavLink>
-      <button onClick={handleContinue} >Continuar</button>
+      <button className="buttonEndgame" onClick={handleContinue} >Continuar</button>
+      </div>
+    </div>
     </div>
   );
 }

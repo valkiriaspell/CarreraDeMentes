@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Music from "../MUSICA/musica";
 
 
 
@@ -14,6 +15,8 @@ function ChatGameRoom({points}){
 
 
     return (
+        <div>
+            
         <div className="containerChatGame">
                 <div style={{heigth:50 + "px"}} disabled={true} > 
                     {
@@ -28,6 +31,7 @@ function ChatGameRoom({points}){
                         })
                     }
                 </div>
+        </div>
         </div>
     )
 }
