@@ -6,6 +6,8 @@ import "../STYLES/admin.css"
 import Swal from "sweetalert2";
 import { GrRefresh, GrUpdate } from "react-icons/gr";
 import { useHistory } from 'react-router-dom';
+import  AdminNav  from './adminNav'
+import admin01 from '../IMG/Admin1.png'
 
 
 export default function AdminQuestions() {
@@ -130,55 +132,72 @@ export default function AdminQuestions() {
       });
 
     return (
-        <div className='containerAdmin'>
-            <div className='barraSobreQuestions'>
-                <h6>Preguntas seleccionadas: {preguntasID.length}</h6>
-                <button className='botonesBarra' onClick={() => acceptQuestions()}>Aceptar</button>
-                <button className='botonesBarra' onClick={() => rejectQuestions()}>Rechazar</button>
-                <div><label>Filtrar por</label><select className="BuscadorUsers" onChange={(e) => handleCategory(e)} placeholder="Categoria" name="" id="">
-              <option value="">Categoria</option>
-              <option value="Historia">Historia</option>
-              <option value="Geografia">Geografía</option>
-              <option value="Arte">Arte</option>
-              <option value="Ciencias">Ciencias</option>
-              <option value="Cine">Cine</option>
-              <option value="Deporte">Deporte</option>
-              <option value="Musica">Musica</option>
-            </select></div>
-                <button className='botonesBarra' id="refresh" onClick={(e) => refresh(e)}><GrUpdate /></button>
-                <button className='botonesBarra' onClick={(e) => darkTheme(e)}><CgDarkMode /></button>
+        <div className='adminHome'>
+                    <div className='questionsNav'>
+                            <img 
+                                width="220px" 
+                                src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4" 
+                                alt='Logo'>
+                            </img>
+                        <h2>Bienvenido/a a la sección de Revisión de Preguntas</h2>
+                        <img width="100px" src={admin01} alt='Admin01'></img>
+                        < AdminNav />
+                    </div>
+                    <hr/>
+                  
+                <div className='navHomeAdmin'>
+                    <h6 className='botonesBarra'>Preguntas seleccionadas: {preguntasID.length}</h6>
+                    <div>
+                        {/* <label>Filtrar por</label> */}
+                        <select className='botonesBarra' onChange={(e) => handleCategory(e)} placeholder="Categoria" name="" id="">
+                        <option value="">Categoria</option>
+                        <option value="Historia">Historia</option>
+                        <option value="Geografia">Geografía</option>
+                        <option value="Arte">Arte</option>
+                        <option value="Ciencias">Ciencias</option>
+                        <option value="Cine">Cine</option>
+                        <option value="Deporte">Deporte</option>
+                        <option value="Musica">Musica</option>
+                        </select>
+                    </div>
+                    <button className='botonesBarra' onClick={() => acceptQuestions()}>Aceptar</button>
+                    <button className='botonesBarra' onClick={() => rejectQuestions()}>Rechazar</button>
+                    <button className='botonesBarra' id="refresh" onClick={(e) => refresh(e)}><GrUpdate /></button>
+                    {/* <button className='botonesBarra' onClick={(e) => darkTheme(e)}><CgDarkMode /></button> */}
+                </div>
+                <hr/>
+
+                <div className='adminQuestions'>
+                    <table className='questionTable'>
+                        <tbody>
+                            <tr>
+                                <th>Seleccionar</th>
+                                <th>ID</th>
+                                <th>Autor</th>
+                                <th>Categoría</th>
+                                <th>Pregunta</th>
+                                <th>Respuesta Correcta</th>
+                                <th>Res. Falsa 1</th>
+                                <th>Res. Falsa 2</th>
+                                <th>Res. Falsa 3</th>
+                                <th>Imagen</th>
+                            </tr>
+                                {newQuestions?.map(q =>
+                                <tr key={q.id}>
+                                    <td><input type="checkbox" id="check" value={q.id} onClick={(e) => handleChecks(e)} /></td>
+                                    <td>{q.id}</td>
+                                    <td>{q.email}</td>
+                                    <td>{q.category}</td>
+                                    <td>{q.question}</td>
+                                    <td>{q.answer}</td>
+                                    <td>{q.false1}</td>
+                                    <td>{q.false2}</td>
+                                    <td>{q.false3}</td>
+                                    <td><a href={q.image} target="_blank">Ver Imagen</a></td>
+                                </tr>)}
+                        </tbody> 
+                    </table>
+                </div>
             </div>
-            <div className='adminQuestions'>
-                <table className='questionTable'>
-                    <tbody>
-                        <tr className='titulos'>
-                            <th>Seleccionar</th>
-                            <th>ID</th>
-                            <th>Autor</th>
-                            <th>Categoría</th>
-                            <th>Pregunta</th>
-                            <th>Respuesta Correcta</th>
-                            <th>Res. Falsa 1</th>
-                            <th>Res. Falsa 2</th>
-                            <th>Res. Falsa 3</th>
-                            <th>Imagen</th>
-                        </tr>
-                        {newQuestions?.map(q =>
-                            <tr key={q.id}>
-                                <th><input type="checkbox" id="check" value={q.id} onClick={(e) => handleChecks(e)} /></th>
-                                <th>{q.id}</th>
-                                <th>{q.email}</th>
-                                <th>{q.category}</th>
-                                <th>{q.question}</th>
-                                <th>{q.answer}</th>
-                                <th>{q.false1}</th>
-                                <th>{q.false2}</th>
-                                <th>{q.false3}</th>
-                                <th><a href={q.image} target="_blank">Ver Imagen</a></th>
-                            </tr>)}
-                    </tbody>
-                </table>
-            </div>
-        </div>
     )
 }

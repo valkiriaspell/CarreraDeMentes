@@ -6,8 +6,8 @@ import { GrUpdate } from "react-icons/gr";
 import { allUsers, bannUser, createAdmin } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { RiGradienterLine } from "react-icons/ri";
-
-
+import  AdminNav  from './adminNav'
+import admin03 from '../IMG/Admin3.png'
 
 
 export default function AdminUsers() {
@@ -145,28 +145,41 @@ export default function AdminUsers() {
 
 
     return (
-        <div className='containerAdmin'>
-            <div className='barraSobreQuestions'>
-                <div className='handleAdmin'>
-                <h6>Usuarios: {totalUsers.length}</h6>
-                    <select className='botonesBarra' onChange={(e) => actions(e)}>
-                        <option key={1} value="crear">Crear Admin </option>
-                        <option key={2} value="deshacer">Deshacer Admin </option>
-                    </select>
-                    <button className='botonesBarra' value="go" onClick={(e) => handleAdmin(e)}><RiGradienterLine /></button>
-                </div>
-                <button className='botonesBarra' onClick={() => banearUser()}>Sancionar</button>
+            <div className='adminHome'>
+                <div className='questionsNav'>
+                <img 
+                    width="220px" 
+                    src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4" 
+                    alt='Logo'>
+                </img>
+                <h2>Bienvenido/a a la sección para Configurar Usuarios</h2>
+                <img width="100px" src={admin03} alt='Admin03'></img>
+                < AdminNav />
+        </div>
+        <hr/>
 
-                <input
-                    className="BuscadorUsers"
-                    type="text"
-                    placeholder="Buscar por nombre..."
-                    value={search}
-                    onChange={handleSearch}
-                />
+            <div className='navHomeAdmin'>
+                    <input
+                        className="BuscadorUsers"
+                        type="text"
+                        placeholder="Buscar por nombre..."
+                        value={search}
+                        onChange={handleSearch}
+                        />
+                <div className='botonesBarra'>
+                        <select onChange={(e) => actions(e)}>
+                            <option key={1} value="crear">Crear Admin </option>
+                            <option key={2} value="deshacer">Deshacer Admin </option>
+                        </select>
+                        <button className='botonesBarra' value="go" onClick={(e) => handleAdmin(e)}><RiGradienterLine /></button>
+                </div>
+                <h6 className='botonesBarra'>Usuarios: {totalUsers.length}</h6>
+                <button className='botonesBarra' onClick={() => banearUser()}>Sancionar</button>
                 <button className='botonesBarra' onClick={(e) => refresh(e)}><GrUpdate color="white" /></button>
-                <button className='botonesBarra' onClick={(e) => darkTheme(e)}><CgDarkMode /></button>
+                {/* <button className='botonesBarra' onClick={(e) => darkTheme(e)}><CgDarkMode /></button> */}
             </div>
+            <hr/>
+
             <div className='adminQuestions'>
                 <table className='questionTable'>
                     <tbody>
@@ -180,12 +193,12 @@ export default function AdminUsers() {
                         </tr>
                         {totalUsers?.map(q =>
                             <tr key={q.email}>
-                                <th><input type="radio" id={q.email} name="radiob" value={q.email} onClick={(e) => handleCheck(e)} /></th>
-                                <th>{q.email}</th>
-                                <th>{q.name}</th>
-                                <th>{q.level}</th>
-                                <th>{q.coins}</th>
-                                <th>{q.admin}</th>
+                                <td><input type="radio" id={q.email} name="radiob" value={q.email} onClick={(e) => handleCheck(e)} /></td>
+                                <td>{q.email}</td>
+                                <td>{q.name}</td>
+                                <td>{q.level}</td>
+                                <td>{q.coins}</td>
+                                <td>{q.admin}</td>
                             </tr>)}
                     </tbody>
                 </table>
