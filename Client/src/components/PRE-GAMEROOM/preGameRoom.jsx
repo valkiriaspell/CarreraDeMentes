@@ -25,7 +25,6 @@ function PreGameRoom({match}) {
   const { sendReady, sendStartGame, game, expelPlayer, setGame, messages, sendMessage, handleSubmitConfig, 
           roomConfiguration, setRoomConfiguration, positions, allStartGame, everybodyPlays, points 
         } = useSocket(idUser);
-
   
 
 
@@ -53,7 +52,7 @@ function PreGameRoom({match}) {
               idUser={idUser} 
               handleSubmitConfig={handleSubmitConfig} 
               roomConfiguration={roomConfiguration} 
-              setRoomConfiguration={setRoomConfiguration} 
+              setRoomConfiguration={setRoomConfiguration}  
             />
           </div>
           <div>

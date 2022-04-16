@@ -75,8 +75,7 @@
  font-size: 14px;
  transition: .6s;
  text-decoration: none;
- z-index: 1;
- font-family: inherit;
+ z-index: 1; 
  color: #ffffff;
  font-family: 'Skranji', cursive;
  margin-bottom: 10px;
