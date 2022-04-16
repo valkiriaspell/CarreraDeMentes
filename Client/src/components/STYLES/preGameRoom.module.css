@@ -179,6 +179,20 @@
   border-radius: 0.4rem;
   height: 200px;
   width: 370px;
+  padding-left: .2rem;
+  color: #0d472c;
+  /* color: #554905; */
+}
+.containerChat::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+.containerChat::-webkit-scrollbar:vertical {
+  width:10px;
+}
+.containerChat::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 20px;
+  border: 1px solid #c8cacc;
 }
 .containerSendMessages {
   margin-top: 1rem;
@@ -209,6 +223,7 @@
 
 /* ===== INVITATION ROOM =====*/
 .containerInvitation{
+  margin-top: -3.8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -223,8 +238,8 @@
   width: 18rem;
   height: 20rem;
 /*   border: 5px rgb(49, 95, 49) solid; */
-  
-  border-radius: .5rem;
+  /* border: 5px rgb(10, 97, 90) solid; */
+  /* border-radius: .5rem; */
   justify-content: space-evenly;
   align-items: center;
 }

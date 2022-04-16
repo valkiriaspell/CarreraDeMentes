@@ -35,12 +35,12 @@ const Chat = ({idUser, messages, sendMessage}) =>{
                             return (
                                         message.writtenByCurrentUser
                                             ? <p key={`${Math.random()}${message.name}${message?.text}`} 
-                                                style={{textAlign: "justify"}} 
+                                                style={{textAlign: "justify", marginBottom: "0.4rem", fontSize: "1.1rem", color: "#6d1818"}} 
                                                 >
                                                     {`Yo: ${message?.text}`}
                                                 </p>
                                             : <p key={`${Math.random()}${message.name}${message?.text}`} 
-                                                style={{textAlign: "justify", wordBreak: "break-word"}} 
+                                                style={{textAlign: "justify", wordBreak: "break-word", marginBottom: "0.4rem", fontSize: "1.1rem"}} 
                                                 >
                                                     {`${message?.name}: ${message?.text}`}
                                                 </p> 
