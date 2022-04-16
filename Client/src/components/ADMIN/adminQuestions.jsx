@@ -6,6 +6,7 @@ import "../STYLES/admin.css"
 import Swal from "sweetalert2";
 import { GrRefresh, GrUpdate } from "react-icons/gr";
 import { useHistory } from 'react-router-dom';
+import {deleteStorage} from "../../utils/Firebase.js"
 
 
 export default function AdminQuestions() {
@@ -94,7 +95,10 @@ export default function AdminQuestions() {
         }).then((result) => {
             if (result.isConfirmed) {
                 const reject = "reject"
-                preguntasID.forEach(p => dispatch(handleQuestion(p, reject)))
+                preguntasID.forEach(p => {
+                    deleteStorage(p.image)
+                    dispatch(handleQuestion(p, reject))
+                })
                 Swal.fire({
                     title: 'Preguntas eliminadas',
                     confirmButtonText: "Ok"

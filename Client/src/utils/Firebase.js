@@ -8,7 +8,7 @@ import {
   sendPasswordResetEmail,
   sendEmailVerification
 } from "firebase/auth";
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL,deleteObject  } from "firebase/storage";
 import Swal from "sweetalert2";
 
 export const config = {
@@ -148,27 +148,28 @@ export async function firebaseVerificarUsuario(usuario){
   }
 }
 
-export  const uploadFiles =(file,category) => {
-  //
+export  const uploadFiles = async(file,category) => {
+  
   if (!file) return;
   const storage=getStorage()
   const sotrageRef = ref(storage, `${category}/${file.name}`);
-  const uploadTask = uploadBytesResumable(sotrageRef, file);
-
- uploadTask.on(
-    "state_changed",
-    (snapshot) => {
-      const prog = Math.round(
-        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-      );
-    },
-    (error) => console.log(error),
-     () => {
-      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        console.log("File available at", downloadURL);
-        return downloadURL
-      });
-    }
-  );
-  return uploadTask;
+  const uploadTask =  await uploadBytesResumable(sotrageRef, file);
+  const retornar=await getDownloadURL(sotrageRef)
+  return retornar
 };
+
+export function deleteStorage(URL){
+ 
+
+  const storage = getStorage();
+
+  // Create a reference to the file to delete
+  const desertRef = ref(storage, URL);
+
+  // Delete the file
+  deleteObject(desertRef).then(() => {
+    // File deleted successfully
+  }).catch((error) => {
+    // Uh-oh, an error occurred!
+  });
+}

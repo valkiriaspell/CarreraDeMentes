@@ -166,10 +166,7 @@ export default function FormAddQuestions() {
             } else {
                 setErrorA("")
                 setMSG("Tu pregunta fue enviada para validación")  
-                const URL= await uploadFiles(image,category)     
-                console.log(URL) 
-                       
-               // const nuevaURL='https://firebasestorage.googleapis.com/v0/b/carreradementes-93f01.appspot.com/o/Ciencias%2FCaptura%20de%20pantalla%20(17).png?alt=media&token=b0bab16a-6252-46a8-b41b-0507df4e9282'
+                const URL= await uploadFiles(image,category)
                 dispatch(newQuestion({
                     question,
                     category,               
@@ -177,7 +174,7 @@ export default function FormAddQuestions() {
                     false1,
                     false2,            
                     false3,            
-                    image,
+                    image:URL,
                     email
                 }))
                 setQuestion("")
