@@ -4,6 +4,7 @@ import { useHistory, Link } from "react-router-dom"
 import { listUsersInPreRoom, loginUser } from "../../redux/actions"
 import { AddUserToPreRoom } from "./utils";
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import s from '../STYLES/preGameRoom.module.css'
 
 function JoinWithLink({match}){
     const {idRoom} = match.params;
@@ -20,18 +21,22 @@ function JoinWithLink({match}){
     async function handleJoinRoom(e){
         AddUserToPreRoom({idRoom, idUser: user.id})
         .then(()=> dispatch(listUsersInPreRoom(idRoom)))
-        .then(() => {
-            history.push(`/room/${idRoom}`)})
+        .then(() => history.push(`/room/${idRoom}`))
+        .catch((error)=> alert(error)) // mejorar alerta
     }
     return (
-        <div>
-          <Link style={{ textDecoration: "none" }} to="/home">
-            <button >
-              <AiOutlineArrowLeft style={{ marginRight: "0.4rem" }} />
-              Volver
+        <div className={s.containerInvitation}>
+          <div className={s.containerButtons} >
+            <Link style={{ textDecoration: "none" }} to="/home">
+              <button className="buttonSides lowgreen" style={{fontSize: "1.5rem"}} >
+                <AiOutlineArrowLeft style={{ marginRight: "0.4rem" }} />
+                Volver
+              </button>
+            </Link>
+            <button onClick={(e) => handleJoinRoom(e)} className='buttonSides brown' style={{fontSize: "1.5rem", width: "7.7rem"}}>
+              Unirse
             </button>
-          </Link>
-        <button onClick={(e) => handleJoinRoom(e)} >Unirse</button>
+          </div>
         </div>
     )
 }
