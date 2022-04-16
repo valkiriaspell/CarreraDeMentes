@@ -15,6 +15,7 @@ export default function AdminQuestions() {
     const history = useHistory();
     const [preguntasID, setPreguntas] = useState([])
     const [category, setCategory] = useState("")
+    const [images, setImages] = useState([])
 
 
     useEffect(() => {
@@ -40,12 +41,15 @@ export default function AdminQuestions() {
         }
     }
 
-    function handleChecks(e) {
+    function handleChecks(e, img) {
         if (!preguntasID.includes(e.target.value)) {
             setPreguntas([...preguntasID, e.target.value])
+            setImages([...images, img])
         } else {
             let newPreguntas = preguntasID.filter(p => p !== e.target.value)
+            let newImages = images.filter(p => p !== img)
             setPreguntas(newPreguntas)
+            setImages(newImages)
         }
     }
 
@@ -96,8 +100,10 @@ export default function AdminQuestions() {
             if (result.isConfirmed) {
                 const reject = "reject"
                 preguntasID.forEach(p => {
-                    deleteStorage(p.image)
                     dispatch(handleQuestion(p, reject))
+                })
+                images.forEach(img => {
+                    deleteStorage(img)
                 })
                 Swal.fire({
                     title: 'Preguntas eliminadas',
@@ -132,7 +138,7 @@ export default function AdminQuestions() {
         }        
         return 0;
       });
-
+      console.log(images)
     return (
         <div className='containerAdmin'>
             <div className='barraSobreQuestions'>
@@ -169,7 +175,7 @@ export default function AdminQuestions() {
                         </tr>
                         {newQuestions?.map(q =>
                             <tr key={q.id}>
-                                <th><input type="checkbox" id="check" value={q.id} onClick={(e) => handleChecks(e)} /></th>
+                                <th><input type="checkbox" id="check" value={q.id} onClick={(e) => handleChecks(e, q.image)} /></th>
                                 <th>{q.id}</th>
                                 <th>{q.email}</th>
                                 <th>{q.category}</th>
