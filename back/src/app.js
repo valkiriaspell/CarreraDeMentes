@@ -112,7 +112,7 @@ await transport.sendMail({
 	font-family: sans-serif;
 	font-size: 18px;
 	">
-	<h2> Hola jugador! </h2>
+	<h2> Hola ${userMail}! </h2>
 	<p>${textMail}</p>
 	<p>Equipo de Zooper Trivia</p>
 	</div>

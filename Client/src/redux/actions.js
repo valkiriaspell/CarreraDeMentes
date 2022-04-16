@@ -38,7 +38,7 @@ export function getAllQuestions() {
 export function modifyQuestion(dataQuestion) {
     return async function () {
         try {
-            const { data } = await axios.put(`http://localhost:3001/question`, dataQuestion)           
+            await axios.put(`http://localhost:3001/question`, dataQuestion)           
         } catch (e) {
             console.log(e)
         }
@@ -83,9 +83,8 @@ export function loginUser(email){
 }
 
 export const bannUser = (email) => async () => {
-    try {
-        console.log(email)
-        const result = await axios.put(`http://localhost:3001/users/banner?email=${email}`)
+    try {        
+        await axios.put(`http://localhost:3001/users/banner?email=${email}`)
     } catch (error) {
         console.log(error)
     }
@@ -93,7 +92,7 @@ export const bannUser = (email) => async () => {
 
 export const createAdmin = (user) => async () => {
     try {
-        const result = await axios.put(`http://localhost:3001/users/admin`, user)
+        await axios.put(`http://localhost:3001/users/admin`, user)
     } catch (error) {
         console.log(error)
     }
@@ -113,7 +112,7 @@ export function allUsers() {
 
 export const updateUser = (userData) => async () => {
     try {
-        const result = await axios.put(`http://localhost:3001/users`, userData)
+        await axios.put(`http://localhost:3001/users`, userData)
     } catch (error) {
         console.log(error)
     }
