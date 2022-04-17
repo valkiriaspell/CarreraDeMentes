@@ -15,6 +15,7 @@ import Perfil from "../../IMG/users.png";
 import { useDispatch } from "react-redux";
 import { loginUser, registerUser, userToken } from "../../../redux/actions";
 import Swal from "sweetalert2";
+import Music from "../../MUSICA/musica"
 
 const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
 
@@ -155,6 +156,8 @@ function Login() {
   
 
   return (
+    <div>
+      <Music/>
     <div className="containerLogin">
         <div className="logo">
                 <img width="220px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4" alt="Logo"></img>
@@ -205,6 +208,7 @@ function Login() {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 }

@@ -147,6 +147,7 @@
 .contentQuestions input:hover {
   background-color: rgba(158, 157, 157, 0.356);
   color: rgba(230, 231, 232, 0.539);
+  cursor: url("../IMG//pata.png");
 }
 .buttonStart {
   background-color: rgba(254, 254, 254, 0.71);
@@ -158,6 +159,7 @@
 .buttonStart:hover {
   background-color: rgba(158, 157, 157, 0.356);
   color: rgba(230, 231, 232, 0.539);
+  cursor: url("../IMG//pata.png");
 }
 
 
@@ -167,21 +169,15 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 1rem;
+  margin-left: 1rem;
 }
-.containerPowers button{
-  background-color: rgba(27, 204, 86, 0.384);
-  color: rgba(8, 68, 28, 0.877);
-  border: 2px solid rgba(54, 202, 133, 0.539);
-  border-radius: 5px;
-  padding: 0.4rem;
-  font-weight: bold;
-  margin: 0.2rem;
-  transition: .25s;
+.powers {
+  margin: 0.6rem;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
 }
-.containerPowers button:hover{
-  border: 2px solid rgba(2, 99, 54, 0.539);
-  background-color: rgba(27, 204, 86, 0.158);
-  color: rgb(7, 59, 24);
+.powers :hover{
+  cursor: url("../IMG//pata.png");
 }
 
 

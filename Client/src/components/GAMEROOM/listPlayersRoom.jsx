@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Music from "../MUSICA/musica";
 
 
 function ListPlayersRoom() {
@@ -7,6 +8,7 @@ function ListPlayersRoom() {
   const { preRoomUsers, user } = useSelector((state) => state);
 
     return (
+      <div>
       <div className="containerListPlayerRoom">
         {preRoomUsers &&
           preRoomUsers.users?.map((p, index) => {
@@ -23,6 +25,7 @@ function ListPlayersRoom() {
               </div>
             );
           })}
+      </div>
       </div>
     );
 }
