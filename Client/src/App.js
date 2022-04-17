@@ -29,7 +29,6 @@ initializeApp(config);
 function App() {
 	return (
 		<div className='App'>
-			<Route path='/' component={Music} />
 			<Route exact path='/' component={LandingPage} />
 			<Route exact path='/' component={Footer} />
 			<Route path='/home' component={Home} />

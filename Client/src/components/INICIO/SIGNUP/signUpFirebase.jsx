@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { addCoins, getAvatars, registerUser } from "../../../redux/actions";
 import Avatars from "../../AVATARS/avatars";
 import Swal from "sweetalert2";
+import Music from "../../MUSICA/musica";
 
 function SignUpFirebase() {
   const dispatch = useDispatch();
@@ -112,6 +113,8 @@ function SignUpFirebase() {
   }
 
   return (
+    <div>
+       <Music/>
     <div className="containerSingUp">
       <div className="logoSingUp">
         <img
@@ -176,6 +179,7 @@ function SignUpFirebase() {
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 }

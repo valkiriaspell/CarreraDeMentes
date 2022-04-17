@@ -5,6 +5,7 @@ import { Link, useHistory } from 'react-router-dom'
 import DragDrop from './drag-drop';
 import "../../STYLES/form.css"
 import Swal from 'sweetalert2';
+import Music from '../../MUSICA/musica';
 import {uploadFiles} from '../../../utils/Firebase.js'
 
 export default function FormAddQuestions() {
@@ -198,6 +199,8 @@ export default function FormAddQuestions() {
 
     if (autenticado) {
         return (
+            <div>
+                <Music/>
             <div className='form'>
                 <form onSubmit={onSubmit}>
                     <h3>Crear nueva pregunta</h3>
@@ -278,6 +281,7 @@ export default function FormAddQuestions() {
                 </form>
                 <Link to="/home"><button className='volver' >← Volver atras </button></Link>
 
+            </div>
             </div>
         );
     } else {

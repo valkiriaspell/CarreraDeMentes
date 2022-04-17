@@ -54,8 +54,7 @@
 }
 .containerHeader button{
   background-color: rgba(228, 226, 226, 0.24);
-  color: rgba(230, 231, 232, 0.539);
-  border: 2px solid rgba(230, 231, 232, 0.539);
+  color: rgb(255, 223, 134);
   border-radius: 5px;
 }
 .containerHeader img{
@@ -128,6 +127,7 @@
 .contentQuestions input:hover {
   background-color: rgba(158, 157, 157, 0.356);
   color: rgba(230, 231, 232, 0.539);
+  cursor: url("../IMG//pata.png");
 }
 .buttonStart {
   background-color: rgba(254, 254, 254, 0.71);
@@ -139,6 +139,7 @@
 .buttonStart:hover {
   background-color: rgba(158, 157, 157, 0.356);
   color: rgba(230, 231, 232, 0.539);
+  cursor: url("../IMG//pata.png");
 }
 
 
@@ -148,14 +149,15 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 1rem;
+  margin-left: 1rem;
 }
-.containerPowers button{
-  background-color: rgba(201, 198, 198, 0.18);
-  color: rgba(230, 231, 232, 0.539);
-  border: 2px solid rgba(230, 231, 232, 0.539);
-  border-radius: 5px;
-  padding: 0.4rem;
-  margin: 0.2rem;
+.powers {
+  margin: 0.6rem;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+.powers :hover{
+  cursor: url("../IMG//pata.png");
 }
 
 
