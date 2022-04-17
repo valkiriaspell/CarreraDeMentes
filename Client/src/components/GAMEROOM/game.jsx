@@ -177,11 +177,11 @@ const Game = ({
     let buttons = document.querySelectorAll("#buttons");
     for (let i = 0; i < buttons.length; i++) {
       if (buttons[i].defaultValue === answer) {
-        $(buttons[i]).css("background", "rgba(117, 226, 71, 0.71");
-        $(buttons[i]).css("color", "rgba(230, 231, 232, 0.662)");
+        $(buttons[i]).css("background", "rgba(91, 211, 40, 0.979)");
+        $(buttons[i]).css("color", "rgba(230, 231, 232, 0.862)");
       } else {
-        $(buttons[i]).css("background", "rgba(251, 89, 89, 0.71)");
-        $(buttons[i]).css("color", "rgba(230, 231, 232, 0.662)");
+        $(buttons[i]).css("background", "rgba(248, 61, 61, 0.979)");
+        $(buttons[i]).css("color", "rgba(230, 231, 232, 0.862)");
       }
     }
   };

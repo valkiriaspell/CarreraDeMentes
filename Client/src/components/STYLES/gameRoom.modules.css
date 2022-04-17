@@ -6,7 +6,7 @@
 
 /* ====== LISTA DE JUGADORES ====== */
 .containerListPlayerRoom {
-  background-color: rgba(216, 221, 226, 0.039);
+  background-color: rgba(164, 166, 172, 0.192);
   border: solid 3px rgba(216, 221, 226, 0.253);
   width: 310px;
   height: 500px;
@@ -18,23 +18,38 @@
   border-radius: 0.4rem;
 }
 .contentListPlayerRoom {
-  background-color: rgba(216, 221, 226, 0.349);
-  border: solid 3px rgba(216, 221, 226, 0.253);
+  /* background-color: rgba(216, 221, 226, 0.349); */
+  background-color: rgba(97, 100, 104, 0.281);
+  /* border: solid 3px rgba(216, 221, 226, 0.253); */
+  border: solid 3px rgba(117, 7, 190, 0.295);
   width: 250px;
   border-radius: 2rem;
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
 }
+.contentPlayerRoom {
+  /* background-color: rgba(216, 221, 226, 0.349); */
+  background-color: rgba(97, 100, 104, 0.281);
+  /* border: solid 3px rgba(216, 221, 226, 0.253); */
+  border: solid 3px rgba(117, 7, 190, 0.295);
+  width: 250px;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  box-shadow: 0 0 5px  5px rgba(190, 188, 21, 0.452);
+}
 .positionPlayers {
-  color: rgba(230, 231, 232, 0.539);
+  color: rgba(238, 240, 241, 0.692);
   margin-left: 1rem;
   margin-top: 0.3rem;
 }
 .infoPlayer {
   display: flex;
   flex-direction: column;
-  color: rgba(230, 231, 232, 0.539);
+  /* color: rgba(230, 231, 232, 0.539); */
+  color: rgba(238, 240, 241, 0.692);
 }
 
 .allPlayers{
@@ -53,9 +68,14 @@
   margin: 1rem;
 }
 .containerHeader button{
-  background-color: rgba(228, 226, 226, 0.24);
-  color: rgb(255, 223, 134);
-  border-radius: 5px;
+  position: relative;
+  font-size: 1.3rem;
+  padding: .5rem 1rem .5rem 1rem;
+  left: -10rem;
+  background-color: rgba(155, 17, 17, 0.651);
+  color: rgba(230, 231, 232, 0.726);
+  border: 2px solid rgba(230, 231, 232, 0.539);
+  border-radius: .4rem;
 }
 .containerHeader img{
   margin-left: -3rem;
@@ -63,7 +83,7 @@
 
 /* ====== GAME ====== */
 .containerGame {
-  background-color: rgba(216, 221, 226, 0.039);
+  background-color: rgba(164, 166, 172, 0.192);
   border: solid 3px rgba(216, 221, 226, 0.253);
   padding: 1rem;
   border-radius: 0.4rem;
@@ -81,7 +101,7 @@
   margin-left: -3rem;
 }
 .contentNav h3 {
-  background-color: rgba(21, 108, 195, 0.311);
+  background-color: rgba(21, 108, 195, 0.87);
   border-radius: 2rem;
   margin-left: -3rem;
   height: 2.5rem;
@@ -89,7 +109,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(230, 231, 232, 0.539);
+  color: rgba(230, 231, 232, 0.877);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }   
 
@@ -161,24 +181,53 @@
 }
 
 
-
 /* ===== CHAT =====*/
 .containerChatGame {
-  background-color: rgba(216, 221, 226, 0.039);
-  border: solid 3px rgba(216, 221, 226, 0.253);
+  /* background-color: rgba(216, 221, 226, 0.281); */
+  background-color: rgba(86, 88, 92, 0.664);
+  border-bottom: solid 3px rgba(216, 221, 226, 0.253);
+  border-left: solid 3px rgba(216, 221, 226, 0.253);
+  border-right: solid 3px rgba(216, 221, 226, 0.253);
   min-width: 280px;
   height: 500px;
   margin: 3rem;
   display: flex;
   align-items: flex-start;
   overflow-y: scroll;
-  flex-direction: column;
-  border-radius: 0.4rem;
+  flex-direction: column-reverse;
+  position: relative;
+  border-radius: 0 0 0.4rem 0.4rem;
+  font-size: 1.2rem;
   padding-left: 1rem;
-  color: rgb(29, 180, 29);
+  /* color: rgb(33, 165, 0); */
+  color: rgb(253, 249, 28);
   font-weight: bold;
 }
-
+.containerChatGame::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+.containerChatGame::-webkit-scrollbar:vertical {
+  width:10px;
+}
+.containerChatGame::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 20px;
+  border: 1px solid #c8cacc;
+}
+.title{
+  font-weight: bold;
+  color: rgba(230, 231, 232, 0.877);
+  border-radius: 0.4rem 0.4rem 0 0;
+  border-top: solid 3px rgba(216, 221, 226, 0.253);
+  border-left: solid 3px rgba(216, 221, 226, 0.253);
+  border-right: solid 3px rgba(216, 221, 226, 0.253);
+  margin-left: 3rem;
+  z-index: 200;
+  position: relative;
+  top: 3rem;
+  width: 280px;
+  background-color: rgba(86, 88, 92, 0.664);
+}
 .containerChatGame span  {
   display: flex;
   color: rgba(230, 231, 232, 0.539);

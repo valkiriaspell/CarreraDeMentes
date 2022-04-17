@@ -5,7 +5,7 @@ import Music from "../MUSICA/musica";
 
 function ListPlayersRoom() {
 
-  const { preRoomUsers } = useSelector((state) => state);
+  const { preRoomUsers, user } = useSelector((state) => state);
 
     return (
       <div>
@@ -13,7 +13,7 @@ function ListPlayersRoom() {
         {preRoomUsers &&
           preRoomUsers.users?.map((p, index) => {
             return (
-              <div className="contentListPlayerRoom" key={p.id}>
+              <div className={p.id === user.id ? "contentPlayerRoom" : "contentListPlayerRoom"} key={p.id}>
                 <div className="positionPlayers">
                   <span>{index + 1}°</span>
                 </div>
