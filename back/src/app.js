@@ -114,7 +114,9 @@ await transport.sendMail({
 	">
 	<h2> Hola ${userMail}! </h2>
 	<p>${textMail}</p>
+	<img width="150px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo5.png?alt=media&token=5e5bb88d-806a-4c38-b667-b27a9b5b01fc"  alt="logo"/>
 	<p>Equipo de Zooper Trivia</p>
+	<p>www.zoopertrivia.com</p>
 	</div>
 	 `
 	 
