@@ -28,7 +28,7 @@ function useChatSocketIo(idRoom) {
     useEffect(() =>{
         !user?.id && dispatch(loginUser(email))
         console.log(socketIoRef)
-        socketIoRef.current = socketIOClient('http://localhost:3001',{query:{idGameRoom: idRoom, email} } );
+        socketIoRef.current = socketIOClient(process.env.REACT_APP_API ,{query:{idGameRoom: idRoom, email} } );
         console.log(socketIoRef)
             socketIoRef.current.on("NEW_CONNECTION", (email) =>{
                 console.log('NEW_CONNECTION')
@@ -173,7 +173,7 @@ function useChatSocketIo(idRoom) {
         if(listos === preRoomUsers?.users?.length - 1){
             console.log("startatatat")
             try{
-                const questionAll = await axios.post("http://localhost:3001/question/allQuestions", {
+                const questionAll = await axios.post("/question/allQuestions", {
                     count: preRoomUsers?.questionAmount,
                     category: preRoomUsers?.category,
                     idRoom
@@ -197,7 +197,7 @@ function useChatSocketIo(idRoom) {
     async function handleSubmitConfig(e, roomConfiguration){
         e.preventDefault()
         try{
-            const {data} = await axios.put('http://localhost:3001/gameRoom/config', {
+            const {data} = await axios.put('/gameRoom/config', {
                 idRoom, 
                 public_: roomConfiguration.open, 
                 questions: roomConfiguration.questions,

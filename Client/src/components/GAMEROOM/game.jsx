@@ -10,10 +10,9 @@ import { startGameAlready } from "../PRE-GAMEROOM/utils";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Music from "../MUSICA/musica";
-import Bomb1 from "../IMG/bomb.png"
-import Bomb2 from "../IMG/bombs.png"
-import X2 from "../IMG/gift-box.png"
-
+import Bomb1 from "../IMG/bomb.png";
+import Bomb2 from "../IMG/bombs.png";
+import X2 from "../IMG/gift-box.png";
 
 function randomQuestions(array) {
   var m1 = Math.floor((Math.random() * array.length) % array.length);
@@ -67,7 +66,7 @@ const Game = ({
   let [actualQuestion, setActualQuestion] = useState(0);
 
   const getCoins = async (coins) => {
-    await axios.post("http://localhost:3001/mercadopago", {
+    await axios.post("/mercadopago", {
       coinsFinal: coins,
       email: user.email,
     });
@@ -265,13 +264,15 @@ const Game = ({
       ) : (
         <div>
           <div className="containerHeader">
-            <button className="buttonSides brown" onClick={handleGoHome}>Salir</button>
+            <button className="buttonSides brown" onClick={handleGoHome}>
+              Salir
+            </button>
             <img
               width="150px"
               src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4"
               alt="Logo"
             ></img>
-            <Music/>
+            <Music />
           </div>
           <div className="containerGame">
             <div className="contentNav">
@@ -317,11 +318,14 @@ const Game = ({
               </div>
               <div className="containerPowers">
                 <div>
-                  <button className="powers" onClick={() => powerDelete(1)}><img src={Bomb1} alt="BOMB1" width={30}></img></button>
-                  <button className="powers" onClick={() => powerDelete(2)}><img src={Bomb2} alt="BOMB2" width={30}></img></button>
-                  {/* <button onClick={() => powerDelete(2)}>Eliminar 2</button> */}
-                  <button 
-                  className="powers"
+                  <button className="powers" onClick={() => powerDelete(1)}>
+                    <img src={Bomb1} alt="BOMB1" width={30}></img>
+                  </button>
+                  <button className="powers" onClick={() => powerDelete(2)}>
+                    <img src={Bomb2} alt="BOMB2" width={30}></img>
+                  </button>
+                  <button
+                    className="powers"
                     onClick={() =>
                       userCoins >= 300
                         ? (setPointsPower(2),
