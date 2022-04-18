@@ -16,37 +16,44 @@ import GameRoom from './components/GAMEROOM/gameRoom';
 import RecuperarContrasena from './components/INICIO/RECUPERARCONTRASENA/recuperarContrasena';
 import Footer from './components/FOOTER/footer';
 import loginAdmin from './components/ADMIN/login';
-import AdminNav from './components/ADMIN/adminNav';
+import AdminHome from './components/ADMIN/adminHome';
 import AdminUsers from './components/ADMIN/adminUsers';
 import AdminQuestions from './components/ADMIN/adminQuestions';
 import CurrentQuestions from './components/ADMIN/currentQuestions';
+import JoinWithLink from './components/PRE-GAMEROOM/joinWithLink';
+import Privacidad from './components/PRIVACIDAD/privacidad';
+import Music from './components/MUSICA/musica';
+import Ranking from './components/RANKING/Ranking';
 
-initializeApp(config)
 
+initializeApp(config);
 
 function App() {
   return (
-    <div className="App">
-        <Route exact path="/" component={LandingPage} />
-        <Route exact path="/" component={Footer} />
-        <Route path="/home" component={Home} />
-        <Route path="/home" component={Footer} />
-        <Route path="/login" component={initialPage} />
-        <Route path="/signup" component={signUpFirebase} />
-        <Route path="/recuperarcontrasena" component={RecuperarContrasena} />
-        <Route path="/editProfile" component={EditProfile} />
-        <Route path="/room/:idUser" component={PreGameRoom} />
-        <Route path="/partidasDisponibles" component={GameListRoom} />
-        <Route path="/tienda" component={PlayStore} />
-        <Route path="/añadirPregunta" component={FormAddQuestions} />
-        <Route path="/partida" component={GameRoom} />
+    <div className='App'>      
+      <Route exact path='/' component={LandingPage} />
+      <Route exact path='/' component={Footer} />
+      <Route path='/home' component={Home} />
+      <Route path='/home' component={Footer} />
+      <Route path='/login' component={initialPage} />
+      <Route path='/signup' component={signUpFirebase} />
+      <Route path='/recuperarcontrasena' component={RecuperarContrasena} />
+      <Route path='/editProfile' component={EditProfile} />
+      <Route path='/room/:idUser' component={PreGameRoom} />
+      <Route path='/invitationRoom/:idRoom' component={JoinWithLink} />
+      <Route path='/partidasDisponibles' component={GameListRoom} />
+      <Route path='/tienda' component={PlayStore} />
+      <Route path='/añadirPregunta' component={FormAddQuestions} />
+      <Route path='/partida' component={GameRoom} />
+      <Route path='/politica-de-privacidad' component={Privacidad} />
+      <Route exact path="/ranking" component={Ranking} />
 
         {/* ///////   Secciones de Administrador //////// */}
         <Route path="/administrador" component={loginAdmin} />
-        <Route path="/adminHome" component={AdminNav} />        
-        <Route path="/adminHome/questions" component={AdminQuestions} />
-        <Route path="/adminHome/currentQuestions" component={CurrentQuestions} />
-        <Route path="/adminHome/users" component={AdminUsers} />
+        <Route path="/adminHome" component={AdminHome} />        
+        <Route path="/adminQuestions" component={AdminQuestions} />
+        <Route path="/adminCurrentQuestions" component={CurrentQuestions} />
+        <Route path="/adminUsers" component={AdminUsers} />
     </div>
   );
 }

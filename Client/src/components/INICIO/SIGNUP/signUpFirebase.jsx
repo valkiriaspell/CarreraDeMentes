@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { addCoins, getAvatars, registerUser } from "../../../redux/actions";
 import Avatars from "../../AVATARS/avatars";
 import Swal from "sweetalert2";
+import Music from "../../MUSICA/musica";
 
 function SignUpFirebase() {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ function SignUpFirebase() {
   const [avatar, setAvatar] = useState(1);
 
   const [error, setError] = useState({});
+  const [errorName, setErrorName] = useState("");
 
   useEffect(() => {
     dispatch(getAvatars());
@@ -63,8 +65,16 @@ function SignUpFirebase() {
   }
 
   function handleChange(e) {
-    setInput({ ...input, [e.target.name]: e.target.value });
+    if (e.target.name === "name" && e.target.value.length > 16) {
+      setInput({ ...input, [e.target.name]: e.target.value });
+      setErrorName("Máximo 16 caracteres")
+    } else {
+      setInput({ ...input, [e.target.name]: e.target.value });
+      setErrorName("")
+      }
+      setInput({ ...input, [e.target.name]: e.target.value });    
   }
+
 
   async function handleRegister(e) {
     e.preventDefault();
@@ -103,11 +113,13 @@ function SignUpFirebase() {
   }
 
   return (
+    <div>
+       <Music/>
     <div className="containerSingUp">
       <div className="logoSingUp">
         <img
           width="220px"
-          src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Fzooper-logo.png?alt=media&token=d211e20b-1313-420f-91a8-aa791a6aae3c"
+          src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4"
           alt="Logo"
         ></img>
       </div>
@@ -121,6 +133,8 @@ function SignUpFirebase() {
         </div>
 
         <form onSubmit={handleRegister}>
+            {errorName? <span>{errorName}</span>: null}
+            <br></br>
           <div className="userImg">
             <img src={Perfil} alt="User" width={60} />
           </div>
@@ -129,7 +143,7 @@ function SignUpFirebase() {
             <input
               name="name"
               type="text"
-              placeholder="Name"
+              placeholder="Nombre"
               value={input.name}
               onChange={(e) => handleChange(e)}
               autoComplete="off"
@@ -160,12 +174,12 @@ function SignUpFirebase() {
           <div className="avatarsRegister">
             <Avatars setAvatar={setAvatar} />
           </div>
-
-          <button className="registerButton" type="submit">
+          <button disabled={errorName} className="registerButton" type="submit">
             Registrarse
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 }

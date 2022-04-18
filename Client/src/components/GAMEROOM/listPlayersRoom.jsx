@@ -1,21 +1,19 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
+import Music from "../MUSICA/musica";
 
 
-function ListPlayersRoom({ preRoomUsers }) {
+function ListPlayersRoom() {
 
-  console.log(preRoomUsers);
- 
-  // useEffect(() => {
-  //   preRoomUsers.users.sort((a, b) => {
-  //     return b[0].points.localeCompare(a[0].points);
-  //   });
-  // }, [preRoomUsers.users[0].points]);
+  const { preRoomUsers, user } = useSelector((state) => state);
+
     return (
+      <div>
       <div className="containerListPlayerRoom">
         {preRoomUsers &&
           preRoomUsers.users?.map((p, index) => {
             return (
-              <div className="contentListPlayerRoom" key={p.id}>
+              <div className={p.id === user.id ? "contentPlayerRoom" : "contentListPlayerRoom"} key={p.id}>
                 <div className="positionPlayers">
                   <span>{index + 1}°</span>
                 </div>
@@ -27,6 +25,7 @@ function ListPlayersRoom({ preRoomUsers }) {
               </div>
             );
           })}
+      </div>
       </div>
     );
 }

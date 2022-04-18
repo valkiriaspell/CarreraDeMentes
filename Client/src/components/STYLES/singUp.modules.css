@@ -1,9 +1,9 @@
 /* ===== FORM REGISTRO =====*/
 .containerSingUp {
-  background-color: rgba(216, 221, 226, 0.068);
-  border: solid 3px rgba(216, 221, 226, 0.253);
+  background-color: rgba(52, 51, 51, 0.242);
+  border: solid 3px rgba(200, 204, 209, 0.253);
   max-width: 500px;
-  min-height: 620px;
+  min-height: 630px;
   margin-top: 2rem;
   margin-left: auto;
   margin-right: auto;
@@ -17,11 +17,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(216, 221, 226, 0.212);
+  background-color: rgba(191, 193, 196, 0.212);
   margin-top: 4rem;
   width: 350px;
-  height: 420px;
+  height: 450px;
   border-radius: 0.4rem;
+  margin-bottom: 10px;
 }
 
 .logoSingUp img{
@@ -36,6 +37,13 @@
   width: 450px;
   display: flex;
   justify-content: start;
+}
+.volverSingUp button {
+  background-color: rgba(173, 174, 175, 0.521);
+  margin-top: 0.5rem;
+}
+.volverSingUp button:hover {
+  cursor: url("../IMG/pata.png"), auto;
 }
 
 /* ===== FORM =====*/
@@ -101,14 +109,15 @@
   border-radius: 2rem;
   font-weight: bold;
   padding: 0.2rem;
-  background-color: rgba(216, 221, 226, 0.521);
+  background-color: rgba(173, 174, 175, 0.521);
   border: none;
   position: relative;
   top: -30px;
 }
 .registerButton:hover {
-  background-color: rgba(165, 166, 167, 0.521);
+  background-color: rgba(144, 145, 146, 0.521);
   color: rgba(221, 221, 221, 0.829);
+  cursor: url("../IMG/pata.png"), auto;
 }
 
 /* ===== MEDIA QUERIES =====*/

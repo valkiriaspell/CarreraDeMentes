@@ -19,6 +19,7 @@ async function data() {
 		const allQuestions = await Question.findAll();
 		return allQuestions;
 	} catch (e) {
+		console.log(`Error al cargar las questions desde el JSON a la DB: ${e}`)
 		return e
 	}
 }
@@ -64,14 +65,14 @@ async function getQuestions(count, category, idRoom) {
 
 		questions.forEach(q => questionList.push(dbQuestions[q]));
 
-		await gameRoom.addQuestion(questionList);
+		await gameRoom.setQuestions(questionList);
 		await gameRoom.update({
 			questionAmout: quetiosTotal
 		}, {
 			where: { id: idRoom }
 		});
 
-		return [true, "Question agregadas correctamente"]
+		return [true, "Question agregada correctamente"]
 
 	} catch (e) {
 		console.log("Error en la funcion para agregar question: ", e)

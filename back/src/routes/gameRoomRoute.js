@@ -80,14 +80,14 @@ router.put("/config", async (req, res) => {
         }
 
     } catch (e) {
-        console.log("Error al agregar un Usuario a una sala:", e)
-        res.status(500).send("Error al agregar un Usuario a una sala: " + e);
+        console.log("Error al configurar una sala:", e)
+        res.status(500).send("Error al configurar una sala: " + e);
     }
 
 
 })
 
-// Ruta para configurar la sala
+// Ruta para iniciar una sala
 router.put("/starRoot", async (req, res) => {
     try {
         const [bool, msj] = await startGameRoom(req.body);
@@ -136,6 +136,6 @@ router.get("/", async (req, res) => {
         }
     } catch (e) {
         console.log(e)
-        res.status(500).send('Error al buscar una sala: ' + e);
+        res.status(500).send('Error al buscar todas las salas: ' + e);
     }
 });

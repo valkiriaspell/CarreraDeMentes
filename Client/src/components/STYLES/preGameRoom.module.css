@@ -1,5 +1,6 @@
 .container {
-  width: 850px;
+  background-color: rgba(0, 0, 0, 0.392);
+  width: 775px;
   min-height: 730px;
   border: solid 3px rgba(216, 221, 226, 0.4);
   border-radius: 0.4rem;
@@ -9,7 +10,7 @@
   margin-right: auto;
   margin-top: 1.5rem;
   margin-bottom: 2rem;
-  color: rgba(221, 221, 221, 0.829);
+  color: rgba(255, 255, 255, 0.829);
 }
 
 .navPreGameRoom {
@@ -21,24 +22,17 @@
 .navPreGameRoom button {
   color: rgba(255, 255, 255, 0.769);
   border-radius: 0.3rem;
-  background-color: rgba(132, 134, 136, 0.4);
-  padding: 0.3rem;
-  border: none;
-  display: flex;
-  align-items: center;
-  border: solid 2px rgba(216, 221, 226, 0.4);
   padding: 0.3rem 0.5rem 0.3rem 0.5rem;
 }
-.navPreGameRoom button:hover {
-  cursor: pointer;
-  background-color: rgba(154, 158, 161, 0.4);
-}
+
 .navPreGameRoom h3 {
   margin-left: -4rem;
 }
 
+
 /* ======= LISTA DE JUGADORES ======= */
 .containerPlayers {
+  background-color: rgba(0, 0, 0, 0.519);
   border: solid 3px rgba(216, 221, 226, 0.4);
   width: 350px;
   min-height: 600px;
@@ -52,8 +46,8 @@
 .coronaHost img {
   height: 30px;
   position: relative;  
-  margin-left: 30px;
-  margin-right: -30px;
+  margin-left: 25px;
+  margin-right: -120px;
 }
 .allPlayers {
   display: flex;
@@ -64,42 +58,44 @@
 .allPlayers img {
   height: 25px;
 }
-.contentPlayer{
+.contentPlayer{  
  display: flex;
  align-items: center;
 }
 .contentAvatar img{
   height: 55px;
   width: 55px;
-  position: relative;
-  top: 10px;
-  right: -35px;
+  margin: -0.8rem;
 }
 .buttonExpulsar{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 25px;
-  height: 25px;
-  top: 16px;
-  margin-right: 1.6rem;
+  font-size: 10px;
+  width: 20px;
+  height: 20px;  
+  top: 15px;
+  font-weight: bold;
   position: relative;
-  background-color: rgb(189, 19, 19);
+  background-color: rgb(255, 0, 0);
   color: rgba(255, 255, 255, 0.769);
-  border-radius: 12px;
+  border-radius: 5px;
   border: none;
+  margin-right: -0.6rem;
+  border-radius: 5px;
+  position: relative;
+  right: 190px; 
 }
 .containerPlayers li {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   padding: 0.7rem;
   list-style: none;
   margin-top: 1rem;
   margin-right: 4rem;
-  background-color: rgba(117, 121, 125, 0.4);
+  background-color: rgba(78, 84, 80, 0.701);
   width: 16rem;
   border-radius: 2rem;
+  color: white;
 }
 /* ======= BOTON READY ======= */
 .readyButton {
@@ -113,32 +109,23 @@
 /* ======= BOTONES INVITAR E INICIAR ======= */
 .buttonsPreGameRoom button {
   color: rgba(255, 255, 255, 0.769);
-  border-radius: 0.3rem;
   background-color: rgba(132, 134, 136, 0.4);
   padding: 0.3rem;
   border: none;
   margin: 0.2rem;
   margin-bottom: 1rem;
 }
-.buttonsPreGameRoom button:hover {
-  cursor: pointer;
-  background-color: rgba(219, 224, 228, 0.4);
-}
-.buttonLink {
-  padding: 0.4rem 0.7rem;
-  background-color: rgba(132, 134, 136, 0.4);
-  border-radius: 0.3rem;
-  margin: 0.2rem;
-  cursor: pointer;
-}
+
 
 /* ======= EDITAR SALA ======= */
 .containerEditRoom {
+  background-color: rgba(0, 0, 0, 0.519);
   margin: 1rem;
   width: 350px;
   height: 270px;
   border: solid 3px rgba(216, 221, 226, 0.4);
   border-radius: 0.4rem;
+  color: white
 }
 .formEditRoom {
   margin: 0.5rem;
@@ -165,6 +152,7 @@
   margin-top: 1rem;
 }
 .buttonSubmitChanges button {
+  padding: 5px;
   border-radius: 0.3rem;
   background-color: rgba(216, 221, 226, 0.4);
   color: rgba(221, 221, 221, 0.829);
@@ -181,11 +169,23 @@
   flex-direction: column-reverse;
   display: flex;
   align-items: flex-start;
-  background-color: rgba(142, 142, 143, 0.29);
+  background-color: rgba(41, 41, 43, 0.29);
   border: solid 3px rgba(216, 221, 226, 0.4);
   border-radius: 0.4rem;
   height: 200px;
   width: 370px;
+  padding-left: .2rem;
+}
+.containerChat::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+.containerChat::-webkit-scrollbar:vertical {
+  width:10px;
+}
+.containerChat::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 20px;
+  border: 1px solid #c8cacc;
 }
 .containerSendMessages {
   margin-top: 1rem;
@@ -193,7 +193,7 @@
 }
 .containerSendMessages input {
   border-radius: 0.3rem;
-  background-color: rgba(216, 221, 226, 0.4);
+  background-color: rgba(39, 41, 42, 0.385);
   color: rgba(255, 255, 255, 0.84);
   padding: 0.3rem;
   border: none;
@@ -214,6 +214,29 @@
   background-color: rgba(154, 158, 161, 0.4);
 }
 
+/* ===== INVITATION ROOM =====*/
+.containerInvitation{
+  margin-top: -3.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+}
+
+.containerButtons{
+  display: flex;
+  flex-direction: column;
+  /* background-color: rgba(160, 114, 145, 0.664); */
+  width: 18rem;
+  height: 20rem;
+/*   border: 5px rgb(49, 95, 49) solid; */
+  /* border: 5px rgb(10, 97, 90) solid; */
+  /* border-radius: .5rem; */
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 /* ===== MEDIA QUERIES =====*/
 @media screen and (max-width: 500px) {
   .containerPlayers {
@@ -222,14 +245,14 @@
   .container {
     margin: 1rem;
     width: 360px;
-    height: 740px;
+    height: 760px;
   }
   .navPreGameRoom h3 {
     margin-left: -1rem;
   }
   .containerEditRoom {
     width: 325px;
-    height: 280px;
+    height: 300px;
   }
   .containerChat {
     margin: 1rem;

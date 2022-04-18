@@ -8,6 +8,7 @@ import {
   sendPasswordResetEmail,
   sendEmailVerification
 } from "firebase/auth";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL,deleteObject  } from "firebase/storage";
 import Swal from "sweetalert2";
 
 export const config = {
@@ -109,7 +110,7 @@ export async function firebaseCerrarSesion() {
 
 export async function firebaseRecuperarContrasena(email) {
   const actionCodeSettings = {
-    url: "https://www.zoopertrivia.com/login",
+    url: "http://localhost:3000/login",
   };
   try {
     const auth = getAuth();
@@ -137,7 +138,7 @@ export async function firebaseRecuperarContrasena(email) {
 export async function firebaseVerificarUsuario(usuario){
   try {
     const actionCodeSettings = {
-      url: "https://www.zoopertrivia.com/login",
+      url: "http://localhost:3000/login",
     };
     const auth = getAuth();
     const test = await sendEmailVerification(usuario, actionCodeSettings)
@@ -145,4 +146,30 @@ export async function firebaseVerificarUsuario(usuario){
   } catch (error) {
     console.log(error)
   }
+}
+
+export  const uploadFiles = async(file,category) => {
+  
+  if (!file) return;
+  const storage=getStorage()
+  const sotrageRef = ref(storage, `${category}/${file.name}`);
+  const uploadTask =  await uploadBytesResumable(sotrageRef, file);
+  const retornar=await getDownloadURL(sotrageRef)
+  return retornar
+};
+
+export function deleteStorage(URL){
+ 
+
+  const storage = getStorage();
+
+  // Create a reference to the file to delete
+  const desertRef = ref(storage, URL);
+
+  // Delete the file
+  deleteObject(desertRef).then(() => {
+    // File deleted successfully
+  }).catch((error) => {
+    // Uh-oh, an error occurred!
+  });
 }

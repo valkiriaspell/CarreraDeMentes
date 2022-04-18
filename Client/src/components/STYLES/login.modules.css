@@ -1,7 +1,7 @@
 /* ===== CONTAINER =====*/
 .containerLogin {
-  background-color: rgba(216, 221, 226, 0.068);
-  border: solid 3px rgba(216, 221, 226, 0.253);
+  background-color: rgba(52, 51, 51, 0.242);
+  border: solid 3px rgba(200, 204, 209, 0.253);
   max-width: 500px;
   min-height: 645px;
   margin-top: 2rem;
@@ -19,7 +19,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(216, 221, 226, 0.212);
+  background-color: rgba(191, 193, 196, 0.212);
   margin-top: 2rem;
   width: 350px;
   height: 450px;
@@ -69,7 +69,7 @@
   top: -65px;
   position: relative;
   color: rgba(221, 221, 221, 0.829);
-  background-color: rgba(216, 221, 226, 0.521);
+  background-color: rgba(173, 174, 175, 0.521);
   margin-top: 1rem;
   margin-bottom: 1rem;
   border: none;
@@ -79,7 +79,8 @@
   padding: 0.2rem;
 }
 .buttonLogin:hover {
-  background-color: rgba(165, 166, 167, 0.521);
+  cursor: url("../IMG/pata.png"), auto;
+  background-color: rgba(140, 141, 143, 0.521);
 }
 .linkContraseña {
   top: -65px;
@@ -112,12 +113,11 @@
   border-radius: 2rem;
   font-weight: bold;
   padding: 0.2rem;
-  background-color: rgba(216, 221, 226, 0.521);
+  background-color: rgba(173, 174, 175, 0.521);
 }
 .buttonSingUP:hover {
-  background-color: rgba(165, 166, 167, 0.521);
+  background-color: rgba(149, 151, 153, 0.521);
   color: rgba(221, 221, 221, 0.829);
-  cursor: pointer;
 }
 .contentLogin2 button {
   margin-top: 1rem;
@@ -128,6 +128,7 @@
   font-weight: bold;
   color: rgba(129, 126, 126, 0.829);
 }
+
 
 .contentLogin2 img {
   margin-left: 0.8rem;

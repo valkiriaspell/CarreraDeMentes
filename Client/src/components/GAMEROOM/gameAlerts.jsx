@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import useSocket from "../PRE-GAMEROOM/useSocketIo";
+import Music from "../MUSICA/musica";
 
 
-function ChatGameRoom(){
+
+function ChatGameRoom({points}){
     
     const [listSuccess, setListSuccess] = useState([])
-    const {preRoomUsers} = useSelector(state=> state)
-    const {points} = useSocket(preRoomUsers?.id)
-    /* const [newSuccess, setNewSuccess] = useState("") */ // mati ya tiene un estado donde pone los nuevos puntos
 
     useEffect(() =>{
         console.log(points)
@@ -18,6 +15,9 @@ function ChatGameRoom(){
 
 
     return (
+                <div >
+                    <h2 className="title">Aciertos</h2>
+                 <div>
         <div className="containerChatGame">
                 <div style={{heigth:50 + "px"}} disabled={true} > 
                     {
@@ -26,13 +26,18 @@ function ChatGameRoom(){
                                 <p key={`${Math.random()}${success.name}}`} 
                                         style={{textAlign: "justify", wordBreak: "break-word"}} 
                                 >
-                                    {`${success?.name}: ${success?.point}`}
+                                    {`${success?.name} + ${success?.point} pts!`}
                                 </p> 
                             )
                         })
                     }
                 </div>
         </div>
+        
+                        </div>
+                        
+        </div>
+
     )
 }
 

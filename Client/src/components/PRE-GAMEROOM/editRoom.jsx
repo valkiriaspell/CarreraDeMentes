@@ -1,11 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import s from '../STYLES/preGameRoom.module.css'
-import useSocket from "./useSocketIo";
 
-const EditRoom = ({idUser}) =>{
+const EditRoom = ({ handleSubmitConfig, roomConfiguration, setRoomConfiguration}) =>{
     const {user} = useSelector(state => state)
-    const { handleSubmitConfig, roomConfiguration, setRoomConfiguration } = useSocket(idUser)
 
     function handleChange(e){
         setRoomConfiguration({
@@ -15,6 +13,7 @@ const EditRoom = ({idUser}) =>{
     }
 
 
+
     return (
         <div className={s.containerEditRoom}>
             <form className={s.formEditRoom} onSubmit={e => handleSubmitConfig(e, roomConfiguration)}>
@@ -22,7 +21,7 @@ const EditRoom = ({idUser}) =>{
                     <h5 style={{fontWeight: "bold"}}>Ajustes de la Partida</h5>
                 </div>
                 <div className={s.contentEditRoom}>
-                    <label >Tiempo</label>
+                    <label >Tiempo (segundos)</label>
                     {
                         user.host === true
                             ?
@@ -31,7 +30,7 @@ const EditRoom = ({idUser}) =>{
                                 <option value={20}>20</option>
                                 <option value={15}>15</option>
                             </select>
-                            : <div>{roomConfiguration.time}</div>
+                            : <div>{roomConfiguration?.time}</div>
                     }
                 </div>
                 <div className={s.contentEditRoom}>
@@ -49,7 +48,7 @@ const EditRoom = ({idUser}) =>{
                                 <option value="Cine">Cine</option>
                                 <option value="Geografia">Geografia</option>
                             </select>
-                            : <div>{roomConfiguration.category}</div>
+                            : <div>{roomConfiguration?.category}</div>
                     }
                 </div>
                 <div className={s.contentEditRoom}>
@@ -62,7 +61,7 @@ const EditRoom = ({idUser}) =>{
                                 <option value={15} >15</option>
                                 <option value={20} >20</option>
                             </select>
-                            : <div>{roomConfiguration.questions}</div>
+                            : <div>{roomConfiguration?.questions}</div>
                     }
                 </div>
                 <div className={s.contentEditRoom}>

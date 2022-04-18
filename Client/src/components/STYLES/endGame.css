@@ -1,76 +1,118 @@
-.cointainerEG {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.321);
-    transition: opacity 500ms;
-    color: white;    
+@import url("https://fonts.googleapis.com/css2?family=Passion+One&display=swap");
+
+.containerEG {
+  min-width: 650px;
+  min-height: 200px;
+  border-radius: 0.6rem;
+  font-family: "Passion One", cursive;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contentNavEndGame {
+  border-bottom: solid 3px rgba(216, 221, 226, 0.4);
+  background-color: rgba(142, 148, 155, 0.4);
+  border-radius: 0.6rem 0.6rem 0rem 0rem;
+}
+.navEndGame {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+  font-size: 1.4rem;
+  color: #f87808;
+}
+.playersEndGame {
+  display: flex;
+  flex-direction: column;
+}
+.listPlayersEndGame {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: solid 3px rgba(216, 221, 226, 0.4);
+  padding-left: 2rem;
+  font-size: 1.2rem;
+  /* color: rgb(214, 209, 83); */
+  color: rgb(215, 215, 215);
+}
+.avatarEndGame {
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 50%;
+  box-shadow: 10px 10px 30px rgba(20, 20, 19, 0.5);
 }
 
 .scoreTable {
-    display: flex;
-    flex-direction: column;    
-    margin: 30px;    
-    background: rgba(0, 0, 0, 0.312);
-    width: 650px;
-    height: 840px;
-    position: relative;
-    transition: all 5s ease-in-out;
-    border-radius: 20px;
-    overflow: hidden;
-    color: white
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+  background: rgba(0, 0, 0, 0.312);
+  width: 650px;
+  height: 600px;
+  position: relative;
+  transition: all 5s ease-in-out;
+  border-radius: 20px;
+  overflow: hidden;
+  color: white;
 }
 .scoreTable::before {
-    content: "";
-    position: absolute;
-    width: 800px;
-    height: 900px;
-    background: linear-gradient(#015aa4, #fe146a);
-    color: white;
-    animation: animate 4s linear infinite;
+  content: "";
+  position: absolute;
+  width: 800px;
+  height: 900px;
+  background: linear-gradient(#ecd20aca, #f87808);
+  color: white;
+  animation: animate 4s linear infinite;
 }
 .scoreTable::after {
-    content: "";
-    position: absolute;
-    inset: 4px;
-    background:rgba(0, 0, 0, 0.155);
-    border-radius: 20px;
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 20px;
 }
-.resultados{
-    font-size: 24px;
-   position: relative;
-   display: flex;
-   flex-direction: row; 
-   color: white;      
-}
-
-.resultados li{     
-    margin-bottom: 40px;
-    margin-left: 20px;
-    color: white;
-    list-style: none;
-}
-
 .interior {
-    padding: 20px;
-    padding-top: 70px;
-    margin: 12px;
-    position: inherit;
-    background-color: rgb(0, 0, 0);
-    width: 625px;
-    height: 840px;
+  padding: 20px;
+  border-radius: 14px;
+  margin: 12px;
+  position: inherit;
+  background-color: rgb(58, 58, 58);
+  width: 625px;
+  height: 840px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-@keyframes animate
-{
-    0%
-{
+@keyframes animate {
+  0% {
     transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
-    100%
-    {
-    transform: rotate(360deg);  
-    }
+
+.containerButtons button {
+  margin: 0.6rem;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  background-color: #2120208d;
+  border: 1px solid #f87808;
+  box-shadow: 5px 5px 20px rgba(255, 163, 4, 0.893);
+  color: rgba(240, 248, 255, 0.616);
+  font-size: 22px;
+}
+
+ 
+
+/* ===== MEDIA QUERIES =====*/
+@media screen and (max-width: 500px) {
+  .scoreTable {
+    height: 460px;
+  }
+  .interior {
+    width: 420px;
+  }
+  .avatarEndGame {
+    margin-left: 1rem;
+  }
 }

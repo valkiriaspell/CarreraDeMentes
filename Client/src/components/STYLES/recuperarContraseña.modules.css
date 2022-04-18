@@ -1,6 +1,6 @@
 .containerReContraseña {
-  background-color: rgba(216, 221, 226, 0.068);
-  border: solid 3px rgba(216, 221, 226, 0.253);
+  background-color: rgba(52, 51, 51, 0.242);
+  border: solid 3px rgba(200, 204, 209, 0.253);
   max-width: 400px;
   min-height: 445px;
   margin-top: 2rem;
@@ -24,6 +24,9 @@
   top: -25px;
   position: relative;
 }
+.contentVolver button:hover{
+  cursor: url("../IMG/pata.png"), auto;
+}
 .contentVolver img {
   position: relative;
   top: 80px;
@@ -34,7 +37,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(216, 221, 226, 0.212);
+  background-color: rgba(191, 193, 196, 0.212);
   margin-top: 6rem;
   width: 300px;
   height: 210px;
@@ -70,13 +73,14 @@
   border-radius: 2rem;
   font-weight: bold;
   padding: 0.4rem;
-  background-color: rgba(216, 221, 226, 0.521);
+  background-color: rgba(173, 174, 175, 0.521);
   border: none;
 }
 .contentReContraseña button:hover {
   background-color: rgba(165, 166, 167, 0.521);
-  cursor: pointer;
+  cursor: url("../IMG/pata.png"), auto;
 }
+
 
 /* ===== MEDIA QUERIES =====*/
 @media screen and (max-width: 500px) {

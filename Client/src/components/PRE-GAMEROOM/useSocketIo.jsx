@@ -2,16 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import socketIOClient from 'socket.io-client';
-import { listUsersInPreRoom, loginUser, getReadyUser, modifyHost, changePoint, removeUser, fastRemove } from "../../redux/actions";
+import { listUsersInPreRoom, loginUser, getReadyUser, changePoint, removeUser, fastRemove } from "../../redux/actions";
 import axios from "axios";
 import readyGreen from "../IMG/readyGreen2.png"
-import { changeReady, deleteRoom, AddUserToPreRoom, startGame } from "./utils";
+import { changeReady, deleteRoom, startGameAlready, modifyHost, removeUserRoom } from "./utils";
 
 function useChatSocketIo(idRoom) {
     const history = useHistory();
     const dispatch = useDispatch();
     const {user, preRoomUsers} = useSelector(state => state);
-    
+
     const socketIoRef = useRef();
     const email = localStorage.getItem("email");
     const [messages, setMessages] = useState({});
@@ -26,22 +26,18 @@ function useChatSocketIo(idRoom) {
     const [everybodyPlays, setEverybodyPlays] = useState(false);
 
     useEffect(() =>{
-        //create web socket connection
-        /* !email && history.push('/') */ //descomentar y probar
-        const newUserInRoom = () =>{
-            dispatch(loginUser(email))
-            .then((data) => dispatch(AddUserToPreRoom({
-                idRoom,
-                idUser: data?.id,
-            })))
-            .then((idD) =>dispatch(listUsersInPreRoom(idD)))
-        }
-        !user?.host && newUserInRoom();
-
-        socketIoRef.current = socketIOClient('https://zoopertrivia.herokuapp.com/',{query:{idGameRoom: idRoom, email} } );
-            socketIoRef.current.on("NEW_CONNECTION", async (email) =>{
-                email !== user.email &&
-                dispatch(listUsersInPreRoom(idRoom));
+        !user?.id && dispatch(loginUser(email))
+        console.log(socketIoRef)
+        socketIoRef.current = socketIOClient('http://localhost:3001',{query:{idGameRoom: idRoom, email} } );
+        console.log(socketIoRef)
+            socketIoRef.current.on("NEW_CONNECTION", (email) =>{
+                console.log('NEW_CONNECTION')
+                /* email !== user.email && */
+                dispatch(listUsersInPreRoom(idRoom))
+                /* .then((value) => {
+                    const meId = value.users.find(us => us.id === user.id)
+                    !meId && socketIoRef?.current?.disconnect() && history.push('/home'); 
+                })*/
             })
             
             //received a new message, differentiating which are from current user and add to message list
@@ -60,11 +56,16 @@ function useChatSocketIo(idRoom) {
             
             socketIoRef.current.on("DISCONNECT", (id) =>{
                 console.log(id)
-                preRoomUsers?.users[0].id === id 
-                    ? history.push('/home')
-                    : dispatch(listUsersInPreRoom(idRoom))
+                id === user.id && socketIoRef?.current?.disconnect();
+                const isHost = preRoomUsers?.users?.filter(us=> us.id === id )
+                if(isHost[0]?.host){
+                    history.push('/home');
+                    socketIoRef?.current?.disconnect();
+                } else{
+                    dispatch(listUsersInPreRoom(idRoom))
+                }
                     /* preRoomUsers?.users?.[1] === user.id && */
-                        /* dispatch(modifyHost(email, true))  */
+                        /* modifyHost(email, true)  */
                 /*  dispatch(fastChangeHostRoom(id)) */
             })
 
@@ -83,25 +84,25 @@ function useChatSocketIo(idRoom) {
 
             //when host press start-game button, all players redirect url game-room, 
             socketIoRef.current.on("START", async () =>{
-                await startGame(idRoom, true)
+                console.log("empezar")
+                await startGameAlready(idRoom, true)
+                await dispatch(listUsersInPreRoom(idRoom))
                 setGame(true)
             })
             
             socketIoRef.current.on("CONFIG_ROOM", (roomConfiguration) =>{
-                
                 setRoomConfiguration(roomConfiguration)
             })
 
             socketIoRef.current.on("NEW_EVENT", ({id, pointsTotal, point, name}) =>{
                 console.log('lejos')
                 dispatch(changePoint({id, pointsTotal, point}))
-                /* (pointsTotal - point) !== 0 &&  */
                 setPoints({point, name})
             }) 
 
-            socketIoRef.current.on("ALL_START_GAME", () =>{
+            socketIoRef.current.on("ALL_START_GAME", ({bool}) =>{
                 console.log('empiezen!')
-                setEverybodyPlays(true)
+                setEverybodyPlays(bool)
             }) 
            
 
@@ -109,37 +110,28 @@ function useChatSocketIo(idRoom) {
 
             return async () =>{
                 console.log('return')
-                //acomodar para cuando es solo uno
                 /* socketIoRef?.current?.emit("FAST_REMOVE", user?.id) */ // ya volvio a fallar no se por que
-                //cuando somos dos sale y elimina la sala, primero entra en el segundo camino,
-                //luego pasa al segundo
-                //si alguien se sale quitar el nomre de la lista rapido como hago con el de expulsar
-                const list = await dispatch(listUsersInPreRoom(idRoom))
+                /* const list = await dispatch(listUsersInPreRoom(idRoom))
                 console.log(list, 'que onda')
-                if(list?.start === false){
-                    /* stateStart() === false && */
-                    if(list?.users?.length === 1){
-                        dispatch(modifyHost(email, false))
-                        console.log('error de camino')
-                        deleteRoom(idRoom) 
-                        /* socketIoRef?.current?.emit("DISCONNECT", preRoomUsers?.users[0].id) */
-                        socketIoRef?.current?.disconnect();
-                    }else{
-                        if(user?.id){
-                            await axios.put('/gameRoom/delete', {idRoom, idUserDelet: user.id})
-                            console.log('estoy aca')
-                            socketIoRef?.current?.emit("DISCONNECT", user?.id)
-                            
-                        } else{
-                            dispatch(modifyHost(email, false)) 
-                            deleteRoom(idRoom) 
-                            socketIoRef?.current?.emit("DISCONNECT", preRoomUsers?.users[0].id)
-
+                if(list?.start === false){ */
+                    if(user?.host === true){
+                        await modifyHost(email, false)
+                        await deleteRoom(idRoom)
+                        console.log("que pasa", socketIoRef)
+                    } else{
+                        let player = {}
+                        if(!user?.id){
+                            player = await dispatch(loginUser(email))
+                            console.log('estoy aca tambien')
                         }
-                        socketIoRef?.current?.disconnect();
+                        await removeUserRoom(idRoom, user?.id ? user?.id : player?.id)
+                        console.log('estoy aca', socketIoRef)
+                        console.log("final")
                     }
+                    socketIoRef?.current?.emit("DISCONNECT", user.id)
+                    console.log("desconectando")
                 }
-            }
+            
     }, [])
 
 
@@ -162,19 +154,37 @@ function useChatSocketIo(idRoom) {
         : await changeReady(user.id, true)
         socketIoRef.current.emit("READY", {id: user.id})
     }
-
+    function countReady() {
+        const arrayIds = preRoomUsers?.users?.map(user => user.id)
+        let readys = 0;
+        let imgReady = ""
+        for(let i = 0; i < arrayIds?.length; i++){
+          imgReady = document.getElementById(arrayIds[i])
+          if(imgReady?.src === readyGreen){
+            console.log("aqui", readys)
+            readys++
+          } 
+        }
+    console.log(readys)
+        return readys
+      }
     async function sendStartGame(){
-        try{
-            const questionAll = await axios.post("/question/allQuestions", {
-                count: preRoomUsers?.questionAmount,
-                category: preRoomUsers?.category,
-                idRoom
-            })
+        let listos = countReady()
+        if(listos === preRoomUsers?.users?.length - 1){
+            console.log("startatatat")
+            try{
+                const questionAll = await axios.post("http://localhost:3001/question/allQuestions", {
+                    count: preRoomUsers?.questionAmount,
+                    category: preRoomUsers?.category,
+                    idRoom
+                })
             console.log(questionAll)
             socketIoRef.current.emit("START")
-        }catch(e){
+            }catch(e){
+                console.log(e)
+            }
+        }
     }
-      }
 
     function expelPlayer(e){
         let id = e.target.id
@@ -204,9 +214,9 @@ function useChatSocketIo(idRoom) {
         console.log('nuevo evento')
         socketIoRef.current.emit("NEW_EVENT", {id, pointsTotal, point, name})
     } 
-    function allStartGame(){
+    function allStartGame(bool){
         console.log('yaaaa')
-        socketIoRef.current.emit("ALL_START_GAME")
+        socketIoRef.current.emit("ALL_START_GAME", {bool})
     } 
 
 
@@ -216,6 +226,7 @@ function useChatSocketIo(idRoom) {
             sendReady, 
             sendStartGame, 
             game, 
+            setGame,
             expelPlayer, 
             handleSubmitConfig, 
             roomConfiguration, 
