@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Music from "../MUSICA/musica";
 
 
 
@@ -14,6 +15,9 @@ function ChatGameRoom({points}){
 
 
     return (
+                <div >
+                    <h2 className="title">Aciertos</h2>
+                 <div>
         <div className="containerChatGame">
                 <div style={{heigth:50 + "px"}} disabled={true} > 
                     {
@@ -22,13 +26,18 @@ function ChatGameRoom({points}){
                                 <p key={`${Math.random()}${success.name}}`} 
                                         style={{textAlign: "justify", wordBreak: "break-word"}} 
                                 >
-                                    {`${success?.name} acierta + ${success?.point} pts!`}
+                                    {`${success?.name} + ${success?.point} pts!`}
                                 </p> 
                             )
                         })
                     }
                 </div>
         </div>
+        
+                        </div>
+                        
+        </div>
+
     )
 }
 

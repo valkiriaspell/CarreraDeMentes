@@ -16,11 +16,11 @@ function GameRoom({ preRoomUsers, setGame, positions, allStartGame, everybodyPla
       { !showEndGame ?
         <>
         <ListPlayersRoom preRoomUsers={preRoomUsers}  />
-        <Game setGame={setGame} userCoins={userCoins} setUserCoins={setUserCoins} setShowEndGame={setShowEndGame} showEndGame={showEndGame} positions={positions} allStartGame={allStartGame} everybodyPlays={everybodyPlays} />
+        <Game userCoins={userCoins} setUserCoins={setUserCoins} setShowEndGame={setShowEndGame} showEndGame={showEndGame} positions={positions} allStartGame={allStartGame} everybodyPlays={everybodyPlays} />
         <ChatGameRoom preRoomUsers={preRoomUsers} points={points} />
         </>
         : <div>
-          <EndGame userCoins={userCoins}/>
+          <EndGame userCoins={userCoins} setGame={setGame}/>
         </div>
       }
       </div>

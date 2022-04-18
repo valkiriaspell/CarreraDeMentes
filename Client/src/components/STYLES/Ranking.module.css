@@ -1,0 +1,129 @@
+
+.titleRanking{
+    position: relative;
+    top: 3vh;
+    display: inline-block;
+    padding: 0.2em;
+    color: white;
+    background: linear-gradient(70deg, #aec87fa6, #39814bad);
+    border-radius: 15px;
+    box-shadow: 0px 3px 6px 2px #000000fa;
+}
+
+.btn_homeRanking{
+    position: absolute;
+    top: 3vh;
+    left: 9vh;
+}
+
+.dataRanking{
+    height: 70vh;
+    width: 90%;
+    background-color: #408d4f8f;
+    margin: auto;
+    overflow-x: overlay;
+    overscroll-behavior: contain;
+    margin-top: 4%;
+    box-shadow: 0px 0px 20px 3px #000000cc;
+}
+
+.dataRanking::-webkit-scrollbar {
+    width: 10px;
+}
+
+.dataRanking::-webkit-scrollbar-thumb {
+    background-color: #ffffff;
+}
+
+.dataRanking::-webkit-scrollbar-thumb {
+    background-color: #01523994;
+    border-radius: 15px;
+}
+
+.data_titleRanking{
+    background-color: #01523994;
+}
+
+.view_dataRanking{
+        display: flex;
+        box-shadow: 1px -2px 3px 0px #91ba7a;
+        color: #ffffff;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+}
+
+.coronaRanking img{
+    width: 30px;
+}
+
+.infoUserRanking img{
+    width: 50px;
+} 
+
+.infoUserRanking {
+    margin: 25px;
+    width: 100px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+} 
+
+.data_titleRanking:hover{
+    background-color: #ff0000;
+}
+
+.view_dataRanking:hover{
+    box-shadow: -1px 0px 5px 2px #0000007f;
+    background-color: #afc87e8f;
+}
+
+
+@media screen and (max-width: 800px){
+    .view_dataRanking {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .infoUserRanking {
+        margin: 15px;
+    }
+    .titleRanking {
+        font-size: 20px;
+        margin: 15px;
+    }
+
+    .btn_homeRanking{
+        position: relative;
+        left: 0;
+    }
+}
+@media screen and (max-width: 530px) {
+    .infoUserRanking {
+        margin: 10px;
+    }
+
+    .infoUserRanking img {
+        width: 40px;
+    }
+}
+@media screen and (max-width: 350px) {
+    .infoUserRanking {
+        margin: 5px;
+    }
+    
+    .titleRanking {
+        font-size: 15px;
+        margin: 15px;
+    }
+
+    .view_dataRanking {
+        font-size: 10px;
+    }
+
+    .infoUserRanking img {
+        width: 30px;
+    }
+}

@@ -6,6 +6,7 @@ import Email from "../../IMG/email.png";
 import { NavLink } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import Swal from "sweetalert2";
+import Music from "../../MUSICA/musica";
 
 function RecuperarContrasena() {
   const [input, setInput] = useState({
@@ -27,6 +28,8 @@ function RecuperarContrasena() {
   }
 
   return (
+    <div>
+      <Music/>
     <div className="containerReContraseña">
       <div className="contentVolver">
         <NavLink style={{ textDecoration: "none" }} to={"/login"}>
@@ -56,6 +59,7 @@ function RecuperarContrasena() {
         </div>
         <button type="submit">Restablecer Contraseña</button>
       </form>
+    </div>
     </div>
   );
 }

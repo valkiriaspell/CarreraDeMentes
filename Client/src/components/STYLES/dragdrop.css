@@ -1,0 +1,19 @@
+.drop-area{
+    border:5px dashed red;
+    height: 50px;
+    width: 360px; 
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    font-size: 60%;
+}
+.status{
+    font-size: 64%;
+    width: 62%;
+    overflow: hidden;
+    word-break: break-all;
+    display: flex;
+    flex-direction: column;
+}

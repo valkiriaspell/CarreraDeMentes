@@ -7,7 +7,8 @@ const session = require('express-session');
 const cors = require('cors');
 const mercadopago = require('mercadopago');
 require('./db.js');
-const { MP_TKN } = process.env;
+const { MP_TKN, MAIL_HOST, MAIL_PORT, MAIL_USER, MAIL_PASS,SUPERADMIN_EMAIL } = process.env;
+const nodeMailer = require("nodemailer")
 
 //Configuracion Mercado Pago
 mercadopago.configure({
@@ -65,8 +66,8 @@ io.on('connection', (socket) => {
 	socket.on('FAST_REMOVE',(id)=>{
 		io.to(idGameRoom).emit('FAST_REMOVE',id)
 	})
-	socket.on('ALL_START_GAME',()=>{
-		io.to(idGameRoom).emit('ALL_START_GAME')
+	socket.on('ALL_START_GAME',(bool)=>{
+		io.to(idGameRoom).emit('ALL_START_GAME', bool)
 	})
 });
 
@@ -88,6 +89,40 @@ server.use(cors({
 
 server.use(bodyParser.urlencoded({extended: true, limit: '50mb'}));
 server.use(bodyParser.json({limit: '50mb'}));
+
+//NodeMailer
+server.post("/send_mail", cors(), async (req, res) => {
+	let {textMail, userMail} = req.body
+	
+	const transport = nodeMailer.createTransport({
+		host: MAIL_HOST,
+		port: MAIL_PORT,
+		auth: {
+			user: MAIL_USER,
+			pass: MAIL_PASS
+		}
+	})
+await transport.sendMail({
+	from: SUPERADMIN_EMAIL, 
+	to: userMail,
+	subject: "Notificación de ZooPer Trivia",
+	html: `<div className="email" style="
+	border: 1px solid black;
+	padding: 20px;
+	font-family: sans-serif;
+	font-size: 18px;
+	">
+	<h2> Hola ${userMail}! </h2>
+	<p>${textMail}</p>
+	<img width="150px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo5.png?alt=media&token=5e5bb88d-806a-4c38-b667-b27a9b5b01fc"  alt="logo"/>
+	<p>Equipo de Zooper Trivia</p>
+	<p>www.zoopertrivia.com</p>
+	</div>
+	 `
+	 
+})
+})
+
 //server.use(cookieParser());
 server.use(morgan('dev'));
 server.use((req, res, next) => {

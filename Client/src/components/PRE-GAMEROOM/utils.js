@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 export async function AddUserToPreRoom({idRoom, idUser}){
     console.log(idRoom, idUser)
     try{
-        const {data} = await axios.put('http://localhost:3001/gameRoom', {idUser, idRoom})
+        const {data} = await axios.put('/gameRoom', {idUser, idRoom})
         return data
     }catch(e) {
         console.log(e)
@@ -13,7 +13,7 @@ export async function AddUserToPreRoom({idRoom, idUser}){
 
 export async function modifyHost(email, host) {
     try {
-        const { data } = await axios.put(`http://localhost:3001/users/?email=${email}&host=${host}`)
+        const { data } = await axios.put(`/users/?email=${email}&host=${host}`)
         console.log(data)
     } catch (e) {
         console.log(e)
@@ -22,7 +22,7 @@ export async function modifyHost(email, host) {
 
 export async function modifyHostById(id, host) {
     try {
-        const { data } = await axios.put(`http://localhost:3001/users/?id=${id}&host=${host}`)
+        const { data } = await axios.put(`/users/?id=${id}&host=${host}`)
         console.log(data)
     } catch (e) {
         console.log(e)
@@ -32,7 +32,7 @@ export async function modifyHostById(id, host) {
 
 export async function changeReady(id, bool){
     try{
-        const {data} = await axios.put(`http://localhost:3001/users/ready/?id=${id}&bool=${bool}`)
+        const {data} = await axios.put(`/users/ready/?id=${id}&bool=${bool}`)
         console.log(data)
     }catch(e) {
         console.log(e)
@@ -41,7 +41,7 @@ export async function changeReady(id, bool){
 
 export async function removeUserRoom(idRoom, idUserDelet){
     try{
-        const {data} = await axios.put('http://localhost:3001/gameRoom/delete', {idRoom, idUserDelet})
+        const {data} = await axios.put('/gameRoom/delete', {idRoom, idUserDelet})
         console.log(data)
     }catch(e) {
         console.log(e)
@@ -50,16 +50,16 @@ export async function removeUserRoom(idRoom, idUserDelet){
 
 export async function deleteRoom(idRoom){
     try{
-        const {data} = await axios.delete(`http://localhost:3001/gameRoom/${idRoom}`)
+        const {data} = await axios.delete(`/gameRoom/${idRoom}`)
         console.log(data)
     }catch(e) {
         console.log(e)
     }
 }
 
-export async function startGame(idRoom, start){
+export async function startGameAlready(idRoom, start){
     try{
-        const {data} = await axios.put('http://localhost:3001/gameRoom/starRoot', {idRoom, start})
+        const {data} = await axios.put('/gameRoom/starRoot', {idRoom, start})
         console.log(data)
     }catch(e) {
         console.log(e)

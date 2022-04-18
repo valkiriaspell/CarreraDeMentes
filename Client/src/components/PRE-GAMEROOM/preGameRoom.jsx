@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import {  useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Chat from "./chat";
 import EditRoom from "./editRoom";
@@ -12,8 +12,8 @@ import "../STYLES/form.css"
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { FaLink } from "react-icons/fa";
 import { AiFillSound } from "react-icons/ai";
-import readyGreen from "../IMG/readyGreen2.png"
 import { getUrl } from "./utils";
+import Music from "../MUSICA/musica"
 
 function PreGameRoom({match}) {
 
@@ -23,8 +23,9 @@ function PreGameRoom({match}) {
 
     const {idUser} = match.params;
 
-  const { sendReady, sendStartGame, game, expelPlayer, setGame, messages, sendMessage, handleSubmitConfig, roomConfiguration, setRoomConfiguration, positions, allStartGame, everybodyPlays, points } = useSocket(idUser);
-
+  const { sendReady, sendStartGame, game, expelPlayer, setGame, messages, sendMessage, handleSubmitConfig, 
+          roomConfiguration, setRoomConfiguration, positions, allStartGame, everybodyPlays, points 
+        } = useSocket(idUser);
   
 
 
@@ -41,14 +42,19 @@ function PreGameRoom({match}) {
           <div className="logo">
                 <img width="200px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4" alt="Logo"></img>
             </div>
-          <AiFillSound style={{ width: "30px" }} />
+           <div></div>
         </div>
         <div>
           <ListPlayers expelPlayer={expelPlayer} />
         </div>
         <div>
           <div>
-            <EditRoom idUser={idUser} handleSubmitConfig={handleSubmitConfig} roomConfiguration={roomConfiguration} setRoomConfiguration={setRoomConfiguration} />
+            <EditRoom 
+              idUser={idUser} 
+              handleSubmitConfig={handleSubmitConfig} 
+              roomConfiguration={roomConfiguration} 
+              setRoomConfiguration={setRoomConfiguration}  
+            />
           </div>
           <div>
             <Chat idUser={idUser} messages={messages} sendMessage={sendMessage} />
@@ -76,9 +82,19 @@ function PreGameRoom({match}) {
             <button className="buttonSides lowgreen" >Invitar</button>
           </div>
         </div>
+        <div style={{marginLeft: "1rem"}}>
+        <Music />
+        </div>
       </div>
     ) : (
-      <GameRoom preRoomUsers={preRoomUsers} setGame={setGame} positions={positions} allStartGame={allStartGame} everybodyPlays={everybodyPlays} points={points} />
+      <GameRoom 
+        preRoomUsers={preRoomUsers} 
+        setGame={setGame} 
+        positions={positions} 
+        allStartGame={allStartGame} 
+        everybodyPlays={everybodyPlays} 
+        points={points} 
+      />
     );
   } else {
     history.push("/login");

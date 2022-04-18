@@ -5,8 +5,14 @@ import Coins from "../IMG/coin.png";
 import { useSelector } from "react-redux";
 import $ from "jquery";
 import { useHistory } from "react-router-dom";
-import Swal from "sweetalert2";
 import axios from "axios";
+import { startGameAlready } from "../PRE-GAMEROOM/utils";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Music from "../MUSICA/musica";
+import Bomb1 from "../IMG/bomb.png";
+import Bomb2 from "../IMG/bombs.png";
+import X2 from "../IMG/gift-box.png";
 
 function randomQuestions(array) {
   var m1 = Math.floor((Math.random() * array.length) % array.length);
@@ -31,7 +37,14 @@ function randomQuestions(array) {
   return attacks;
 }
 
-function Game({ setShowEndGame, userCoins, setUserCoins, setGame, positions, allStartGame, everybodyPlays }) {
+const Game = ({
+  setShowEndGame,
+  userCoins,
+  setUserCoins,
+  positions,
+  allStartGame,
+  everybodyPlays,
+}) => {
   const history = useHistory();
   const { preRoomUsers, user } = useSelector((state) => state);
 
@@ -53,7 +66,7 @@ function Game({ setShowEndGame, userCoins, setUserCoins, setGame, positions, all
   let [actualQuestion, setActualQuestion] = useState(0);
 
   const getCoins = async (coins) => {
-    await axios.post("http://localhost:3001/mercadopago", {
+    await axios.post("/mercadopago", {
       coinsFinal: coins,
       email: user.email,
     });
@@ -84,20 +97,17 @@ function Game({ setShowEndGame, userCoins, setUserCoins, setGame, positions, all
       setSeconds((seconds) => seconds - 1);
     }, 1000);
 
-    return () =>  clearInterval(intervalo)
+    return () => clearInterval(intervalo);
   }, [question]);
   //  ============================
 
   useEffect(() => {
-    let testCoinst = userCoins
-    return () => getCoins(testCoinst)
-  },[userCoins])
-
-
-
+    let testCoinst = userCoins;
+    return () => getCoins(testCoinst);
+  }, [userCoins]);
 
   useEffect(() => {
-    console.log(preRoomUsers)
+    console.log(preRoomUsers);
     setQuestions(preRoomUsers.questions);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preRoomUsers.questions]);
@@ -106,6 +116,8 @@ function Game({ setShowEndGame, userCoins, setUserCoins, setGame, positions, all
   let finalGame = preRoomUsers?.time * preRoomUsers?.questionAmount * 1000;
   useEffect(() => {
     setTimeout(() => {
+      startGameAlready(preRoomUsers.id, false);
+      allStartGame(false);
       setShowEndGame(true);
     }, finalGame);
   }, []);
@@ -165,11 +177,11 @@ function Game({ setShowEndGame, userCoins, setUserCoins, setGame, positions, all
     let buttons = document.querySelectorAll("#buttons");
     for (let i = 0; i < buttons.length; i++) {
       if (buttons[i].defaultValue === answer) {
-        $(buttons[i]).css("background", "rgba(117, 226, 71, 0.71");
-        $(buttons[i]).css("color", "rgba(230, 231, 232, 0.662)");
+        $(buttons[i]).css("background", "rgba(91, 211, 40, 0.979)");
+        $(buttons[i]).css("color", "rgba(230, 231, 232, 0.862)");
       } else {
-        $(buttons[i]).css("background", "rgba(251, 89, 89, 0.71)");
-        $(buttons[i]).css("color", "rgba(230, 231, 232, 0.662)");
+        $(buttons[i]).css("background", "rgba(248, 61, 61, 0.979)");
+        $(buttons[i]).css("color", "rgba(230, 231, 232, 0.862)");
       }
     }
   };
@@ -194,12 +206,14 @@ function Game({ setShowEndGame, userCoins, setUserCoins, setGame, positions, all
         }
         setUserCoins((prevState) => prevState - 100);
       } else {
-        Swal.fire({
-          title: `No tienes suficientes monedas`,
-          icon: "warning",
-          heightAuto: false,
-          timer: 1000,
-          confirmButtonText: ": (",
+        toast.warn("No tienes sufucientes monedas 😢", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
         });
       }
     } else {
@@ -215,21 +229,21 @@ function Game({ setShowEndGame, userCoins, setUserCoins, setGame, positions, all
         }
         setUserCoins((prevState) => prevState - 200);
       } else {
-        Swal.fire({
-          title: `No tienes suficientes monedas`,
-          icon: "warning",
-          heightAuto: false,
-          timer: 1000,
-          confirmButtonText: ": (",
+        toast.warn("No tienes sufucientes monedas 😢", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
         });
       }
     }
   };
-  
 
   const handleGoHome = () => {
-    setGame(false);
-    history("/home");
+    history.push("/home");
   };
 
   return (
@@ -238,7 +252,7 @@ function Game({ setShowEndGame, userCoins, setUserCoins, setGame, positions, all
         <div className="loadingGif">
           <img src={Animals} alt="Animals" width={300} />
           {user.host === true ? (
-            <button className="buttonStart" onClick={allStartGame}>
+            <button className="buttonStart" onClick={(e)=>allStartGame(true)}>
               START
             </button>
           ) : (
@@ -250,13 +264,15 @@ function Game({ setShowEndGame, userCoins, setUserCoins, setGame, positions, all
       ) : (
         <div>
           <div className="containerHeader">
-            <button onClick={handleGoHome}>Salir</button>
+            <button className="buttonSides brown" onClick={handleGoHome}>
+              Salir
+            </button>
             <img
               width="150px"
               src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4"
               alt="Logo"
             ></img>
-            <div></div>
+            <Music />
           </div>
           <div className="containerGame">
             <div className="contentNav">
@@ -302,23 +318,30 @@ function Game({ setShowEndGame, userCoins, setUserCoins, setGame, positions, all
               </div>
               <div className="containerPowers">
                 <div>
-                  <button onClick={() => powerDelete(1)}>Eliminar 1</button>
-                  <button onClick={() => powerDelete(2)}>Eliminar 2</button>
+                  <button className="powers" onClick={() => powerDelete(1)}>
+                    <img src={Bomb1} alt="BOMB1" width={30}></img>
+                  </button>
+                  <button className="powers" onClick={() => powerDelete(2)}>
+                    <img src={Bomb2} alt="BOMB2" width={30}></img>
+                  </button>
                   <button
+                    className="powers"
                     onClick={() =>
                       userCoins >= 300
                         ? (setPointsPower(2),
                           setUserCoins((prev) => prev - 300))
-                        : Swal.fire({
-                            title: `No tienes suficientes monedas`,
-                            icon: "warning",
-                            heightAuto: false,
-                            timer: 1000,
-                            confirmButtonText: ": (",
+                        : toast.warn("No tienes sufucientes monedas 😢", {
+                            position: "top-center",
+                            autoClose: 3000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
                           })
                     }
                   >
-                    x2
+                    <img src={X2} alt="x2" width={30} />
                   </button>
                 </div>
                 <div
@@ -334,8 +357,9 @@ function Game({ setShowEndGame, userCoins, setUserCoins, setGame, positions, all
           </div>
         </div>
       )}
+      <ToastContainer />
     </div>
   );
-}
+};
 
 export default Game;

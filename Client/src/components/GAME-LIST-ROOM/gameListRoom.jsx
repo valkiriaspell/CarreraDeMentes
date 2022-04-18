@@ -7,6 +7,7 @@ import Search from "../IMG/search.png";
 import { useDispatch, useSelector } from "react-redux";
 import { listAllRooms, listUsersInPreRoom } from "../../redux/actions";
 import { AddUserToPreRoom } from "../PRE-GAMEROOM/utils";
+import Music from "../MUSICA/musica";
 
 
 function GameListRoom() {
@@ -39,16 +40,24 @@ function GameListRoom() {
   };
 const history = useHistory()
   function handleJoinRoom(game){
-    AddUserToPreRoom({idRoom: game.id, idUser: user.id})
-    .then(()=> dispatch(listUsersInPreRoom(game.id)))
-    .then(() => {
-      history.push(`/room/${game.id}`)})
+    game.numberUsersInRoom === 6
+      ? alert('la sala esta llena') // mejorar alerta
+      : AddUserToPreRoom({idRoom: game.id, idUser: user.id})
+      .then(()=> dispatch(listUsersInPreRoom(game.id)))
+      .then(() => {
+        history.push(`/room/${game.id}`)})
+     
   }
   return (
+    <div>
+      <Music/>
+      <div>
+						<img width="250px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4" alt='Logo'></img>
+					</div>
     <div className="containerGameList">
       <div className="navGameList">
         <NavLink style={{ textDecoration: "none" }} to={"/home"}>
-        <button className="buttonVolver">
+        <button className="buttonSides brown">
           <AiOutlineArrowLeft style={{ marginRight: "0.4rem" }} /> Volver
         </button>
         </NavLink>
@@ -77,14 +86,15 @@ const history = useHistory()
             <div key={game.id} className="infoPartidas">
               <span>{game.name}</span>
               <span>{game.numberUsersInRoom}</span>
-              <span>{game.questionAmount}</span>
-              <button className="unirseGameList" onClick={() => handleJoinRoom(game)} >Unirse</button>
+              <span style={{marginLeft: "2.5rem"}} >{game.questionAmount}</span>
+              <button className="buttonSides brown" onClick={() => handleJoinRoom(game)} >Unirse</button>
             </div>
           );
         })
       ) : (
         <h3>No hay partidas disponibles</h3>
       )}
+    </div>
     </div>
   );
 }

@@ -6,6 +6,7 @@ import axios from 'axios'
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import UserCard from "../HOME/userCard";
+import Music from "../MUSICA/musica";
 
 
 function PlayStore() {
@@ -21,7 +22,7 @@ function PlayStore() {
 
     useEffect(() => {
         async function traerProductos(){
-            const algo = await axios.get('http://localhost:3001/coins')
+            const algo = await axios.get('/coins')
             setProductos(algo.data)
         }
         traerProductos()
@@ -43,6 +44,7 @@ function PlayStore() {
     if(autenticado){
         return (
             <div className="containerPlayStore">
+                <Music/>
                 <div className="contentNavPlayStore">
                 <button onClick={volverHome} className="btnVolverTienda" type="button">Volver</button>
                 <UserCard />
