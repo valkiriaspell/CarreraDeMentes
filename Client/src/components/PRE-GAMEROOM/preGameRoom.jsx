@@ -14,6 +14,8 @@ import { FaLink } from "react-icons/fa";
 import { AiFillSound } from "react-icons/ai";
 import { getUrl } from "./utils";
 import Music from "../MUSICA/musica"
+import { ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function PreGameRoom({match}) {
 
@@ -24,7 +26,7 @@ function PreGameRoom({match}) {
     const {idUser} = match.params;
 
   const { sendReady, sendStartGame, game, expelPlayer, setGame, messages, sendMessage, handleSubmitConfig, 
-          roomConfiguration, setRoomConfiguration, positions, allStartGame, everybodyPlays, points 
+          roomConfiguration, setRoomConfiguration, positions, allStartGame, everybodyPlays, points, setPoints
         } = useSocket(idUser);
   
 
@@ -77,7 +79,7 @@ function PreGameRoom({match}) {
                   Iniciar
                 </button>
                 ) 
-                : preRoomUsers.users.find(us => us.id === user.id) &&
+                : preRoomUsers?.users?.find(us => us.id === user.id) &&
                  <button className="buttonSides lowgreen" onClick={sendReady}>Listo</button> 
 
             }
@@ -86,6 +88,7 @@ function PreGameRoom({match}) {
         <div style={{marginLeft: "1rem"}}>
         <Music />
         </div>
+        <ToastContainer />
       </div>
     ) : (
       <GameRoom 
@@ -95,6 +98,7 @@ function PreGameRoom({match}) {
         allStartGame={allStartGame} 
         everybodyPlays={everybodyPlays} 
         points={points} 
+        setPoints={setPoints}
       />
     );
   } else {
