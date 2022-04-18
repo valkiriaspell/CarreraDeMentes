@@ -190,7 +190,7 @@ export default function AdminUsers() {
                         <button disabled={!selectedUser} className='botonesBarra' value="go" onClick={(e) => handleAdmin(e)}><RiGradienterLine /></button>
                 </div>
                 <h6 className='botonesBarra'>Usuarios: {totalUsers.length}</h6>
-                <button disabled={!selectedUser}  className='botonesBarra' onClick={() => banearUser()}>Sancionar</button>
+                <button disabled={!selectedUser}  className='botonesBarra' onClick={() => banearUser()}>Habilitar/Deshabilitar Sanción</button>
                 <button className='botonesBarra' onClick={(e) => refresh(e)}><GrUpdate color="white" /></button>
                 {/* <button className='botonesBarra' onClick={(e) => darkTheme(e)}><CgDarkMode /></button> */}
             </div>
@@ -207,6 +207,7 @@ export default function AdminUsers() {
                             <th>Monedas</th>
                             <th>Categoria</th>
                             <th>Estado</th>
+                            <th>Fecha Sanción</th>
                         </tr>
                         {totalUsers?.map(q =>
                             <tr key={q.email}>

@@ -195,12 +195,27 @@ const modifyAdmin = async (email, admin) => {
 const bannerUser = async (email) => {
 	try {
 		const banneado = await Users.findOne({where: {email}});
+		const newDate = new Date()
+
+		if(banneado.bannerTime === null || banneado.bannerTime < newDate){
+		function sumarDias(fecha, dias){
+			fecha.setDate(fecha.getDate() + dias);
+			return fecha;
+		  }
+		const actualTime = sumarDias(new Date(), 3)
 
 		const updateBanneado = await banneado.update(
-			{banner: !banneado.banner},
+			{banner: true, bannerTime: actualTime},
 			{where: {email}}
-		);
-		return updateBanneado;
+		)
+		return updateBanneado
+		} else {
+			const updateBanneado = await banneado.update(
+			{banner: false, bannerTime: null},
+			{where: {email}}
+		)
+		return updateBanneado
+		}
 	} catch (error) {
 		return {Error: 'Error al bannear un usuario:' + error}
 	}

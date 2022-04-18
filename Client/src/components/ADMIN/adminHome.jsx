@@ -76,7 +76,7 @@ export default function AdminNav() {
                         <br/>
                         <h4>Configurar Usuarios</h4>
                         <hr/>
-                        <NavLink exact to="/adminCurrentQuestions">
+                        <NavLink exact to="/adminUsers">
                             <img
                                 src={admin03}
                                 alt="Admin03">
