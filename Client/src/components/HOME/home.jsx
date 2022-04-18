@@ -41,6 +41,9 @@ function Home(props) {
 				<Music/>
 				<div className='nav'>
 					<div style={{marginTop: "0.6rem"}} >
+						<NavLink style={{margin:"0.5rem"}} to={'/ranking'}>
+							<button  className="buttonSides brown">Ranking</button>
+						</NavLink>
 						<NavLink style={{margin:"0.5rem"}} to={'/tienda'}>
 							<button  className="buttonSides brown">Tienda</button>
 						</NavLink>

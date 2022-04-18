@@ -1,8 +1,13 @@
 import React from 'react'
 import '../STYLES/privacidad.css'
-import {NavLink} from 'react-router-dom'
+import {NavLink, useHistory} from 'react-router-dom'
 
 function Privacidad() {
+const history = useHistory()
+    const goingBack = () => {
+        history.goBack()
+    }
+
     return (
         <div className='containerPrivacidad'>
             <h3><strong>POLÍTICA DE PRIVACIDAD</strong></h3>
@@ -27,9 +32,9 @@ function Privacidad() {
             <p>Esta compañía no venderá, cederá ni distribuirá la información personal que es recopilada sin su consentimiento, salvo que sea requerido por un juez con un orden judicial.</p>
             <p>Zooper Trivia Se reserva el derecho de cambiar los términos de la presente Política de Privacidad en cualquier momento.</p>
 
-            <NavLink to='/'>
-                <button className='buttonSides brown'>Volver</button>
-            </NavLink>
+            
+                <button onClick={() => goingBack()} className='buttonSides brown'>Volver</button>
+            
         </div>
     )
 }

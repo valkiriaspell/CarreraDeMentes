@@ -116,8 +116,9 @@ const Game = ({
   let finalGame = preRoomUsers?.time * preRoomUsers?.questionAmount * 1000;
   useEffect(() => {
     setTimeout(() => {
-      setShowEndGame(true);
       startGameAlready(preRoomUsers.id, false);
+      allStartGame(false);
+      setShowEndGame(true);
     }, finalGame);
   }, []);
 
@@ -251,7 +252,7 @@ const Game = ({
         <div className="loadingGif">
           <img src={Animals} alt="Animals" width={300} />
           {user.host === true ? (
-            <button className="buttonStart" onClick={allStartGame}>
+            <button className="buttonStart" onClick={(e)=>allStartGame(true)}>
               START
             </button>
           ) : (
