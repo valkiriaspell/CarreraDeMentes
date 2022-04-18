@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { allUsersLevel } from "../../redux/actions";
@@ -22,15 +22,15 @@ export default function Ranking(){
     return(
     <div>
         <Music/>				
-        <div className= {Style.btn_home}>
+        <div className= {Style.btn_homeRanking}>
 
             <NavLink style={{margin:"0.5rem"}} to={'/home'}>
 			    <button  className="buttonSides brown">Volver</button>
 		    </NavLink>
         </div>
-        <h1 className= {Style.title}>Ranking de Jugadores</h1>
-            <div className= {Style.data}>
-                <div className = {Style.data_title}>
+        <h1 className= {Style.titleRanking}>Ranking de Jugadores</h1>
+            <div className= {Style.dataRanking}>
+                <div className = {Style.data_titleRanking}>
                     <Ranking_Tabla ranking={"POSICION"} wins={"PUNTOS"} name={"NAME"} level={"NIVEL"} points={"EXP."} avatar={"https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo5.png?alt=media&token=5e5bb88d-806a-4c38-b667-b27a9b5b01fc"} />
 
                 </div>
