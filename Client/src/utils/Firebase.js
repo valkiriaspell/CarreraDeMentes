@@ -110,7 +110,7 @@ export async function firebaseCerrarSesion() {
 
 export async function firebaseRecuperarContrasena(email) {
   const actionCodeSettings = {
-    url: "http://localhost:3000/login",
+    url: "https://www.zoopertrivia.com/login",
   };
   try {
     const auth = getAuth();
@@ -138,7 +138,7 @@ export async function firebaseRecuperarContrasena(email) {
 export async function firebaseVerificarUsuario(usuario){
   try {
     const actionCodeSettings = {
-      url: "http://localhost:3000/login",
+      url: "https://www.zoopertrivia.com/login",
     };
     const auth = getAuth();
     const test = await sendEmailVerification(usuario, actionCodeSettings)

@@ -67,7 +67,7 @@ const Game = ({
   let [actualQuestion, setActualQuestion] = useState(0);
 
   const getCoins = async (coins) => {
-    await axios.post("http://localhost:3001/mercadopago", {
+    await axios.post("/mercadopago", {
       coinsFinal: coins,
       email: user.email,
     });

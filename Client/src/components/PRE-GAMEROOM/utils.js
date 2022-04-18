@@ -13,7 +13,7 @@ export async function AddUserToPreRoom({idRoom, idUser}){
 
 export async function modifyHost(email, host) {
     try {
-        const { data } = await axios.put(`http://localhost:3001/users/?email=${email}&host=${host}`)
+        const { data } = await axios.put(`/users/?email=${email}&host=${host}`)
         console.log(data)
     } catch (e) {
         console.log(e)
@@ -22,7 +22,7 @@ export async function modifyHost(email, host) {
 
 export async function modifyHostById(id, host) {
     try {
-        const { data } = await axios.put(`http://localhost:3001/users/?id=${id}&host=${host}`)
+        const { data } = await axios.put(`/users/?id=${id}&host=${host}`)
         console.log(data)
     } catch (e) {
         console.log(e)
@@ -32,7 +32,7 @@ export async function modifyHostById(id, host) {
 
 export async function changeReady(id, bool){
     try{
-        const {data} = await axios.put(`http://localhost:3001/users/ready/?id=${id}&bool=${bool}`)
+        const {data} = await axios.put(`/users/ready/?id=${id}&bool=${bool}`)
         console.log(data)
     }catch(e) {
         console.log(e)
@@ -41,7 +41,7 @@ export async function changeReady(id, bool){
 
 export async function removeUserRoom(idRoom, idUserDelet){
     try{
-        const {data} = await axios.put('http://localhost:3001/gameRoom/delete', {idRoom, idUserDelet})
+        const {data} = await axios.put('/gameRoom/delete', {idRoom, idUserDelet})
         console.log(data)
     }catch(e) {
         console.log(e)

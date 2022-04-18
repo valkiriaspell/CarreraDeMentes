@@ -18,7 +18,7 @@ function UserCard({location}) {
   useEffect(() => {
     (async function fetchData(){
       if(location.search !== ''){
-        const respuesta = await axios.post(`http://localhost:3001/mercadopago${location.search}`, {email: email});
+        const respuesta = await axios.post(`/mercadopago${location.search}`, {email: email});
         dispatch(loginUser(email))
         Swal.fire({
           icon: `${respuesta.data.icon}`,
