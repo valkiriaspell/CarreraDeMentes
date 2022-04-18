@@ -1,15 +1,18 @@
 .containerPlayStore {
   overflow-x: hidden;
-  background-image: url("../IMG/fondo-landing.webp");
-  opacity: 0.8;
+  background-image: url("../IMG/arena-green.png");
+  opacity: 1px;
   background-size: cover;
   background-attachment: fixed;
   height: 100vh;
 }
 .containerPlayStore h1 {
-  color: #fff;
+  color: rgb(199, 225, 200);
   font-weight: bold;
-  text-shadow: 2px 2px #000;
+  text-shadow: 2px 2px 6px #000;
+  font-size: 60px;
+  font-family: 'Trebuchet MS'; 
+  background-color: rgba(98, 204, 112, 0.549);
 }
 .contentNavPlayStore {
   display: flex;
@@ -18,8 +21,8 @@
 }
 .btnVolverTienda {
   height: 3.2rem;
-  background-color: rgb(22, 185, 30);
-  border: 3px solid rgb(76, 194, 81);
+  background-color: rgb(7, 133, 13);
+  border: 3px solid rgb(46, 187, 53);
   color: white;
   font-weight: 600;
   padding: 0.5rem 1rem;
@@ -27,8 +30,8 @@
 }
 .btnVolverTienda:hover {
   cursor: url("../IMG/pata.png"), auto;
-  background-color: rgb(7, 133, 13);
-  border: 3px solid rgb(46, 187, 53);
+  background-color: rgb(22, 185, 30);
+  border: 3px solid rgb(76, 194, 81);
 }
 
 .containerCardsBuy {

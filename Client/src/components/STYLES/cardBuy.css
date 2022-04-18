@@ -1,8 +1,8 @@
 .containerCardsB {
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.45) 0%,
-    rgba(0, 0, 0, 0.3) 100%
+    rgba(236, 242, 240, 0.76) 0%,
+    rgba(206, 196, 196, 0.567) 100%
   );
   border-radius: 1rem;
   height: 25rem;
@@ -16,6 +16,8 @@
 }
 .containerCardsB:hover {
   animation: borde 0.5s linear infinite;
+  transform: scale(1.08);
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.3);;
 }
 @keyframes borde {
   0% {
@@ -53,8 +55,8 @@
 }
 .cardContent h3 {
   margin: 0 0.5rem;
-  color: #fff;
-  text-shadow: 2px 2px #000;
+  color: rgb(79, 79, 79);
+  text-shadow: 1px 1px #000;
   margin: 2rem 0;
 }
 .cardContent img {

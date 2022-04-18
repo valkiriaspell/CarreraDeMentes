@@ -48,7 +48,7 @@
 
 .cardAdmin {
   width: 330px;
-  height: 480px;
+  height: 500px;
   border: solid #1a4708 3px;
   background: linear-gradient(to bottom, rgb(241, 215, 184), rgb(227, 152, 61));
   border-radius: 8px;
@@ -181,7 +181,7 @@
   .botonesBarra{ 
     display: flex;
     align-items: center;
-    background-color: rgba(47, 51, 71, 0.422);
+    background-color: rgba(63, 72, 107, 0.723);
     border-radius: 0.3rem;  
     border: none;
     padding: 0.3rem 0.5rem 0.3rem 0.5rem;
@@ -189,7 +189,7 @@
     color: white;     
   }
   .botonesBarra:hover {
-    background-color: rgba(154, 158, 161, 0.4);
+    background-color: rgba(68, 132, 185, 0.625);
     cursor: pointer;    
   }
   

@@ -175,8 +175,8 @@ export default function AdminQuestions() {
                         <option value="Musica">Musica</option>
                         </select>
                     </div>
-                    <button className='botonesBarra' onClick={() => acceptQuestions()}>Aceptar</button>
-                    <button className='botonesBarra' onClick={() => rejectQuestions()}>Rechazar</button>
+                    <button disabled={preguntasID.length === 0 || preguntasID.length > 1} className='botonesBarra' onClick={() => acceptQuestions()}>Aceptar</button>
+                    <button disabled={preguntasID.length === 0 || preguntasID.length > 1} className='botonesBarra' onClick={() => rejectQuestions()}>Rechazar</button>
                     <button className='botonesBarra' id="refresh" onClick={(e) => refresh(e)}><GrUpdate /></button>
                     {/* <button className='botonesBarra' onClick={(e) => darkTheme(e)}><CgDarkMode /></button> */}
                 </div>
