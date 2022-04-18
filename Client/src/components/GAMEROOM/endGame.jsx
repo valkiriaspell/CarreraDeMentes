@@ -8,10 +8,11 @@ import corona3 from "../IMG/king3.png";
 import { NavLink } from "react-router-dom";
 import Music from "../MUSICA/musica";
 
-export default function EndGame({setGame}) {
+export default function EndGame({setGame, setPoints}) {
   const { preRoomUsers, user } = useSelector((state) => state);
 
   useEffect(() => {
+    setPoints({})
     const getExperiencie = async () => {
       console.log(user);
       console.log(preRoomUsers);
