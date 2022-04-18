@@ -17,7 +17,7 @@ export default function EndGame({setGame}) {
       console.log(preRoomUsers);
       const boolean = preRoomUsers?.users[0].id === user?.id ? true : false;
       await axios.put(
-        `http://localhost:3001/users/experience?id=${user.id}&winner=${boolean}`
+        `/users/experience?id=${user.id}&winner=${boolean}`
       );
     };
     getExperiencie();
