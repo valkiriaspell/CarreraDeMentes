@@ -28,7 +28,7 @@ function useChatSocketIo(idRoom) {
     useEffect(() =>{
         !user?.id && dispatch(loginUser(email))
         console.log(socketIoRef)
-        socketIoRef.current = socketIOClient('',{query:{idGameRoom: idRoom, email} } );
+        socketIoRef.current = socketIOClient(process.env.REACT_APP_API,{query:{idGameRoom: idRoom, email} } );
         console.log(socketIoRef)
             socketIoRef.current.on("NEW_CONNECTION", (email) =>{
                 console.log('NEW_CONNECTION')
