@@ -197,7 +197,7 @@ function useChatSocketIo(idRoom) {
     async function handleSubmitConfig(e, roomConfiguration){
         e.preventDefault()
         try{
-            const {data} = await axios.put('http://localhost:3001/gameRoom/config', {
+            const {data} = await axios.put('/gameRoom/config', {
                 idRoom, 
                 public_: roomConfiguration.open, 
                 questions: roomConfiguration.questions,
