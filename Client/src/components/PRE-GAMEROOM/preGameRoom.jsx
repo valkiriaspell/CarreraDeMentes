@@ -13,6 +13,7 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { FaLink } from "react-icons/fa";
 import { AiFillSound } from "react-icons/ai";
 import { getUrl } from "./utils";
+import Music from "../MUSICA/musica"
 
 function PreGameRoom({match}) {
 
@@ -25,7 +26,6 @@ function PreGameRoom({match}) {
   const { sendReady, sendStartGame, game, expelPlayer, setGame, messages, sendMessage, handleSubmitConfig, 
           roomConfiguration, setRoomConfiguration, positions, allStartGame, everybodyPlays, points 
         } = useSocket(idUser);
-
   
 
 
@@ -42,7 +42,7 @@ function PreGameRoom({match}) {
           <div className="logo">
                 <img width="200px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4" alt="Logo"></img>
             </div>
-          <AiFillSound style={{ width: "30px" }} />
+           <div></div>
         </div>
         <div>
           <ListPlayers expelPlayer={expelPlayer} />
@@ -53,7 +53,7 @@ function PreGameRoom({match}) {
               idUser={idUser} 
               handleSubmitConfig={handleSubmitConfig} 
               roomConfiguration={roomConfiguration} 
-              setRoomConfiguration={setRoomConfiguration} 
+              setRoomConfiguration={setRoomConfiguration}  
             />
           </div>
           <div>
@@ -81,6 +81,9 @@ function PreGameRoom({match}) {
             }
             <button className="buttonSides lowgreen" >Invitar</button>
           </div>
+        </div>
+        <div style={{marginLeft: "1rem"}}>
+        <Music />
         </div>
       </div>
     ) : (

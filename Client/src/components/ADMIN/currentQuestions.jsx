@@ -87,6 +87,7 @@ export default function CurrentQuestions() {
 
     function modifyQuestion() {     
             setShowForm(true)        
+       
     }
 
     
@@ -125,7 +126,7 @@ export default function CurrentQuestions() {
                     <option value="Musica">Musica</option>
                 </select></div>
                 <h6 className='botonesBarra'>Total Preguntas: {allQuestions.length}</h6>
-                <button className='botonesBarra' onClick={() => modifyQuestion()}>Modificar</button>
+                <button disabled={!selectedQuestion} className='botonesBarra' onClick={() => modifyQuestion()}>Modificar</button>
                 <button className='botonesBarra' id="refresh" onClick={(e) => refresh(e)}><GrUpdate /></button>
                 {/* <button className='botonesBarra' onClick={(e) => darkTheme(e)}><CgDarkMode /></button> */}
             </div>

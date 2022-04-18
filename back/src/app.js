@@ -7,7 +7,8 @@ const session = require('express-session');
 const cors = require('cors');
 const mercadopago = require('mercadopago');
 require('./db.js');
-const { MP_TKN } = process.env;
+const { MP_TKN, MAIL_HOST, MAIL_PORT, MAIL_USER, MAIL_PASS,SUPERADMIN_EMAIL } = process.env;
+const nodeMailer = require("nodemailer")
 
 //Configuracion Mercado Pago
 mercadopago.configure({
@@ -88,6 +89,38 @@ server.use(cors({
 
 server.use(bodyParser.urlencoded({extended: true, limit: '50mb'}));
 server.use(bodyParser.json({limit: '50mb'}));
+
+//NodeMailer
+server.post("/send_mail", cors(), async (req, res) => {
+	let {textMail, userMail} = req.body
+	
+	const transport = nodeMailer.createTransport({
+		host: MAIL_HOST,
+		port: MAIL_PORT,
+		auth: {
+			user: MAIL_USER,
+			pass: MAIL_PASS
+		}
+	})
+await transport.sendMail({
+	from: SUPERADMIN_EMAIL, 
+	to: userMail,
+	subject: "Notificación de ZooPer Trivia",
+	html: `<div className="email" style="
+	border: 1px solid black;
+	padding: 20px;
+	font-family: sans-serif;
+	font-size: 18px;
+	">
+	<h2> Hola ${userMail}! </h2>
+	<p>${textMail}</p>
+	<p>Equipo de Zooper Trivia</p>
+	</div>
+	 `
+	 
+})
+})
+
 //server.use(cookieParser());
 server.use(morgan('dev'));
 server.use((req, res, next) => {

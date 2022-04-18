@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { CgDarkMode } from "react-icons/cg";
 import { useDispatch, useSelector } from 'react-redux';
-import { getNewQuestions, handleQuestion } from '../../redux/actions';
+import { getNewQuestions, handleQuestion, sendingMail } from '../../redux/actions';
 import "../STYLES/admin.css"
 import Swal from "sweetalert2";
 import { GrRefresh, GrUpdate } from "react-icons/gr";
 import { useHistory } from 'react-router-dom';
+import {deleteStorage} from "../../utils/Firebase.js"
 import  AdminNav  from './adminNav'
 import admin01 from '../IMG/Admin1.png'
 
 
 export default function AdminQuestions() {
 
-    const dispatch = useDispatch();
-    const history = useHistory();
+    const dispatch = useDispatch(); 
     const [preguntasID, setPreguntas] = useState([])
     const [category, setCategory] = useState("")
+    const [images, setImages] = useState([])
+    const [emails, setEmails] = useState([])
+    const textReject = "Lamentablemente tu pregunta no cumplió los requisitos para formar parte de ZooPer Trivia! Intentalo nuevamente!!"
+    const textAccept = "Te informamos que tu pregunta fue exitosamente agregada a las preguntas de ZooPer Trivia! Gracias por participar y a seguir jugando!"
 
 
     useEffect(() => {
@@ -41,12 +45,21 @@ export default function AdminQuestions() {
         }
     }
 
-    function handleChecks(e) {
+    function handleChecks(e, img) {
         if (!preguntasID.includes(e.target.value)) {
             setPreguntas([...preguntasID, e.target.value])
+            setImages([...images, img])
         } else {
             let newPreguntas = preguntasID.filter(p => p !== e.target.value)
+            let newImages = images.filter(p => p !== img)
             setPreguntas(newPreguntas)
+            setImages(newImages)
+        }
+        if (!emails.includes(e.target.name)) {
+            setEmails([...emails, e.target.name])
+        } else {
+            let newEmails = emails.filter(e => e !== e.target.name)
+            setEmails(newEmails)
         }
     }
 
@@ -67,6 +80,10 @@ export default function AdminQuestions() {
             if (result.isConfirmed) {
                 const accept = "accept"
                 preguntasID.forEach(p => dispatch(handleQuestion(p, accept)))
+                emails.forEach(e => dispatch(sendingMail({
+                    userMail: e,
+                    textMail: textAccept
+                })));
                 Swal.fire({
                     title: 'Preguntas enviadas',
                     confirmButtonText: "Ok"
@@ -81,7 +98,7 @@ export default function AdminQuestions() {
     }
 
     function rejectQuestions() {
-        console.log(preguntasID, "preguntas ids")
+        
         Swal.fire({
             title: `Estas preguntas serán eliminadas de forma permanente`,
             icon: "warning",
@@ -96,7 +113,16 @@ export default function AdminQuestions() {
         }).then((result) => {
             if (result.isConfirmed) {
                 const reject = "reject"
-                preguntasID.forEach(p => dispatch(handleQuestion(p, reject)))
+                preguntasID.forEach(p => {
+                    dispatch(handleQuestion(p, reject))
+                })
+                images.forEach(img => {
+                    deleteStorage(img)
+                })
+                emails.forEach(e => dispatch(sendingMail({
+                    userMail: e,
+                    textMail: textReject
+                })));
                 Swal.fire({
                     title: 'Preguntas eliminadas',
                     confirmButtonText: "Ok"
@@ -130,7 +156,7 @@ export default function AdminQuestions() {
         }        
         return 0;
       });
-
+      console.log(images)
     return (
         <div className='adminHome'>
                     <div className='questionsNav'>
@@ -184,7 +210,7 @@ export default function AdminQuestions() {
                             </tr>
                                 {newQuestions?.map(q =>
                                 <tr key={q.id}>
-                                    <td><input type="checkbox" id="check" value={q.id} onClick={(e) => handleChecks(e)} /></td>
+                                    <td><input type="checkbox" name={q.email} value={q.id} onClick={(e) => handleChecks(e, q.image)} /></td>
                                     <td>{q.id}</td>
                                     <td>{q.email}</td>
                                     <td>{q.category}</td>

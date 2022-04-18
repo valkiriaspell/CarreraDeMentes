@@ -3,7 +3,7 @@ import { CgDarkMode } from "react-icons/cg";
 import "../STYLES/admin.css"
 import Swal from "sweetalert2";
 import { GrUpdate } from "react-icons/gr";
-import { allUsers, bannUser, createAdmin } from '../../redux/actions';
+import { allUsers, bannUser, createAdmin, sendingMail } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { RiGradienterLine } from "react-icons/ri";
 import  AdminNav  from './adminNav'
@@ -16,6 +16,9 @@ export default function AdminUsers() {
     const [selectedUser, setUser] = useState("")
     const [action, setAction] = useState("crear")
     const [search, setSearch] = useState("")
+    const textAdmin = "Te informamos que has sido designado como Administrador de ZooPer Trivia. Ahora podrás acceder a la sección de administrador donde podrás verificar el ingreso de nuevas preguntas al juego!"
+    const textNoAdmin = "Te informamos que tu cuenta ya no tendrá acceso al área de Administrador"
+    const textBann = "Te informamos que debido a algún incumplimiento a las normas de ZooPer Trivia. Tu cuenta ha sido banneada. No podrás acceder durante 72hs. Te sugerimos no reincidir en este comportamiento para evitar un posible banneo permanente."
 
     useEffect(() => {
         dispatch(allUsers())
@@ -68,6 +71,10 @@ export default function AdminUsers() {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         dispatch(bannUser(selectedUser));
+                        dispatch(sendingMail({
+                            userMail: selectedUser,
+                            textMail: textBann
+                        }))
                         document.location.reload(true)
                     }
                 })
@@ -97,6 +104,10 @@ export default function AdminUsers() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     dispatch(createAdmin({ email: selectedUser, admin: "admin" }));
+                    dispatch(sendingMail({
+                        userMail: selectedUser,
+                        textMail: textAdmin
+                    }))
                     Swal.fire({
                         title: `El usuario cuyo mail es ${selectedUser} es ahora Administrador`,
                         confirmButtonText: "Ok"
@@ -123,6 +134,10 @@ export default function AdminUsers() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     dispatch(createAdmin({ email: selectedUser, admin: "normal" }))
+                    dispatch(sendingMail({
+                        userMail: selectedUser,
+                        textMail: textNoAdmin
+                    }))
                     Swal.fire({
                         title: `El usuario cuyo mail es ${selectedUser} ya no es Administrador`,
                         confirmButtonText: "Ok"
@@ -190,6 +205,7 @@ export default function AdminUsers() {
                             <th>Nivel</th>
                             <th>Monedas</th>
                             <th>Categoria</th>
+                            <th>Estado</th>
                         </tr>
                         {totalUsers?.map(q =>
                             <tr key={q.email}>
@@ -199,6 +215,7 @@ export default function AdminUsers() {
                                 <td>{q.level}</td>
                                 <td>{q.coins}</td>
                                 <td>{q.admin}</td>
+                                {q.banner?<td>Sancionado</td>:<td>Habilitado</td>}
                             </tr>)}
                     </tbody>
                 </table>
