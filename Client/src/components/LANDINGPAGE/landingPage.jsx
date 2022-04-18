@@ -41,7 +41,7 @@ function LandingPage() {
                 </div>
                 <NavLink style={{margin:"1rem"}} to='/home'>
                     <button className="buttonSides brown" onClick={e => handleLoginAsGuest(e)}>
-                        Entrar como invitado
+                        Ingresar como invitado
                     </button>
                 </NavLink>
                 <NavLink  to='/login'>
