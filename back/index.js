@@ -8,7 +8,7 @@ const {SUPERADMIN_NAME, SUPERADMIN_EMAIL, SUPERADMIN_PASS, SUPERADMIN_ADMIN} =
 	process.env;
 
 // Syncing all the models at once.
-conn.sync({force: false}).then(() => {
+conn.sync({force: true}).then(() => {
 	app.listen(process.env.PORT || 3001, async () => {
 		getAvatars();
 		addInitServerMultCoins();		
