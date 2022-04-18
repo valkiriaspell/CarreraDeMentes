@@ -183,13 +183,14 @@ export default function AdminUsers() {
                         />
                 <div className='botonesBarra'>
                         <select onChange={(e) => actions(e)}>
-                            <option key={1} value="crear">Crear Admin </option>
-                            <option key={2} value="deshacer">Deshacer Admin </option>
+                            <option>Configuración Admin</option>
+                            <option disabled={!selectedUser} key={1} value="crear">Crear Admin</option>
+                            <option disabled={!selectedUser} key={2} value="deshacer">Deshacer Admin</option>
                         </select>
-                        <button className='botonesBarra' value="go" onClick={(e) => handleAdmin(e)}><RiGradienterLine /></button>
+                        <button disabled={!selectedUser} className='botonesBarra' value="go" onClick={(e) => handleAdmin(e)}><RiGradienterLine /></button>
                 </div>
                 <h6 className='botonesBarra'>Usuarios: {totalUsers.length}</h6>
-                <button className='botonesBarra' onClick={() => banearUser()}>Sancionar</button>
+                <button disabled={!selectedUser}  className='botonesBarra' onClick={() => banearUser()}>Sancionar</button>
                 <button className='botonesBarra' onClick={(e) => refresh(e)}><GrUpdate color="white" /></button>
                 {/* <button className='botonesBarra' onClick={(e) => darkTheme(e)}><CgDarkMode /></button> */}
             </div>
