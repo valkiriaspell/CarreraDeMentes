@@ -23,14 +23,14 @@ import CurrentQuestions from './components/ADMIN/currentQuestions';
 import JoinWithLink from './components/PRE-GAMEROOM/joinWithLink';
 import Privacidad from './components/PRIVACIDAD/privacidad';
 import Music from './components/MUSICA/musica';
+import Ranking from './components/RANKING/Ranking';
 
 
 initializeApp(config);
 
 function App() {
   return (
-    <div className='App'>
-      <Route path='/' component={Music} />
+    <div className='App'>      
       <Route exact path='/' component={LandingPage} />
       <Route exact path='/' component={Footer} />
       <Route path='/home' component={Home} />

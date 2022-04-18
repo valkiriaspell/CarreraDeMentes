@@ -4,9 +4,10 @@ import { NavLink } from "react-router-dom";
 import { allUsersLevel } from "../../redux/actions";
 import Style from "../STYLES/Ranking.module.css"
 import Ranking_Tabla from "./Ranking_Tabla";
-import Music from './components/MUSICA/musica';
+import Music from '../MUSICA/musica';
 
 export default function Ranking(){
+
 
     const users = useSelector(state => state.totalUsers);
 
@@ -18,7 +19,9 @@ export default function Ranking(){
 
     
 
-    return(<div>
+    return(
+    <div>
+        <Music/>				
         <div className= {Style.btn_home}>
 
             <NavLink style={{margin:"0.5rem"}} to={'/home'}>
