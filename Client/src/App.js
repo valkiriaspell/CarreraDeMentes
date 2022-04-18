@@ -22,8 +22,8 @@ import AdminQuestions from './components/ADMIN/adminQuestions';
 import CurrentQuestions from './components/ADMIN/currentQuestions';
 import JoinWithLink from './components/PRE-GAMEROOM/joinWithLink';
 import Privacidad from './components/PRIVACIDAD/privacidad';
-import Music from './components/MUSICA/musica';
 import Ranking from './components/RANKING/Ranking';
+
 
 
 initializeApp(config);
