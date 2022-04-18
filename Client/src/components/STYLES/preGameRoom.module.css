@@ -114,8 +114,13 @@
   border: none;
   margin: 0.2rem;
   margin-bottom: 1rem;
+  font-size: 1.4rem;
 }
-
+.buttonsPreGameRoom {
+  display:flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
 
 /* ======= EDITAR SALA ======= */
 .containerEditRoom {

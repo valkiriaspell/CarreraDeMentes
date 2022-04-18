@@ -36,13 +36,19 @@ const Chat = ({idUser, messages, sendMessage}) =>{
                                         message.writtenByCurrentUser
                                             ? <p key={`${Math.random()}${message.name}${message?.text}`} 
                                                 style={{textAlign: "justify", marginBottom: "0.4rem", fontSize: "1.1rem", color: "rgba(239, 158, 36, 0.925)", fontWeight: "bold"}} 
-                                                >
-                                                    {`Yo: ${message?.text}`}
-                                                </p>
-                                            : <p key={`${Math.random()}${message.name}${message?.text}`} 
-                                                style={{textAlign: "justify", wordBreak: "break-word", marginBottom: "0.4rem", fontSize: "1.1rem", color: "rgb(236, 221, 48)",  fontWeight: "bold"}} 
+                                              >
+                                                  {`Yo: ${message?.text}`}
+                                              </p>
+                                            : preRoomUsers.users.find(user => user.name === message.name)
+                                                ? <p key={`${Math.random()}${message.name}${message?.text}`} 
+                                                  style={{textAlign: "justify", wordBreak: "break-word", marginBottom: "0.4rem", fontSize: "1.1rem", color: "rgb(236, 221, 48)",  fontWeight: "bold"}} 
                                                 >
                                                     {`${message?.name}: ${message?.text}`}
+                                                </p> 
+                                                : <p key={`${Math.random()}${message.name}${message?.text}`} 
+                                                  style={{textAlign: "justify", wordBreak: "break-word", marginBottom: "0.4rem", fontSize: "1.1rem", color: "rgb(236, 221, 48)",  fontWeight: "bold"}} 
+                                                >
+                                                    {`${message?.name} (espectador): ${message?.text}`}
                                                 </p> 
                             )
                         })

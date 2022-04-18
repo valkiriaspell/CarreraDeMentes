@@ -61,7 +61,7 @@ function PreGameRoom({match}) {
           </div>
 
           <div className={s.buttonsPreGameRoom}>
-          <button className="buttonSides lowgreen" onClick={getUrl} ><FaLink/></button>
+            <button className="buttonSides lowgreen" onClick={getUrl} ><FaLink/></button>
             {
               user?.host === true 
                 ? (
@@ -77,9 +77,10 @@ function PreGameRoom({match}) {
                   Iniciar
                 </button>
                 ) 
-                : <button className="buttonSides lowgreen" onClick={sendReady}>Listo</button>  
+                : preRoomUsers.users.find(us => us.id === user.id) &&
+                 <button className="buttonSides lowgreen" onClick={sendReady}>Listo</button> 
+
             }
-            <button className="buttonSides lowgreen" >Invitar</button>
           </div>
         </div>
         <div style={{marginLeft: "1rem"}}>

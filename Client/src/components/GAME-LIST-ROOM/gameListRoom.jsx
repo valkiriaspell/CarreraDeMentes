@@ -39,11 +39,19 @@ function GameListRoom() {
     dispatch(listAllRooms())
   };
 const history = useHistory()
+
   function handleJoinRoom(game){
-    game.numberUsersInRoom === 6
+    game.numberUsersInRoom >= 6
       ? alert('la sala esta llena') // mejorar alerta
       : AddUserToPreRoom({idRoom: game.id, idUser: user.id})
       .then(()=> dispatch(listUsersInPreRoom(game.id)))
+      .then(() => {
+        history.push(`/room/${game.id}`)})
+     
+  }
+
+  function handleWatchRoom(game){
+      dispatch(listUsersInPreRoom(game.id))
       .then(() => {
         history.push(`/room/${game.id}`)})
      
@@ -88,6 +96,7 @@ const history = useHistory()
               <span>{game.numberUsersInRoom}</span>
               <span style={{marginLeft: "2.5rem"}} >{game.questionAmount}</span>
               <button className="buttonSides brown" onClick={() => handleJoinRoom(game)} >Unirse</button>
+              <button className="buttonSides blue" onClick={() => handleWatchRoom(game)} >Ver</button>
             </div>
           );
         })
