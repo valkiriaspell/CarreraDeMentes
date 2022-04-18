@@ -1,5 +1,5 @@
 
-.title{
+.titleRanking{
     position: relative;
     top: 3vh;
     display: inline-block;
@@ -10,13 +10,13 @@
     box-shadow: 0px 3px 6px 2px #000000fa;
 }
 
-.btn_home{
+.btn_homeRanking{
     position: absolute;
     top: 3vh;
     left: 9vh;
 }
 
-.data{
+.dataRanking{
     height: 70vh;
     width: 90%;
     background-color: #408d4f8f;
@@ -27,24 +27,24 @@
     box-shadow: 0px 0px 20px 3px #000000cc;
 }
 
-.data::-webkit-scrollbar {
+.dataRanking::-webkit-scrollbar {
     width: 10px;
 }
 
-.data::-webkit-scrollbar-thumb {
+.dataRanking::-webkit-scrollbar-thumb {
     background-color: #ffffff;
 }
 
-.data::-webkit-scrollbar-thumb {
+.dataRanking::-webkit-scrollbar-thumb {
     background-color: #01523994;
     border-radius: 15px;
 }
 
-.data_title{
+.data_titleRanking{
     background-color: #01523994;
 }
 
-.view_data{
+.view_dataRanking{
         display: flex;
         box-shadow: 1px -2px 3px 0px #91ba7a;
         color: #ffffff;
@@ -54,15 +54,15 @@
         justify-content: space-evenly;
 }
 
-.corona > img{
+.coronaRanking img{
     width: 30px;
 }
 
-span > img{
+.infoUserRanking img{
     width: 50px;
-}
+} 
 
-span {
+.infoUserRanking {
     margin: 25px;
     width: 100px;
     text-overflow: ellipsis;
@@ -70,60 +70,60 @@ span {
     white-space: nowrap;
 } 
 
-.data_title:hover{
+.data_titleRanking:hover{
     background-color: #ff0000;
 }
 
-.view_data:hover{
+.view_dataRanking:hover{
     box-shadow: -1px 0px 5px 2px #0000007f;
     background-color: #afc87e8f;
 }
 
 
 @media screen and (max-width: 800px){
-    .view_data {
+    .view_dataRanking {
         font-size: 12px;
     }
 }
 
 @media screen and (max-width: 600px) {
-    span {
+    .infoUserRanking {
         margin: 15px;
     }
-    .title {
+    .titleRanking {
         font-size: 20px;
         margin: 15px;
     }
 
-    .btn_home{
+    .btn_homeRanking{
         position: relative;
         left: 0;
     }
 }
 @media screen and (max-width: 530px) {
-    span {
+    .infoUserRanking {
         margin: 10px;
     }
 
-    span>img {
+    .infoUserRanking img {
         width: 40px;
     }
 }
 @media screen and (max-width: 350px) {
-    span {
+    .infoUserRanking {
         margin: 5px;
     }
     
-    .title {
+    .titleRanking {
         font-size: 15px;
         margin: 15px;
     }
 
-    .view_data {
+    .view_dataRanking {
         font-size: 10px;
     }
 
-    span>img {
+    .infoUserRanking img {
         width: 30px;
     }
 }
