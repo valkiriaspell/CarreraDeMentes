@@ -66,8 +66,8 @@ io.on('connection', (socket) => {
 	socket.on('FAST_REMOVE',(id)=>{
 		io.to(idGameRoom).emit('FAST_REMOVE',id)
 	})
-	socket.on('ALL_START_GAME',()=>{
-		io.to(idGameRoom).emit('ALL_START_GAME')
+	socket.on('ALL_START_GAME',(bool)=>{
+		io.to(idGameRoom).emit('ALL_START_GAME', bool)
 	})
 });
 
