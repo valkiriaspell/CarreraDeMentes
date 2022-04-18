@@ -67,17 +67,6 @@ function Home(props) {
 						<NavLink style={{margin:"0.2rem"}} to={'/editProfile'}>
 							<button style={{fontSize:"11px"}} className="buttonSides brown">Mi perfil</button>
 						</NavLink>
-						{/* <div>
-							<NavLink style={{display: "flex", justifyContent: "start"}} to={'/'}>
-								<button
-								style={{fontSize:"11px"}}
-									className='buttonSides brown buttonCerrarSesión'
-									onClick={(e) => handleSignOut(e)}
-								>
-									<FaPowerOff />
-								</button>
-							</NavLink>
-						</div> */}
 					</div>
 					<div>
 						{/* COMPONENTE USERCARD */}
