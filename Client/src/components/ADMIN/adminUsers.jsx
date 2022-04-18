@@ -25,7 +25,7 @@ export default function AdminUsers() {
     }, [])
 
     let { totalUsers } = useSelector(state => state)
-
+    console.log(totalUsers)
 
     function refresh() {
         document.location.reload(true)
@@ -218,6 +218,7 @@ export default function AdminUsers() {
                                 <td>{q.coins}</td>
                                 <td>{q.admin}</td>
                                 {q.banner?<td>Sancionado</td>:<td>Habilitado</td>}
+                                {q.banner?<td>{q.bannerTime}</td>:<td>N/A</td>}
                             </tr>)}
                     </tbody>
                 </table>
