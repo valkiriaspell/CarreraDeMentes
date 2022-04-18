@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { newQuestion, sendingMail } from '../../../redux/actions';
 import { Link, useHistory } from 'react-router-dom'
+import DragDrop from './drag-drop';
 import "../../STYLES/form.css"
 import Swal from 'sweetalert2';
+import Music from '../../MUSICA/musica';
+import {uploadFiles} from '../../../utils/Firebase.js'
 
 export default function FormAddQuestions() {
     const dispatch = useDispatch();
@@ -19,7 +22,7 @@ export default function FormAddQuestions() {
     const [false1, setF1] = useState("");
     const [false2, setF2] = useState("");
     const [false3, setF3] = useState("");
-    const [image, setImg] = useState("");
+    const [image, setImg] = useState(null);
     const [msg, setMSG] = useState("");
     const [terminos, setTerminos] = useState(false);
    
@@ -143,7 +146,7 @@ export default function FormAddQuestions() {
 
    
     //////////  ---->    on Submit   <------ //////////////
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
         //////////////// ---->    NO EMPTY ANSWERS   <------ /////////////
         !question || !answer || !false1 || !false2 || !false3 || !image ? setErrorTotal("Completar formulario") : setErrorTotal("")
@@ -165,7 +168,8 @@ export default function FormAddQuestions() {
                 
             } else {
                 setErrorA("")
-                setMSG("Tu pregunta fue enviada para validación")                
+                setMSG("Tu pregunta fue enviada para validación")  
+                const URL= await uploadFiles(image,category)
                 dispatch(newQuestion({
                     question,
                     category,               
@@ -173,7 +177,7 @@ export default function FormAddQuestions() {
                     false1,
                     false2,            
                     false3,            
-                    image,
+                    image:URL,
                     email
                 }));
                 //////////////// ---->    NODEMAILER   <------ /////////////
@@ -195,6 +199,8 @@ export default function FormAddQuestions() {
 
     if (autenticado) {
         return (
+            <div>
+                <Music/>
             <div className='form'>
                 <form onSubmit={onSubmit}>
                     <h3>Crear nueva pregunta</h3>
@@ -245,15 +251,10 @@ export default function FormAddQuestions() {
                         <div>
                             <input className={errorAnswer !== "" ? 'danger' : "inputEmail"} name="false3" type="text" value={false3} onChange={(e) => validation(e)} />
                         </div>
-                    </div>
+                    </div>                    
                     <div className='formMail'>
                         <label>URL de Imagen*</label>
-                        <div>
-                            <input className={errorImage !== "" ? 'danger' : "inputEmail"} name="image" type="text" value={image} onChange={(e) => validation(e)} />
-                            {errorImage ? <p className='error'>{errorImage}</p> : null}
-                        </div>
-                        
-                        {image ? <div className='vistaImagen'><img height={150} src={image}/> </div> : null}
+                        <DragDrop img={image} setImg={setImg} validation={validation}/>
                     </div>
                     {errorAnswer ? <p className='error'>{errorAnswer}</p> : null}
                     {errorTotal ? <p className='error'>{errorTotal}</p> : null}
@@ -273,13 +274,14 @@ export default function FormAddQuestions() {
                                     <li> El incumplimiento de lo anterior podría incurrir en la sanción de su cuenta
                                     </li>
                                     </ul></div>
-                        <input disabled={!question || !terminos || errorQuestion || errorAnswer || errorImage || errorTotal} className={!question || !terminos || errorQuestion || errorAnswer || errorTotal || errorImage ?
+                        <input disabled={!question || !terminos || errorQuestion || errorAnswer || image===null || errorTotal} className={!question || !terminos || errorQuestion || errorAnswer || errorTotal || image===null ?
                             "disabled" : "enabled"} type="submit" value="Enviar pregunta" />
                     </div>
                     {msg ? <p>{msg}</p> : null}
                 </form>
                 <Link to="/home"><button className='volver' >← Volver atras </button></Link>
 
+            </div>
             </div>
         );
     } else {

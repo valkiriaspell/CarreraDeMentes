@@ -1,8 +1,6 @@
 .container {
-  /* background: rgb(215,255,185);
-  background: linear-gradient(180deg, rgba(215,255,185,0.9701047687861272) 0%, rgba(1,121,68,1) 49%, rgba(3,77,22,0.8371567919075145) 100%); */
   background-color: rgba(0, 0, 0, 0.392);
-  width: 850px;
+  width: 775px;
   min-height: 730px;
   border: solid 3px rgba(216, 221, 226, 0.4);
   border-radius: 0.4rem;
@@ -31,6 +29,7 @@
   margin-left: -4rem;
 }
 
+
 /* ======= LISTA DE JUGADORES ======= */
 .containerPlayers {
   background-color: rgba(0, 0, 0, 0.519);
@@ -51,7 +50,6 @@
   margin-right: -120px;
 }
 .allPlayers {
-  
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -83,10 +81,8 @@
   margin-right: -0.6rem;
   border-radius: 5px;
   position: relative;
-  right: 190px;
-  
+  right: 190px; 
 }
-
 .containerPlayers li {
   display: flex;
   flex-direction: row;
@@ -96,7 +92,7 @@
   list-style: none;
   margin-top: 1rem;
   margin-right: 4rem;
-  background-color: rgba(5, 90, 35, 0.991);
+  background-color: rgba(78, 84, 80, 0.701);
   width: 16rem;
   border-radius: 2rem;
   color: white;
@@ -113,7 +109,6 @@
 /* ======= BOTONES INVITAR E INICIAR ======= */
 .buttonsPreGameRoom button {
   color: rgba(255, 255, 255, 0.769);
-  
   background-color: rgba(132, 134, 136, 0.4);
   padding: 0.3rem;
   border: none;
@@ -180,8 +175,6 @@
   height: 200px;
   width: 370px;
   padding-left: .2rem;
-  color: #0d472c;
-  /* color: #554905; */
 }
 .containerChat::-webkit-scrollbar {
   -webkit-appearance: none;
@@ -252,14 +245,14 @@
   .container {
     margin: 1rem;
     width: 360px;
-    height: 740px;
+    height: 760px;
   }
   .navPreGameRoom h3 {
     margin-left: -1rem;
   }
   .containerEditRoom {
     width: 325px;
-    height: 280px;
+    height: 300px;
   }
   .containerChat {
     margin: 1rem;

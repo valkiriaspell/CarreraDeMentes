@@ -10,6 +10,7 @@ import {BsFacebook, BsLinkedin, BsTwitter, BsWhatsapp} from 'react-icons/bs';
 import {createRoom, loginUser} from '../../redux/actions';
 import {useSelector, useDispatch} from 'react-redux';
 import { modifyHost } from '../PRE-GAMEROOM/utils';
+import Music from '../MUSICA/musica';
 
 function Home(props) {
 	const dispatch = useDispatch();
@@ -37,8 +38,12 @@ function Home(props) {
 	if (autenticado) {
 		return (
 			<div className='container'>
+				<Music/>
 				<div className='nav'>
 					<div style={{marginTop: "0.6rem"}} >
+						<NavLink style={{margin:"0.5rem"}} to={'/ranking'}>
+							<button  className="buttonSides brown">Ranking</button>
+						</NavLink>
 						<NavLink style={{margin:"0.5rem"}} to={'/tienda'}>
 							<button  className="buttonSides brown">Tienda</button>
 						</NavLink>
