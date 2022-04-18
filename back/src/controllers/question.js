@@ -65,7 +65,7 @@ async function getQuestions(count, category, idRoom) {
 
 		questions.forEach(q => questionList.push(dbQuestions[q]));
 
-		await gameRoom.addQuestion(questionList);
+		await gameRoom.setQuestions(questionList);
 		await gameRoom.update({
 			questionAmout: quetiosTotal
 		}, {

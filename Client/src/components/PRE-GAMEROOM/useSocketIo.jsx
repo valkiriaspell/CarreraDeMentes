@@ -100,9 +100,9 @@ function useChatSocketIo(idRoom) {
                 setPoints({point, name})
             }) 
 
-            socketIoRef.current.on("ALL_START_GAME", () =>{
+            socketIoRef.current.on("ALL_START_GAME", ({bool}) =>{
                 console.log('empiezen!')
-                setEverybodyPlays(true)
+                setEverybodyPlays(bool)
             }) 
            
 
@@ -214,9 +214,9 @@ function useChatSocketIo(idRoom) {
         console.log('nuevo evento')
         socketIoRef.current.emit("NEW_EVENT", {id, pointsTotal, point, name})
     } 
-    function allStartGame(){
+    function allStartGame(bool){
         console.log('yaaaa')
-        socketIoRef.current.emit("ALL_START_GAME")
+        socketIoRef.current.emit("ALL_START_GAME", {bool})
     } 
 
 
