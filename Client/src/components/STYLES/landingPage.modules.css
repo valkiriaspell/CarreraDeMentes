@@ -16,8 +16,6 @@
   margin-top: 1rem;
 }
 
-
-
 .logoLanging {
   display: flex;
   justify-content: center;
@@ -25,7 +23,6 @@
   flex-direction: column;
   
 }
-
 
 .link button {
   border-radius: 0.3rem;
@@ -47,5 +44,8 @@
       }
       .logoLanding img {
         width: 350px;
+      }
+      .logoLanging{
+        margin-bottom: -4rem;
       }
   }
