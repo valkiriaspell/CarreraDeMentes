@@ -67,7 +67,7 @@ function Instructions() {
           <div className="carousel-item active">
             <img src={IMG}  className="d-block w-100 pergamino" alt="IMG" />
             <div className="carousel-caption d-none d-md-block containerCard">
-              <img src={response} height={200} alt="response"/>
+              <img src={response} height={170} alt="response"/>
               <h5>¡Juga a Zooper Trivia!</h5>
               <p>
                 Responde a preguntas aleatorias de diversas categorías, antes de que se te acabe el tiempo.
@@ -78,7 +78,7 @@ function Instructions() {
           <div className="carousel-item">
             <img src={IMG} className="d-block w-100" alt="IMG" />
             <div className="carousel-caption d-none d-md-block containerCard">
-            <img src={nivel} height={180} alt="nivel"/>
+            <img src={nivel} height={140} alt="nivel"/>
               <h5>¡Sumá puntos de experiencia y subí de Nivel!</h5>
               <p>
                 Posicionate en lo más alto de nuestro Top 20 de jugadores.
@@ -109,7 +109,7 @@ function Instructions() {
           <div className="carousel-item">
             <img src={IMG} className="d-block w-100" alt="IMG" />
             <div className="carousel-caption d-none d-md-block containerCard">
-            <img style={{marginBottom: "15px"}} src={moneda} height={140} alt="monedas"/>
+            <img className="imgMoneda" src={moneda} height={120} alt="monedas"/>
               <h5>¡Comprá monedas en nuestra Tienda! 💵</h5>
               <p>
               Adquirí las monedas de Zooper Trivia para cambiarlas por poderes y así aumentar tus chances de ganar.

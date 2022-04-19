@@ -6,17 +6,17 @@
     align-self: center;
     align-content: center;  
     display: flex;
-    padding-top: 10px;
+    padding-top: 5px;
     text-align: left;
     flex-direction: column;    
-    background: rgba(7, 59, 2, 0.5);
-    width: 400px;
+    background: rgba(30, 91, 30, 0.581);
+    width: 500px;
     margin: auto;
     justify-content: space-between;        
     color: rgb(255, 255, 255);            
     padding-left: 20px;        
     padding-right: 20px;        
-    margin-top: 55px; 
+    margin-top: 20px; 
     border: 1px solid #fff;
     border-radius: 2rem;
 }
@@ -66,9 +66,9 @@
 }
 
 .form input:not(:nth-last-of-type(8)) {
-    width: 80%;           
+    width: 100%;           
     height: 30px;
-    margin-top: 8px;
+    margin-top: 2px;
     margin-bottom: 4px;
     display: inline-block;
     /* border: 1px solid #ccc; */
@@ -87,7 +87,7 @@
 .form label:not(:last-child){
     font-size: 1.4rem;
     font-weight: 700;
-    color: rgb(94, 235, 94);
+    color: rgb(108, 230, 108);
 }
 
 .form select {
@@ -120,7 +120,7 @@
 
 .FormSubmit input.enabled{
     width: 100%;
-    height: 3rem;
+    height: 2.5rem;
     color: rgb(0, 0, 0);
     /* background-color: rgb(10, 80, 25);     */
     background-image: url(../IMG/arena-green.png);
@@ -189,16 +189,16 @@
 }
 /* ====== Buttons ====== */
 .volver {
-    display: flex;
-    width: 50%;
-    justify-content: center;
-    background-image: url(../IMG/fondo-boton-arena.png);
-    border-radius: 0.3rem;
+    position: relative;
+    color: rgba(221, 221, 221, 0.9);
+    background-color: rgb(225, 145, 32);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     border: none;
-    color: rgba(221, 221, 221, 0.829);
-    border: none;  
-    margin: 0.5rem 0; 
-    padding: 0.3rem 0; 
+    width: 10rem;
+    border-radius: 2rem;
+    font-weight: bold;
+    padding: 0.2rem;
 }
 .volver:hover {
     filter: brightness(1.2);
@@ -211,11 +211,11 @@
     align-items: center;
     
 }
-.checkbox label {
+/* .checkbox label { */
     /* position: relative;
     left: -40%; */
     
-}
+/* } */
 #check {          
     height: 12px;
     width: 10%;

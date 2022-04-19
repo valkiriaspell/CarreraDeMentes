@@ -34,20 +34,18 @@ function PreGameRoom({match}) {
   if (autenticado) {
     return game === false ? (
       <div className={s.container}>
-        <div className={s.iconMusicPreRoom}>
-          <Music />
-        </div>
         <div className={s.navPreGameRoom}>
           <Link style={{ textDecoration: "none" }} to="/home">
-            <button className="buttonSides lowgreen">
-              <AiOutlineArrowLeft style={{ marginRight: "0.4rem" }} />
+            <button style={{color: "rgba(255, 255, 255, 0.829)"}} className="buttonSides lowgreen">
               Volver
             </button>
           </Link>
           <div className="logo">
-                <img width="200px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4" alt="Logo"></img>
+                <img className="logoPGameroom" width="200px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4" alt="Logo"></img>
             </div>
-           <div></div>
+            <div>
+          <Music />
+        </div>
         </div>
         <div>
           <ListPlayers expelPlayer={expelPlayer} />

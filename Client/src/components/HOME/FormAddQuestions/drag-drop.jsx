@@ -48,7 +48,7 @@ function DragDrop(props){
             Swal.fire({
                 icon: "error",
                 title:
-                  "solo se puede cargar un archivo por pregunta",
+                  "Sólo se puede cargar un archivo por pregunta",
                 showConfirmButton: true,
                 heightAuto: false,
                 timer: 3000,
@@ -78,7 +78,7 @@ function DragDrop(props){
             Swal.fire({
                 icon: "error",
                 title:
-                  "fromato de archivo no permitido",
+                  "Formato de archivo no permitido",
                 showConfirmButton: true,
                 heightAuto: false,
                 timer: 3000,
@@ -96,8 +96,8 @@ function upLoadFile(file){//envia el archivo al back
     return(
         <div>
             <div className="drop-area" id="drop-area">
-                <h2 >Arrastra y suelta imagenes o</h2>
-                <button className="button">selecciona una imagen</button>
+                <h2 >Arrastra y suelta una imagen o</h2>
+                <button className="button">Selecciona una imagen</button>
                 <input type="file" id="input-file" hidden multiple></input>                    
             </div>
                 <div id="preview">
