@@ -14,6 +14,7 @@ import Bomb1 from "../IMG/bomb.png";
 import Bomb2 from "../IMG/bombs.png";
 import X2 from "../IMG/gift-box.png";
 import Dollar from "../IMG/dollar.png";
+import '../STYLES/buttons.css';
 
 function randomQuestions(array) {
   var m1 = Math.floor((Math.random() * array.length) % array.length);
@@ -252,14 +253,14 @@ const Game = ({
     <div>
       {active === true ? (
         <div className="loadingGif">
-          <img src={Animals} alt="Animals" width={300} />
+          <img style={{marginBottom: "5rem"}} width="500px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo5.png?alt=media&token=5e5bb88d-806a-4c38-b667-b27a9b5b01fc"></img>
           {user.host === true ? (
-            <button className="buttonStart" onClick={(e) => allStartGame(true)}>
-              COMIENZA
+            <button className="buttonSides lowgreen" style={{color: 'white', fontSize:'20px'}} onClick={(e) => allStartGame(true)}>
+              COMENZAR
             </button>
           ) : (
             <h6
-              style={{ color: "rgba(221, 221, 221, 0.829)" }}
+              style={{ color: "black", fontSize:'25px', fontWeight: 'bold'}}
             >{`Esperando a que ${preRoomUsers.name} inicie la partida...`}</h6>
           )}
         </div>
@@ -319,7 +320,7 @@ const Game = ({
                   })}
               </div>
               <div className="containerPowers">
-                <div className="contentPower">
+                <div className="contentPower1">
                   <button className="powers" onClick={() => powerDelete(1)}>
                     <img src={Bomb1} alt="BOMB1" width={30}></img>
                   </button>
@@ -327,7 +328,7 @@ const Game = ({
                     <img src={Dollar} alt="Dollar" width={20} /> 100
                   </div>
                 </div>
-                <div className="contentPower">
+                <div className="contentPower2">
                   <button className="powers" onClick={() => powerDelete(2)}>
                     <img src={Bomb2} alt="BOMB2" width={30}></img>
                   </button>
@@ -335,7 +336,7 @@ const Game = ({
                     <img src={Dollar} alt="Dollar" width={20} /> 200
                   </div>
                 </div>
-                <div className="contentPower">
+                <div className="contentPower3">
                   <button
                     className="powers"
                     onClick={() =>
