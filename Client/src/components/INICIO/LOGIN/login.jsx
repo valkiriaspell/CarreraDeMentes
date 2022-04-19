@@ -95,7 +95,7 @@ function Login() {
       const login = await firebaseLogin(input.email, input.password);
       if(login?.accessToken){
         if (login.emailVerified === true) {
-          dispatch(loginUser(input.email));
+          await dispatch(loginUser(input.email));
           dispatch(userToken(login.accessToken));
           localStorage.setItem("email", login.email);
           localStorage.setItem("token", login.accessToken);

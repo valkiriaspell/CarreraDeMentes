@@ -11,6 +11,7 @@ import {createRoom, loginUser} from '../../redux/actions';
 import {useSelector, useDispatch} from 'react-redux';
 import { modifyHost } from '../PRE-GAMEROOM/utils';
 import Music from '../MUSICA/musica';
+import Swal from "sweetalert2";
 
 function Home(props) {
 	const dispatch = useDispatch();
@@ -18,9 +19,24 @@ function Home(props) {
 	const autenticado = localStorage.getItem('token');
 	const { user } = useSelector((state) => state);
 	const email = localStorage.getItem('email');
+	
 	useEffect(() =>{
 		!user?.name && dispatch(loginUser(email))
+		console.log(user)
 	}, [])
+
+	useEffect(() => {
+		if(Date.parse(user.bannerTime)>new Date()){
+			Swal.fire({
+			  icon: "error",
+			  title:
+				`Lo sentimos, el usuario se encuentra bloqueado hasta el ${user.bannerTime}`,
+			  heightAuto: false,
+			  timer: 3000,
+			  }).then(()=>history.push('/'))
+		  }
+	}, [user])
+
 	async function handleSignOut(e) {
 		e.preventDefault();
 		await firebaseCerrarSesion();
