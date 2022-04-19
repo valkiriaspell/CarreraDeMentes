@@ -3,14 +3,14 @@ import {NavLink, useHistory} from 'react-router-dom';
 import {firebaseCerrarSesion} from '../../utils/Firebase';
 import '../STYLES/home.modules.css';
 import '../STYLES/buttons.css';
-import { FaPowerOff } from 'react-icons/fa';
 import UserCard from './userCard';
 import Instructions from './instructions';
-import {BsFacebook, BsLinkedin, BsTwitter, BsWhatsapp} from 'react-icons/bs';
 import {createRoom, loginUser} from '../../redux/actions';
 import {useSelector, useDispatch} from 'react-redux';
 import { modifyHost } from '../PRE-GAMEROOM/utils';
 import Music from '../MUSICA/musica';
+import Social from './social';
+import Swal from "sweetalert2";
 
 function Home(props) {
 	const dispatch = useDispatch();
@@ -18,9 +18,24 @@ function Home(props) {
 	const autenticado = localStorage.getItem('token');
 	const { user } = useSelector((state) => state);
 	const email = localStorage.getItem('email');
+	
 	useEffect(() =>{
 		!user?.name && dispatch(loginUser(email))
+		console.log(user)
 	}, [])
+
+	useEffect(() => {
+		if(Date.parse(user.bannerTime)>new Date()){
+			Swal.fire({
+			  icon: "error",
+			  title:
+				`Lo sentimos, el usuario se encuentra bloqueado hasta el ${user.bannerTime}`,
+			  heightAuto: false,
+			  timer: 3000,
+			  }).then(()=>history.push('/'))
+		  }
+	}, [user])
+
 	async function handleSignOut(e) {
 		e.preventDefault();
 		await firebaseCerrarSesion();
@@ -70,6 +85,9 @@ function Home(props) {
 						<NavLink style={{margin:"0.2rem"}} to={'/editProfile'}>
 							<button style={{fontSize:"11px"}} className="buttonSides brown">Mi perfil</button>
 						</NavLink>
+						<NavLink style={{margin:"0.2rem"}} to={'/ranking'}>
+							<button style={{fontSize:"11px"}}  className="buttonSides brown">Ranking</button>
+						</NavLink>
 					</div>
 					<div>
 						{/* COMPONENTE USERCARD */}
@@ -106,50 +124,12 @@ function Home(props) {
 					<div>
 						<Instructions />
 					</div>
+					<div className='contentSocial'>
+					<Social />
+					</div>
 				</div>
-				<div>
-					<ul className='social-icons'>
-						<li>
-							<a
-								href='http://www.facebook.com/sharer.php?u=https://www.zoopertrivia.com/'
-								target='blanck'
-							>
-								<i>
-									<BsFacebook />
-								</i>
-							</a>
-						</li>
-						<li>
-							<a
-								href='https://www.linkedin.com/sharing/share-offsite/?url=https://www.zoopertrivia.com/'
-								target='blanck'
-							>
-								<i>
-									<BsLinkedin />
-								</i>
-							</a>
-						</li>
-						<li>
-							<a
-								href='https://twitter.com/intent/tweet?text=juega%20conmigo&url=https://www.zoopertrivia.com/&hashtags=ZooPerTrivia'
-								target='blanck'
-							>
-								<i>
-									<BsTwitter />
-								</i>
-							</a>
-						</li>
-						<li>
-							<a
-								href='https://api.whatsapp.com/send?text=https://www.zoopertrivia.com/'
-								target='blanck'
-							>
-								<i>
-									<BsWhatsapp />
-								</i>
-							</a>
-						</li>
-					</ul>
+				<div className='contentSocialSmartphone'>
+					<Social/>
 				</div>
 			</div>
 		);
