@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import s from '../STYLES/preGameRoom.module.css'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const EditRoom = ({ handleSubmitConfig, roomConfiguration, setRoomConfiguration}) =>{
     const {user} = useSelector(state => state)
@@ -10,6 +12,18 @@ const EditRoom = ({ handleSubmitConfig, roomConfiguration, setRoomConfiguration}
             ...roomConfiguration,
             [e.target.name]: e.target.value
         })
+    }
+
+    const alertChange = () => {
+        toast.success("Cambios Establecidos", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
     }
 
 
@@ -81,9 +95,10 @@ const EditRoom = ({ handleSubmitConfig, roomConfiguration, setRoomConfiguration}
                 {
                     user.host === true &&
                         <div className={s.buttonSubmitChanges}>
-                            <button type="submit" >Establecer cambios</button>
+                            <button onClick={alertChange} type="submit" >Establecer cambios</button>
                         </div>
                 }
+                <ToastContainer />
             </form>
         </div>
     )

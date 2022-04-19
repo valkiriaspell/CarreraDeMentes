@@ -8,9 +8,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RiGradienterLine } from "react-icons/ri";
 import  AdminNav  from './adminNav'
 import admin03 from '../IMG/Admin3.png'
+import { useHistory } from 'react-router-dom';
 
 
 export default function AdminUsers() {
+    
+    const history = useHistory();
+    const {user} = useSelector(state => state)
 
     const dispatch = useDispatch();
     const [selectedUser, setUser] = useState("")
@@ -195,7 +199,7 @@ export default function AdminUsers() {
     totalUsers = totalUsers.filter(d => d.admin !== "superadmin")
     totalUsers = totalUsers.filter(d => d.guest !== true)
 
-
+if (user.admin === "admin" || user.admin === "superadmin") {
     return (
             <div className='adminHome'>
                 <div className='questionsNav'>
@@ -269,4 +273,8 @@ export default function AdminUsers() {
             </div>
         </div>
     )
+} else {
+    history.push('/');
+    return <div></div>;
+}
 }

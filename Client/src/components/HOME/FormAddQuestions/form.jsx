@@ -300,7 +300,7 @@ export default function FormAddQuestions() {
 							</div>
 						</div>
 						<div className='formMail'>
-							<label>URL de Imagen*</label>
+							<label>Imagen</label>
 							<DragDrop img={image} setImg={setImg} validation={validation} />
 						</div>
 						{errorAnswer ? <p className='error'>{errorAnswer}</p> : null}
