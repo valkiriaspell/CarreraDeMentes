@@ -28,9 +28,10 @@ function UserCard({location}) {
           heightAuto: false,
           timer: 3000,
         });
-        history.push('/home')
+        // history.replace('/home')
+        window.history.replaceState({id: 'test',source: 'web'}, 'Test', '/home');
       }  
-    }())
+    }()) 
   } , [location])
 
   useEffect(() =>{
