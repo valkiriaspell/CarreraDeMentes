@@ -55,11 +55,11 @@ async function getQuestions(count, category, idRoom) {
 
 		while (questions.size < count) {
 			const q = getRandomInt(dbQuestions.length);
-			if (category && (dbQuestions[q].category !== category)) {
-				!idQuestionRoom.includes(q) && questions.add(q);
-			} else {
-				!idQuestionRoom.includes(q) && questions.add(q);
+			if(category){
+				if(dbQuestions[q].category !== category)!idQuestionRoom.includes(q) && questions.add(q);
 
+			}else{
+				!idQuestionRoom.includes(q) && questions.add(q);
 			}
 		}
 
