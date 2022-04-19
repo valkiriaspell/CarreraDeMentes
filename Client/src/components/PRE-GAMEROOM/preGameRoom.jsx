@@ -34,6 +34,9 @@ function PreGameRoom({match}) {
   if (autenticado) {
     return game === false ? (
       <div className={s.container}>
+        <div className={s.iconMusicPreRoom}>
+          <Music />
+        </div>
         <div className={s.navPreGameRoom}>
           <Link style={{ textDecoration: "none" }} to="/home">
             <button className="buttonSides lowgreen">
@@ -84,9 +87,6 @@ function PreGameRoom({match}) {
 
             }
           </div>
-        </div>
-        <div style={{marginLeft: "1rem"}}>
-        <Music />
         </div>
         <ToastContainer />
       </div>

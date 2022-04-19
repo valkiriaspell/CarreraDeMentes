@@ -13,6 +13,7 @@ import Music from "../MUSICA/musica";
 import Bomb1 from "../IMG/bomb.png";
 import Bomb2 from "../IMG/bombs.png";
 import X2 from "../IMG/gift-box.png";
+import Dollar from "../IMG/dollar.png";
 
 function randomQuestions(array) {
   var m1 = Math.floor((Math.random() * array.length) % array.length);
@@ -70,7 +71,6 @@ const Game = ({
       coinsFinal: coins,
       email: user.email,
     });
-    console.log(coins);
   };
 
   // ======= TIMER =======
@@ -113,18 +113,19 @@ const Game = ({
   }, [preRoomUsers.questions]);
 
   //  ============================
+
   let finalGame = preRoomUsers?.time * preRoomUsers?.questionAmount * 1000;
-  useEffect(() => {
-    setTimeout(() => {
-      startGameAlready(preRoomUsers.id, false);
-      allStartGame(false);
-      setShowEndGame(true);
-    }, finalGame);
-  }, []);
+  const prueba = () => {
+      setTimeout(() => {
+        startGameAlready(preRoomUsers.id, false);
+        allStartGame(false);
+        setShowEndGame(true);
+      }, finalGame);
+  }
+
 
   let secondsGame = preRoomUsers?.time + "000";
   const startGame = () => {
-    console.log(preRoomUsers.questions);
     setQ(preRoomUsers.questions[0].question);
     setA(preRoomUsers.questions[0].answer);
     setF1(preRoomUsers.questions[0].false1);
@@ -132,6 +133,7 @@ const Game = ({
     setF3(preRoomUsers.questions[0].false3);
     setCat(preRoomUsers.questions[0].category);
     setActive(false);
+    prueba();
 
     questions?.map((q, index) =>
       setTimeout(() => {
@@ -252,8 +254,8 @@ const Game = ({
         <div className="loadingGif">
           <img src={Animals} alt="Animals" width={300} />
           {user.host === true ? (
-            <button className="buttonStart" onClick={(e)=>allStartGame(true)}>
-              START
+            <button className="buttonStart" onClick={(e) => allStartGame(true)}>
+              COMIENZA
             </button>
           ) : (
             <h6
@@ -263,7 +265,7 @@ const Game = ({
         </div>
       ) : (
         <div>
-          <div className="containerHeader">
+          <div className="containerHeaderGame">
             <button className="buttonSides brown" onClick={handleGoHome}>
               Salir
             </button>
@@ -317,13 +319,23 @@ const Game = ({
                   })}
               </div>
               <div className="containerPowers">
-                <div>
+                <div className="contentPower">
                   <button className="powers" onClick={() => powerDelete(1)}>
                     <img src={Bomb1} alt="BOMB1" width={30}></img>
                   </button>
+                  <div>
+                    <img src={Dollar} alt="Dollar" width={20} /> 100
+                  </div>
+                </div>
+                <div className="contentPower">
                   <button className="powers" onClick={() => powerDelete(2)}>
                     <img src={Bomb2} alt="BOMB2" width={30}></img>
                   </button>
+                  <div>
+                    <img src={Dollar} alt="Dollar" width={20} /> 200
+                  </div>
+                </div>
+                <div className="contentPower">
                   <button
                     className="powers"
                     onClick={() =>
@@ -343,6 +355,9 @@ const Game = ({
                   >
                     <img src={X2} alt="x2" width={30} />
                   </button>
+                  <div>
+                    <img src={Dollar} alt="Dollar" width={20} /> 300
+                  </div>
                 </div>
                 <div
                   style={{
