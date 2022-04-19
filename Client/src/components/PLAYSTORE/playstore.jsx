@@ -47,9 +47,10 @@ function PlayStore() {
                 <Music/>
                 <div className="contentNavPlayStore">
                 <button onClick={volverHome} className="buttonSides brown" type="button">Volver</button>
-                <h1>¡Comprá Monedas!</h1>
                 <UserCard />
                 </div>
+                <h1>¡Comprá Monedas!</h1>
+                <br/>
                 <div className="containerCardsBuy">
                     {productos?.length > 0 && productos?.map(producto => (
                         <CardBuy
