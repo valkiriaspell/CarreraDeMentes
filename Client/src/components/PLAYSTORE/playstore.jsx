@@ -49,8 +49,8 @@ function PlayStore() {
 						Volver
 					</button>
 					<UserCard />
-					<Music />
 				</div>
+				<Music />
 				<h1>¡Comprá Monedas!</h1>
 				<br />
 				<div className='containerCardsBuy'>
