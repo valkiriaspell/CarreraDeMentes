@@ -94,8 +94,44 @@
 .carruselIndicación{
   margin-bottom: 4rem;
 }
+.imgMoneda {
+  box-shadow: 10px 10px 20px rgb(255, 221, 0);
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
 
 /* ===== MEDIA QUERIES =====*/
+@media screen and (max-width: 1280px) {
+  .nav__smartphone {
+    display: none;
+  }
+  .contentSocialSmartphone {
+    display: none;
+  }
+  #prueba {
+    display: flex;
+    flex-direction: column;
+  }
+  .logo img {
+    width: 300px;
+  }
+  .contentButtons button{
+    width: 11rem;
+    height: 2.5rem;
+    font-size: 0.8rem;
+    margin: 0.6rem;
+  }
+  .cards {
+    width: 500px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 12px;
+  }
+  .containerCard {
+    margin-bottom: 2rem;
+  }
+
+}
 @media screen and (min-width: 500px) {
   .nav__smartphone {
     display: none;

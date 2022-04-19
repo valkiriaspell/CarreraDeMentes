@@ -3,7 +3,6 @@ import "../STYLES/about.modules.css";
 import Location from "../IMG/pin.png";
 import { useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Pol from "../IMG/Pol.jpeg";
 
 const arrayIntegrantes = [
   {
