@@ -8,7 +8,6 @@ function ChatGameRoom({points}){
     const [listSuccess, setListSuccess] = useState([])
 
     useEffect(() =>{
-        console.log(points)
         points.name &&
         setListSuccess([...listSuccess, points])
     }, [points])
