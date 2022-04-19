@@ -73,8 +73,10 @@ const history = useHistory()
      
   }
   return (
-    <div>
-      <Music/>
+    <div >
+      <div className="containerMusic" >
+      <Music />
+      </div>
       <div>
 						<img width="250px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4" alt='Logo'></img>
 					</div>
