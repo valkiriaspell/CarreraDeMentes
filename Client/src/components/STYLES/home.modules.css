@@ -49,11 +49,12 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-left: 9rem;
 }
 .contentButtons {
   display: flex;
   flex-direction: column;
+  margin-right: 5rem;
+  margin-left: 2rem;
 }
 .contentButtons button{
   width: 14rem;
@@ -99,6 +100,13 @@
   .nav__smartphone {
     display: none;
   }
+  .contentSocialSmartphone {
+    display: none;
+  }
+  #prueba {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -106,6 +114,9 @@
     display: none;
   }
   .nav {
+    display: none;
+  }
+  .contentSocial {
     display: none;
   }
   .contentNav__smartphone {
@@ -118,12 +129,19 @@
   }
   .content {
     margin-top: 3rem;
-    margin-right: 9rem;
+    margin-left: 3rem;
+  }
+  .contentSocialSmartphone {
+    padding-bottom: 4rem;
   }
 }
 
 
 /* ===== SOCIAL ICONS =====*/
+
+.contentSocial {
+  margin-right: 12rem;
+}
 
 .social-icons {
   display: block;
@@ -142,7 +160,7 @@
   text-align: center;
   padding: 0;
   list-style: none;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 
 .social-icons li {
