@@ -1,69 +1,85 @@
+.navAbout {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 2rem;
+
+}
 .containerAbout {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    max-width: 1400px;
-    min-width: 200px;
-    margin-top: 2rem;
-    margin-left: auto;
-    margin-right: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1000px;
+  min-width: 200px;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 2rem;
 }
 .contentAbout {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 18rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 18rem;
 }
 .imgAbout {
-    border-radius: 50%;
+  border-radius: 50%;
+  height: 190px;
 }
 .nameAbout {
- font-weight: bold;
- font-size: 20px;
- margin-top: 1rem;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 1rem;
 }
 .containerRedes {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
-.github{
+.github {
   color: rgb(19, 18, 23);
   font-size: 30px;
 }
-.linkedin{
+.linkedin {
   color: rgb(9, 53, 249);
   font-size: 30px;
   margin: 0.5rem;
 }
-.twitter{
+.twitter {
   color: rgb(43, 165, 217);
   font-size: 30px;
   margin: 0.5rem;
-
+}
+.instagram {
+  color: rgb(238, 44, 105);
+  font-size: 30px;
+  margin: 0.5rem;
 }
 .tilt {
-    transform-style: preserve-3d;
-  }
+  transform-style: preserve-3d;
+}
 
 /* ===== MEDIA QUERIES =====*/
 @media screen and (max-width: 1280px) {
-    .containerAbout {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        max-width: 1000px;
-    }
+  .containerAbout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1000px;
   }
-@media screen and (max-width: 768px) {
-    .containerAbout {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 700px;
-    }
+}
+@media screen and (max-width: 900px) {
+  .containerAbout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 700px;
   }
+}
 @media screen and (max-width: 500px) {
-    .containerAbout {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        max-width: 310px;
-    }
+  .containerAbout {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    max-width: 310px;
   }
+  .logoAbout {
+    width: 250px;
+  }
+}
