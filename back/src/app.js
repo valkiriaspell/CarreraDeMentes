@@ -90,10 +90,10 @@ server.use(cors({
 server.use(bodyParser.urlencoded({extended: true, limit: '50mb'}));
 server.use(bodyParser.json({limit: '50mb'}));
 
-//NodeMailer
+///////NodeMailer
 server.post("/send_mail", cors(), async (req, res) => {
 	let {textMail, userMail} = req.body
-	
+	////los datos del servicio de mailing, en este caso SENDGRID
 	const transport = nodeMailer.createTransport({
 		host: MAIL_HOST,
 		port: MAIL_PORT,
@@ -102,6 +102,7 @@ server.post("/send_mail", cors(), async (req, res) => {
 			pass: MAIL_PASS
 		}
 	})
+	////prototipo de mail que enviamos, con datos variables que recibe del front por body
 await transport.sendMail({
 	from: SUPERADMIN_EMAIL, 
 	to: userMail,
@@ -122,6 +123,7 @@ await transport.sendMail({
 	 
 })
 })
+/////////NodeMailer
 
 //server.use(cookieParser());
 server.use(morgan('dev'));
