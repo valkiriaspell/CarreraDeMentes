@@ -87,7 +87,7 @@
 .form label:not(:last-child){
     font-size: 1.4rem;
     font-weight: 700;
-    color: rgb(108, 230, 108);
+  color: rgb(255, 255, 255);
 }
 
 .form select {
@@ -101,8 +101,8 @@
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 1rem; 
-    background-color: rgba(7, 59, 2, 0.5); 
-    color: #fff; 
+    color: rgba(221, 221, 221, 0.9);
+    background-color: rgb(225, 145, 32);
     border: none;   
 }
 
@@ -121,9 +121,8 @@
 .FormSubmit input.enabled{
     width: 100%;
     height: 2.5rem;
-    color: rgb(0, 0, 0);
-    /* background-color: rgb(10, 80, 25);     */
-    background-image: url(../IMG/arena-green.png);
+    color: rgba(221, 221, 221, 0.9);
+    background-color: rgb(225, 145, 32);
     background-size: cover;
     background-repeat: no-repeat;
     cursor: pointer; 
@@ -235,8 +234,9 @@
     transition: 0.3s;
 }
 .checkbox button:hover{
-    color: rgba(7, 59, 2, 1);
-    border-bottom: 2px solid rgba(7, 59, 2, 1);
+    color: rgba(221, 221, 221, 0.9);
+    background-color: rgb(225, 145, 32);
+    
     transition: 0.3s;
 }
 
