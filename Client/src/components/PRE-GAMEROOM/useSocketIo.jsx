@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import socketIOClient from 'socket.io-client';
-import { listUsersInPreRoom, loginUser, getReadyUser, changePoint, removeUser, fastRemove } from "../../redux/actions";
+import { listUsersInPreRoom, loginUser, getReadyUser, changePoint, removeUser, fastRemove, readyUser } from "../../redux/actions";
 import axios from "axios";
 import readyGreen from "../IMG/readyGreen2.png"
 import { changeReady, deleteRoom, startGameAlready, modifyHost, removeUserRoom } from "./utils";
@@ -30,7 +30,10 @@ function useChatSocketIo(idRoom) {
     useEffect(() =>{
         !user?.id && 
         dispatch(loginUser(email))
-        .then(()=> dispatch(listUsersInPreRoom(idRoom)))
+        .then(()=>{
+            dispatch(readyUser(false))
+            dispatch(listUsersInPreRoom(idRoom)) 
+        })
         .then((value)=> setRoomConfiguration({
             time: value?.time,
             category: value?.category,
@@ -43,6 +46,7 @@ function useChatSocketIo(idRoom) {
             socketIoRef.current.on("NEW_CONNECTION", (email) =>{
                 console.log('NEW_CONNECTION')
                 /* email !== user.email && */
+                dispatch(readyUser(false))
                 dispatch(listUsersInPreRoom(idRoom))
                 /* .then((value) => {
                     const meId = value.users.find(us => us.id === user.id)
@@ -68,7 +72,7 @@ function useChatSocketIo(idRoom) {
                 console.log(id)
                 id === user.id && socketIoRef?.current?.disconnect();
                 const isHost = preRoomUsers?.users?.filter(us=> us.id === id )
-                if(isHost[0]?.host){
+                if(isHost?.[0].host){
                     history.push('/home');
                     socketIoRef?.current?.disconnect();
                 } else{
@@ -120,6 +124,7 @@ function useChatSocketIo(idRoom) {
 
             return async () =>{
                 console.log('return')
+                changeReady(user?.id, false)
                 /* socketIoRef?.current?.emit("FAST_REMOVE", user?.id) */ // ya volvio a fallar no se por que
                 /* const list = await dispatch(listUsersInPreRoom(idRoom))
                 console.log(list, 'que onda')
@@ -152,11 +157,11 @@ function useChatSocketIo(idRoom) {
 
     //when someone press ready, find de element with yours id,
     //and change the ready prop, if it is true change to false
-    async function sendReady(){
+    function sendReady(){
         const imgReady = document.getElementById(user.id)
         imgReady.src === readyGreen
-        ? await changeReady(user.id, false)
-        : await changeReady(user.id, true)
+        ? changeReady(user.id, false).then(()=> dispatch(readyUser(false)))
+        : changeReady(user.id, true).then(()=> dispatch(readyUser(true)))
         socketIoRef.current.emit("READY", {id: user.id})
     }
     function countReady() {

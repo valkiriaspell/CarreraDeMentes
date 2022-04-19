@@ -5,9 +5,11 @@
     display: inline-block;
     padding: 0.2em;
     color: white;
-    background: linear-gradient(70deg, #aec87fa6, #39814bad);
+    background: linear-gradient(70deg, #6b8935a6, #39814bad);
+    font-size: 45px;
     border-radius: 15px;
     box-shadow: 0px 3px 6px 2px #000000fa;
+    font-family: 'Trebuchet MS';
 }
 
 .btn_homeRanking{
@@ -19,7 +21,7 @@
 .dataRanking{
     height: 70vh;
     width: 90%;
-    background-color: #408d4f8f;
+    background-color: #499157b7;
     margin: auto;
     overflow-x: overlay;
     overscroll-behavior: contain;
@@ -42,6 +44,9 @@
 
 .data_titleRanking{
     background-color: #01523994;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
 }
 
 .view_dataRanking{

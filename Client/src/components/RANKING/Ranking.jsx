@@ -31,7 +31,7 @@ export default function Ranking(){
         <h1 className= {Style.titleRanking}>Ranking de Jugadores</h1>
             <div className= {Style.dataRanking}>
                 <div className = {Style.data_titleRanking}>
-                    <Ranking_Tabla ranking={"POSICION"} wins={"PUNTOS"} name={"NAME"} level={"NIVEL"} points={"EXP."} avatar={"https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo5.png?alt=media&token=5e5bb88d-806a-4c38-b667-b27a9b5b01fc"} />
+                    <Ranking_Tabla ranking={"POSICIÓN"} wins={"VICTORIAS"} name={"NOMBRE"} level={"NIVEL"} points={"EXPERIENCIA"} avatar={"https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo5.png?alt=media&token=5e5bb88d-806a-4c38-b667-b27a9b5b01fc"} />
 
                 </div>
                 {users.map(({id, name, level, wins, experiencePoints, avatars}, i)=>{
