@@ -1,3 +1,4 @@
+const { default: axios } = require('axios');
 const mercadopago = require('mercadopago');
 const { Coins, Users } = require("../db");
 
@@ -49,6 +50,7 @@ const crearLinkPago = async (req, res) => {
 const insertarCoinsUsuario = async (req, res) => {
     const { status, external_reference } = req.query;
     const { email, coinsFinal } = req.body;
+    const textMail = "¡Genial! Has comprado exitosamente "
     try {
         if(status === 'approved'){
             //CREAR FUNCION PARA AGREGAR COINS AL USUARIO
@@ -59,6 +61,10 @@ const insertarCoinsUsuario = async (req, res) => {
             const usuario = await Users.findOne({where: {email}}) //usuario que compro el producto
             await usuario.update({coins: usuario.coins + referencia.coins}, {where: {email}})
             res.json({icon: 'success', mensaje: `Se agregaron ${referencia.coins} coins a tu cuenta. Ahora tienes ${usuario.coins} coins`});
+            await axios.post('/send_mail', {
+                userMail: email,
+                textMail: `¡Genial! Has comprado exitosamente ${referencia.coins} monedas! ¿Que estás esperando para aprovecharlas? ¡A Jugar!`
+            })            
     
         } else if (coinsFinal){
             const usuario = await Users.findOne({where: {email}})
