@@ -92,6 +92,7 @@ export default function About() {
     max: 30,
     scale: 2.0,
     speed: 2000,
+    color: "red"
   };
 
   useEffect(() => {
@@ -119,7 +120,7 @@ export default function About() {
         {integrantes.map((i) => {
           return (
             <div>
-              <Title className="tilt" options={options}>
+              <Title style={{backgroundColor: "rgba(11, 11, 11, 0.388)", height: "21rem", borderRadius: "0.4rem"}} options={options}>
                 <div className="contentAbout" key={i.nombre}>
                   <div>
                     <img
@@ -130,7 +131,7 @@ export default function About() {
                     />
                   </div>
                   <div>
-                    <span className="nameAbout">{i.nombre}</span>
+                    <span style={{marginTop: "0.6rem"}} className="nameAbout">{i.nombre}</span>
                   </div>
                   <div>
                     <img src={Location} alt="Location" width={30} />{" "}
@@ -149,7 +150,7 @@ export default function About() {
             </div>
           );
         })}
-        <Title className="tilt" options={options}>
+        <Title style={{backgroundColor: "rgba(11, 11, 11, 0.388)", height: "21rem", borderRadius: "0.4rem"}} className="tilt" options={options}>
           <div  className="contentAbout">
             <div>
               <img
