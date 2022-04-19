@@ -282,4 +282,7 @@
   .containerChatGame {
     display: none;
   }
+  .title {
+    display: none;
+  }
 }

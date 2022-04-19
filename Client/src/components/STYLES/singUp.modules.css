@@ -37,9 +37,11 @@
   width: 450px;
   display: flex;
   justify-content: start;
+  
 }
 .volverSingUp button {
-  background-color: rgba(173, 174, 175, 0.521);
+  color: rgba(221, 221, 221, 0.9);
+  background-color: rgb(225, 145, 32);
   margin-top: 0.5rem;
 }
 .volverSingUp button:hover {
@@ -104,12 +106,12 @@
 
 .registerButton {
   text-decoration: none;
-  color: rgba(221, 221, 221, 0.829);
+  color: rgba(221, 221, 221, 0.9);
+  background-color: rgb(225, 145, 32);
   width: 7rem;
   border-radius: 2rem;
   font-weight: bold;
   padding: 0.2rem;
-  background-color: rgba(173, 174, 175, 0.521);
   border: none;
   position: relative;
   top: -30px;

@@ -15,7 +15,7 @@ export default function Footer() {
     return (
         <div className="footer">
             
-            <span>© 2022 ZooPer Trivia</span>
+            <span className='nameTrivia'>© 2022 ZooPer Trivia</span>
 
             <NavLink to="/about" ><span> Quienes Somos </span></NavLink>
 
