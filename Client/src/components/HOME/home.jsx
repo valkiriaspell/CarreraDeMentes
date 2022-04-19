@@ -19,18 +19,24 @@ function Home(props) {
 	const autenticado = localStorage.getItem('token');
 	const { user } = useSelector((state) => state);
 	const email = localStorage.getItem('email');
+	
 	useEffect(() =>{
 		!user?.name && dispatch(loginUser(email))
+		console.log(user)
+	}, [])
+
+	useEffect(() => {
 		if(Date.parse(user.bannerTime)>new Date()){
 			Swal.fire({
-				icon: "error",
-				title:
-				  `Lo sentimos, el usuario se encuentra bloqueado hasta ${user.bannerTime}`,
-				heightAuto: false,
-				timer: 3000,
+			  icon: "error",
+			  title:
+				`Lo sentimos, el usuario se encuentra bloqueado hasta el ${user.bannerTime}`,
+			  heightAuto: false,
+			  timer: 3000,
 			  }).then(()=>history.push('/'))
-		}
-	}, [])
+		  }
+	}, [user])
+
 	async function handleSignOut(e) {
 		e.preventDefault();
 		await firebaseCerrarSesion();

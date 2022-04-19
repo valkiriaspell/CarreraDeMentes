@@ -91,7 +91,7 @@ module.exports = (sequelize) => {
 			defaultValue: 0,
 		},
 		bannerTime: {
-			type: DataTypes.DATE
+			type: DataTypes.DATEONLY
 		}
 	});
 };
