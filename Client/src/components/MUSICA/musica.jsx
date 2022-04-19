@@ -32,7 +32,7 @@ function Music() {
 
 		return (
 			<div className='audioPlayer' key={item.id}>
-				<audio id='player' loop autoPlay>
+				<audio id='player' loop>
 					<source src={item.audio} type={item.formato} />
 				</audio>
 				<div>

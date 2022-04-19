@@ -2,6 +2,7 @@
 
 .form {
     font-size: 18px;
+    align-items: center;
     align-self: center;
     align-content: center;  
     display: flex;
@@ -79,19 +80,24 @@
 
 /* ====== Submit ====== */
 .disabled{
-    color: rgb(0, 0, 0);
+    color: rgba(221, 221, 221, 0.9);
     background-color: rgb(129, 129, 129);
     cursor: not-allowed;
     
 }
 
 .enabled{
-    color: rgb(0, 0, 0);
-    background-color: rgb(255, 255, 255);    
+    color: rgba(0, 0, 0, 0.73);
+    background-color: rgb(255, 255, 255);
     cursor: pointer; 
     border: none;
     font-size: 8px;
     
+}
+.enabled:hover{
+    background-color: rgba(154, 158, 161, 0.4);
+    cursor: url("../IMG/pata.png"),
+    auto;
 }
 
 .FormSubmit input{
@@ -128,9 +134,9 @@
 .volver {
     display: flex;
     align-items: center;
-    background-color: rgba(216, 221, 226, 0.4);
+    color: rgba(221, 221, 221, 0.9);
+    background-color: rgb(225, 145, 32);
     border-radius: 0.3rem;
-    color: rgba(221, 221, 221, 0.829);
     border: none;
     padding: 0.3rem 0.5rem 0.3rem 0.5rem;
     margin: 0.5em;     
