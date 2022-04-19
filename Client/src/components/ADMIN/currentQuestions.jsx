@@ -164,7 +164,7 @@ export default function CurrentQuestions() {
             </div>
         </div>
             {showForm?
-            <div className='popUp'>
+            <div>
                 <ChangeQuestion refresh={refresh} selectedQuestion={selectedQuestion} setShowForm={setShowForm}></ChangeQuestion>
             </div>
                 : null }
