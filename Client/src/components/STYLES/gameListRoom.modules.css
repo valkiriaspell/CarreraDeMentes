@@ -1,6 +1,6 @@
 /* ===== CONTENEDOR =====*/
 .containerGameList {
-  max-width: 600px;
+  max-width: 700px;
   border: solid 4px rgba(216, 221, 226, 0.4);
   background-color: rgba(45, 44, 44, 0.616);
   min-height: 110px;
@@ -9,6 +9,15 @@
   margin-top: 3rem;
   border-radius: 0.4rem;
   color: rgba(221, 221, 221, 0.829);
+}
+
+/* ===== MUSICA =====*/
+
+.containerMusic {
+  position: relative;
+  bottom: -2rem;
+  right: 4rem;
+  margin-top: -1rem;
 }
 
 /* ===== NAV =====*/
@@ -112,7 +121,8 @@
 @media screen and (max-width: 500px) {
   .containerGameList {
     margin: 5rem 1rem;
-    min-width: 365px;
+    min-width: 440px;
+    max-width: 490px;
   }
   .buscadorGameList input {
     width: 8rem;
@@ -122,5 +132,10 @@
   }
   .infoPartidas {
     margin-right: -2rem;
+  }
+  .buttons {
+    right: .5rem;
+    gap: .25rem;
+    justify-content: center;
   }
 }
