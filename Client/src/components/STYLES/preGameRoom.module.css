@@ -114,8 +114,13 @@
   border: none;
   margin: 0.2rem;
   margin-bottom: 1rem;
+  font-size: 1.4rem;
 }
-
+.buttonsPreGameRoom {
+  display:flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
 
 /* ======= EDITAR SALA ======= */
 .containerEditRoom {
@@ -237,6 +242,10 @@
   align-items: center;
 }
 
+.logo {
+  margin-top: 4rem;
+}
+
 /* ===== MEDIA QUERIES =====*/
 @media screen and (max-width: 500px) {
   .containerPlayers {
@@ -257,5 +266,9 @@
   .containerChat {
     margin: 1rem;
     width: 320px;
+  }
+  .logo img {
+    width: 400px;
+    margin-bottom: 3rem;
   }
 }

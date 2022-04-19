@@ -6,6 +6,7 @@ import { listUsersInPreRoom, loginUser, getReadyUser, changePoint, removeUser, f
 import axios from "axios";
 import readyGreen from "../IMG/readyGreen2.png"
 import { changeReady, deleteRoom, startGameAlready, modifyHost, removeUserRoom } from "./utils";
+import { toast } from "react-toastify";
 
 function useChatSocketIo(idRoom) {
     const history = useHistory();
@@ -16,6 +17,7 @@ function useChatSocketIo(idRoom) {
     const email = localStorage.getItem("email");
     const [messages, setMessages] = useState({});
     const [game, setGame] = useState(false)
+
     const [roomConfiguration, setRoomConfiguration] = useState({
         time: preRoomUsers?.time,
         category: preRoomUsers?.category,
@@ -26,10 +28,18 @@ function useChatSocketIo(idRoom) {
     const [everybodyPlays, setEverybodyPlays] = useState(false);
 
     useEffect(() =>{
-        !user?.id && dispatch(loginUser(email))
-        console.log(socketIoRef)
+        !user?.id && 
+        dispatch(loginUser(email))
+        .then(()=> dispatch(listUsersInPreRoom(idRoom)))
+        .then((value)=> setRoomConfiguration({
+            time: value?.time,
+            category: value?.category,
+            questions: value?.questionAmount,
+            open: value?.public_
+        }))
+
         socketIoRef.current = socketIOClient(process.env.REACT_APP_API ,{query:{idGameRoom: idRoom, email} } );
-        console.log(socketIoRef)
+
             socketIoRef.current.on("NEW_CONNECTION", (email) =>{
                 console.log('NEW_CONNECTION')
                 /* email !== user.email && */
@@ -117,16 +127,12 @@ function useChatSocketIo(idRoom) {
                     if(user?.host === true){
                         await modifyHost(email, false)
                         await deleteRoom(idRoom)
-                        console.log("que pasa", socketIoRef)
                     } else{
                         let player = {}
                         if(!user?.id){
                             player = await dispatch(loginUser(email))
-                            console.log('estoy aca tambien')
                         }
                         await removeUserRoom(idRoom, user?.id ? user?.id : player?.id)
-                        console.log('estoy aca', socketIoRef)
-                        console.log("final")
                     }
                     socketIoRef?.current?.emit("DISCONNECT", user.id)
                     console.log("desconectando")
@@ -137,7 +143,6 @@ function useChatSocketIo(idRoom) {
 
     //send a message to all players in chat
     function sendMessage(message){
-        console.log("hola", user) //no quitar
         socketIoRef.current.emit("NEW_MESSAGE", {
             text: message, 
             name: user?.name,
@@ -161,7 +166,6 @@ function useChatSocketIo(idRoom) {
         for(let i = 0; i < arrayIds?.length; i++){
           imgReady = document.getElementById(arrayIds[i])
           if(imgReady?.src === readyGreen){
-            console.log("aqui", readys)
             readys++
           } 
         }
@@ -171,7 +175,6 @@ function useChatSocketIo(idRoom) {
     async function sendStartGame(){
         let listos = countReady()
         if(listos === preRoomUsers?.users?.length - 1){
-            console.log("startatatat")
             try{
                 const questionAll = await axios.post("/question/allQuestions", {
                     count: preRoomUsers?.questionAmount,
@@ -183,6 +186,16 @@ function useChatSocketIo(idRoom) {
             }catch(e){
                 console.log(e)
             }
+        } else {
+            toast.warn("todos los jugadores deben estar listos para comenzar", {
+                position: "bottom-center",
+                autoClose: 2500,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+              })
         }
     }
 
@@ -232,6 +245,7 @@ function useChatSocketIo(idRoom) {
             roomConfiguration, 
             setRoomConfiguration,
             points,
+            setPoints,
             allStartGame,
             everybodyPlays}
 }
