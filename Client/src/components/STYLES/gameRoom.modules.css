@@ -61,7 +61,7 @@
 }
 
 /* ====== HEADER ====== */
-.containerHeader{
+.containerHeaderGame{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -150,15 +150,18 @@
   cursor: url("../IMG//pata.png");
 }
 .buttonStart {
-  background-color: rgba(254, 254, 254, 0.71);
-  border: none;
-  border-radius: 0.3rem;
-  margin-top: 0.3rem;
-  font-weight: bold;
+  background-color: #2120208d;
+  border: 1px solid #f87808;
+  box-shadow: 5px 5px 20px rgba(255, 163, 4, 0.893);
+  color: rgba(240, 248, 255, 0.616);
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  margin-top: 1rem;
+  
 }
 .buttonStart:hover {
   background-color: rgba(158, 157, 157, 0.356);
-  color: rgba(230, 231, 232, 0.539);
+  color: rgba(24, 25, 26, 0.539);
   cursor: url("../IMG//pata.png");
 }
 
@@ -169,7 +172,14 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 1rem;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
+}
+.contentPower{
+  display: flex;
+  flex-direction: column;
+  color: rgba(240, 248, 255, 0.845);
+  font-weight: bolder;
+  font-size: 14px;
 }
 .powers {
   margin: 0.6rem;

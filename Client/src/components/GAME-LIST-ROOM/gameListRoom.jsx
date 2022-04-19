@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { listAllRooms, listUsersInPreRoom } from "../../redux/actions";
 import { AddUserToPreRoom } from "../PRE-GAMEROOM/utils";
 import Music from "../MUSICA/musica";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 function GameListRoom() {
@@ -15,9 +17,6 @@ function GameListRoom() {
   const {user} = useSelector(state => state);
   const {listRooms} = useSelector(state => state)
 
-/*   useEffect(() => {
-    setGames(arrayGames);
-  }, [setGames]); */
 
 /*   const searchGames = (e) => {
     if (e && e !== "") {
@@ -39,11 +38,36 @@ function GameListRoom() {
     dispatch(listAllRooms())
   };
 const history = useHistory()
+
   function handleJoinRoom(game){
-    game.numberUsersInRoom === 6
-      ? alert('la sala esta llena') // mejorar alerta
+    game.numberUsersInRoom >= 6
+      ? toast.warn("la sala esta llena", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }) // mejorar alerta
       : AddUserToPreRoom({idRoom: game.id, idUser: user.id})
       .then(()=> dispatch(listUsersInPreRoom(game.id)))
+      .then(() => {
+        history.push(`/room/${game.id}`)})
+      .catch((e)=> toast.warn(e, {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }))
+     
+  }
+
+  function handleWatchRoom(game){
+      dispatch(listUsersInPreRoom(game.id))
       .then(() => {
         history.push(`/room/${game.id}`)})
      
@@ -79,6 +103,7 @@ const history = useHistory()
         <h4>Preguntas</h4>
         <span></span>
         <span></span>
+        <span></span>
       </div>
       {listRooms?.length > 0 ? (
         listRooms?.map((game) => {
@@ -86,8 +111,11 @@ const history = useHistory()
             <div key={game.id} className="infoPartidas">
               <span>{game.name}</span>
               <span>{game.numberUsersInRoom}</span>
-              <span style={{marginLeft: "2.5rem"}} >{game.questionAmount}</span>
-              <button className="buttonSides brown" onClick={() => handleJoinRoom(game)} >Unirse</button>
+              <span style={{marginLeft: "3.5rem", marginRight: "-1rem"}} >{game.questionAmount}</span>
+              <div className="buttons" >
+                <button className="buttonSides brown" onClick={() => handleJoinRoom(game)} >Unirse</button>
+                <button className="buttonSides blue" onClick={() => handleWatchRoom(game)} >Ver</button>
+              </div>
             </div>
           );
         })
@@ -95,6 +123,7 @@ const history = useHistory()
         <h3>No hay partidas disponibles</h3>
       )}
     </div>
+    <ToastContainer />
     </div>
   );
 }
