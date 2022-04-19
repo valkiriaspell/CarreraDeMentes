@@ -96,19 +96,18 @@ function upLoadFile(file){//envia el archivo al back
     return(
         <div>
             <div className="drop-area" id="drop-area">
-                <h2 style={{fontSize:"100%"}}>arrastra y suelta imagenes</h2>
-                <span>o</span>
+                <h2 >Arrastra y suelta imagenes o</h2>
                 <button className="button">selecciona una imagen</button>
                 <input type="file" id="input-file" hidden multiple></input>                    
             </div>
                 <div id="preview">
                     {props.img?
                     <div id={image.id} className="file-container" style={{display:"flex"}}>
-                    <img src={image.URL} alt={image.name} width="50"/>
+                    <img src={image.URL} alt={image.name} className="imgUpload"/>
                     <div className="status">
                         <span>{image.name}</span>
                         <span className="status-text">
-                            cargado correctamente
+                            Cargada correctamente
                         </span>
                     </div>
                 </div>

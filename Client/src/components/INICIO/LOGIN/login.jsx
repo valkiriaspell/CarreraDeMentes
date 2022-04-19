@@ -125,7 +125,7 @@ function Login() {
         const iniciarSesion = await firebaseLoginGoogle()
         if(iniciarSesion.accessToken){
             await dispatch(registerUser({
-                name: iniciarSesion.email, 
+                name: iniciarSesion.displayName, 
                 email: iniciarSesion.email,
                 idAvatar: 1
             }))
