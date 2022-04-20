@@ -1,9 +1,5 @@
 .containerCardsB {
-  background: linear-gradient(
-    180deg,
-    rgba(236, 242, 240, 0.929) 0%,
-    rgba(206, 196, 196, 0.719) 100%
-  );
+background: rgba(44, 164, 44, 0.581);
   border-radius: 1rem;
   height: 25rem;
   display: flex;
@@ -22,40 +18,42 @@
 @keyframes borde {
   0% {
     border-color: transparent;
-    border-top-color: yellow;
+    border-top-color: rgb(225, 145, 32);;
   }
 
   25% {
     border-color: transparent;
-    border-right-color: yellow;
+    border-right-color: rgb(225, 145, 32);;
   }
 
   50% {
     border-color: transparent;
-    border-bottom-color: yellow;
+    border-bottom-color: rgb(225, 145, 32);;
   }
 
   75% {
     border-color: transparent;
-    border-left-color: yellow;
+    border-left-color: rgb(225, 145, 32);;
   }
 
   100% {
     border-color: transparent;
-    border-top-color: yellow;
+    border-top-color: rgb(225, 145, 32);
   }
 }
 
 .cardContent {
+  width: 135px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   margin: 1rem;
+  
 }
 .cardContent h3 {
   margin: 0 0.5rem;
-  color: rgb(79, 79, 79);
+  color: rgb(253, 253, 253);
   text-shadow: 1px 1px #000;
   margin: 2rem 0;
 }
@@ -63,11 +61,10 @@
   width: 10rem;
 }
 .cardContent button {
-  margin-top: 4rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
-  padding: 0.5rem 1.5rem;
-  background-color: rgb(22, 185, 30);
-  border: 3px solid rgb(76, 194, 81);
+  padding: 0.5rem 0.5rem;
+  background-color: rgb(225, 145, 32);
   border-radius: 1rem;
   box-shadow: 3px 3px 5px 2px #000;
   color: #fff;
@@ -77,8 +74,8 @@
 }
 .cardContent button:hover {
   cursor: url("../IMG/pata.png"), auto;
-  background-color: rgb(7, 133, 13);
-  border: 3px solid rgb(46, 187, 53);
+  background-color: rgba(225, 145, 32, 0.681);
+  
   transition: 0.2s;
 }
 

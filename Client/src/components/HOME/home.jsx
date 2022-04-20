@@ -64,7 +64,6 @@ function Home(props) {
 							<button className='buttonSides brown'>Mi perfil</button>
 						</NavLink>
 					</div>
-					<Music />
 					<div className='logo'>
 						<img
 							width='450px'
@@ -75,6 +74,7 @@ function Home(props) {
 					<div>
 						{/* COMPONENTE USERCARD */}
 						<UserCard location={props.location} />
+						<Music />
 					</div>
 				</div>
 				{/* <-----------------------------  ESTO SE RENDERIZA EN SMARTPHONE     --------------------------------------> */}
@@ -109,6 +109,7 @@ function Home(props) {
 						<div>
 							{/* COMPONENTE USERCARD */}
 							<UserCard location={props.location} />
+							<Music />
 						</div>
 					</div>
 					<div>

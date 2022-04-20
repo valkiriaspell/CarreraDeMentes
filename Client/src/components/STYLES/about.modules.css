@@ -14,14 +14,14 @@
   margin-top: 2rem;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 2rem;
 }
 .contentAbout {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 18rem;
+  height: 21rem;
+  color: rgb(237, 237, 237);
 }
 .imgAbout {
   border-radius: 50%;
@@ -50,7 +50,7 @@
   margin: 0.5rem;
 }
 .instagram {
-  color: rgb(238, 44, 105);
+  color: rgb(160, 46, 112);
   font-size: 30px;
   margin: 0.5rem;
 }
@@ -66,7 +66,7 @@
     max-width: 1000px;
   }
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 768px) {
   .containerAbout {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

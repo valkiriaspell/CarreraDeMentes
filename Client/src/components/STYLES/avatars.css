@@ -7,8 +7,19 @@
 .itemAvatar {
     background: none;
 }
-.itemAvatar img{
-    height: 150px;
+
+.rec.rec-dot {
+    background: #ff4343;
+    border: 2px #333 solid;
+    border-radius: 0;
+  }
+  .rec.rec-dot_active {
+    background: #59fd59;
+  }
+
+
+.avatarIMG{
+    height: 200px;
     border-radius: 50%;
     background: none;
 }
@@ -19,5 +30,5 @@
     justify-content: space-between;
 }
 .flechitas :hover {
-    cursor: url("../IMG/pata.png"), auto;
+    cursor: url("../IMG/pata.png"), auto;    
 }
