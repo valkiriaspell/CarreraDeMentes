@@ -13,7 +13,6 @@ export default function AdminNav() {
     const email = localStorage.getItem('email')
     const admin = localStorage.getItem("admin")
     const history = useHistory();
-    const dispatch = useDispatch()
 
     async function handleSignOut(e) {
         e.preventDefault();
