@@ -47,6 +47,7 @@ const createUsers = async ({
 
 // Crea un usuario invitado y lo guarda en la DB
 const createGuestUser = async () => {
+	let nuevoNumero = 101
 	try {
 		const allUsersGuest = await Users.findAll({
 			where:{
