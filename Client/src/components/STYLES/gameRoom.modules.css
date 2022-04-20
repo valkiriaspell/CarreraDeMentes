@@ -89,7 +89,7 @@
   border-radius: 0.4rem;
   margin-bottom: 2rem;
   width: 430px;
-  min-height: 700px;
+  height: 630px;
 }
 
 /* ====== CATEGORIA ====== */
@@ -120,24 +120,27 @@
   margin: 1rem;
   padding: 1rem;
   width: 370px;
-  height: 160px;
+  height: 110px;
+  font-size: 13px;
 }
 
 /* ====== IMAGEN ====== */
 .imageQuestion img {
   border-radius: 0.4rem;
-  height: 150px;
+  height: 130px;
+  width: 220px;
 }
 
 /* ====== RESPUESTAS ====== */
 .contentQuestions {
   display: flex;
   flex-direction: column;
-  padding-top: 1rem;
+  padding-top: 0.4rem;
 }
 .contentQuestions input {
   background-color: rgba(254, 254, 254, 0.71);
   padding: 0.5rem;
+  font-size: 15px;
   margin: 0.5rem;
   border-radius: 0.3rem;
   font-weight: bold;
@@ -173,8 +176,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1rem;
   margin-left: 0.5rem;
+  margin-top: -0.5rem;
 }
 .contentPower1{
   position: relative;
@@ -182,7 +185,7 @@
   flex-direction: column;
   color: rgba(240, 248, 255, 0.845);
   font-weight: bolder;
-  font-size: 14px;
+  font-size: 12px;
 }
 .contentPower1:hover::after{
   position: absolute;
@@ -201,7 +204,7 @@
   flex-direction: column;
   color: rgba(240, 248, 255, 0.845);
   font-weight: bolder;
-  font-size: 14px;
+  font-size: 12px;
 }
 .contentPower2:hover::after{
   position: absolute;
@@ -220,7 +223,7 @@
   flex-direction: column;
   color: rgba(240, 248, 255, 0.845);
   font-weight: bolder;
-  font-size: 14px;
+  font-size: 12px;
 }
 .contentPower3:hover::after{
   position: absolute;

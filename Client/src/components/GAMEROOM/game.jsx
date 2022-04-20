@@ -200,14 +200,14 @@ const Game = ({
     let buttons = document.querySelectorAll("#buttons");
 
     if (number === 1) {
-      if (userCoins >= 100) {
+      if (userCoins >= 5) {
         for (let i = 0; i < buttons.length; i++) {
           if (buttons[i].defaultValue === false1) {
             $(buttons[i]).css("background", "rgba(251, 89, 89, 0.71)");
             $(buttons[i]).css("color", "rgba(230, 231, 232, 0.662)");
           }
         }
-        setUserCoins((prevState) => prevState - 100);
+        setUserCoins((prevState) => prevState - 5);
       } else {
         toast.warn("No tienes sufucientes monedas 😢", {
           position: "top-center",
@@ -220,7 +220,7 @@ const Game = ({
         });
       }
     } else {
-      if (userCoins >= 200) {
+      if (userCoins >= 10) {
         for (let i = 0; i < buttons.length; i++) {
           if (
             buttons[i].defaultValue === false2 ||
@@ -230,7 +230,7 @@ const Game = ({
             $(buttons[i]).css("color", "rgba(230, 231, 232, 0.662)");
           }
         }
-        setUserCoins((prevState) => prevState - 200);
+        setUserCoins((prevState) => prevState - 10);
       } else {
         toast.warn("No tienes sufucientes monedas 😢", {
           position: "top-center",
@@ -253,7 +253,7 @@ const Game = ({
     <div>
       {active === true ? (
         <div className="loadingGif">
-          <img style={{marginBottom: "5rem"}} src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo5.png?alt=media&token=5e5bb88d-806a-4c38-b667-b27a9b5b01fc"></img>
+          <img style={{marginBottom: "5rem"}} width="400px" alt="Logo" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo5.png?alt=media&token=5e5bb88d-806a-4c38-b667-b27a9b5b01fc"></img>
           {user.host === true ? (
             <button className="buttonSides lowgreen" style={{color: 'white', fontSize:'20px'}} onClick={(e) => allStartGame(true)}>
               COMENZAR
@@ -322,27 +322,27 @@ const Game = ({
               <div className="containerPowers">
                 <div className="contentPower1">
                   <button className="powers" onClick={() => powerDelete(1)}>
-                    <img src={Bomb1} alt="BOMB1" width={30}></img>
+                    <img src={Bomb1} alt="BOMB1" width={25}></img>
                   </button>
                   <div>
-                    <img src={Dollar} alt="Dollar" width={20} /> 100
+                    <img src={Dollar} alt="Dollar" width={18} /> 100
                   </div>
                 </div>
                 <div className="contentPower2">
                   <button className="powers" onClick={() => powerDelete(2)}>
-                    <img src={Bomb2} alt="BOMB2" width={30}></img>
+                    <img src={Bomb2} alt="BOMB2" width={25}></img>
                   </button>
                   <div>
-                    <img src={Dollar} alt="Dollar" width={20} /> 200
+                    <img src={Dollar} alt="Dollar" width={18} /> 200
                   </div>
                 </div>
                 <div className="contentPower3">
                   <button
                     className="powers"
                     onClick={() =>
-                      userCoins >= 300
+                      userCoins >= 15
                         ? (setPointsPower(2),
-                          setUserCoins((prev) => prev - 300))
+                          setUserCoins((prev) => prev - 15))
                         : toast.warn("No tienes sufucientes monedas 😢", {
                             position: "top-center",
                             autoClose: 3000,
@@ -354,10 +354,10 @@ const Game = ({
                           })
                     }
                   >
-                    <img src={X2} alt="x2" width={30} />
+                    <img src={X2} alt="x2" width={25} />
                   </button>
                   <div>
-                    <img src={Dollar} alt="Dollar" width={20} /> 300
+                    <img src={Dollar} alt="Dollar" width={18} /> 300
                   </div>
                 </div>
                 <div
