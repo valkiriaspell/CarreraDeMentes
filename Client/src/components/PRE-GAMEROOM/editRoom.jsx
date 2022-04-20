@@ -32,7 +32,7 @@ const EditRoom = ({ handleSubmitConfig, roomConfiguration, setRoomConfiguration}
         <div className={s.containerEditRoom}>
             <form className={s.formEditRoom} onSubmit={e => handleSubmitConfig(e, roomConfiguration)}>
                 <div>
-                    <h5 style={{fontWeight: "bold"}}>Ajustes de la Partida</h5>
+                    <h6 style={{fontWeight: "bold"}}>Ajustes de la Partida</h6>
                 </div>
                 <div className={s.contentEditRoom}>
                     <label >Tiempo (segundos)</label>

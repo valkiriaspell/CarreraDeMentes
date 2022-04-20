@@ -54,18 +54,10 @@ const createGuestUser = async () => {
 				guest: true
 			}
 		})
-		if(allUsersGuest.length >= 1) {
-			let [usuario, numero] = allUsersGuest[allUsersGuest.length-1].name.split("User")
-			nuevoNumero = parseInt(numero)
-			console.log(nuevoNumero, "antes")
-			nuevoNumero += 1
-			console.log(nuevoNumero, "despues")
-		}
-		console.log(nuevoNumero, "afuera")
         
 		const newUser = await Users.create({
-			name: `User${nuevoNumero}`,
-			email: `UserGuest${nuevoNumero}.user@gmail.com`,
+			name: `User${allUsersGuest.length + 101}`,
+			email: `UserGuest${allUsersGuest.length + 101}.user@gmail.com`,
 			guest: true,
 		});
 

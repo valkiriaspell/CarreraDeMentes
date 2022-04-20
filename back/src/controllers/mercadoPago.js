@@ -20,9 +20,9 @@ const crearLinkPago = async (req, res) => {
             },
             external_reference : external_reference, //Referencia para saber cual es el monto del pedido a ingresar en la bd una vez aprobado el pago
             back_urls: {
-                "success": "https://www.zoopertrivia.com/home", //Si todo sale bien volvemos acá
-                "failure": "https://www.zoopertrivia.com/home", // Si hay algún error volvemos acá
-                "pending": "https://www.zoopertrivia.com/home" // Si esta pendiente volvemos acá
+                "success": "https://www.zoopertrivia.com/tienda", //Si todo sale bien volvemos acá
+                "failure": "https://www.zoopertrivia.com/tienda", // Si hay algún error volvemos acá
+                "pending": "https://www.zoopertrivia.com/tienda" // Si esta pendiente volvemos acá
             },
             payment_methods: {
                 "excluded_payment_types": [

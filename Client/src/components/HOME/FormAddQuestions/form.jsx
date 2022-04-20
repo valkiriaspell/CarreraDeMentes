@@ -37,12 +37,12 @@ export default function FormAddQuestions() {
 
 	//necesito traer las categorias de forma real porque el admin podria crear nuevas categorias eventualmente
 	let falseCategories = [
-		'Musica',
+		'Música',
 		'Deporte',
 		'Cine',
 		'Arte',
 		'Ciencias',
-		'Geografia',
+		'Geografía',
 		'Historia',
 	];
 
