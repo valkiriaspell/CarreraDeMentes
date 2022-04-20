@@ -30,7 +30,7 @@ export default function ChangeQuestion({selectedQuestion, setShowForm, refresh})
     const [errorImage, setErrorImage] = useState("")
     const [errorTotal, setErrorTotal] = useState("")
     
-    let falseCategories = ["Musica", "Deporte", "Cine", "Arte", "Ciencias", "Geografia", "Historia"]
+    let falseCategories = ["Música", "Deporte", "Cine", "Arte", "Ciencias", "Geografía", "Historia"]
      //////////////// ---->    VALIDATIONS    <------ /////////////
 
     function validation(e) {
@@ -163,7 +163,7 @@ export default function ChangeQuestion({selectedQuestion, setShowForm, refresh})
                         </div>
                     </div>
                     <div>
-                        <label>Categoria*</label>
+                        <label>Categoría*</label>
                         <div>
                             <select onChange={(e) =>handleCategory(e)} name="" id="categories">
                                 {
