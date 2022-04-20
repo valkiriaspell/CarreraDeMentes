@@ -307,8 +307,9 @@
   width: 430px;
   height: 700px;
 }
-.contentgif {
-  
+
+.loadingGif img {
+  width: 500px;
 }
 
 
@@ -339,5 +340,8 @@
   }
   .title {
     display: none;
+  }
+  .loadingGif img {
+    width: 350px;
   }
 }
