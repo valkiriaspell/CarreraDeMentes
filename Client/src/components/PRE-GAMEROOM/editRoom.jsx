@@ -55,12 +55,12 @@ const EditRoom = ({ handleSubmitConfig, roomConfiguration, setRoomConfiguration}
                             <select name="category"  onChange={e => handleChange(e)}>
                                 <option value="">Ninguna</option>
                                 <option value="Deporte">Deporte</option>
-                                <option value="Musica">Musica</option>
+                                <option value="Música">Música</option>
                                 <option value="Historia">Historia</option>
                                 <option value="Ciencias">Ciencias</option>
                                 <option value="Arte">Arte</option>
                                 <option value="Cine">Cine</option>
-                                <option value="Geografia">Geografia</option>
+                                <option value="Geografía">Geografía</option>
                             </select>
                             : <div>{roomConfiguration?.category}</div>
                     }
