@@ -78,7 +78,7 @@ function Instructions() {
           <div className="carousel-item">
             <img src={IMG} className="d-block w-100" alt="IMG" />
             <div className="carousel-caption d-none d-md-block containerCard">
-            <img src={nivel} height={140} alt="nivel"/>
+            <img src={nivel} height={120} alt="nivel"/>
               <h5>¡Sumá puntos de experiencia y subí de Nivel!</h5>
               <p>
                 Posicionate en lo más alto de nuestro Top 20 de jugadores.
