@@ -36,6 +36,7 @@ export default function LoginAdmin() {
         if(login?.accessToken){
             localStorage.setItem("email", login.email);
             localStorage.setItem("token", login.accessToken);
+            localStorage.setItem("admin", true)
             if(user.admin === "superadmin" || user.admin === "admin") {
                 history.push("/adminHome");
             } else {

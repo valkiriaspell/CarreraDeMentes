@@ -22,6 +22,7 @@ export const ALL_USERS_LEVEL = 'ALL_USERS_LEVEL';
 export const UPDATE_POINTS = 'UPDATE_POINTS';
 export const FAST_REMOVE = 'FAST_REMOVE';
 export const READY_USER = 'READY_USER';
+export const CHANGE_LOADING = 'CHANGE_LOADING';
 
 
 
@@ -281,6 +282,13 @@ export function changePoint({ id, pointsTotal, point }) {
 export function readyUser(bool) {
     return {
         type: READY_USER,
+        payload: bool
+    }
+
+}
+export function changeLoading(bool) {
+    return {
+        type: CHANGE_LOADING,
         payload: bool
     }
 }

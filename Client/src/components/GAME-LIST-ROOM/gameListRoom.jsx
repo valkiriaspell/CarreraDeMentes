@@ -105,7 +105,7 @@ const history = useHistory()
               <span style={{marginLeft: "3.5rem", marginRight: "-1rem"}} >{game.questionAmount}</span>
               <div className="buttons" >
                 <button className="buttonSides brown" onClick={() => handleJoinRoom(game)} >Unirse</button>
-                <button className="buttonSides brown" onClick={() => handleWatchRoom(game)} >Ver</button>
+                <button className="buttonSides blue" onClick={() => handleWatchRoom(game)} >Ver</button>
               </div>
             </div>
           );

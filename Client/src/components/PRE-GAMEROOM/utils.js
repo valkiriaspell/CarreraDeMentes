@@ -69,7 +69,7 @@ export async function startGameAlready(idRoom, start){
 export function getUrl() {
     var aux = document.createElement("input");
     const aux2 = window.location.href.split("/")
-    aux.setAttribute("value", `http://localhost:3000/invitationRoom/${aux2[aux2.length - 1]}`);
+    aux.setAttribute("value", `https://www.zoopertrivia.com/invitationRoom/${aux2[aux2.length - 1]}`);
     document.body.appendChild(aux);
     aux.select();
     document.execCommand("copy");

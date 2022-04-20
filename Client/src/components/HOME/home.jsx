@@ -20,7 +20,7 @@ function Home(props) {
 	const email = localStorage.getItem('email');
 
 	useEffect(() => {
-		!user?.name && dispatch(loginUser(email));
+		!user?.name && dispatch(loginUser(email))
 		console.log(user);
 	}, []);
 
@@ -73,11 +73,10 @@ function Home(props) {
 					</div>
 					<div>
 						{/* COMPONENTE USERCARD */}
-						<UserCard location={props.location} />
+						<UserCard />
 						<Music />
 					</div>
 				</div>
-
 				{/* <-----------------------------  ESTO SE RENDERIZA EN SMARTPHONE     --------------------------------------> */}
 				<div className='nav__smartphone'>
 					<div className='contentNav__smartphone'>
@@ -86,7 +85,7 @@ function Home(props) {
 								<button
 									style={{fontSize: '11px'}}
 									className='buttonSides brown'
-								>
+									>
 									Tienda
 								</button>
 							</NavLink>
@@ -102,7 +101,7 @@ function Home(props) {
 								<button
 									style={{fontSize: '11px'}}
 									className='buttonSides brown'
-								>
+									>
 									Ranking
 								</button>
 							</NavLink>
@@ -119,7 +118,7 @@ function Home(props) {
 								width='240px'
 								src='https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4'
 								alt='Logo'
-							></img>
+								></img>
 						</div>
 					</div>
 				</div>

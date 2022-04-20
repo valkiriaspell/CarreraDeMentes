@@ -27,8 +27,8 @@ function LandingPage() {
 
 	return (
 		<div className='landinpage'>
+			<Music />
 			<div className='logoLanding'>
-				<Music />
 				<img
 					style={{marginBottom: '5rem'}}
 					width='500px'

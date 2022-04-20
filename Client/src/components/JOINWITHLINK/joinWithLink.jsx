@@ -2,9 +2,9 @@ import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, Link } from "react-router-dom"
 import { listUsersInPreRoom, loginUser } from "../../redux/actions"
-import { AddUserToPreRoom } from "./utils";
+import { AddUserToPreRoom } from "../PRE-GAMEROOM/utils";
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import s from '../STYLES/preGameRoom.module.css'
+import s from '../STYLES/invitation.module.css'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -37,7 +37,7 @@ function JoinWithLink({match}){
     return (
         <div className={s.containerInvitation}>
           <div className={s.logo} >
-          <img width="500px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo5.png?alt=media&token=5e5bb88d-806a-4c38-b667-b27a9b5b01fc"></img>
+          <img src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo5.png?alt=media&token=5e5bb88d-806a-4c38-b667-b27a9b5b01fc"></img>
           </div>
           <div className={s.containerButtons} >
             <Link style={{ textDecoration: "none" }} to="/home">
