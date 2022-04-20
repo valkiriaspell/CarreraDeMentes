@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-import { useLocation } from 'react-router-dom'
 import "../STYLES/admin.css"
 import "../STYLES/home.modules.css"
 import { FaPowerOff } from "react-icons/fa";
@@ -8,15 +7,12 @@ import { firebaseCerrarSesion } from '../../utils/Firebase';
 import admin01 from '../IMG/Admin1.png'
 import admin02 from '../IMG/Admin2.png'
 import admin03 from '../IMG/Admin3.png'
-import { useSelector } from 'react-redux';
 
 export default function AdminNav() {
 
     const email = localStorage.getItem('email')
-    const autenticado = localStorage.getItem('token')
+    const admin = localStorage.getItem("admin")
     const history = useHistory();
-
-    const {user} = useSelector(state => state)
 
     async function handleSignOut(e) {
         e.preventDefault();
@@ -25,8 +21,7 @@ export default function AdminNav() {
         history.push('/');
     }
 
- 
-    if (user.admin === "admin" || user.admin === "superadmin") {
+    if (admin) {
         return (
             <div className='adminHome'>
                 <div className="navHomeAdmin">

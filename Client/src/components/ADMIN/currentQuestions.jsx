@@ -13,13 +13,14 @@ import admin02 from '../IMG/Admin2.png'
 export default function CurrentQuestions() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const {user} = useSelector(state => state)
 
     ///////////---->>> Local States  <<<----///////////
     const [category, setCategory] = useState("")
     const [search, setSearch] = useState("")
     const [selectedQuestion, setSelectedQuestion] = useState("")
     const [showForm, setShowForm] = useState(false)
+
+    const admin = localStorage.getItem("admin")
 
     useEffect(() => {
         dispatch(getAllQuestions())
@@ -88,10 +89,9 @@ export default function CurrentQuestions() {
 
     function modifyQuestion() {     
             setShowForm(true)        
-       
     }
 
-    if (user.admin === "admin" || user.admin === "superadmin") {
+    if (admin) {
        return (
                 <div className='adminHomeQuestions'>
                     <div className='questionsNav'>

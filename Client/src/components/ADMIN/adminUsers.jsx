@@ -3,7 +3,7 @@ import { CgDarkMode } from "react-icons/cg";
 import "../STYLES/admin.css"
 import Swal from "sweetalert2";
 import { GrUpdate } from "react-icons/gr";
-import { allUsers, bannUser, createAdmin, sendingMail } from '../../redux/actions';
+import { allUsers, bannUser, createAdmin, sendingMail, loginUser } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { RiGradienterLine } from "react-icons/ri";
 import  AdminNav  from './adminNav'
@@ -14,7 +14,6 @@ import { useHistory } from 'react-router-dom';
 export default function AdminUsers() {
     
     const history = useHistory();
-    const {user} = useSelector(state => state)
 
     const dispatch = useDispatch();
     const [selectedUser, setUser] = useState("")
@@ -24,6 +23,7 @@ export default function AdminUsers() {
     const textAdmin = "Te informamos que has sido designado como Administrador de ZooPer Trivia. Ahora podrás acceder a la sección de administrador donde podrás verificar el ingreso de nuevas preguntas al juego!"
     const textNoAdmin = "Te informamos que tu cuenta ya no tendrá acceso al área de Administrador"
     const textBann = "Te informamos que debido a algún incumplimiento a las normas de ZooPer Trivia. Tu cuenta ha sido banneada. No podrás acceder durante 72hs. Te sugerimos no reincidir en este comportamiento para evitar un posible banneo permanente."
+    const admin = localStorage.getItem("admin")
 
     useEffect(() => {
         dispatch(allUsers())
@@ -199,7 +199,7 @@ export default function AdminUsers() {
     totalUsers = totalUsers.filter(d => d.admin !== "superadmin")
     totalUsers = totalUsers.filter(d => d.guest !== true)
 
-if (user.admin === "admin" || user.admin === "superadmin") {
+if (admin) {
     return (
             <div className='adminHome'>
                 <div className='questionsNav'>
