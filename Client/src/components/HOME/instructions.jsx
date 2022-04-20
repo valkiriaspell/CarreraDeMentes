@@ -6,7 +6,7 @@ import config from "../IMG/configurar.gif";
 import response from "../IMG/responderPreguntas.gif";
 import powers from "../IMG/powers.png";
 import nivel from "../IMG/nivel.png";
-import moneda from "../IMG/moneda.png";
+import moneda from "../IMG/chest.png";
 import preguntas from "../IMG/preguntas.png";
 
 function Instructions() {
@@ -67,7 +67,7 @@ function Instructions() {
           <div className="carousel-item active">
             <img src={IMG}  className="d-block w-100 pergamino" alt="IMG" />
             <div className="carousel-caption d-none d-md-block containerCard">
-              <img src={response} height={170} alt="response"/>
+              <img src={response} height={145} alt="response"/>
               <h5>¡Juga a Zooper Trivia!</h5>
               <p>
                 Responde a preguntas aleatorias de diversas categorías, antes de que se te acabe el tiempo.

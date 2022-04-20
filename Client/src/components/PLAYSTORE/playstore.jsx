@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 import UserCard from '../HOME/userCard';
 import Music from '../MUSICA/musica';
 
-function PlayStore() {
+function PlayStore(props) {
 	const history = useHistory();
 	const autenticado = localStorage.getItem('token');
 	const [productos, setProductos] = useState([]);
@@ -48,7 +48,7 @@ function PlayStore() {
 					>
 						Volver
 					</button>
-					<UserCard />
+					<UserCard location={props.location}/>
 				</div>
 				<Music />
 				<h1>¡Comprá Monedas!</h1>
@@ -60,6 +60,7 @@ function PlayStore() {
 								key={producto.id}
 								img={producto.url}
 								precio={producto.coins}
+								precioFicticio={producto.coins / 10}
 								referencia={producto.id}
 							/>
 						))}
