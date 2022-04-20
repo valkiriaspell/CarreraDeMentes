@@ -14,9 +14,10 @@
 }
 
 .button{
-    transition: 0.2s;
+  
     font-size: 1rem;
-    background-image: url(../IMG/arena-green.png);
+    color: rgba(221, 221, 221, 0.9);
+    background-color: rgb(225, 145, 32);
 }
 .button:hover{
     filter: brightness(1.2);
