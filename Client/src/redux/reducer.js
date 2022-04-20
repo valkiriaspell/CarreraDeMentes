@@ -126,13 +126,14 @@ const reducer = (state = initialState, action) => {
                 ...state,
             }
         case ALL_USERS_LEVEL:
-            const data = action.payload.slice(0, 20);
-
-            const dataFil = data.sort((a, b) => b.wins - a.wins).filter(({ guest, admin }) => !guest && admin !== "superadmin");
+            
+            const wins = action.payload.filter( a => a.wins > 0)
+            let dataFil = wins.sort((a, b) => b.wins - a.wins).filter(({ guest, admin }) => !guest && admin !== "superadmin");
+            const data = dataFil.slice(0, 20);
             console.log("Data: ", data);
             return {
                 ...state,
-                totalUsers: dataFil
+                totalUsers: data
             }
         case CHANGE_LOADING:
             return {
