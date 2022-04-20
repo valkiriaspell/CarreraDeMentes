@@ -121,7 +121,7 @@
 @media screen and (max-width: 500px) {
   .containerGameList {
     margin: 5rem 1rem;
-    min-width: 440px;
+    min-width: 380px;
     max-width: 490px;
   }
   .buscadorGameList input {
@@ -137,5 +137,8 @@
     right: .5rem;
     gap: .25rem;
     justify-content: center;
+  }
+  .vistaButton {
+    display: none;
   }
 }
