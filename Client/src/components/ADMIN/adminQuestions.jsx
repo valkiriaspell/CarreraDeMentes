@@ -7,7 +7,8 @@ import Swal from "sweetalert2";
 import { GrRefresh, GrUpdate } from "react-icons/gr";
 import { useHistory } from 'react-router-dom';
 import {deleteStorage} from "../../utils/Firebase.js"
-import  AdminNav  from './adminNav'
+import { loginUser } from '../../redux/actions';
+import AdminNav  from './adminNav'
 import admin01 from '../IMG/Admin1.png'
 
 
@@ -21,13 +22,14 @@ export default function AdminQuestions() {
     const [emails, setEmails] = useState([])
     const textReject = "Lamentablemente tu pregunta no cumplió los requisitos para formar parte de ZooPer Trivia! Intentalo nuevamente!!"
     const textAccept = "Te informamos que tu pregunta fue exitosamente agregada a las preguntas de ZooPer Trivia! Gracias por participar y a seguir jugando!"
+    const admin = localStorage.getItem("admin")
 
     const {user} = useSelector(state => state)
 
     useEffect(() => {
         dispatch(getNewQuestions())
     }, [])
-    
+
     let { newQuestions } = useSelector(state => state)
     console.log("nuevasP", newQuestions)
 
@@ -160,7 +162,7 @@ export default function AdminQuestions() {
       });
       
 
-      if (user.admin === "admin" || user.admin === "superadmin") {
+      if (admin) {
     return (
         <div className='adminHome'>
                     <div className='questionsNav'>

@@ -3,7 +3,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { useLocation } from 'react-router-dom'
 import "../STYLES/admin.css"
 import "../STYLES/home.modules.css"
-import { FaPowerOff, FaHouseUser } from "react-icons/fa";
+import { FaPowerOff } from "react-icons/fa";
 import { firebaseCerrarSesion } from '../../utils/Firebase';
 
 export default function AdminNav() {
@@ -24,7 +24,6 @@ export default function AdminNav() {
     const { pathname } = location;
 
     const splitLocation = pathname.split("/")
-    
 
     if (autenticado) {
 
