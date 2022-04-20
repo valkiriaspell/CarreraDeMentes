@@ -1,19 +1,46 @@
 .drop-area{
-    border:5px dashed red;
-    height: 50px;
-    width: 360px; 
-    border-radius: 5px;
+    /* border:5px dashed red; */
+    width: 100%; 
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
+    justify-content: center;
     font-size: 60%;
+    margin: 0.5rem 0;
+}
+.drop-area h2{
+    font-size: 1rem;
+    margin: 0;
+}
+
+.button{
+  
+    font-size: 1rem;
+    color: rgba(221, 221, 221, 0.9);
+    background-color: rgb(225, 145, 32);
+}
+.button:hover{
+    filter: brightness(1.2);
+    transition: 0.2s;
 }
 .status{
-    font-size: 64%;
-    width: 62%;
+    font-size: 1rem;
+    width: 100%;
     overflow: hidden;
     word-break: break-all;
     display: flex;
     flex-direction: column;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.imgUpload{
+    width: 5rem;
+    margin-bottom: 1rem;
+}
+
+#preview{
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }

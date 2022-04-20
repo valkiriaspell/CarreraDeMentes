@@ -3,7 +3,7 @@
   background-color: rgba(52, 51, 51, 0.242);
   border: solid 3px rgba(200, 204, 209, 0.253);
   max-width: 500px;
-  min-height: 645px;
+  min-height: 600px;
   margin-top: 2rem;
   margin-left: auto;
   margin-right: auto;
@@ -68,8 +68,8 @@
 .buttonLogin {
   top: -65px;
   position: relative;
-  color: rgba(221, 221, 221, 0.829);
-  background-color: rgba(173, 174, 175, 0.521);
+  color: rgba(221, 221, 221, 0.9);
+  background-color: rgb(225, 145, 32);
   margin-top: 1rem;
   margin-bottom: 1rem;
   border: none;
@@ -108,12 +108,13 @@
 }
 .buttonSingUP {
   text-decoration: none;
-  color: rgba(221, 221, 221, 0.829);
+  color: rgba(221, 221, 221, 0.9);
+  background-color: rgb(225, 145, 32);
   width: 7rem;
   border-radius: 2rem;
   font-weight: bold;
   padding: 0.2rem;
-  background-color: rgba(173, 174, 175, 0.521);
+  
 }
 .buttonSingUP:hover {
   background-color: rgba(149, 151, 153, 0.521);

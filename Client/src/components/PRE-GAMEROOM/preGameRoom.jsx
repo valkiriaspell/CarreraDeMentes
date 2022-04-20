@@ -14,6 +14,8 @@ import { FaLink } from "react-icons/fa";
 import { AiFillSound } from "react-icons/ai";
 import { getUrl } from "./utils";
 import Music from "../MUSICA/musica"
+import { ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function PreGameRoom({match}) {
 
@@ -24,7 +26,7 @@ function PreGameRoom({match}) {
     const {idUser} = match.params;
 
   const { sendReady, sendStartGame, game, expelPlayer, setGame, messages, sendMessage, handleSubmitConfig, 
-          roomConfiguration, setRoomConfiguration, positions, allStartGame, everybodyPlays, points 
+          roomConfiguration, setRoomConfiguration, positions, allStartGame, everybodyPlays, points, setPoints
         } = useSocket(idUser);
   
 
@@ -34,15 +36,16 @@ function PreGameRoom({match}) {
       <div className={s.container}>
         <div className={s.navPreGameRoom}>
           <Link style={{ textDecoration: "none" }} to="/home">
-            <button className="buttonSides lowgreen">
-              <AiOutlineArrowLeft style={{ marginRight: "0.4rem" }} />
+            <button style={{color: "rgba(255, 255, 255, 0.829)"}} className="buttonSides lowgreen">
               Volver
             </button>
           </Link>
           <div className="logo">
-                <img width="200px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4" alt="Logo"></img>
+                <img className="logoPGameroom" width="200px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4" alt="Logo"></img>
             </div>
-           <div></div>
+            <div>
+          <Music />
+        </div>
         </div>
         <div>
           <ListPlayers expelPlayer={expelPlayer} />
@@ -61,7 +64,7 @@ function PreGameRoom({match}) {
           </div>
 
           <div className={s.buttonsPreGameRoom}>
-          <button className="buttonSides lowgreen" onClick={getUrl} ><FaLink/></button>
+            <button className="buttonSides lowgreen" onClick={getUrl} ><FaLink/></button>
             {
               user?.host === true 
                 ? (
@@ -77,14 +80,13 @@ function PreGameRoom({match}) {
                   Iniciar
                 </button>
                 ) 
-                : <button className="buttonSides lowgreen" onClick={sendReady}>Listo</button>  
+                : preRoomUsers?.users?.find(us => us.id === user.id) &&
+                 <button className="buttonSides lowgreen" onClick={sendReady}>Listo</button> 
+
             }
-            <button className="buttonSides lowgreen" >Invitar</button>
           </div>
         </div>
-        <div style={{marginLeft: "1rem"}}>
-        <Music />
-        </div>
+        <ToastContainer />
       </div>
     ) : (
       <GameRoom 
@@ -94,6 +96,7 @@ function PreGameRoom({match}) {
         allStartGame={allStartGame} 
         everybodyPlays={everybodyPlays} 
         points={points} 
+        setPoints={setPoints}
       />
     );
   } else {

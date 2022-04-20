@@ -8,7 +8,8 @@ import { BrowserRouter } from "react-router-dom";
 import store from "./redux/store";
 import axios from "axios";
 
-axios.defaults.baseURL = process.env.REACT_APP_API || "";
+axios.defaults.baseURL = process.env.REACT_APP_API
+
 
 ReactDOM.render(
   <React.StrictMode>

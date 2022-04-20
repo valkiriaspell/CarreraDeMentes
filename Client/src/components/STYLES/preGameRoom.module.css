@@ -12,6 +12,10 @@
   margin-bottom: 2rem;
   color: rgba(255, 255, 255, 0.829);
 }
+.iconMusicPreRoom {
+  position: relative;
+  left: 9rem;
+}
 
 .navPreGameRoom {
   display: flex;
@@ -19,15 +23,11 @@
   margin: 1rem;
   width: 700px;
 }
-.navPreGameRoom button {
-  color: rgba(255, 255, 255, 0.769);
-  border-radius: 0.3rem;
-  padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+.buttonVolverPreSala button{
+  color: rgba(255, 255, 255, 0.829);
 }
 
-.navPreGameRoom h3 {
-  margin-left: -4rem;
-}
+
 
 
 /* ======= LISTA DE JUGADORES ======= */
@@ -105,6 +105,9 @@
   border: none;
   margin-right: -0.8rem;
 }
+.readyPhone {
+  display: none;
+}
 
 /* ======= BOTONES INVITAR E INICIAR ======= */
 .buttonsPreGameRoom button {
@@ -114,8 +117,13 @@
   border: none;
   margin: 0.2rem;
   margin-bottom: 1rem;
+  font-size: 1.4rem;
 }
-
+.buttonsPreGameRoom {
+  display:flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
 
 /* ======= EDITAR SALA ======= */
 .containerEditRoom {
@@ -154,13 +162,14 @@
 .buttonSubmitChanges button {
   padding: 5px;
   border-radius: 0.3rem;
-  background-color: rgba(216, 221, 226, 0.4);
+  background-color: rgba(253, 139, 0, 0.893);
   color: rgba(221, 221, 221, 0.829);
   border: none;
+  font-weight: bold;
 }
 .buttonSubmitChanges button:hover {
-  cursor: pointer;
-  background-color: rgba(154, 158, 161, 0.4);
+  background-color: rgb(255, 140, 0);
+  cursor: url("../IMG//pata.png"), auto;
 }
 
 /* ======= CHAT ======= */
@@ -210,32 +219,11 @@
   border: none;
 }
 .containerSendMessages button:hover {
-  cursor: pointer;
+  cursor: url("../IMG//pata.png"), auto;
   background-color: rgba(154, 158, 161, 0.4);
 }
 
-/* ===== INVITATION ROOM =====*/
-.containerInvitation{
-  margin-top: -3.8rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  justify-content: center;
-}
 
-.containerButtons{
-  display: flex;
-  flex-direction: column;
-  /* background-color: rgba(160, 114, 145, 0.664); */
-  width: 18rem;
-  height: 20rem;
-/*   border: 5px rgb(49, 95, 49) solid; */
-  /* border: 5px rgb(10, 97, 90) solid; */
-  /* border-radius: .5rem; */
-  justify-content: space-evenly;
-  align-items: center;
-}
 
 /* ===== MEDIA QUERIES =====*/
 @media screen and (max-width: 500px) {
@@ -244,8 +232,44 @@
   }
   .container {
     margin: 1rem;
+    width: 400px;
+    height: 860px;
+    margin-bottom: 4rem;
+  }
+  .navPreGameRoom h3 {
+    margin-left: -1rem;
+  }
+  .containerEditRoom {
+    width: 370px;
+    height: 300px;
+  }
+  .containerChat {
+    margin: 1rem;
     width: 360px;
-    height: 760px;
+  }
+  .readyPhone {
+    display: flex;
+    border-radius: 10px;
+    outline: none;
+    background: none;
+    border: none;
+    margin-right: -0.8rem;
+    margin-left: 4rem;
+  }
+  .buttonsPreGameRoom button {
+    padding: 0.3rem 0.7rem 0.3rem 0.7rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .containerPlayers {
+    display: none;
+  }
+  .container {
+    margin: 1rem;
+    width: 360px;
+    height: 860px;
+    margin-bottom: 4rem;
   }
   .navPreGameRoom h3 {
     margin-left: -1rem;
@@ -257,5 +281,17 @@
   .containerChat {
     margin: 1rem;
     width: 320px;
+  }
+  .readyPhone {
+    display: flex;
+    border-radius: 10px;
+    outline: none;
+    background: none;
+    border: none;
+    margin-right: -0.8rem;
+    margin-left: 4rem;
+  }
+  .buttonsPreGameRoom button {
+    padding: 0.3rem 0.7rem 0.3rem 0.7rem;
   }
 }

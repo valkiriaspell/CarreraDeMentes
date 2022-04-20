@@ -1,6 +1,7 @@
 /* ====== CONTAINER ====== */
 .container {  
   border-radius: 0.4rem;
+  
 }
 
 /* ====== NAV ====== */
@@ -49,11 +50,12 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-left: 9rem;
 }
 .contentButtons {
   display: flex;
   flex-direction: column;
+  margin-right: 5rem;
+  margin-left: 2rem;
 }
 .contentButtons button{
   width: 14rem;
@@ -93,11 +95,54 @@
 .carruselIndicación{
   margin-bottom: 4rem;
 }
+.imgMoneda {
+  box-shadow: 10px 10px 20px rgb(255, 221, 0);
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
 
 /* ===== MEDIA QUERIES =====*/
+@media screen and (min-width: 1200px) {
+  .nav__smartphone {
+    display: none;
+  }
+  .contentSocialSmartphone {
+    display: none;
+  }
+  #prueba {
+    display: flex;
+    flex-direction: column;
+  }
+  .logo img {
+    width: 300px;
+  }
+  .contentButtons button{
+    width: 11rem;
+    height: 2.5rem;
+    font-size: 0.8rem;
+    margin: 0.6rem;
+  }
+  .cards {
+    width: 500px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 12px;
+  }
+  .containerCard {
+    margin-bottom: 2rem;
+  }
+
+}
 @media screen and (min-width: 500px) {
   .nav__smartphone {
     display: none;
+  }
+  .contentSocialSmartphone {
+    display: none;
+  }
+  #prueba {
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -106,6 +151,9 @@
     display: none;
   }
   .nav {
+    display: none;
+  }
+  .contentSocial {
     display: none;
   }
   .contentNav__smartphone {
@@ -118,12 +166,19 @@
   }
   .content {
     margin-top: 3rem;
-    margin-right: 9rem;
+    margin-left: 3rem;
+  }
+  .contentSocialSmartphone {
+    padding-bottom: 4rem;
   }
 }
 
 
 /* ===== SOCIAL ICONS =====*/
+
+.contentSocial {
+  margin-right: 12rem;
+}
 
 .social-icons {
   display: block;
@@ -142,7 +197,7 @@
   text-align: center;
   padding: 0;
   list-style: none;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 
 .social-icons li {

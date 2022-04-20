@@ -13,6 +13,8 @@ import Music from "../MUSICA/musica";
 import Bomb1 from "../IMG/bomb.png";
 import Bomb2 from "../IMG/bombs.png";
 import X2 from "../IMG/gift-box.png";
+import Dollar from "../IMG/dollar.png";
+import '../STYLES/buttons.css';
 
 function randomQuestions(array) {
   var m1 = Math.floor((Math.random() * array.length) % array.length);
@@ -70,7 +72,6 @@ const Game = ({
       coinsFinal: coins,
       email: user.email,
     });
-    console.log(coins);
   };
 
   // ======= TIMER =======
@@ -113,18 +114,19 @@ const Game = ({
   }, [preRoomUsers.questions]);
 
   //  ============================
+
   let finalGame = preRoomUsers?.time * preRoomUsers?.questionAmount * 1000;
-  useEffect(() => {
-    setTimeout(() => {
-      startGameAlready(preRoomUsers.id, false);
-      allStartGame(false);
-      setShowEndGame(true);
-    }, finalGame);
-  }, []);
+  const prueba = () => {
+      setTimeout(() => {
+        startGameAlready(preRoomUsers.id, false);
+        allStartGame(false);
+        setShowEndGame(true);
+      }, finalGame);
+  }
+
 
   let secondsGame = preRoomUsers?.time + "000";
   const startGame = () => {
-    console.log(preRoomUsers.questions);
     setQ(preRoomUsers.questions[0].question);
     setA(preRoomUsers.questions[0].answer);
     setF1(preRoomUsers.questions[0].false1);
@@ -132,6 +134,7 @@ const Game = ({
     setF3(preRoomUsers.questions[0].false3);
     setCat(preRoomUsers.questions[0].category);
     setActive(false);
+    prueba();
 
     questions?.map((q, index) =>
       setTimeout(() => {
@@ -250,20 +253,20 @@ const Game = ({
     <div>
       {active === true ? (
         <div className="loadingGif">
-          <img src={Animals} alt="Animals" width={300} />
+          <img style={{marginBottom: "5rem"}} src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo5.png?alt=media&token=5e5bb88d-806a-4c38-b667-b27a9b5b01fc"></img>
           {user.host === true ? (
-            <button className="buttonStart" onClick={(e)=>allStartGame(true)}>
-              START
+            <button className="buttonSides lowgreen" style={{color: 'white', fontSize:'20px'}} onClick={(e) => allStartGame(true)}>
+              COMENZAR
             </button>
           ) : (
             <h6
-              style={{ color: "rgba(221, 221, 221, 0.829)" }}
+              style={{ color: "black", fontSize:'25px', fontWeight: 'bold'}}
             >{`Esperando a que ${preRoomUsers.name} inicie la partida...`}</h6>
           )}
         </div>
       ) : (
         <div>
-          <div className="containerHeader">
+          <div className="containerHeaderGame">
             <button className="buttonSides brown" onClick={handleGoHome}>
               Salir
             </button>
@@ -317,13 +320,23 @@ const Game = ({
                   })}
               </div>
               <div className="containerPowers">
-                <div>
+                <div className="contentPower1">
                   <button className="powers" onClick={() => powerDelete(1)}>
                     <img src={Bomb1} alt="BOMB1" width={30}></img>
                   </button>
+                  <div>
+                    <img src={Dollar} alt="Dollar" width={20} /> 100
+                  </div>
+                </div>
+                <div className="contentPower2">
                   <button className="powers" onClick={() => powerDelete(2)}>
                     <img src={Bomb2} alt="BOMB2" width={30}></img>
                   </button>
+                  <div>
+                    <img src={Dollar} alt="Dollar" width={20} /> 200
+                  </div>
+                </div>
+                <div className="contentPower3">
                   <button
                     className="powers"
                     onClick={() =>
@@ -343,6 +356,9 @@ const Game = ({
                   >
                     <img src={X2} alt="x2" width={30} />
                   </button>
+                  <div>
+                    <img src={Dollar} alt="Dollar" width={20} /> 300
+                  </div>
                 </div>
                 <div
                   style={{

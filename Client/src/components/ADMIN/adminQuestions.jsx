@@ -13,6 +13,7 @@ import admin01 from '../IMG/Admin1.png'
 
 export default function AdminQuestions() {
 
+    const history = useHistory();
     const dispatch = useDispatch(); 
     const [preguntasID, setPreguntas] = useState([])
     const [category, setCategory] = useState("")
@@ -21,6 +22,7 @@ export default function AdminQuestions() {
     const textReject = "Lamentablemente tu pregunta no cumplió los requisitos para formar parte de ZooPer Trivia! Intentalo nuevamente!!"
     const textAccept = "Te informamos que tu pregunta fue exitosamente agregada a las preguntas de ZooPer Trivia! Gracias por participar y a seguir jugando!"
 
+    const {user} = useSelector(state => state)
 
     useEffect(() => {
         dispatch(getNewQuestions())
@@ -156,7 +158,9 @@ export default function AdminQuestions() {
         }        
         return 0;
       });
-      console.log(images)
+      
+
+      if (user.admin === "admin" || user.admin === "superadmin") {
     return (
         <div className='adminHome'>
                     <div className='questionsNav'>
@@ -226,4 +230,8 @@ export default function AdminQuestions() {
                 </div>
             </div>
     )
+} else {
+    history.push('/');
+    return <div></div>;
+}
 }

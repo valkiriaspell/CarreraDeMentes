@@ -13,6 +13,7 @@ import admin02 from '../IMG/Admin2.png'
 export default function CurrentQuestions() {
     const dispatch = useDispatch();
     const history = useHistory();
+    const {user} = useSelector(state => state)
 
     ///////////---->>> Local States  <<<----///////////
     const [category, setCategory] = useState("")
@@ -90,7 +91,7 @@ export default function CurrentQuestions() {
        
     }
 
-    
+    if (user.admin === "admin" || user.admin === "superadmin") {
        return (
                 <div className='adminHomeQuestions'>
                     <div className='questionsNav'>
@@ -164,10 +165,14 @@ export default function CurrentQuestions() {
             </div>
         </div>
             {showForm?
-            <div className='popUp'>
+            <div>
                 <ChangeQuestion refresh={refresh} selectedQuestion={selectedQuestion} setShowForm={setShowForm}></ChangeQuestion>
             </div>
                 : null }
     </div>
     )
+} else {
+    history.push('/');
+    return <div></div>;
+}
 }

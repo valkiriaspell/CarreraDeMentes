@@ -6,10 +6,10 @@
 
 /* ====== LISTA DE JUGADORES ====== */
 .containerListPlayerRoom {
-  background-color: rgba(164, 166, 172, 0.192);
+  background-color: rgba(0, 0, 0, 0.392);
   border: solid 3px rgba(216, 221, 226, 0.253);
   width: 310px;
-  height: 500px;
+  height: 540px;
   margin: 3rem;
   display: flex;
   justify-content: start;
@@ -19,7 +19,7 @@
 }
 .contentListPlayerRoom {
   /* background-color: rgba(216, 221, 226, 0.349); */
-  background-color: rgba(97, 100, 104, 0.281);
+  background-color: rgba(181, 188, 197, 0.874);
   /* border: solid 3px rgba(216, 221, 226, 0.253); */
   border: solid 3px rgba(117, 7, 190, 0.295);
   width: 250px;
@@ -30,7 +30,7 @@
 }
 .contentPlayerRoom {
   /* background-color: rgba(216, 221, 226, 0.349); */
-  background-color: rgba(97, 100, 104, 0.281);
+  background-color: rgba(181, 188, 197, 0.874);
   /* border: solid 3px rgba(216, 221, 226, 0.253); */
   border: solid 3px rgba(117, 7, 190, 0.295);
   width: 250px;
@@ -38,10 +38,10 @@
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
-  box-shadow: 0 0 5px  5px rgba(190, 188, 21, 0.452);
+  box-shadow: 0 0 5px  5px rgba(255, 255, 255, 0.695);
 }
 .positionPlayers {
-  color: rgba(238, 240, 241, 0.692);
+  color: rgba(0, 0, 0, 0.692);
   margin-left: 1rem;
   margin-top: 0.3rem;
 }
@@ -49,7 +49,7 @@
   display: flex;
   flex-direction: column;
   /* color: rgba(230, 231, 232, 0.539); */
-  color: rgba(238, 240, 241, 0.692);
+  color: rgba(0, 0, 0, 0.692);
 }
 
 .allPlayers{
@@ -61,7 +61,7 @@
 }
 
 /* ====== HEADER ====== */
-.containerHeader{
+.containerHeaderGame{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -83,7 +83,7 @@
 
 /* ====== GAME ====== */
 .containerGame {
-  background-color: rgba(164, 166, 172, 0.192);
+  background-color: rgba(0, 0, 0, 0.467);
   border: solid 3px rgba(216, 221, 226, 0.253);
   padding: 1rem;
   border-radius: 0.4rem;
@@ -150,15 +150,20 @@
   cursor: url("../IMG//pata.png");
 }
 .buttonStart {
-  background-color: rgba(254, 254, 254, 0.71);
-  border: none;
-  border-radius: 0.3rem;
-  margin-top: 0.3rem;
-  font-weight: bold;
+  background-color: #e87613;
+  border: 1px solid #f87808;
+  box-shadow: 5px 5px 20px rgba(255, 163, 4, 0.893);
+  color: rgba(240, 248, 255, 0.93);
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  margin-top: 1rem;
+  font-family: 'Trebuchet MS';
+  font-size: 30px;
+  
 }
 .buttonStart:hover {
   background-color: rgba(158, 157, 157, 0.356);
-  color: rgba(230, 231, 232, 0.539);
+  color: rgba(24, 25, 26, 0.539);
   cursor: url("../IMG//pata.png");
 }
 
@@ -169,7 +174,64 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 1rem;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
+}
+.contentPower1{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: rgba(240, 248, 255, 0.845);
+  font-weight: bolder;
+  font-size: 14px;
+}
+.contentPower1:hover::after{
+  position: absolute;
+  color:white;
+  content: "Elimina 1 opción";
+  padding: 0.8rem;
+  width: 10rem;
+  background-color: #535252d8;
+  border-radius: 5px;
+  transition: 1s;
+  top: -2.5rem;
+}
+.contentPower2{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: rgba(240, 248, 255, 0.845);
+  font-weight: bolder;
+  font-size: 14px;
+}
+.contentPower2:hover::after{
+  position: absolute;
+  color:white;
+  content: "Elimina 2 opciones";
+  padding: 0.8rem;
+  width: 10rem;
+  background-color: #535252d8;
+  border-radius: 5px;
+  transition: 1s;
+  top: -2.5rem;
+}
+.contentPower3{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: rgba(240, 248, 255, 0.845);
+  font-weight: bolder;
+  font-size: 14px;
+}
+.contentPower3:hover::after{
+  position: absolute;
+  color:white;
+  content: "Puntos X2";
+  padding: 0.8rem;
+  width: 7rem;
+  background-color: #535252d8;
+  border-radius: 5px;
+  transition: 1s;
+  top: -2.5rem;
 }
 .powers {
   margin: 0.6rem;
@@ -184,7 +246,7 @@
 /* ===== CHAT =====*/
 .containerChatGame {
   /* background-color: rgba(216, 221, 226, 0.281); */
-  background-color: rgba(86, 88, 92, 0.664);
+  background-color: rgba(0, 0, 0, 0.392);
   border-bottom: solid 3px rgba(216, 221, 226, 0.253);
   border-left: solid 3px rgba(216, 221, 226, 0.253);
   border-right: solid 3px rgba(216, 221, 226, 0.253);
@@ -226,7 +288,7 @@
   position: relative;
   top: 3rem;
   width: 280px;
-  background-color: rgba(86, 88, 92, 0.664);
+  background-color: rgba(0, 0, 0, 0.392);
 }
 .containerChatGame span  {
   display: flex;
@@ -244,6 +306,10 @@
   margin-top: 2rem;
   width: 430px;
   height: 700px;
+}
+
+.loadingGif img {
+  width: 500px;
 }
 
 
@@ -271,5 +337,11 @@
   }
   .containerChatGame {
     display: none;
+  }
+  .title {
+    display: none;
+  }
+  .loadingGif img {
+    width: 350px;
   }
 }

@@ -20,9 +20,10 @@ import AdminHome from './components/ADMIN/adminHome';
 import AdminUsers from './components/ADMIN/adminUsers';
 import AdminQuestions from './components/ADMIN/adminQuestions';
 import CurrentQuestions from './components/ADMIN/currentQuestions';
-import JoinWithLink from './components/PRE-GAMEROOM/joinWithLink';
+import JoinWithLink from './components/JOINWITHLINK/joinWithLink';
 import Privacidad from './components/PRIVACIDAD/privacidad';
 import Ranking from './components/RANKING/Ranking';
+import About from './components/ABOUT/about';
 
 
 
@@ -47,6 +48,7 @@ function App() {
       <Route path='/partida' component={GameRoom} />
       <Route path='/politica-de-privacidad' component={Privacidad} />
       <Route exact path="/ranking" component={Ranking} />
+      <Route exact path="/about" component={About} />
 
         {/* ///////   Secciones de Administrador //////// */}
         <Route path="/administrador" component={loginAdmin} />

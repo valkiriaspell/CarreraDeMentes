@@ -8,14 +8,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RiGradienterLine } from "react-icons/ri";
 import  AdminNav  from './adminNav'
 import admin03 from '../IMG/Admin3.png'
+import { useHistory } from 'react-router-dom';
 
 
 export default function AdminUsers() {
+    
+    const history = useHistory();
+    const {user} = useSelector(state => state)
 
     const dispatch = useDispatch();
     const [selectedUser, setUser] = useState("")
     const [action, setAction] = useState("crear")
     const [search, setSearch] = useState("")
+    const [bannerUser, setBannerUser] = useState(false)
     const textAdmin = "Te informamos que has sido designado como Administrador de ZooPer Trivia. Ahora podrás acceder a la sección de administrador donde podrás verificar el ingreso de nuevas preguntas al juego!"
     const textNoAdmin = "Te informamos que tu cuenta ya no tendrá acceso al área de Administrador"
     const textBann = "Te informamos que debido a algún incumplimiento a las normas de ZooPer Trivia. Tu cuenta ha sido banneada. No podrás acceder durante 72hs. Te sugerimos no reincidir en este comportamiento para evitar un posible banneo permanente."
@@ -25,7 +30,7 @@ export default function AdminUsers() {
     }, [])
 
     let { totalUsers } = useSelector(state => state)
-
+    console.log(totalUsers)
 
     function refresh() {
         document.location.reload(true)
@@ -51,8 +56,13 @@ export default function AdminUsers() {
         console.log(e.target.value)
     }
 
-    function banearUser() {
-        Swal.fire({
+    function handleBannearUser(e) {
+        setBannerUser (e.target.value)
+    }
+
+    function bannearUser() {
+        if(bannerUser === 'sancionar') { 
+           Swal.fire({
             title: `Este usuario no podrá acceder a su cuenta por 72 hs.¿Desea continuar?`,
             icon: "warning",
             showDenyButton: true,
@@ -79,8 +89,39 @@ export default function AdminUsers() {
                     }
                 })
             }
-        })
+        })} else{
+            Swal.fire({
+                title: `Este usuario dejará de estar sancionado.¿Desea continuar?`,
+                icon: "warning",
+                showDenyButton: true,
+                backdrop: `
+                        rgba(0,0,123,0.4)
+                        left top
+                        no-repeat
+                      `,
+                confirmButtonText: "Si",
+                denyButtonText: "Cancelar",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: `El usuario cuyo mail es ${selectedUser} ya NO se encuentra sancionado`,
+                        confirmButtonText: "Ok"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            dispatch(bannUser(selectedUser));
+                            dispatch(sendingMail({
+                                userMail: selectedUser,
+                                textMail: textBann
+                            }))
+                            document.location.reload(true)
+                        }
+                    })
+                }
+            })
+
+        }
     }
+
     function actions(e) {
         setAction(e.target.value)
     }
@@ -103,7 +144,7 @@ export default function AdminUsers() {
                 denyButtonText: "Cancelar",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    dispatch(createAdmin({ email: selectedUser, admin: "admin" }));
+                    dispatch(createAdmin({ email: selectedUser, admin: "Admin" }));
                     dispatch(sendingMail({
                         userMail: selectedUser,
                         textMail: textAdmin
@@ -133,7 +174,7 @@ export default function AdminUsers() {
                 denyButtonText: "Cancelar",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    dispatch(createAdmin({ email: selectedUser, admin: "normal" }))
+                    dispatch(createAdmin({ email: selectedUser, admin: "Normal" }))
                     dispatch(sendingMail({
                         userMail: selectedUser,
                         textMail: textNoAdmin
@@ -158,7 +199,7 @@ export default function AdminUsers() {
     totalUsers = totalUsers.filter(d => d.admin !== "superadmin")
     totalUsers = totalUsers.filter(d => d.guest !== true)
 
-
+if (user.admin === "admin" || user.admin === "superadmin") {
     return (
             <div className='adminHome'>
                 <div className='questionsNav'>
@@ -181,16 +222,23 @@ export default function AdminUsers() {
                         value={search}
                         onChange={handleSearch}
                         />
+                <h6 className='botonesBarra'>Usuarios: {totalUsers.length}</h6>
                 <div className='botonesBarra'>
                         <select onChange={(e) => actions(e)}>
-                            <option>Configuración Admin</option>
+                            <option>Seleccionar Admin</option>
                             <option disabled={!selectedUser} key={1} value="crear">Crear Admin</option>
                             <option disabled={!selectedUser} key={2} value="deshacer">Deshacer Admin</option>
                         </select>
                         <button disabled={!selectedUser} className='botonesBarra' value="go" onClick={(e) => handleAdmin(e)}><RiGradienterLine /></button>
                 </div>
-                <h6 className='botonesBarra'>Usuarios: {totalUsers.length}</h6>
-                <button disabled={!selectedUser}  className='botonesBarra' onClick={() => banearUser()}>Sancionar</button>
+                <div className='botonesBarra'>
+                        <select onChange={(e) => handleBannearUser(e)}>
+                            <option>Banear Usuario</option>
+                            <option disabled={!selectedUser} value="sancionar">Sancionar</option>
+                            <option disabled={!selectedUser} value="levantar sanción">Levantar sanción</option>
+                        </select>
+                        <button disabled={!selectedUser} className='botonesBarra' value="go" onClick={(e) => bannearUser(e)}><RiGradienterLine /></button>
+                </div>
                 <button className='botonesBarra' onClick={(e) => refresh(e)}><GrUpdate color="white" /></button>
                 {/* <button className='botonesBarra' onClick={(e) => darkTheme(e)}><CgDarkMode /></button> */}
             </div>
@@ -207,6 +255,7 @@ export default function AdminUsers() {
                             <th>Monedas</th>
                             <th>Categoria</th>
                             <th>Estado</th>
+                            <th>Fecha Sanción</th>
                         </tr>
                         {totalUsers?.map(q =>
                             <tr key={q.email}>
@@ -217,10 +266,15 @@ export default function AdminUsers() {
                                 <td>{q.coins}</td>
                                 <td>{q.admin}</td>
                                 {q.banner?<td>Sancionado</td>:<td>Habilitado</td>}
+                                {q.banner?<td>{q.bannerTime}</td>:<td>N/A</td>}
                             </tr>)}
                     </tbody>
                 </table>
             </div>
         </div>
     )
+} else {
+    history.push('/');
+    return <div></div>;
+}
 }

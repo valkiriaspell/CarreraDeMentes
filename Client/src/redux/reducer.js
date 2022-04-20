@@ -1,4 +1,4 @@
-import { LOGIN_USER_GUEST, ALL_USERS_LEVEL, FAST_REMOVE, ALL_USERS, UPDATE_POINTS, REMOVE_USER, LIST_USERS_IN_PRE_ROOM, LIST_ROOMS, GET_READY_USER, NEW_USER, LOGIN, CREATE_ROOM, GET_AVATARS, GET_NEW_QUESTIONS, USER_TOKEN, GET_ALL_QUESTIONS } from "./actions"
+import { READY_USER, CHANGE_LOADING, LOGIN_USER_GUEST, ALL_USERS_LEVEL, FAST_REMOVE, ALL_USERS, UPDATE_POINTS, REMOVE_USER, LIST_USERS_IN_PRE_ROOM, LIST_ROOMS, GET_READY_USER, NEW_USER, LOGIN, CREATE_ROOM, GET_AVATARS, GET_NEW_QUESTIONS, USER_TOKEN, GET_ALL_QUESTIONS } from "./actions"
 
 
 const initialState = {
@@ -9,7 +9,8 @@ const initialState = {
     newQuestions: [],
     userToken: {},
     totalUsers: [],
-    questions: []
+    questions: [],
+    loading: true
 }
 
 // Ordenar de menor a mayor las coins
@@ -75,6 +76,12 @@ const reducer = (state = initialState, action) => {
                 listRooms: action.payload
             }
 
+        case READY_USER:
+            state.user.ready = action.payload
+            return {
+                ...state,
+            }
+
         case GET_READY_USER:
             const index = state.preRoomUsers.users.findIndex(user => user.id === action.payload.id)
             state.preRoomUsers.users[index].ready = action.payload.ready
@@ -126,6 +133,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 totalUsers: dataFil
+            }
+        case CHANGE_LOADING:
+            return {
+                ...state,
+                loading: action.payload
             }
 
         default:

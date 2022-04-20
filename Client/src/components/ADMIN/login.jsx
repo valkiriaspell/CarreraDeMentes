@@ -61,6 +61,9 @@ export default function LoginAdmin() {
 
     return (
         <div className='containerLogin'>
+            <div className="logo">
+                <img width="220px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo-jungla.png?alt=media&token=56d936a4-646a-4ef4-ae78-e635f8a5a9c4" alt="Logo"></img>
+            </div>
             <div className='contentLogin'>
                 <form onSubmit={(e) =>handleLogin(e)}>
                     <div className='imgUser'>
