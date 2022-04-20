@@ -47,19 +47,21 @@ const createUsers = async ({
 
 // Crea un usuario invitado y lo guarda en la DB
 const createGuestUser = async () => {
+	let nuevoNumero = 101
 	try {
 		const allUsersGuest = await Users.findAll({
 			where:{
 				guest: true
 			}
 		})
-        let nuevoNumero = 101
 		if(allUsersGuest.length >= 1) {
 			let [usuario, numero] = allUsersGuest[allUsersGuest.length-1].name.split("User")
 			nuevoNumero = parseInt(numero)
-			console.log(nuevoNumero)
-			nuevoNumero++
+			console.log(nuevoNumero, "antes")
+			nuevoNumero += 1
+			console.log(nuevoNumero, "despues")
 		}
+		console.log(nuevoNumero, "afuera")
         
 		const newUser = await Users.create({
 			name: `User${nuevoNumero}`,
@@ -69,6 +71,7 @@ const createGuestUser = async () => {
 
 		await newUser.addAvatar(1);
 
+		console.log("creado")
 		return await Users.findOne({
 			where: {name: `User${allUsersGuest.length + 101}`},
 			...includesAvatar,
