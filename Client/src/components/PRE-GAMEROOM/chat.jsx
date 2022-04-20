@@ -30,7 +30,7 @@ const Chat = ({ messages, sendMessage}) =>{
         <div>
             <div className={styles.readyPhone} >
             {
-                !user?.host &&
+                !user?.host && preRoomUsers?.users?.find(us => us.id === user.id) &&
                 (user?.ready 
                     ? <img width="70px" src={readyGreen} alt="ready"/>
                     : <img width="70px" src={readyDark} alt="notReady"/>)
