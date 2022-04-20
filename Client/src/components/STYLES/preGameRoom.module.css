@@ -223,28 +223,7 @@
   background-color: rgba(154, 158, 161, 0.4);
 }
 
-/* ===== INVITATION ROOM =====*/
-.containerInvitation{
-  margin-top: -3.8rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  justify-content: center;
-}
 
-.containerButtons{
-  display: flex;
-  flex-direction: column;
-  width: 18rem;
-  height: 20rem;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.logo {
-  margin-top: 4rem;
-}
 
 /* ===== MEDIA QUERIES =====*/
 @media screen and (max-width: 500px) {

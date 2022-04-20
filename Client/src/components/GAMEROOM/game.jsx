@@ -253,7 +253,7 @@ const Game = ({
     <div>
       {active === true ? (
         <div className="loadingGif">
-          <img style={{marginBottom: "5rem"}} width="500px" src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo5.png?alt=media&token=5e5bb88d-806a-4c38-b667-b27a9b5b01fc"></img>
+          <img style={{marginBottom: "5rem"}} src="https://firebasestorage.googleapis.com/v0/b/carreradementes-773d8.appspot.com/o/logotipos%2Flogo5.png?alt=media&token=5e5bb88d-806a-4c38-b667-b27a9b5b01fc"></img>
           {user.host === true ? (
             <button className="buttonSides lowgreen" style={{color: 'white', fontSize:'20px'}} onClick={(e) => allStartGame(true)}>
               COMENZAR
