@@ -91,6 +91,11 @@ export default function CurrentQuestions() {
 
 	function modifyQuestion() {
 		setShowForm(true);
+		window.scrollTo({
+			top: 700,
+			left: 100,
+			behavior: 'smooth',
+		});
 	}
 
 	if (admin) {
