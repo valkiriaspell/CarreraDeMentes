@@ -20,7 +20,7 @@ const server = express();
 var app = require('http').Server(server);
 var io = require('socket.io')(app, {
 	cors: {
-		origin: 'https://www.zoopertrivia.com',
+		origin: '*',
 	},
 });
 //server.use(express.static('public'))
