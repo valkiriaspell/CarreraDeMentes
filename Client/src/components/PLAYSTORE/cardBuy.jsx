@@ -9,7 +9,7 @@ function CardBuy({precio, referencia, img}) {
   async function handleComprar(precio, email, referencia) {
     const ordenCompra = { //orden de compra
       quantity: 1, // cantidad
-      description: `${precio} Monedas`, //nombre del producto
+      description: `${precio} Monedas`, //nombbre del producto
       price: precio, //precio del producto
       email: email, //email del usuario
       external_reference: referencia //referencia del producto, asi sabemos que compro para luego agregar a sus monedas en la bd
