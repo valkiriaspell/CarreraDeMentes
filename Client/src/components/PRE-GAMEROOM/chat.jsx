@@ -36,7 +36,7 @@ const Chat = ({ messages, sendMessage}) =>{
                     : <img width="70px" src={readyDark} alt="notReady"/>)
             }
             </div>
-            <p>Jugadores {preRoomUsers?.users?.length}/6</p>
+            <p style={{fontSize: "12px"}}>Jugadores {preRoomUsers?.users?.length}/6</p>
             <div className={styles.containerChat}>
                 <div style={{heigth:50 + "px"}} disabled={true} > 
                     {
