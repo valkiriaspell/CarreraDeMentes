@@ -308,6 +308,10 @@
   height: 700px;
 }
 
+.loadingGif img {
+  width: 500px;
+}
+
 
 /* ===== MEDIA QUERIES =====*/
 @media screen and (max-width: 500px) {
@@ -336,5 +340,8 @@
   }
   .title {
     display: none;
+  }
+  .loadingGif img {
+    width: 350px;
   }
 }

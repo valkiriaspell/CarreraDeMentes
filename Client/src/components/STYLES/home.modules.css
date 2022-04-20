@@ -102,7 +102,7 @@
 }
 
 /* ===== MEDIA QUERIES =====*/
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1200px) {
   .nav__smartphone {
     display: none;
   }

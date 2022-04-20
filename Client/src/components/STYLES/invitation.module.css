@@ -1,0 +1,32 @@
+.containerInvitation{
+    margin-top: -3.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+  }
+  
+  .containerButtons{
+    display: flex;
+    flex-direction: column;
+    width: 18rem;
+    height: 20rem;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+  .logo {
+    margin-top: 4rem;
+  }
+  .logo img{
+    width: 500px;
+  }
+
+  
+  @media screen and (max-width: 500px) {
+      .logo img {
+        width: 350px;
+      }
+
+  }

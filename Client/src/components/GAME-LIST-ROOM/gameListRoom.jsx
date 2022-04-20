@@ -18,17 +18,6 @@ function GameListRoom() {
   const {listRooms} = useSelector(state => state)
 
 
-/*   const searchGames = (e) => {
-    if (e && e !== "") {
-      const listGames = games.filter((a) =>
-        a.name.toLowerCase().includes(e.toLowerCase())
-      ); */
-/*       setGames(listGames); */
-/*       console.log(listGames); */
-/*     }
-  }; */
-
-
   useEffect(() => {
     dispatch(listAllRooms())
     setInterval(()=> dispatch(listAllRooms()), 4000);
