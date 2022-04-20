@@ -132,7 +132,7 @@ export default function CurrentQuestions() {
 							name=''
 							id=''
 						>
-							<option value=''>Categoria</option>
+							<option value=''>Categoría</option>
 							<option value='Historia'>Historia</option>
 							<option value='Geografía'>Geografía</option>
 							<option value='Arte'>Arte</option>
