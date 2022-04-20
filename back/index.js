@@ -8,7 +8,7 @@ const {SUPERADMIN_NAME, SUPERADMIN_EMAIL, SUPERADMIN_ADMIN} =
 	process.env;
 
 // Syncing all the models at once.
-conn.sync({force: true}).then(() => {
+conn.sync({force: false}).then(() => {
 	app.listen(process.env.PORT || 3001, async () => {
 		getAvatars();
 		addInitServerMultCoins();		
@@ -19,6 +19,6 @@ conn.sync({force: true}).then(() => {
 			idAvatar: '1',
 			admin: SUPERADMIN_ADMIN,
 		});
-		console.log('%s listening at 3001'); // eslint-disable-line no-console
+		console.log('%s listening at port 3001'); // eslint-disable-line no-console
 	});
 });
