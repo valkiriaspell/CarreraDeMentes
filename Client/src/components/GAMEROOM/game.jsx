@@ -108,7 +108,7 @@ const Game = ({
   }, [userCoins]);
 
   useEffect(() => {
-    console.log(preRoomUsers);
+    
     setQuestions(preRoomUsers.questions);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preRoomUsers.questions]);

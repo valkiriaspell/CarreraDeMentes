@@ -19,6 +19,6 @@ conn.sync({force: false}).then(() => {
 			idAvatar: '1',
 			admin: SUPERADMIN_ADMIN,
 		});
-		console.log('%s listening at 3001'); // eslint-disable-line no-console
+		console.log('%s listening at port 3001'); // eslint-disable-line no-console
 	});
 });
