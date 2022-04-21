@@ -182,8 +182,8 @@ function useChatSocketIo(idRoom) {
         if(listos === preRoomUsers?.users?.length - 1){
             try{
                 const questionAll = await axios.post("/question/allQuestions", {
-                    count: preRoomUsers?.questionAmount,
-                    category: preRoomUsers?.category,
+                    count: roomConfiguration?.questions,
+                    category: roomConfiguration?.category,
                     idRoom
                 })
             console.log(questionAll)

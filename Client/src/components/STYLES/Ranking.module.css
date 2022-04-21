@@ -60,11 +60,15 @@
 }
 
 .coronaRanking img{
-    width: 30px;
+    width: 14%;
 }
 
 .infoUserRanking img{
     width: 50px;
+} 
+
+.infoUserRanking > span{
+    width: 10%;
 } 
 
 .infoUserRanking {
