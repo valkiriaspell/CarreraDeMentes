@@ -175,7 +175,7 @@ export function listUsersInPreRoom(IdRoom) {
         try {
             const { data } = await axios.get(`/gameRoom/?idRoom=${IdRoom}`)
             dispatch({ type: 'LIST_USERS_IN_PRE_ROOM', payload: data })
-            console.log(data)
+            
             return data
         } catch (e) {
             console.log(e)

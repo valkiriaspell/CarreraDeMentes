@@ -68,12 +68,7 @@ function PreGameRoom({match}) {
             {
               user?.host === true 
                 ? (
-                <button
-                  disabled={
-                    preRoomUsers?.users?.length - 1 === 0
-                      ? true
-                      : false
-                  }
+                <button                 
                   onClick={sendStartGame}
                   className="buttonSides lowgreen"
                 >

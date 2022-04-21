@@ -1,4 +1,5 @@
 const { GameRoom, Users, Question, Avatar } = require('../db.js');
+const { Op } = require("sequelize");
 
 // 1110
 
@@ -41,7 +42,7 @@ const searchByPkGameRoom = async (id) => {
 const searchAllGameRoom = async () => {
 	try {
 		const data = await GameRoom.findAll({
-			where: { public_: true },
+			where: { public_: true, usersAmount:{[Op.gt]:0} },
 			include: [
 				{
 					model: Users,
