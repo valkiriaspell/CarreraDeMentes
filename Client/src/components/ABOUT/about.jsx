@@ -92,7 +92,6 @@ export default function About() {
     max: 30,
     scale: 2.0,
     speed: 2000,
-    color: "red"
   };
 
   useEffect(() => {
