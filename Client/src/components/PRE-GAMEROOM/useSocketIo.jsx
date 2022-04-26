@@ -179,11 +179,21 @@ function useChatSocketIo(idRoom) {
       }
     async function sendStartGame(){
         let listos = countReady()
-        if(listos === preRoomUsers?.users?.length - 1){
+        if (preRoomUsers.users.length - 1 === 0) {
+            toast.warn("Se necesitan mas jugadores", {
+                position: "bottom-center",
+                autoClose: 2500,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+              })
+        } else if(listos === preRoomUsers?.users?.length - 1){
             try{
                 const questionAll = await axios.post("/question/allQuestions", {
-                    count: preRoomUsers?.questionAmount,
-                    category: preRoomUsers?.category,
+                    count: roomConfiguration?.questions,
+                    category: roomConfiguration?.category,
                     idRoom
                 })
             console.log(questionAll)
@@ -192,7 +202,7 @@ function useChatSocketIo(idRoom) {
                 console.log(e)
             }
         } else {
-            toast.warn("todos los jugadores deben estar listos para comenzar", {
+            toast.warn("Todos los jugadores deben estar listos para comenzar", {
                 position: "bottom-center",
                 autoClose: 2500,
                 hideProgressBar: true,

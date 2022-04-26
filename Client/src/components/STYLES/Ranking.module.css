@@ -60,7 +60,7 @@
 }
 
 .coronaRanking img{
-    width: 30px;
+    width: 14%;
 }
 .coronaRanking{
     margin-left: 1rem;
@@ -71,6 +71,10 @@
 
 .infoUserRanking img{
     width: 50px;
+} 
+
+.infoUserRanking > span{
+    width: 10%;
 } 
 
 .infoUserRanking {

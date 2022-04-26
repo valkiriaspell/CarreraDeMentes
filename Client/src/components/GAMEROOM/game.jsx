@@ -108,7 +108,7 @@ const Game = ({
   }, [userCoins]);
 
   useEffect(() => {
-    console.log(preRoomUsers);
+    
     setQuestions(preRoomUsers.questions);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preRoomUsers.questions]);
@@ -325,7 +325,7 @@ const Game = ({
                     <img src={Bomb1} alt="BOMB1" width={25}></img>
                   </button>
                   <div>
-                    <img src={Dollar} alt="Dollar" width={18} /> 100
+                    <img src={Dollar} alt="Dollar" width={18} /> 5
                   </div>
                 </div>
                 <div className="contentPower2">
@@ -333,7 +333,7 @@ const Game = ({
                     <img src={Bomb2} alt="BOMB2" width={25}></img>
                   </button>
                   <div>
-                    <img src={Dollar} alt="Dollar" width={18} /> 200
+                    <img src={Dollar} alt="Dollar" width={18} /> 10
                   </div>
                 </div>
                 <div className="contentPower3">
@@ -357,7 +357,7 @@ const Game = ({
                     <img src={X2} alt="x2" width={25} />
                   </button>
                   <div>
-                    <img src={Dollar} alt="Dollar" width={18} /> 300
+                    <img src={Dollar} alt="Dollar" width={18} /> 15
                   </div>
                 </div>
                 <div

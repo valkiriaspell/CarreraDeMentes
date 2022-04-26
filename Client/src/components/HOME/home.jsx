@@ -73,7 +73,7 @@ function Home(props) {
 					</div>
 					<div>
 						{/* COMPONENTE USERCARD */}
-						<UserCard />
+						<UserCard location={props.location} />
 						<Music />
 					</div>
 				</div>

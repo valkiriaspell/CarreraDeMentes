@@ -110,7 +110,7 @@ function Instructions() {
             <img src={IMG} className="d-block w-100" alt="IMG" />
             <div className="carousel-caption d-none d-md-block containerCard">
             <img className="imgMoneda" src={moneda} height={120} alt="monedas"/>
-              <h5>¡Comprá monedas en nuestra Tienda! 💵</h5>
+              <h5>¡Comprá monedas en nuestra Tienda! </h5>
               <p>
               Adquirí las monedas de Zooper Trivia para cambiarlas por poderes y así aumentar tus chances de ganar.
               </p>
@@ -120,7 +120,7 @@ function Instructions() {
             <img src={IMG} className="d-block w-100" alt="IMG" />
             <div className="carousel-caption d-none d-md-block containerCard">
             <img style={{marginBottom: "15px"}} src={powers} height={140} alt="poderes"/>
-              <h5>¡Utiliza tus Poderes! 🤩</h5>
+              <h5>¡Utiliza tus Poderes! </h5>
               <p>
               Usa tus monedas para eliminar respuestas falsas o multiplicar x2 los puntos ganados al responder una pregunta.
               </p>
