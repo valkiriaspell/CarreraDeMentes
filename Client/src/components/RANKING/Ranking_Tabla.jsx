@@ -12,7 +12,7 @@ export default function Ranking_Tabla({ranking, name, level, wins, points, avata
             case 3:
                 return <span className={Style.coronaRanking}><img src="https://raw.githubusercontent.com/valkiriaspell/CarreraDeMentes/dev/Client/src/components/IMG/king3.png" alt="corona3" /></span>;
             default:
-                return <span>{ranking}</span>;
+                return <span className={Style.ranking}>{ranking}</span>;
         }
     }
 

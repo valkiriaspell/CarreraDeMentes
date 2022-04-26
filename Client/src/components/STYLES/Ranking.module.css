@@ -62,6 +62,14 @@
 .coronaRanking img{
     width: 14%;
 }
+.coronaRanking{
+    margin-left: 1rem;
+}
+.ranking {
+    margin-left: 4.6rem;
+    margin-right: 4rem;
+}
+
 
 .infoUserRanking img{
     width: 50px;
