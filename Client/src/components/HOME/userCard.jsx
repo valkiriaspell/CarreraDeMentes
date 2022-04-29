@@ -35,7 +35,6 @@ function UserCard({location}) {
 
   useEffect(() =>{
       dispatch(loginUser(email))
-      console.log(user)
   }, [])
 
   return (

@@ -77,7 +77,6 @@ export function loginUser(email) {
         try {
             const { data } = await axios.get(`/users?email=${email}`)
             dispatch({ type: 'LOGIN', payload: data })
-            console.log(data)
             return data
         } catch (e) {
             console.log(e)
@@ -243,7 +242,6 @@ export function handleQuestion(id, condition) {
     return async function () {
         try {
             if (condition === "accept") {
-                console.log(id, "id en action", condition, "condicion")
                 await axios.put(`/newQuestion/?id=${id}`)
 
             } else {
