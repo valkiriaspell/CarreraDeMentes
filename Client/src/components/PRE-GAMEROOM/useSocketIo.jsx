@@ -44,7 +44,6 @@ function useChatSocketIo(idRoom) {
         socketIoRef.current = socketIOClient(process.env.REACT_APP_API ,{query:{idGameRoom: idRoom, email} } );
 
             socketIoRef.current.on("NEW_CONNECTION", (email) =>{
-                console.log('NEW_CONNECTION')
                 /* email !== user.email && */
                 dispatch(readyUser(false))
                 dispatch(listUsersInPreRoom(idRoom))
@@ -69,10 +68,9 @@ function useChatSocketIo(idRoom) {
             })
             
             socketIoRef.current.on("DISCONNECT", (id) =>{
-                console.log(id)
                 id === user.id && socketIoRef?.current?.disconnect();
                 const isHost = preRoomUsers?.users?.filter(us=> us.id === id )
-                if(isHost?.[0].host){
+                if(isHost?.[0]?.host){
                     history.push('/home');
                     socketIoRef?.current?.disconnect();
                 } else{
@@ -84,21 +82,18 @@ function useChatSocketIo(idRoom) {
             })
 
             socketIoRef.current.on("EXPEL_PLAYER", ({id, arrayRemoveUser}) =>{
-                console.log(id, user.id)
                 user?.id === id 
                     ? history.push('/home')
                     : dispatch(removeUser(arrayRemoveUser))
             })
 
             socketIoRef.current.on("FAST_REMOVE", (id) =>{
-                console.log(id)
                 id !== user.id &&
                     dispatch(fastRemove(id))
             })
 
             //when host press start-game button, all players redirect url game-room, 
             socketIoRef.current.on("START", async () =>{
-                console.log("empezar")
                 await startGameAlready(idRoom, true)
                 await dispatch(listUsersInPreRoom(idRoom))
                 setGame(true)
@@ -109,13 +104,11 @@ function useChatSocketIo(idRoom) {
             })
 
             socketIoRef.current.on("NEW_EVENT", ({id, pointsTotal, point, name}) =>{
-                console.log('lejos')
                 dispatch(changePoint({id, pointsTotal, point}))
                 setPoints({point, name})
             }) 
 
             socketIoRef.current.on("ALL_START_GAME", ({bool}) =>{
-                console.log('empiezen!')
                 setEverybodyPlays(bool)
             }) 
            
@@ -123,13 +116,14 @@ function useChatSocketIo(idRoom) {
             //remove player from room (DB) when player leaves the room and destroy the socket reference
 
             return async () =>{
-                console.log('return')
                 changeReady(user?.id, false)
                 /* socketIoRef?.current?.emit("FAST_REMOVE", user?.id) */ // ya volvio a fallar no se por que
                 /* const list = await dispatch(listUsersInPreRoom(idRoom))
-                console.log(list, 'que onda')
                 if(list?.start === false){ */
-                    if(user?.host === true){
+                    if(preRoomUsers.users.length === 1){
+                        await modifyHost(email, false)
+                        await deleteRoom(idRoom)
+                    } else if(user?.host === true){
                         await modifyHost(email, false)
                         await deleteRoom(idRoom)
                     } else{
@@ -140,7 +134,6 @@ function useChatSocketIo(idRoom) {
                         await removeUserRoom(idRoom, user?.id ? user?.id : player?.id)
                     }
                     socketIoRef?.current?.emit("DISCONNECT", user.id)
-                    console.log("desconectando")
                 }
             
     }, [])
@@ -174,7 +167,6 @@ function useChatSocketIo(idRoom) {
             readys++
           } 
         }
-    console.log(readys)
         return readys
       }
     async function sendStartGame(){
@@ -196,7 +188,6 @@ function useChatSocketIo(idRoom) {
                     category: roomConfiguration?.category,
                     idRoom
                 })
-            console.log(questionAll)
             socketIoRef.current.emit("START")
             }catch(e){
                 console.log(e)
@@ -216,7 +207,6 @@ function useChatSocketIo(idRoom) {
 
     function expelPlayer(e){
         let id = e.target.id
-        console.log(id)
         const arrayRemoveUser = preRoomUsers?.users?.filter(user=> user?.id !== id)
         socketIoRef.current.emit("EXPEL_PLAYER", {id, arrayRemoveUser})
 
@@ -231,7 +221,6 @@ function useChatSocketIo(idRoom) {
                 questions: roomConfiguration.questions,
                 category: roomConfiguration.category,
                 time: roomConfiguration.time})
-                console.log(data)
         } catch(e){
             console.log(e)
         }
@@ -239,11 +228,9 @@ function useChatSocketIo(idRoom) {
     }
 
     function positions(id, pointsTotal, point, name){
-        console.log('nuevo evento')
         socketIoRef.current.emit("NEW_EVENT", {id, pointsTotal, point, name})
     } 
     function allStartGame(bool){
-        console.log('yaaaa')
         socketIoRef.current.emit("ALL_START_GAME", {bool})
     } 
 

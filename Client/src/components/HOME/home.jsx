@@ -21,7 +21,6 @@ function Home(props) {
 
 	useEffect(() => {
 		!user?.name && dispatch(loginUser(email))
-		console.log(user);
 	}, []);
 
 	useEffect(() => {
